@@ -1,4 +1,5 @@
 const ICONS = {
+  apps: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>',
   search: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.1-5.4a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>',
   folder: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 6.75A1.75 1.75 0 0 1 5.5 5h4l2 2h7A1.75 1.75 0 0 1 20.25 8.75v8.75a1.75 1.75 0 0 1-1.75 1.75h-13a1.75 1.75 0 0 1-1.75-1.75V6.75Z"/></svg>',
   folderOpen: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 8.5V6.75A1.75 1.75 0 0 1 5.25 5h4l2 2h7A1.75 1.75 0 0 1 20 8.75V10M4.4 19h13.2a1.6 1.6 0 0 0 1.53-1.13l1.72-5.5A1.05 1.05 0 0 0 19.85 11H6.15a1.6 1.6 0 0 0-1.53 1.13L2.9 17.63A1.05 1.05 0 0 0 3.9 19Z"/></svg>',

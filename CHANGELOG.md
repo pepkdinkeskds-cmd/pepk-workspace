@@ -1,6 +1,22 @@
 # Changelog
 
-## [0.2.0] - 2026-07-18
+## [0.2.1] - 2026-07-19
+
+### Added
+- Launchpad untuk 19 aplikasi penunjang PEPK.
+- Ikon aplikasi internal yang konsisten dan ringan.
+- Aplikasi dapat ditemukan melalui pencarian dan ditampilkan pada ruang kerja terkait.
+- Filter jenis resource pada halaman Pustaka.
+
+### Changed
+- Akses Cepat homepage dibagi menjadi folder kerja dan aplikasi yang sering digunakan.
+- Ringkasan Ruang Kerja menampilkan jumlah folder dan aplikasi.
+- Istilah hasil pencarian diperluas dari folder menjadi resource.
+
+### Fixed
+- Sinkronisasi Google Sheets versi lama tidak lagi menghilangkan aplikasi lokal selama masa migrasi data.
+
+## [0.2.1] - 2026-07-19
 
 ### Added
 - Logo PEPK transparan.

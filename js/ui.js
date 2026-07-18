@@ -1,14 +1,47 @@
-import { createElement, externalLink } from "./app.js";
+import { createElement, externalLink, safeUrl } from "./app.js";
 import { icon } from "./icons.js";
 
+function resourceMeta(resource) {
+  const items = [resource.workspaceTitle || resource.workspaceId];
+  if (resource.type === "application") items.push("Aplikasi");
+  else if (resource.year) items.push(String(resource.year));
+  return items;
+}
+
+function appLogo(resource, className = "") {
+  const image = createElement("img", {
+    className: `app-logo ${className}`.trim(),
+    src: safeUrl(resource.icon || ""),
+    alt: "",
+    width: 48,
+    height: 48,
+    loading: "lazy"
+  });
+  image.addEventListener("error", () => {
+    const fallback = createElement("span", { className: `app-logo app-logo--fallback ${className}`.trim(), text: resource.title.slice(0, 2).toUpperCase() });
+    image.replaceWith(fallback);
+  }, { once: true });
+  return image;
+}
+
+export function applicationCard(resource, { compact = false } = {}) {
+  const link = externalLink(resource.url, resource.title, `application-card${compact ? " application-card--compact" : ""}`);
+  const logo = appLogo(resource, "application-card__logo");
+  const content = createElement("span", { className: "application-card__content" }, [
+    createElement("span", { className: "application-card__meta", text: resource.workspaceTitle || resource.workspaceId }),
+    createElement("strong", { className: "application-card__title", text: resource.title })
+  ]);
+  if (!compact) content.append(createElement("span", { className: "application-card__description", text: resource.description || "" }));
+  link.append(logo, content, createElement("span", { className: "application-card__action", html: icon("external") }));
+  return link;
+}
+
 export function resourceCard(resource, { compact = false } = {}) {
+  if (resource.type === "application") return applicationCard(resource, { compact });
   const link = externalLink(resource.url, resource.title, `resource-card${compact ? " resource-card--compact" : ""}`);
   const iconBox = createElement("span", { className: "resource-card__icon", html: icon(resource.icon || "folder") });
   const content = createElement("span", { className: "resource-card__content" });
-  const meta = createElement("span", { className: "resource-card__meta" }, [
-    createElement("span", { text: resource.workspaceTitle || resource.workspaceId }),
-    createElement("span", { text: String(resource.year || "") })
-  ]);
+  const meta = createElement("span", { className: "resource-card__meta" }, resourceMeta(resource).map((item) => createElement("span", { text: item })));
   const title = createElement("strong", { className: "resource-card__title", text: resource.title });
   const description = createElement("span", { className: "resource-card__description", text: resource.description || "" });
   content.append(meta, title);
@@ -29,7 +62,9 @@ export function workspaceCard(workspace, counts = {}) {
   ]);
   const title = createElement("strong", { className: "workspace-card__title", text: workspace.title });
   const description = createElement("span", { className: "workspace-card__description", text: workspace.description });
-  const meta = createElement("span", { className: "workspace-card__meta", text: `${counts.groups || workspace.groupCount || 0} kelompok • ${counts.resources || workspace.resourceCount || 0} folder tahun` });
+  const apps = counts.applications || workspace.applicationCount || 0;
+  const metaText = `${counts.groups || workspace.groupCount || 0} kelompok • ${counts.documents || workspace.resourceCount || 0} folder${apps ? ` • ${apps} aplikasi` : ""}`;
+  const meta = createElement("span", { className: "workspace-card__meta", text: metaText });
   link.append(top, title, description, meta);
   return link;
 }
@@ -61,7 +96,7 @@ export function groupCard(group, resources) {
   header.append(
     createElement("span", { className: "document-group__icon", html: icon("folder") }),
     createElement("div", { className: "document-group__heading" }, [
-      createElement("h2", { className: "document-group__title", text: group.title }),
+      createElement("h3", { className: "document-group__title", text: group.title }),
       createElement("p", { className: "document-group__meta", text: `${resources.length} tahun tersedia` })
     ])
   );

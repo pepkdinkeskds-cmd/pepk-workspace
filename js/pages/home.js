@@ -1,7 +1,7 @@
 import { initApp, debounce, announce, setDataStatus, applyMetadata } from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
 import { searchResources } from "../search.js";
-import { emptyState, informationCard, resourceCard, workspaceCard } from "../ui.js";
+import { applicationCard, emptyState, informationCard, resourceCard, workspaceCard } from "../ui.js";
 
 initApp("home");
 
@@ -17,12 +17,23 @@ const emptyContainer = document.querySelector("[data-home-empty]");
 const resultsTitle = document.querySelector("[data-home-results-title]");
 const viewAllLink = document.querySelector("[data-view-all-results]");
 
-function renderQuickAccess() {
-  const container = document.querySelector("[data-quick-access]");
-  container.replaceChildren();
+function quickResources() {
   const resourceMap = new Map(data.resources.map((item) => [item.id, item]));
-  data.quickAccess.map((id) => resourceMap.get(id)).filter(Boolean).slice(0, 8).forEach((resource) => {
-    container.append(resourceCard(resource, { compact: true }));
+  return data.quickAccess.map((id) => resourceMap.get(id)).filter(Boolean);
+}
+
+function renderQuickAccess() {
+  const folderContainer = document.querySelector("[data-quick-folders]");
+  const appContainer = document.querySelector("[data-quick-apps]");
+  folderContainer.replaceChildren();
+  appContainer.replaceChildren();
+
+  const items = quickResources();
+  items.filter((item) => item.type !== "application").slice(0, 8).forEach((resource) => {
+    folderContainer.append(resourceCard(resource, { compact: true }));
+  });
+  items.filter((item) => item.type === "application").slice(0, 8).forEach((resource) => {
+    appContainer.append(applicationCard(resource, { compact: true }));
   });
 }
 
@@ -30,9 +41,11 @@ function renderWorkspaces() {
   const container = document.querySelector("[data-workspaces]");
   container.replaceChildren();
   data.workspaces.forEach((workspace) => {
+    const workspaceResources = data.resources.filter((resource) => resource.workspaceId === workspace.id);
     const counts = {
       groups: data.groups.filter((group) => group.workspaceId === workspace.id).length,
-      resources: data.resources.filter((resource) => resource.workspaceId === workspace.id).length
+      documents: workspaceResources.filter((resource) => resource.type !== "application").length,
+      applications: workspaceResources.filter((resource) => resource.type === "application").length
     };
     container.append(workspaceCard(workspace, counts));
   });
@@ -56,11 +69,11 @@ function renderSearch(query) {
 
   const results = searchResources(data.resources, currentQuery, data.synonyms);
   resultsSection.hidden = false;
-  resultsTitle.textContent = `${results.length} folder cocok dengan “${currentQuery}”`;
+  resultsTitle.textContent = `${results.length} resource cocok dengan “${currentQuery}”`;
   viewAllLink.href = `resources.html?q=${encodeURIComponent(currentQuery)}`;
 
   if (!results.length) {
-    emptyContainer.append(emptyState("Dokumen belum ditemukan", "Coba gunakan nama dokumen, tahun, atau kata yang terdapat di dalam subfolder."));
+    emptyContainer.append(emptyState("Resource belum ditemukan", "Coba gunakan nama dokumen, aplikasi, tahun, atau kebutuhan pekerjaan."));
   } else {
     results.slice(0, data.settings.homeResultLimit || 6).forEach((resource) => resultsGrid.append(resourceCard(resource)));
   }
@@ -93,7 +106,7 @@ function renderAll() {
 }
 
 renderAll();
-setDataStatus("Data folder siap", "ready");
+setDataStatus("Data lokal siap", "ready");
 
 setDataStatus("Menyinkronkan Google Sheets…", "loading");
 refreshFromSheets()

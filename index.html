@@ -48,17 +48,17 @@
       <div class="hero__content">
         <span class="eyebrow">Workspace internal PEPK</span>
         <h1>Temukan dokumen kerja dengan lebih cepat.</h1>
-        <p>Telusuri folder Perencanaan, Evaluasi, Pelaporan, dan Keuangan berdasarkan nama dokumen, tahun, atau kebutuhan pekerjaan.</p>
+        <p>Telusuri folder dan aplikasi Perencanaan, Evaluasi, Pelaporan, dan Keuangan berdasarkan nama, tahun, atau kebutuhan pekerjaan.</p>
         <form class="hero-search" role="search" data-home-search-form>
           <label class="sr-only" for="home-search">Cari dokumen PEPK</label>
           <span class="hero-search__icon" data-icon="search"></span>
-          <input id="home-search" name="q" type="search" autocomplete="off" placeholder="Contoh: Renja Akhir 2026" data-home-search>
+          <input id="home-search" name="q" type="search" autocomplete="off" placeholder="Contoh: Renja Akhir 2026 atau Coretax" data-home-search>
           <button type="submit">Cari</button>
         </form>
         <div class="search-hints" aria-label="Contoh pencarian">
           <span>Coba:</span>
           <button type="button" data-search-suggestion="DPA 2026">DPA 2026</button>
-          <button type="button" data-search-suggestion="LKJiP 2026">LKJiP 2026</button>
+          <button type="button" data-search-suggestion="Coretax">Coretax</button>
           <button type="button" data-search-suggestion="Renja Akhir">Renja Akhir</button>
         </div>
       </div>
@@ -89,11 +89,27 @@
       <div class="section-heading">
         <div>
           <span class="eyebrow eyebrow--dark">Akses Cepat</span>
-          <h2>Folder yang sering dibutuhkan</h2>
-          <p>Buka langsung folder tahun tanpa menelusuri struktur Drive dari awal.</p>
+          <h2>Folder dan aplikasi yang sering digunakan</h2>
+          <p>Buka resource pekerjaan tanpa menelusuri Google Drive atau mencari alamat aplikasi dari awal.</p>
         </div>
       </div>
-      <div class="quick-grid" data-quick-access></div>
+      <div class="quick-access-layout">
+        <section class="quick-panel" aria-labelledby="quick-folder-title">
+          <div class="quick-panel__heading">
+            <span class="quick-panel__icon" data-icon="folderOpen"></span>
+            <div><h3 id="quick-folder-title">Folder kerja</h3><p>Folder tahun yang sering dibutuhkan.</p></div>
+          </div>
+          <div class="quick-grid quick-grid--folders" data-quick-folders></div>
+        </section>
+        <section class="quick-panel quick-panel--apps" aria-labelledby="quick-app-title">
+          <div class="quick-panel__heading">
+            <span class="quick-panel__icon" data-icon="apps"></span>
+            <div><h3 id="quick-app-title">Launchpad aplikasi</h3><p>Aplikasi penunjang yang sering digunakan.</p></div>
+          </div>
+          <div class="app-launchpad" data-quick-apps></div>
+          <a class="text-link quick-panel__all" href="resources.html?type=application">Lihat semua aplikasi <span data-icon="arrow"></span></a>
+        </section>
+      </div>
     </div>
   </section>
 
@@ -103,7 +119,7 @@
         <div>
           <span class="eyebrow eyebrow--dark">Ruang Kerja</span>
           <h2>Pilih area pekerjaan</h2>
-          <p>Setiap ruang kerja memuat kelompok dokumen dan folder tahun yang relevan.</p>
+          <p>Setiap ruang kerja memuat kelompok dokumen, folder tahun, dan aplikasi yang relevan.</p>
         </div>
       </div>
       <div class="workspace-grid" data-workspaces></div>
@@ -134,8 +150,8 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.2.0</span></p>
-      <p>Data diperbarui <span data-updated>18 Juli 2026</span></p>
+      <p>Versi <span data-version>0.2.1</span></p>
+      <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
       <span class="data-status" data-data-status data-state="ready">Data lokal siap</span>
     </div>
   </div>

@@ -9,7 +9,8 @@ export const LOCAL_DATA = {
       "groupCount": 8,
       "resourceCount": 24,
       "sortOrder": 1,
-      "isActive": true
+      "isActive": true,
+      "applicationCount": 4
     },
     {
       "id": "evaluasi",
@@ -20,7 +21,8 @@ export const LOCAL_DATA = {
       "groupCount": 7,
       "resourceCount": 21,
       "sortOrder": 2,
-      "isActive": true
+      "isActive": true,
+      "applicationCount": 3
     },
     {
       "id": "pelaporan",
@@ -31,7 +33,8 @@ export const LOCAL_DATA = {
       "groupCount": 7,
       "resourceCount": 21,
       "sortOrder": 3,
-      "isActive": true
+      "isActive": true,
+      "applicationCount": 2
     },
     {
       "id": "keuangan",
@@ -42,7 +45,8 @@ export const LOCAL_DATA = {
       "groupCount": 6,
       "resourceCount": 18,
       "sortOrder": 4,
-      "isActive": true
+      "isActive": true,
+      "applicationCount": 10
     }
   ],
   "groups": [
@@ -3156,6 +3160,519 @@ export const LOCAL_DATA = {
       "sortOrder": 84,
       "isActive": true,
       "subfolders": []
+    },
+    {
+      "id": "app-sipd-perencanaan",
+      "title": "SIPD Perencanaan",
+      "description": "Portal SIPD RI untuk mendukung proses perencanaan daerah.",
+      "type": "application",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "Aplikasi Perencanaan",
+      "year": null,
+      "url": "https://sipd-ri.kemendagri.go.id/auth/login",
+      "keywords": [
+        "sipd",
+        "perencanaan",
+        "kemendagri",
+        "rencana pembangunan",
+        "aplikasi"
+      ],
+      "aliases": [
+        "sipd ri perencanaan",
+        "sipd perencanaan"
+      ],
+      "icon": "assets/apps/app-sipd-perencanaan.svg",
+      "openMode": "new_tab",
+      "sortOrder": 85,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-sipd-keuangan",
+      "title": "SIPD Keuangan",
+      "description": "Portal SIPD untuk penatausahaan keuangan daerah.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Keuangan",
+      "year": null,
+      "url": "https://sipd.kemendagri.go.id/penatausahaan/login",
+      "keywords": [
+        "sipd",
+        "keuangan",
+        "penatausahaan",
+        "kemendagri",
+        "aplikasi"
+      ],
+      "aliases": [
+        "sipd ri keuangan",
+        "sipd keuangan"
+      ],
+      "icon": "assets/apps/app-sipd-keuangan.svg",
+      "openMode": "new_tab",
+      "sortOrder": 86,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-sipd-akuntansi",
+      "title": "SIPD Akuntansi",
+      "description": "Portal SIPD untuk proses akuntansi dan pelaporan keuangan.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Keuangan",
+      "year": null,
+      "url": "https://sipd.kemendagri.go.id/penatausahaan/login",
+      "keywords": [
+        "sipd",
+        "akuntansi",
+        "pelaporan keuangan",
+        "kemendagri",
+        "aplikasi"
+      ],
+      "aliases": [
+        "sipd akuntansi",
+        "sipd akuntasi"
+      ],
+      "icon": "assets/apps/app-sipd-akuntansi.svg",
+      "openMode": "new_tab",
+      "sortOrder": 87,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-e-renggar",
+      "title": "e-Renggar",
+      "description": "Aplikasi perencanaan dan penganggaran Kementerian Kesehatan.",
+      "type": "application",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "Aplikasi Perencanaan",
+      "year": null,
+      "url": "https://e-renggar.kemkes.go.id/login",
+      "keywords": [
+        "e-renggar",
+        "renggar",
+        "kemenkes",
+        "perencanaan",
+        "penganggaran",
+        "aplikasi"
+      ],
+      "aliases": [
+        "erenggar",
+        "e renggar"
+      ],
+      "icon": "assets/apps/app-e-renggar.svg",
+      "openMode": "new_tab",
+      "sortOrder": 88,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-bni-dashboard-bok",
+      "title": "BNI Dashboard BOK",
+      "description": "Dashboard pengelolaan transaksi BOK Puskesmas.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Keuangan",
+      "year": null,
+      "url": "https://bok-kemenkes.bni.co.id/?a=True",
+      "keywords": [
+        "bni",
+        "bok",
+        "puskesmas",
+        "transaksi",
+        "keuangan",
+        "aplikasi"
+      ],
+      "aliases": [
+        "dashboard bok",
+        "bni bok"
+      ],
+      "icon": "assets/apps/app-bni-dashboard-bok.svg",
+      "openMode": "new_tab",
+      "sortOrder": 89,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-krisna",
+      "title": "KRISNA",
+      "description": "Portal kolaborasi perencanaan dan informasi kinerja anggaran.",
+      "type": "application",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "Aplikasi Perencanaan",
+      "year": null,
+      "url": "https://transmigrasi.kl.krisna.systems/auth/login",
+      "keywords": [
+        "krisna",
+        "perencanaan",
+        "kinerja anggaran",
+        "aplikasi"
+      ],
+      "aliases": [
+        "kolaborasi perencanaan"
+      ],
+      "icon": "assets/apps/app-krisna.svg",
+      "openMode": "new_tab",
+      "sortOrder": 90,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-insentif-ukm",
+      "title": "Insentif UKM",
+      "description": "Aplikasi pengelolaan insentif upaya kesehatan masyarakat.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Keuangan",
+      "year": null,
+      "url": "https://insentif-ukm.kemkes.go.id/login",
+      "keywords": [
+        "insentif ukm",
+        "kemenkes",
+        "insentif",
+        "keuangan",
+        "aplikasi"
+      ],
+      "aliases": [
+        "insentif upaya kesehatan masyarakat"
+      ],
+      "icon": "assets/apps/app-insentif-ukm.svg",
+      "openMode": "new_tab",
+      "sortOrder": 91,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-e-planning",
+      "title": "e-Planning",
+      "description": "Portal evaluasi SAKIP perangkat daerah Kabupaten Kudus.",
+      "type": "application",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "Aplikasi Evaluasi",
+      "year": null,
+      "url": "https://e-planning.kuduskab.go.id/sakip/evaluation/login.php",
+      "keywords": [
+        "e-planning",
+        "sakip",
+        "evaluasi",
+        "kudus",
+        "aplikasi"
+      ],
+      "aliases": [
+        "e planning",
+        "evaluasi sakip"
+      ],
+      "icon": "assets/apps/app-e-planning.svg",
+      "openMode": "new_tab",
+      "sortOrder": 92,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-e-monev",
+      "title": "e-Monev",
+      "description": "Akses lembar kerja monitoring dan evaluasi.",
+      "type": "application",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "Aplikasi Evaluasi",
+      "year": null,
+      "url": "https://onedrive.live.com/:x:/g/personal/11414f6f799854ea/IQA5Qg4Lffj7TZ9X43jevlLlAXl7TV8hffY9OW9ay36YjY8?rtime=8kqyIPPk3kg&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy8xMTQxNGY2Zjc5OTg1NGVhL0lRQTVRZzRMZmZqN1RaOVg0M2pldmxMbEFYbDdUVjhoZmZZOU9XOWF5MzZZalk4P2U9SmpCMUd4",
+      "keywords": [
+        "e-monev",
+        "monev",
+        "monitoring",
+        "evaluasi",
+        "excel",
+        "aplikasi"
+      ],
+      "aliases": [
+        "e monev",
+        "monitoring evaluasi"
+      ],
+      "icon": "assets/apps/app-e-monev.svg",
+      "openMode": "new_tab",
+      "sortOrder": 93,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-spik",
+      "title": "SPIK",
+      "description": "Dashboard SPIK Kabupaten Kudus untuk mendukung informasi kinerja.",
+      "type": "application",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "Aplikasi Pelaporan",
+      "year": null,
+      "url": "https://spik.kuduskab.go.id/dashboard",
+      "keywords": [
+        "spik",
+        "kinerja",
+        "dashboard",
+        "pelaporan",
+        "kudus",
+        "aplikasi"
+      ],
+      "aliases": [
+        "dashboard spik"
+      ],
+      "icon": "assets/apps/app-spik.svg",
+      "openMode": "new_tab",
+      "sortOrder": 94,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-sififo",
+      "title": "SIFIFO",
+      "description": "Portal FIFO Kabupaten Kudus berdasarkan tahun anggaran.",
+      "type": "application",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "Aplikasi Pelaporan",
+      "year": null,
+      "url": "https://sififo.kuduskab.go.id/fifonew/views/v_login.php",
+      "keywords": [
+        "sififo",
+        "fifo",
+        "tahun anggaran",
+        "pelaporan",
+        "kudus",
+        "aplikasi"
+      ],
+      "aliases": [
+        "fifo kudus"
+      ],
+      "icon": "assets/apps/app-sififo.svg",
+      "openMode": "new_tab",
+      "sortOrder": 95,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-pajak-daerah",
+      "title": "Pajak Daerah",
+      "description": "Aplikasi pelaporan pajak daerah Kabupaten Kudus.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Keuangan",
+      "year": null,
+      "url": "https://esptpd.kuduskab.go.id/sign_in",
+      "keywords": [
+        "pajak daerah",
+        "esptpd",
+        "pajak",
+        "kudus",
+        "keuangan",
+        "aplikasi"
+      ],
+      "aliases": [
+        "e-sptpd",
+        "esptpd"
+      ],
+      "icon": "assets/apps/app-pajak-daerah.svg",
+      "openMode": "new_tab",
+      "sortOrder": 96,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-coretax",
+      "title": "Coretax",
+      "description": "Portal layanan administrasi perpajakan Coretax DJP.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Keuangan",
+      "year": null,
+      "url": "https://coretaxdjp.pajak.go.id/identityproviderportal/Account/Login",
+      "keywords": [
+        "coretax",
+        "djp",
+        "pajak",
+        "perpajakan",
+        "keuangan",
+        "aplikasi"
+      ],
+      "aliases": [
+        "coretax djp"
+      ],
+      "icon": "assets/apps/app-coretax.svg",
+      "openMode": "new_tab",
+      "sortOrder": 97,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-gebyok",
+      "title": "Gebyok Kudus",
+      "description": "Portal toko daring dan pengadaan lokal Kabupaten Kudus.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Pengadaan",
+      "year": null,
+      "url": "https://gebyokkudus.kuduskab.go.id/",
+      "keywords": [
+        "gebyok",
+        "kudus",
+        "toko daring",
+        "pengadaan",
+        "umkm",
+        "aplikasi"
+      ],
+      "aliases": [
+        "gebyok kudus",
+        "gebyok"
+      ],
+      "icon": "assets/apps/app-gebyok.svg",
+      "openMode": "new_tab",
+      "sortOrder": 98,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-inaproc",
+      "title": "INAPROC",
+      "description": "Portal katalog elektronik dan pengadaan nasional.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Pengadaan",
+      "year": null,
+      "url": "https://katalog.inaproc.id/",
+      "keywords": [
+        "inaproc",
+        "katalog elektronik",
+        "pengadaan",
+        "lkpp",
+        "aplikasi"
+      ],
+      "aliases": [
+        "katalog inaproc"
+      ],
+      "icon": "assets/apps/app-inaproc.svg",
+      "openMode": "new_tab",
+      "sortOrder": 99,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-sirup",
+      "title": "SiRUP",
+      "description": "Sistem Informasi Rencana Umum Pengadaan.",
+      "type": "application",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "Aplikasi Pengadaan",
+      "year": null,
+      "url": "https://sirup.inaproc.id/sirup/loginctr/index",
+      "keywords": [
+        "sirup",
+        "rencana umum pengadaan",
+        "rup",
+        "pengadaan",
+        "perencanaan",
+        "aplikasi"
+      ],
+      "aliases": [
+        "si rup",
+        "sistem informasi rencana umum pengadaan"
+      ],
+      "icon": "assets/apps/app-sirup.svg",
+      "openMode": "new_tab",
+      "sortOrder": 100,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-mbiz",
+      "title": "Mbizmarket",
+      "description": "Marketplace pengadaan barang dan jasa.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Pengadaan",
+      "year": null,
+      "url": "https://www.mbizmarket.co.id/",
+      "keywords": [
+        "mbiz",
+        "mbizmarket",
+        "marketplace",
+        "pengadaan",
+        "aplikasi"
+      ],
+      "aliases": [
+        "mbiz market"
+      ],
+      "icon": "assets/apps/app-mbiz.svg",
+      "openMode": "new_tab",
+      "sortOrder": 101,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-tisera",
+      "title": "Tisera",
+      "description": "Toko daring untuk kebutuhan pengadaan instansi.",
+      "type": "application",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "Aplikasi Pengadaan",
+      "year": null,
+      "url": "https://tisera.id/",
+      "keywords": [
+        "tisera",
+        "toko daring",
+        "pengadaan",
+        "marketplace",
+        "aplikasi"
+      ],
+      "aliases": [
+        "tisera id"
+      ],
+      "icon": "assets/apps/app-tisera.svg",
+      "openMode": "new_tab",
+      "sortOrder": 102,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "app-penilaian-kinerja",
+      "title": "Penilaian Kinerja",
+      "description": "Portal penilaian kinerja ASN Kabupaten Kudus.",
+      "type": "application",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "Aplikasi Evaluasi",
+      "year": null,
+      "url": "https://e-planning.kuduskab.go.id/sakip/evaluation/loginASN.php",
+      "keywords": [
+        "penilaian kinerja",
+        "asn",
+        "sakip",
+        "evaluasi",
+        "kudus",
+        "aplikasi"
+      ],
+      "aliases": [
+        "kinerja asn"
+      ],
+      "icon": "assets/apps/app-penilaian-kinerja.svg",
+      "openMode": "new_tab",
+      "sortOrder": 103,
+      "isActive": true,
+      "subfolders": []
     }
   ],
   "quickAccess": [
@@ -3166,7 +3683,15 @@ export const LOCAL_DATA = {
     "evaluasi-evaluasi-renja-2026",
     "pelaporan-lkjip-2026",
     "keuangan-dpa-2026",
-    "keuangan-rpk-dan-rok-2026"
+    "keuangan-rpk-dan-rok-2026",
+    "app-sipd-perencanaan",
+    "app-sipd-keuangan",
+    "app-e-renggar",
+    "app-bni-dashboard-bok",
+    "app-coretax",
+    "app-e-planning",
+    "app-sirup",
+    "app-gebyok"
   ],
   "information": [
     {
@@ -3197,6 +3722,16 @@ export const LOCAL_DATA = {
       "icon": "shield",
       "date": "2026-07-18",
       "sortOrder": 3,
+      "isActive": true
+    },
+    {
+      "id": "launchpad-aplikasi",
+      "title": "Aplikasi penunjang tersedia dalam satu launchpad",
+      "summary": "Buka aplikasi yang sering digunakan tanpa mencari alamatnya kembali.",
+      "content": "Launchpad aplikasi memuat tautan ke sistem Perencanaan, Evaluasi, Pelaporan, Keuangan, perpajakan, dan pengadaan. Setiap aplikasi terbuka di tab baru agar PEPK Workspace tetap tersedia.",
+      "icon": "apps",
+      "date": "",
+      "sortOrder": 4,
       "isActive": true
     }
   ],
@@ -3261,12 +3796,65 @@ export const LOCAL_DATA = {
       "synonyms": [
         "rencana operasional kegiatan"
       ]
+    },
+    {
+      "term": "sipd",
+      "synonyms": [
+        "sistem informasi pemerintahan daerah"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "renggar",
+      "synonyms": [
+        "e-renggar",
+        "perencanaan penganggaran kesehatan"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "bok",
+      "synonyms": [
+        "bantuan operasional kesehatan"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "coretax",
+      "synonyms": [
+        "pajak djp",
+        "perpajakan"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "sirup",
+      "synonyms": [
+        "sistem informasi rencana umum pengadaan",
+        "rup"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "inaproc",
+      "synonyms": [
+        "katalog elektronik",
+        "pengadaan nasional"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "monev",
+      "synonyms": [
+        "monitoring evaluasi"
+      ],
+      "isActive": true
     }
   ],
   "settings": {
     "appName": "PEPK Workspace",
-    "appVersion": "0.2.0",
-    "contentUpdatedAt": "18 Juli 2026",
+    "appVersion": "0.2.1",
+    "contentUpdatedAt": "19 Juli 2026",
     "spreadsheetId": "1X3xW2pxmaoPiLX4nHVYVG8sinsUNpXlT8rk6HTtwSrk",
     "searchMinimum": 2,
     "homeResultLimit": 6

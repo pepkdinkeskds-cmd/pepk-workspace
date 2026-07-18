@@ -16,26 +16,28 @@ function toBoolean(value) {
 
 function deriveResource(row) {
   const title = row.title || "";
-  const yearMatch = title.match(/\b(20\d{2})\b/);
+  const type = row.type || "document";
+  const yearMatch = type === "application" ? null : title.match(/\b(20\d{2})\b/);
   const year = yearMatch ? Number(yearMatch[1]) : null;
-  const category = title.replace(/\s+20\d{2}\b/, "").trim();
+  const category = type === "application" ? "Aplikasi" : title.replace(/\s+20\d{2}\b/, "").trim();
+  const keywords = splitList(row.keywords);
   return {
     id: row.id,
     title,
-    description: row.description || `Folder ${title}.`,
-    type: row.type || "document",
+    description: row.description || (type === "application" ? `Aplikasi ${title}.` : `Folder ${title}.`),
+    type,
     workspaceId: row.workspace_id,
     workspaceTitle: "",
     category,
     year,
     url: row.url,
-    keywords: splitList(row.keywords),
+    keywords,
     aliases: splitList(row.aliases),
-    icon: row.icon || "folder",
+    icon: row.icon || (type === "application" ? "apps" : "folder"),
     openMode: row.open_mode || "new_tab",
     sortOrder: Number(row.sort_order || 999),
     isActive: toBoolean(row.is_active),
-    subfolders: splitList(row.keywords).filter((item) => ![category.toLowerCase(), String(year)].includes(item.toLowerCase()))
+    subfolders: type === "application" ? [] : keywords.filter((item) => ![category.toLowerCase(), String(year)].includes(item.toLowerCase()))
   };
 }
 
@@ -43,7 +45,7 @@ function buildGroups(resources, fallbackGroups) {
   const fallbackByKey = new Map(fallbackGroups.map((group) => [`${group.workspaceId}|${group.title}`, group]));
   const grouped = new Map();
 
-  resources.forEach((resource) => {
+  resources.filter((resource) => resource.type !== "application").forEach((resource) => {
     const key = `${resource.workspaceId}|${resource.category}`;
     if (!grouped.has(key)) {
       const fallback = fallbackByKey.get(key);
@@ -86,7 +88,7 @@ function normalizeInformation(rows) {
     title: row.title,
     summary: row.summary || "",
     content: row.content || "",
-    icon: "info",
+    icon: row.id === "launchpad-aplikasi" ? "apps" : "info",
     date: "",
     sortOrder: Number(row.sort_order || 999),
     isActive: true
@@ -117,6 +119,18 @@ function normalizeSettings(rows) {
   return settings;
 }
 
+function mergeMigrationResources(sheetResources) {
+  const hasSheetApplications = sheetResources.some((item) => item.type === "application");
+  if (hasSheetApplications) return sheetResources;
+  return [...sheetResources, ...clone(LOCAL_DATA.resources.filter((item) => item.type === "application"))];
+}
+
+function mergeMigrationQuickAccess(sheetQuickAccess) {
+  const localApplicationIds = LOCAL_DATA.quickAccess.filter((id) => LOCAL_DATA.resources.some((item) => item.id === id && item.type === "application"));
+  const hasApplicationQuickAccess = sheetQuickAccess.some((id) => localApplicationIds.includes(id));
+  return hasApplicationQuickAccess ? sheetQuickAccess : [...sheetQuickAccess, ...localApplicationIds];
+}
+
 export function getInitialData() {
   return clone(LOCAL_DATA);
 }
@@ -140,9 +154,10 @@ export async function refreshFromSheets() {
   if (loaded.resources?.length) {
     const normalized = loaded.resources.map(deriveResource).filter((item) => item.id && item.title && item.workspaceId && item.url && item.isActive);
     if (normalized.length) {
+      const merged = mergeMigrationResources(normalized);
       const workspaceTitles = new Map(data.workspaces.map((item) => [item.id, item.title]));
-      normalized.forEach((item) => { item.workspaceTitle = workspaceTitles.get(item.workspaceId) || item.workspaceId; });
-      data.resources = normalized.sort((a, b) => a.sortOrder - b.sortOrder);
+      merged.forEach((item) => { item.workspaceTitle = workspaceTitles.get(item.workspaceId) || item.workspaceId; });
+      data.resources = merged.sort((a, b) => a.sortOrder - b.sortOrder);
       data.groups = buildGroups(data.resources, LOCAL_DATA.groups);
       changed = true;
     }
@@ -150,7 +165,7 @@ export async function refreshFromSheets() {
 
   if (loaded.quickAccess?.length) {
     const normalized = normalizeQuickAccess(loaded.quickAccess);
-    if (normalized.length) data.quickAccess = normalized;
+    if (normalized.length) data.quickAccess = mergeMigrationQuickAccess(normalized);
   }
 
   if (loaded.information?.length) {

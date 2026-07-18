@@ -64,7 +64,7 @@
     <div class="container">
       <div class="workspace-toolbar">
         <div>
-          <span class="eyebrow eyebrow--dark">Kelompok Dokumen</span>
+          <span class="eyebrow eyebrow--dark">Resource Ruang Kerja</span>
           <h2 data-workspace-subtitle>Dokumen tersedia</h2>
         </div>
         <label class="workspace-search">
@@ -73,7 +73,25 @@
           <input type="search" placeholder="Cari dalam ruang kerja" data-workspace-search>
         </label>
       </div>
-      <div class="document-groups" data-document-groups></div>
+      <section class="workspace-apps" data-workspace-apps-section hidden>
+        <div class="workspace-section-heading">
+          <div>
+            <span class="eyebrow eyebrow--dark">Aplikasi Penunjang</span>
+            <h2>Aplikasi untuk ruang kerja ini</h2>
+          </div>
+          <span class="workspace-section-count" data-workspace-app-count></span>
+        </div>
+        <div class="app-launchpad app-launchpad--workspace" data-workspace-apps></div>
+      </section>
+      <section class="workspace-documents">
+        <div class="workspace-section-heading workspace-section-heading--documents">
+          <div>
+            <span class="eyebrow eyebrow--dark">Folder Dokumen</span>
+            <h2>Kelompok dokumen berdasarkan tahun</h2>
+          </div>
+        </div>
+        <div class="document-groups" data-document-groups></div>
+      </section>
       <div data-workspace-empty></div>
     </div>
   </section>
@@ -88,8 +106,8 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.2.0</span></p>
-      <p>Data diperbarui <span data-updated>18 Juli 2026</span></p>
+      <p>Versi <span data-version>0.2.1</span></p>
+      <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
       <span class="data-status" data-data-status data-state="ready">Data lokal siap</span>
     </div>
   </div>

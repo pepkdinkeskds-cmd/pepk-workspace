@@ -9,6 +9,7 @@ let data = getInitialData();
 applyMetadata(data.settings);
 const searchInput = document.querySelector("[data-resource-search]");
 const workspaceFilter = document.querySelector("[data-workspace-filter]");
+const typeFilter = document.querySelector("[data-type-filter]");
 const yearFilter = document.querySelector("[data-year-filter]");
 const list = document.querySelector("[data-resource-list]");
 const emptyContainer = document.querySelector("[data-resource-empty]");
@@ -19,14 +20,16 @@ function getParams() {
   return {
     q: params.get("q") || "",
     workspace: params.get("workspace") || "",
+    type: ["document", "application"].includes(params.get("type")) ? params.get("type") : "",
     year: params.get("year") || ""
   };
 }
 
-function setParams({ q, workspace, year }) {
+function setParams({ q, workspace, type, year }) {
   const params = new URLSearchParams();
   if (q) params.set("q", q);
   if (workspace) params.set("workspace", workspace);
+  if (type) params.set("type", type);
   if (year) params.set("year", year);
   const next = `${window.location.pathname}${params.toString() ? `?${params}` : ""}`;
   history.replaceState(null, "", next);
@@ -59,36 +62,49 @@ function populateFilters(preserve = true) {
 function render() {
   const q = searchInput.value.trim();
   const workspace = workspaceFilter.value;
+  const type = typeFilter.value;
   const year = yearFilter.value;
 
   let results = q ? searchResources(data.resources, q, data.synonyms) : data.resources.slice();
   if (workspace) results = results.filter((item) => item.workspaceId === workspace);
+  if (type) results = results.filter((item) => item.type === type);
   if (year) results = results.filter((item) => String(item.year) === year);
-  results.sort((a, b) => b.year - a.year || a.workspaceTitle.localeCompare(b.workspaceTitle, "id") || a.title.localeCompare(b.title, "id"));
+  results.sort((a, b) => {
+    if (a.type !== b.type) return a.type === "application" ? 1 : -1;
+    return (b.year || 0) - (a.year || 0) || a.workspaceTitle.localeCompare(b.workspaceTitle, "id") || a.title.localeCompare(b.title, "id");
+  });
 
   list.replaceChildren();
   emptyContainer.replaceChildren();
   results.forEach((resource) => list.append(resourceCard(resource)));
-  if (!results.length) emptyContainer.append(emptyState("Tidak ada folder yang sesuai", "Ubah kata pencarian atau hapus salah satu filter."));
+  if (!results.length) emptyContainer.append(emptyState("Tidak ada resource yang sesuai", "Ubah kata pencarian atau hapus salah satu filter."));
   countNode.textContent = String(results.length);
-  setParams({ q, workspace, year });
-  announce(`${results.length} folder ditemukan.`);
+  setParams({ q, workspace, type, year });
+  announce(`${results.length} resource ditemukan.`);
 }
 
 const initial = getParams();
 populateFilters(false);
 searchInput.value = initial.q;
 workspaceFilter.value = initial.workspace;
+typeFilter.value = initial.type;
 yearFilter.value = initial.year;
 render();
 
 searchInput.addEventListener("input", debounce(render));
 workspaceFilter.addEventListener("change", render);
+typeFilter.addEventListener("change", () => {
+  if (typeFilter.value === "application") yearFilter.value = "";
+  yearFilter.disabled = typeFilter.value === "application";
+  render();
+});
 yearFilter.addEventListener("change", render);
 document.querySelector("[data-filter-reset]").addEventListener("click", () => {
   searchInput.value = "";
   workspaceFilter.value = "";
+  typeFilter.value = "";
   yearFilter.value = "";
+  yearFilter.disabled = false;
   render();
   searchInput.focus();
 });
@@ -97,7 +113,9 @@ window.addEventListener("popstate", () => {
   const state = getParams();
   searchInput.value = state.q;
   workspaceFilter.value = state.workspace;
+  typeFilter.value = state.type;
   yearFilter.value = state.year;
+  yearFilter.disabled = state.type === "application";
   render();
 });
 

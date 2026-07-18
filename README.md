@@ -1,19 +1,17 @@
-# PEPK Workspace v0.2.0
+# PEPK Workspace v0.2.1
 
 Workspace internal Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan, Dinas Kesehatan Kabupaten Kudus.
 
-## Isi versi 0.2.0
+## Isi versi 0.2.1
 
-- Identitas visual dominan biru sesuai logo PEPK.
-- Logo transparan untuk header, footer, favicon, dan Google Sites.
-- Ikon SVG internal tanpa library eksternal.
-- 4 ruang kerja: Perencanaan, Evaluasi, Pelaporan, dan Keuangan.
-- 28 kelompok dokumen dan 84 tautan folder tahun.
-- Pencarian berdasarkan dokumen, ruang kerja, tahun, dan istilah subfolder.
-- Halaman Pustaka dengan filter ruang kerja dan tahun.
+- Akses Cepat dibagi menjadi folder kerja dan launchpad aplikasi.
+- 19 aplikasi penunjang tersedia pada pencarian dan ruang kerja terkait.
+- 8 aplikasi utama tampil di homepage.
+- 28 kelompok dokumen dan 84 tautan folder tahun tetap tersedia.
+- Pustaka memiliki filter jenis resource: folder atau aplikasi.
+- Identitas visual tetap dominan biru sesuai logo PEPK.
 - Tampilan responsif untuk desktop dan perangkat seluler.
-- Data lokal tampil seketika untuk mengurangi waktu tunggu.
-- Sinkronisasi Google Sheets berjalan di belakang layar.
+- Data lokal tampil seketika dan Google Sheets disinkronkan di belakang layar.
 
 ## Menjalankan secara lokal
 
@@ -29,24 +27,18 @@ Buka `http://localhost:8000`.
 
 1. Ekstrak ZIP.
 2. Upload seluruh isi folder ke root repository `pepk-workspace`.
-3. Pilih **Add files → Upload files**.
-4. Pastikan `index.html`, folder `css`, `js`, dan `assets` berada langsung di root repository.
-5. Commit perubahan.
-6. Tunggu GitHub Pages melakukan deployment.
+3. Pastikan `index.html`, folder `css`, `js`, dan `assets` berada langsung di root repository.
+4. Commit perubahan dan tunggu GitHub Pages melakukan deployment.
 
 ## Google Sheets
 
-Spreadsheet ID sudah diatur pada `js/config.js`.
+Spreadsheet ID sudah diatur pada `js/config.js`. Gunakan file `PEPK_Workspace_Data_v0.2.1.xlsx` sebagai bahan import agar data folder dan aplikasi sama dengan data lokal.
 
-Aplikasi selalu memuat data lokal lebih dahulu. Jika sheet `Resources`, `Workspaces`, `Quick_Access`, `Information`, `Synonyms`, dan `Settings` telah terisi dan dapat diakses publik, data Google Sheets akan menggantikan data lokal secara otomatis.
+## Struktur tautan folder
 
-Gunakan file `PEPK_Workspace_Data_v0.2.0.xlsx` yang disertakan sebagai bahan import ke Google Sheets.
-
-## Struktur tautan
-
-PEPK Workspace membuka folder sampai tingkat **tahun**. Subfolder seperti Awal, Akhir, Perubahan, Triwulan, dan Data Pendukung tetap dipilih di Google Drive.
+Tautan dokumen tetap berhenti pada tingkat **tahun**. Subfolder seperti Awal, Akhir, Perubahan, Triwulan, dan Data Pendukung dipilih di Google Drive.
 
 ## Versi
 
-- Application Version: 0.2.0
-- Content Updated: 18 Juli 2026
+- Application Version: 0.2.1
+- Content Updated: 19 Juli 2026

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Pustaka folder dokumen PEPK.">
+  <meta name="description" content="Pustaka dokumen dan aplikasi PEPK.">
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta name="referrer" content="no-referrer">
@@ -48,8 +48,8 @@
       <span class="page-hero__icon" data-icon="library"></span>
       <div>
         <span class="eyebrow">Pustaka PEPK</span>
-        <h1>Seluruh folder dokumen</h1>
-        <p>Cari dan saring folder berdasarkan ruang kerja, kelompok dokumen, dan tahun.</p>
+        <h1>Dokumen dan aplikasi PEPK</h1>
+        <p>Cari dan saring folder maupun aplikasi berdasarkan ruang kerja, jenis resource, dan tahun.</p>
       </div>
     </div>
   </section>
@@ -60,13 +60,21 @@
           <label for="resource-search">Cari dokumen</label>
           <div class="input-with-icon">
             <span data-icon="search"></span>
-            <input id="resource-search" type="search" name="q" autocomplete="off" placeholder="Nama dokumen, tahun, atau isi subfolder" data-resource-search>
+            <input id="resource-search" type="search" name="q" autocomplete="off" placeholder="Nama dokumen, aplikasi, tahun, atau kata kunci" data-resource-search>
           </div>
         </div>
         <div>
           <label for="workspace-filter">Ruang kerja</label>
           <select id="workspace-filter" name="workspace" data-workspace-filter>
             <option value="">Semua ruang kerja</option>
+          </select>
+        </div>
+        <div>
+          <label for="type-filter">Jenis</label>
+          <select id="type-filter" name="type" data-type-filter>
+            <option value="">Semua jenis</option>
+            <option value="document">Folder dokumen</option>
+            <option value="application">Aplikasi</option>
           </select>
         </div>
         <div>
@@ -78,7 +86,7 @@
         <button class="button button--secondary filter-reset" type="button" data-filter-reset>Reset</button>
       </form>
       <div class="results-toolbar">
-        <p><strong data-resource-count>0</strong> folder ditemukan</p>
+        <p><strong data-resource-count>0</strong> resource ditemukan</p>
         <span class="results-toolbar__hint"><span data-icon="external"></span> Tautan terbuka di tab baru</span>
       </div>
       <div class="resource-grid" data-resource-list></div>
@@ -96,8 +104,8 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.2.0</span></p>
-      <p>Data diperbarui <span data-updated>18 Juli 2026</span></p>
+      <p>Versi <span data-version>0.2.1</span></p>
+      <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
       <span class="data-status" data-data-status data-state="ready">Data lokal siap</span>
     </div>
   </div>
