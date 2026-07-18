@@ -1,4 +1,4 @@
-import { initApp, setDataStatus, applyMetadata } from "../app.js";
+import { initApp, setDataStatus, applyMetadata, scheduleBackgroundTask } from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
 import { informationCard, emptyState } from "../ui.js";
 import { icon } from "../icons.js";
@@ -17,7 +17,9 @@ function render() {
   if (selectedId) {
     const item = data.information.find((entry) => entry.id === selectedId);
     if (!item) {
-      listNode.append(emptyState("Informasi tidak ditemukan", "Informasi yang dipilih tidak tersedia.", "alert"));
+      detailNode.hidden = true;
+      listNode.hidden = false;
+      listNode.append(emptyState("Informasi tidak ditemukan", "Informasi yang dipilih tidak tersedia.", "alert", { label: "Kembali ke daftar informasi", href: "information.html" }));
       return;
     }
     listNode.hidden = true;
@@ -37,17 +39,21 @@ function render() {
 }
 
 render();
+setDataStatus("Siap digunakan", "ready");
 
-setDataStatus("Menyinkronkan Google Sheets…", "loading");
-refreshFromSheets()
-  .then((result) => {
+scheduleBackgroundTask(async () => {
+  setDataStatus("Memeriksa pembaruan…", "loading");
+  try {
+    const result = await refreshFromSheets();
     if (result.changed) {
       data = result.data;
       applyMetadata(data.settings);
       render();
-      setDataStatus("Terhubung ke Google Sheets", "connected");
-    } else {
-      setDataStatus("Data lokal siap", "ready");
     }
-  })
-  .catch(() => setDataStatus("Data lokal aktif", "warning"));
+    if (result.partialFailure) setDataStatus("Data lokal aktif", "warning", `Sebagian sumber belum dapat dibaca: ${result.failedSheets.join(", ")}.`);
+    else if (result.warnings.length) setDataStatus("Data tersedia", "warning", `${result.warnings.length} peringatan data terdeteksi.`);
+    else setDataStatus(result.changed ? "Data tersinkron" : "Siap digunakan", result.changed ? "connected" : "ready");
+  } catch {
+    setDataStatus("Data lokal aktif", "warning", "Google Sheets belum dapat dihubungi.");
+  }
+});

@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.3.0] - 2026-07-19
+
+### Added
+- Mode tampilan ringkas untuk penyematan Google Sites melalui `?embed=1`.
+- Tombol folder utama dan ringkasan resource pada setiap Ruang Kerja.
+- Pengurutan Pustaka berdasarkan relevansi, tahun, judul, atau ruang kerja.
+- Manifest aplikasi serta ikon 192 px, 512 px, dan Apple Touch Icon.
+- Unit test pencarian, validasi data, dan parser CSV.
+- Panduan Google Sites dan checklist release.
+
+### Changed
+- Pencarian memberi bobot lebih tinggi pada judul, alias, kategori, kata kunci, subfolder, dan tahun.
+- Pencarian mendukung kecocokan awal kata untuk istilah minimal empat karakter.
+- Google Sheets disinkronkan setelah halaman lokal selesai tampil.
+- Status data dan pesan kosong dibuat lebih informatif.
+- Informasi versi dan jumlah resource pada halaman Tentang dibuat dinamis.
+
+### Fixed
+- Urutan hasil pencarian di Pustaka tidak lagi tertimpa oleh urutan tahun saat mode relevansi digunakan.
+- Sinkronisasi Workspaces tetap mempertahankan tautan folder utama.
+- Form filter Pustaka tidak melakukan reload tidak sengaja ketika tombol Enter ditekan.
+- Menu seluler dapat ditutup menggunakan tombol Escape atau klik di luar menu.
+
 ## [0.2.1] - 2026-07-19
 
 ### Added
@@ -11,29 +34,10 @@
 ### Changed
 - Akses Cepat homepage dibagi menjadi folder kerja dan aplikasi yang sering digunakan.
 - Ringkasan Ruang Kerja menampilkan jumlah folder dan aplikasi.
-- Istilah hasil pencarian diperluas dari folder menjadi resource.
 
-### Fixed
-- Sinkronisasi Google Sheets versi lama tidak lagi menghilangkan aplikasi lokal selama masa migrasi data.
-
-## [0.2.1] - 2026-07-19
+## [0.2.0] - 2026-07-18
 
 ### Added
-- Logo PEPK transparan.
-- Sistem ikon SVG internal.
-- Data folder Google Drive untuk Perencanaan, Evaluasi, Pelaporan, dan Keuangan.
-- Pencarian berdasarkan nama dokumen, tahun, ruang kerja, dan istilah subfolder.
-- Filter Pustaka berdasarkan ruang kerja dan tahun.
-- Kelompok dokumen dengan pilihan folder tahun.
-- Data lokal instan dan sinkronisasi Google Sheets di belakang layar.
-
-### Changed
-- Identitas warna menjadi dominan biru sesuai logo PEPK.
-- Ruang kerja menampilkan dokumen, bukan hanya aplikasi.
-- Tautan Drive diarahkan ke folder tahun.
-- Struktur HTML menampilkan shell halaman sebelum proses data selesai.
-- Optimasi tampilan desktop dan seluler.
-
-### Fixed
-- Mengurangi waktu tunggu awal saat Google Sheets lambat atau masih kosong.
-- Pesan kosong dan data status diperjelas.
+- Identitas visual dominan biru berdasarkan logo PEPK.
+- Struktur empat Ruang Kerja dan folder dokumen berdasarkan tahun.
+- Integrasi Google Sheets dan data lokal.

@@ -7,10 +7,14 @@
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0a347d">
   <title>PEPK Workspace</title>
   <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="css/main.css">
-  <script type="module" src="js/pages/home.js"></script>
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
+  <link rel="stylesheet" href="css/main.css?v=0.3.0">
+  <script type="module" src="js/pages/home.js?v=0.3.0"></script>
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -113,7 +117,7 @@
     </div>
   </section>
 
-  <section class="section section--workspaces">
+  <section class="section section--workspaces deferred-section">
     <div class="container">
       <div class="section-heading">
         <div>
@@ -126,7 +130,7 @@
     </div>
   </section>
 
-  <section class="section section--information">
+  <section class="section section--information deferred-section">
     <div class="container">
       <div class="section-heading">
         <div>
@@ -150,9 +154,9 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.2.1</span></p>
+      <p>Versi <span data-version>0.3.0</span></p>
       <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
-      <span class="data-status" data-data-status data-state="ready">Data lokal siap</span>
+      <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
     </div>
   </div>
   <div class="container site-footer__bottom">

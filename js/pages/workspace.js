@@ -1,4 +1,14 @@
-import { initApp, debounce, announce, setDataStatus, applyMetadata } from "../app.js";
+import {
+  initApp,
+  debounce,
+  announce,
+  setDataStatus,
+  applyMetadata,
+  scheduleBackgroundTask,
+  minimumSearchLength,
+  updateQueryString,
+  safeUrl
+} from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
 import { searchResources } from "../search.js";
 import { applicationCard, emptyState, groupCard } from "../ui.js";
@@ -8,9 +18,9 @@ initApp("workspace");
 
 let data = getInitialData();
 applyMetadata(data.settings);
-const params = new URLSearchParams(window.location.search);
-let workspaceId = params.get("id") || "perencanaan";
-let query = "";
+const initialParams = new URLSearchParams(window.location.search);
+let workspaceId = initialParams.get("id") || "perencanaan";
+let query = initialParams.get("q") || "";
 
 const titleNode = document.querySelector("[data-workspace-title]");
 const descriptionNode = document.querySelector("[data-workspace-description]");
@@ -23,6 +33,11 @@ const searchInput = document.querySelector("[data-workspace-search]");
 const appsSection = document.querySelector("[data-workspace-apps-section]");
 const appsNode = document.querySelector("[data-workspace-apps]");
 const appsCountNode = document.querySelector("[data-workspace-app-count]");
+const rootLink = document.querySelector("[data-workspace-root-link]");
+const libraryLink = document.querySelector("[data-workspace-library-link]");
+const statsNode = document.querySelector("[data-workspace-stats]");
+
+searchInput.value = query;
 
 function activeWorkspace() {
   return data.workspaces.find((item) => item.id === workspaceId);
@@ -39,11 +54,49 @@ function renderTabs() {
   });
 }
 
+function clearWorkspaceSearch() {
+  query = "";
+  searchInput.value = "";
+  updateQueryString({ id: workspaceId, q: "" });
+  render();
+  searchInput.focus();
+}
+
+function renderActions(workspace) {
+  if (workspace.rootUrl) {
+    rootLink.hidden = false;
+    rootLink.href = safeUrl(workspace.rootUrl);
+    rootLink.setAttribute("aria-label", `Buka folder utama ${workspace.title} di tab baru`);
+  } else {
+    rootLink.hidden = true;
+  }
+  libraryLink.href = `resources.html?workspace=${encodeURIComponent(workspace.id)}`;
+}
+
+function renderStats(groups, applications, documents) {
+  statsNode.replaceChildren();
+  [
+    [String(groups.length), "Kelompok dokumen"],
+    [String(documents.length), "Folder tahun"],
+    [String(applications.length), "Aplikasi"]
+  ].forEach(([value, label]) => {
+    const item = document.createElement("span");
+    item.className = "workspace-stat";
+    const number = document.createElement("strong");
+    number.textContent = value;
+    const caption = document.createElement("span");
+    caption.textContent = label;
+    item.append(number, caption);
+    statsNode.append(item);
+  });
+}
+
 function render() {
   const workspace = activeWorkspace();
   groupsNode.replaceChildren();
   appsNode.replaceChildren();
   emptyNode.replaceChildren();
+  statsNode.replaceChildren();
 
   if (!workspace) {
     titleNode.textContent = "Ruang kerja tidak ditemukan";
@@ -51,18 +104,37 @@ function render() {
     iconNode.innerHTML = icon("alert");
     subtitleNode.textContent = "Ruang kerja tersedia";
     appsSection.hidden = true;
-    emptyNode.append(emptyState("ID ruang kerja tidak valid", "Gunakan pilihan ruang kerja di atas untuk melanjutkan.", "alert"));
+    rootLink.hidden = true;
+    libraryLink.hidden = true;
+    emptyNode.append(emptyState("ID ruang kerja tidak valid", "Gunakan pilihan ruang kerja di atas untuk melanjutkan.", "alert", { label: "Buka Perencanaan", href: "workspace.html?id=perencanaan" }));
     renderTabs();
     return;
   }
 
+  libraryLink.hidden = false;
   document.title = `${workspace.title} — PEPK Workspace`;
   titleNode.textContent = `Ruang Kerja ${workspace.title}`;
   descriptionNode.textContent = workspace.description;
   iconNode.innerHTML = icon(workspace.icon || "folder");
   renderTabs();
+  renderActions(workspace);
 
   const workspaceResources = data.resources.filter((item) => item.workspaceId === workspaceId);
+  const minimum = minimumSearchLength(data.settings);
+
+  if (query && query.length < minimum) {
+    subtitleNode.textContent = `Ketik minimal ${minimum} karakter untuk mencari`;
+    appsSection.hidden = true;
+    emptyNode.append(emptyState(
+      `Ketik minimal ${minimum} karakter`,
+      "Gunakan nama dokumen, aplikasi, tahun, atau kata kunci pekerjaan.",
+      "search",
+      { label: "Hapus pencarian", onClick: clearWorkspaceSearch }
+    ));
+    renderStats(data.groups.filter((group) => group.workspaceId === workspaceId), [], workspaceResources.filter((item) => item.type !== "application"));
+    return;
+  }
+
   const matchingResources = query ? searchResources(workspaceResources, query, data.synonyms) : workspaceResources;
   const matchingIds = new Set(matchingResources.map((item) => item.id));
   const applications = workspaceResources
@@ -77,35 +149,48 @@ function render() {
     }))
     .filter((entry) => entry.resources.length);
 
-  subtitleNode.textContent = `${groups.length} kelompok dokumen • ${applications.length} aplikasi ditampilkan`;
+  subtitleNode.textContent = query
+    ? `${groups.length} kelompok dokumen • ${applications.length} aplikasi cocok dengan “${query}”`
+    : `${groups.length} kelompok dokumen • ${applications.length} aplikasi tersedia`;
   appsSection.hidden = !applications.length;
   appsCountNode.textContent = applications.length ? `${applications.length} aplikasi` : "";
   applications.forEach((application) => appsNode.append(applicationCard(application, { compact: true })));
   groups.forEach((entry) => groupsNode.append(groupCard(entry.group, entry.resources)));
+  renderStats(groups, applications, documents.filter((item) => !query || matchingIds.has(item.id)));
 
   if (!groups.length && !applications.length) {
-    emptyNode.append(emptyState("Resource belum ditemukan", "Coba gunakan nama dokumen, aplikasi, tahun, atau kata kunci pekerjaan."));
+    emptyNode.append(emptyState(
+      "Resource belum ditemukan",
+      "Coba nama dokumen, aplikasi, tahun, atau kata kunci lain.",
+      "search",
+      { label: "Hapus pencarian", onClick: clearWorkspaceSearch }
+    ));
   }
   announce(`${groups.length} kelompok dokumen dan ${applications.length} aplikasi ditampilkan.`);
 }
 
 searchInput.addEventListener("input", debounce(() => {
   query = searchInput.value.trim();
+  updateQueryString({ id: workspaceId, q: query });
   render();
 }));
 
 render();
+setDataStatus("Siap digunakan", "ready");
 
-setDataStatus("Menyinkronkan Google Sheets…", "loading");
-refreshFromSheets()
-  .then((result) => {
+scheduleBackgroundTask(async () => {
+  setDataStatus("Memeriksa pembaruan…", "loading");
+  try {
+    const result = await refreshFromSheets();
     if (result.changed) {
       data = result.data;
       applyMetadata(data.settings);
       render();
-      setDataStatus("Terhubung ke Google Sheets", "connected");
-    } else {
-      setDataStatus("Data lokal siap", "ready");
     }
-  })
-  .catch(() => setDataStatus("Data lokal aktif", "warning"));
+    if (result.partialFailure) setDataStatus("Data lokal aktif", "warning", `Sebagian sumber belum dapat dibaca: ${result.failedSheets.join(", ")}.`);
+    else if (result.warnings.length) setDataStatus("Data tersedia", "warning", `${result.warnings.length} peringatan data terdeteksi.`);
+    else setDataStatus(result.changed ? "Data tersinkron" : "Siap digunakan", result.changed ? "connected" : "ready");
+  } catch {
+    setDataStatus("Data lokal aktif", "warning", "Google Sheets belum dapat dihubungi.");
+  }
+});

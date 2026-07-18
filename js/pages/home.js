@@ -1,4 +1,12 @@
-import { initApp, debounce, announce, setDataStatus, applyMetadata } from "../app.js";
+import {
+  initApp,
+  debounce,
+  announce,
+  setDataStatus,
+  applyMetadata,
+  scheduleBackgroundTask,
+  minimumSearchLength
+} from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
 import { searchResources } from "../search.js";
 import { applicationCard, emptyState, informationCard, resourceCard, workspaceCard } from "../ui.js";
@@ -29,12 +37,14 @@ function renderQuickAccess() {
   appContainer.replaceChildren();
 
   const items = quickResources();
-  items.filter((item) => item.type !== "application").slice(0, 8).forEach((resource) => {
-    folderContainer.append(resourceCard(resource, { compact: true }));
-  });
-  items.filter((item) => item.type === "application").slice(0, 8).forEach((resource) => {
-    appContainer.append(applicationCard(resource, { compact: true }));
-  });
+  const folders = items.filter((item) => item.type !== "application").slice(0, 8);
+  const applications = items.filter((item) => item.type === "application").slice(0, 8);
+
+  folders.forEach((resource) => folderContainer.append(resourceCard(resource, { compact: true })));
+  applications.forEach((resource) => appContainer.append(applicationCard(resource, { compact: true })));
+
+  if (!folders.length) folderContainer.append(emptyState("Belum ada folder cepat", "Pilih folder melalui halaman Pustaka.", "folder", { label: "Buka Pustaka", href: "resources.html?type=document" }));
+  if (!applications.length) appContainer.append(emptyState("Belum ada aplikasi cepat", "Semua aplikasi tetap tersedia di Pustaka.", "apps", { label: "Lihat aplikasi", href: "resources.html?type=application" }));
 }
 
 function renderWorkspaces() {
@@ -57,6 +67,15 @@ function renderInformation() {
   data.information.slice(0, 3).forEach((item) => container.append(informationCard(item)));
 }
 
+function clearHomeSearch() {
+  currentQuery = "";
+  searchInput.value = "";
+  resultsSection.hidden = true;
+  resultsGrid.replaceChildren();
+  emptyContainer.replaceChildren();
+  searchInput.focus();
+}
+
 function renderSearch(query) {
   currentQuery = query.trim();
   resultsGrid.replaceChildren();
@@ -64,21 +83,45 @@ function renderSearch(query) {
 
   if (!currentQuery) {
     resultsSection.hidden = true;
+    viewAllLink.hidden = true;
+    return;
+  }
+
+  const minimum = minimumSearchLength(data.settings);
+  resultsSection.hidden = false;
+  viewAllLink.href = `resources.html?q=${encodeURIComponent(currentQuery)}`;
+  viewAllLink.hidden = false;
+
+  if (currentQuery.length < minimum) {
+    viewAllLink.hidden = true;
+    resultsTitle.textContent = "Pencarian belum dijalankan";
+    emptyContainer.append(emptyState(
+      `Ketik minimal ${minimum} karakter`,
+      "Gunakan nama dokumen, aplikasi, tahun, atau kebutuhan pekerjaan.",
+      "search",
+      { label: "Hapus pencarian", onClick: clearHomeSearch }
+    ));
+    announce(`Ketik minimal ${minimum} karakter untuk mencari.`);
     return;
   }
 
   const results = searchResources(data.resources, currentQuery, data.synonyms);
-  resultsSection.hidden = false;
-  resultsTitle.textContent = `${results.length} resource cocok dengan “${currentQuery}”`;
-  viewAllLink.href = `resources.html?q=${encodeURIComponent(currentQuery)}`;
+  const folderCount = results.filter((item) => item.type !== "application").length;
+  const appCount = results.length - folderCount;
+  resultsTitle.textContent = `${results.length} hasil untuk “${currentQuery}”`;
 
   if (!results.length) {
-    emptyContainer.append(emptyState("Resource belum ditemukan", "Coba gunakan nama dokumen, aplikasi, tahun, atau kebutuhan pekerjaan."));
+    viewAllLink.hidden = true;
+    emptyContainer.append(emptyState(
+      "Resource belum ditemukan",
+      "Coba nama dokumen, aplikasi, tahun, atau istilah lain yang lebih umum.",
+      "search",
+      { label: "Hapus pencarian", onClick: clearHomeSearch }
+    ));
   } else {
     results.slice(0, data.settings.homeResultLimit || 6).forEach((resource) => resultsGrid.append(resourceCard(resource)));
+    announce(`${results.length} hasil ditemukan: ${folderCount} folder dan ${appCount} aplikasi.`);
   }
-
-  announce(`${results.length} hasil pencarian ditemukan.`);
 }
 
 const debouncedSearch = debounce(() => renderSearch(searchInput.value));
@@ -86,7 +129,8 @@ searchInput.addEventListener("input", debouncedSearch);
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const query = searchInput.value.trim();
-  if (query) window.location.href = `resources.html?q=${encodeURIComponent(query)}`;
+  if (query.length >= minimumSearchLength(data.settings)) window.location.href = `resources.html?q=${encodeURIComponent(query)}`;
+  else renderSearch(query);
 });
 
 document.querySelectorAll("[data-search-suggestion]").forEach((button) => {
@@ -106,18 +150,25 @@ function renderAll() {
 }
 
 renderAll();
-setDataStatus("Data lokal siap", "ready");
+setDataStatus("Siap digunakan", "ready", "Data lokal tersedia tanpa menunggu koneksi Google Sheets.");
 
-setDataStatus("Menyinkronkan Google Sheets…", "loading");
-refreshFromSheets()
-  .then((result) => {
+scheduleBackgroundTask(async () => {
+  setDataStatus("Memeriksa pembaruan…", "loading");
+  try {
+    const result = await refreshFromSheets();
     if (result.changed) {
       data = result.data;
       applyMetadata(data.settings);
       renderAll();
-      setDataStatus("Terhubung ke Google Sheets", "connected");
-    } else {
-      setDataStatus("Data lokal siap", "ready");
     }
-  })
-  .catch(() => setDataStatus("Data lokal aktif", "warning"));
+    if (result.partialFailure) {
+      setDataStatus("Data lokal aktif", "warning", `Sebagian sumber belum dapat dibaca: ${result.failedSheets.join(", ")}.`);
+    } else if (result.warnings.length) {
+      setDataStatus("Data tersedia", "warning", `${result.warnings.length} peringatan data terdeteksi.`);
+    } else {
+      setDataStatus(result.changed ? "Data tersinkron" : "Siap digunakan", result.changed ? "connected" : "ready");
+    }
+  } catch {
+    setDataStatus("Data lokal aktif", "warning", "Google Sheets belum dapat dihubungi. Workspace tetap menggunakan data bawaan.");
+  }
+});

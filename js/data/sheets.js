@@ -11,20 +11,20 @@ function parseCsv(text) {
   let cell = "";
   let quoted = false;
 
-  for (let i = 0; i < text.length; i += 1) {
-    const char = text[i];
-    const next = text[i + 1];
+  for (let index = 0; index < text.length; index += 1) {
+    const char = text[index];
+    const next = text[index + 1];
 
     if (char === '"' && quoted && next === '"') {
       cell += '"';
-      i += 1;
+      index += 1;
     } else if (char === '"') {
       quoted = !quoted;
     } else if (char === "," && !quoted) {
       row.push(cell);
       cell = "";
     } else if ((char === "\n" || char === "\r") && !quoted) {
-      if (char === "\r" && next === "\n") i += 1;
+      if (char === "\r" && next === "\n") index += 1;
       row.push(cell);
       if (row.some((value) => value !== "")) rows.push(row);
       row = [];
@@ -46,9 +46,23 @@ function rowsToObjects(rows) {
 }
 
 async function fetchText(url, signal) {
-  const response = await fetch(url, { signal, cache: "no-store" });
+  const response = await fetch(url, {
+    signal,
+    cache: "no-store",
+    headers: { Accept: "text/csv,text/plain;q=0.9,*/*;q=0.5" }
+  });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   return response.text();
+}
+
+function wait(ms, signal) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(resolve, ms);
+    signal?.addEventListener("abort", () => {
+      clearTimeout(timer);
+      reject(new DOMException("Dibatalkan", "AbortError"));
+    }, { once: true });
+  });
 }
 
 export async function loadSheet(name, externalSignal) {
@@ -58,10 +72,22 @@ export async function loadSheet(name, externalSignal) {
   externalSignal?.addEventListener("abort", onAbort, { once: true });
 
   try {
-    const text = await fetchText(csvUrl(name), controller.signal);
-    return rowsToObjects(parseCsv(text));
+    let lastError;
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+      try {
+        const text = await fetchText(csvUrl(name), controller.signal);
+        return rowsToObjects(parseCsv(text));
+      } catch (error) {
+        lastError = error;
+        if (controller.signal.aborted || attempt === 1) throw error;
+        await wait(250, controller.signal);
+      }
+    }
+    throw lastError;
   } finally {
     clearTimeout(timeout);
     externalSignal?.removeEventListener("abort", onAbort);
   }
 }
+
+export { parseCsv, rowsToObjects };

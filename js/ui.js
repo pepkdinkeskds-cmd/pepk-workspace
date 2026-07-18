@@ -3,7 +3,7 @@ import { icon } from "./icons.js";
 
 function resourceMeta(resource) {
   const items = [resource.workspaceTitle || resource.workspaceId];
-  if (resource.type === "application") items.push("Aplikasi");
+  if (resource.type === "application") items.push(resource.category || "Aplikasi");
   else if (resource.year) items.push(String(resource.year));
   return items;
 }
@@ -15,10 +15,14 @@ function appLogo(resource, className = "") {
     alt: "",
     width: 48,
     height: 48,
-    loading: "lazy"
+    loading: "lazy",
+    decoding: "async"
   });
   image.addEventListener("error", () => {
-    const fallback = createElement("span", { className: `app-logo app-logo--fallback ${className}`.trim(), text: resource.title.slice(0, 2).toUpperCase() });
+    const fallback = createElement("span", {
+      className: `app-logo app-logo--fallback ${className}`.trim(),
+      text: resource.title.slice(0, 2).toUpperCase()
+    });
     image.replaceWith(fallback);
   }, { once: true });
   return image;
@@ -28,7 +32,7 @@ export function applicationCard(resource, { compact = false } = {}) {
   const link = externalLink(resource.url, resource.title, `application-card${compact ? " application-card--compact" : ""}`);
   const logo = appLogo(resource, "application-card__logo");
   const content = createElement("span", { className: "application-card__content" }, [
-    createElement("span", { className: "application-card__meta", text: resource.workspaceTitle || resource.workspaceId }),
+    createElement("span", { className: "application-card__meta", text: resource.category || resource.workspaceTitle || resource.workspaceId }),
     createElement("strong", { className: "application-card__title", text: resource.title })
   ]);
   if (!compact) content.append(createElement("span", { className: "application-card__description", text: resource.description || "" }));
@@ -82,12 +86,22 @@ export function informationCard(item) {
   return article;
 }
 
-export function emptyState(title, description, iconName = "search") {
-  return createElement("div", { className: "empty-state" }, [
+export function emptyState(title, description, iconName = "search", action = null) {
+  const children = [
     createElement("span", { className: "empty-state__icon", html: icon(iconName) }),
     createElement("h2", { className: "empty-state__title", text: title }),
     createElement("p", { className: "empty-state__description", text: description })
-  ]);
+  ];
+  if (action?.label) {
+    const button = createElement(action.href ? "a" : "button", {
+      className: "button button--secondary empty-state__action",
+      text: action.label,
+      ...(action.href ? { href: action.href } : { type: "button" })
+    });
+    if (action.onClick) button.addEventListener("click", action.onClick);
+    children.push(button);
+  }
+  return createElement("div", { className: "empty-state" }, children);
 }
 
 export function groupCard(group, resources) {
@@ -102,7 +116,7 @@ export function groupCard(group, resources) {
   );
 
   const yearList = createElement("div", { className: "year-list" });
-  resources.sort((a, b) => b.year - a.year).forEach((resource) => {
+  resources.slice().sort((a, b) => b.year - a.year).forEach((resource) => {
     const link = externalLink(resource.url, resource.title, "year-link");
     link.append(
       createElement("span", { className: "year-link__year", text: String(resource.year) }),

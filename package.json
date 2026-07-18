@@ -1,0 +1,10 @@
+{
+  "name": "pepk-workspace",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node tests/project-check.mjs"
+  }
+}

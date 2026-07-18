@@ -3733,6 +3733,26 @@ export const LOCAL_DATA = {
       "date": "",
       "sortOrder": 4,
       "isActive": true
+    },
+    {
+      "id": "mode-google-sites",
+      "title": "Gunakan mode ringkas saat dipasang di Google Sites",
+      "summary": "Parameter embed menyederhanakan tampilan agar tidak terjadi navigasi ganda.",
+      "content": "Gunakan alamat PEPK Workspace dengan tambahan ?embed=1 saat menyematkannya ke Google Sites. Header dan footer utama akan disederhanakan, sementara tombol Buka penuh tetap tersedia untuk membuka workspace pada tab baru.",
+      "icon": "external",
+      "date": "2026-07-19",
+      "sortOrder": 5,
+      "isActive": true
+    },
+    {
+      "id": "pemecahan-masalah",
+      "title": "Langkah cepat saat tautan tidak dapat dibuka",
+      "summary": "Periksa akun aktif, izin folder, dan ketersediaan portal tujuan.",
+      "content": "Jika folder Drive tidak terbuka, pastikan akun Google yang aktif memiliki izin. Jika aplikasi tidak terbuka, coba buka kembali pada tab baru atau periksa apakah portal sedang mengalami pemeliharaan. PEPK Workspace tetap dapat digunakan karena data lokal tersedia tanpa menunggu Google Sheets.",
+      "icon": "alert",
+      "date": "2026-07-19",
+      "sortOrder": 6,
+      "isActive": true
     }
   ],
   "synonyms": [
@@ -3849,11 +3869,43 @@ export const LOCAL_DATA = {
         "monitoring evaluasi"
       ],
       "isActive": true
+    },
+    {
+      "term": "dokumen",
+      "synonyms": [
+        "folder",
+        "berkas",
+        "file"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "aplikasi",
+      "synonyms": [
+        "portal",
+        "sistem"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "keu",
+      "synonyms": [
+        "keuangan"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "lapkin",
+      "synonyms": [
+        "laporan kinerja",
+        "lkjip"
+      ],
+      "isActive": true
     }
   ],
   "settings": {
     "appName": "PEPK Workspace",
-    "appVersion": "0.2.1",
+    "appVersion": "0.3.0",
     "contentUpdatedAt": "19 Juli 2026",
     "spreadsheetId": "1X3xW2pxmaoPiLX4nHVYVG8sinsUNpXlT8rk6HTtwSrk",
     "searchMinimum": 2,

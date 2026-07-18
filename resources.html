@@ -7,10 +7,14 @@
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0a347d">
   <title>Pustaka — PEPK Workspace</title>
   <link rel="icon" href="assets/favicon.png" type="image/png">
-  <link rel="stylesheet" href="css/main.css">
-  <script type="module" src="js/pages/resources.js"></script>
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
+  <link rel="stylesheet" href="css/main.css?v=0.3.0">
+  <script type="module" src="js/pages/resources.js?v=0.3.0"></script>
 </head>
 <body data-page="resources">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -83,10 +87,22 @@
             <option value="">Semua tahun</option>
           </select>
         </div>
+        <div>
+          <label for="sort-filter">Urutkan</label>
+          <select id="sort-filter" name="sort" data-sort-filter>
+            <option value="relevance">Paling relevan</option>
+            <option value="newest">Tahun terbaru</option>
+            <option value="title">Judul A–Z</option>
+            <option value="workspace">Ruang kerja</option>
+          </select>
+        </div>
         <button class="button button--secondary filter-reset" type="button" data-filter-reset>Reset</button>
       </form>
       <div class="results-toolbar">
-        <p><strong data-resource-count>0</strong> resource ditemukan</p>
+        <div>
+          <p><strong data-resource-count aria-live="polite">0</strong> resource ditemukan</p>
+          <p class="results-toolbar__summary" data-filter-summary>Menampilkan seluruh resource.</p>
+        </div>
         <span class="results-toolbar__hint"><span data-icon="external"></span> Tautan terbuka di tab baru</span>
       </div>
       <div class="resource-grid" data-resource-list></div>
@@ -104,9 +120,9 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.2.1</span></p>
+      <p>Versi <span data-version>0.3.0</span></p>
       <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
-      <span class="data-status" data-data-status data-state="ready">Data lokal siap</span>
+      <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
     </div>
   </div>
   <div class="container site-footer__bottom">
