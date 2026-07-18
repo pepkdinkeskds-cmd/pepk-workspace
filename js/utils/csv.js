@@ -1,0 +1,4 @@
+export function parseCsv(text){
+ const rows=[];let row=[],field='',quoted=false;
+ for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c==='"'&&quoted&&n==='"'){field+='"';i++;continue}if(c==='"'){quoted=!quoted;continue}if(c===','&&!quoted){row.push(field);field='';continue}if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&n==='\n')i++;row.push(field);if(row.some(v=>v.trim()!==''))rows.push(row);row=[];field='';continue}field+=c}row.push(field);if(row.some(v=>v.trim()!==''))rows.push(row);if(rows.length<2)return[];const headers=rows[0].map(h=>h.trim());return rows.slice(1).map(r=>Object.fromEntries(headers.map((h,i)=>[h,(r[i]??'').trim()])))}
+export function normalizeRow(row){const out={...row};for(const key of ['is_active'])out[key]=String(out[key]).toLowerCase()!=='false'&&String(out[key])!=='0'&&String(out[key]).toLowerCase()!=='no';for(const key of ['sort_order'])out[key]=Number(out[key]||999);return out}
