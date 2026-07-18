@@ -1,8 +1,110 @@
-import {getAppData} from './common.js';import {activeSorted,searchResources} from '../services/search-service.js';import {el,mountShell,resourceCard,workspaceCard,infoCard,status} from '../components/ui.js';
-const {data,usingFallback,updated}=await getAppData();const resources=activeSorted(data.Resources),workspaces=activeSorted(data.Workspaces),quick=activeSorted(data.Quick_Access),infos=activeSorted(data.Information);const main=el('main');
-const hero=el('section','hero');const hc=el('div','container');hc.append(el('div','eyebrow','Pusat kerja digital PEPK'),el('h1','', 'Temukan dokumen dan aplikasi kerja lebih cepat.'),el('p','', 'Satu tempat untuk mengakses resource perencanaan, evaluasi, pelaporan, dan keuangan.'));const form=el('form','search-panel');form.action='./resources.html';const label=el('label','sr-only','Cari dokumen, aplikasi, atau referensi');label.htmlFor='home-search';const input=el('input');input.id='home-search';input.name='q';input.type='search';input.placeholder='Cari dokumen, aplikasi, atau referensi…';const btn=el('button','button button--primary','Cari');form.append(label,input,btn);hc.append(form);hero.append(hc);main.append(hero);
-const content=el('div','container stack-lg');if(usingFallback)content.append(status('Data Google Sheets belum terisi atau belum dapat dimuat. Tampilan sementara menggunakan data contoh.'));
-function section(title,desc,link){const s=el('section','section');const head=el('div','section-heading');const txt=el('div');txt.append(el('h2','',title),el('p','',desc));head.append(txt);if(link){const a=el('a','section-link','Lihat semua →');a.href=link;head.append(a)}s.append(head);return s}
-const qs=section('Akses Cepat','Resource yang paling sering digunakan.','./resources.html');const qg=el('div','quick-grid');quick.map(q=>resources.find(r=>r.id===q.resource_id)).filter(Boolean).slice(0,6).forEach(r=>{const a=el('a','quick-link');a.href=r.url;a.target='_blank';a.rel='noopener noreferrer';a.append(el('span','quick-icon','↗'),el('span','',r.title));qg.append(a)});qs.append(qg);content.append(qs);
-const ws=section('Ruang Kerja','Akses resource berdasarkan bidang pekerjaan.','./workspace.html');const wg=el('div','grid grid-cards');workspaces.forEach(w=>wg.append(workspaceCard(w,resources.filter(r=>r.workspace_id===w.id).length)));ws.append(wg);content.append(ws);
-const inf=section('Informasi','Pengumuman dan catatan penting untuk pekerjaan PEPK.','./information.html');const ig=el('div','grid grid-cards');infos.slice(0,3).forEach(i=>ig.append(infoCard(i)));inf.append(ig);content.append(inf);main.append(content);mountShell('home',main,updated);
+import { initApp, debounce, announce, setDataStatus, applyMetadata } from "../app.js";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js";
+import { searchResources } from "../search.js";
+import { emptyState, informationCard, resourceCard, workspaceCard } from "../ui.js";
+
+initApp("home");
+
+let data = getInitialData();
+applyMetadata(data.settings);
+let currentQuery = "";
+
+const searchInput = document.querySelector("[data-home-search]");
+const searchForm = document.querySelector("[data-home-search-form]");
+const resultsSection = document.querySelector("[data-home-results-section]");
+const resultsGrid = document.querySelector("[data-home-results]");
+const emptyContainer = document.querySelector("[data-home-empty]");
+const resultsTitle = document.querySelector("[data-home-results-title]");
+const viewAllLink = document.querySelector("[data-view-all-results]");
+
+function renderQuickAccess() {
+  const container = document.querySelector("[data-quick-access]");
+  container.replaceChildren();
+  const resourceMap = new Map(data.resources.map((item) => [item.id, item]));
+  data.quickAccess.map((id) => resourceMap.get(id)).filter(Boolean).slice(0, 8).forEach((resource) => {
+    container.append(resourceCard(resource, { compact: true }));
+  });
+}
+
+function renderWorkspaces() {
+  const container = document.querySelector("[data-workspaces]");
+  container.replaceChildren();
+  data.workspaces.forEach((workspace) => {
+    const counts = {
+      groups: data.groups.filter((group) => group.workspaceId === workspace.id).length,
+      resources: data.resources.filter((resource) => resource.workspaceId === workspace.id).length
+    };
+    container.append(workspaceCard(workspace, counts));
+  });
+}
+
+function renderInformation() {
+  const container = document.querySelector("[data-information-preview]");
+  container.replaceChildren();
+  data.information.slice(0, 3).forEach((item) => container.append(informationCard(item)));
+}
+
+function renderSearch(query) {
+  currentQuery = query.trim();
+  resultsGrid.replaceChildren();
+  emptyContainer.replaceChildren();
+
+  if (!currentQuery) {
+    resultsSection.hidden = true;
+    return;
+  }
+
+  const results = searchResources(data.resources, currentQuery, data.synonyms);
+  resultsSection.hidden = false;
+  resultsTitle.textContent = `${results.length} folder cocok dengan “${currentQuery}”`;
+  viewAllLink.href = `resources.html?q=${encodeURIComponent(currentQuery)}`;
+
+  if (!results.length) {
+    emptyContainer.append(emptyState("Dokumen belum ditemukan", "Coba gunakan nama dokumen, tahun, atau kata yang terdapat di dalam subfolder."));
+  } else {
+    results.slice(0, data.settings.homeResultLimit || 6).forEach((resource) => resultsGrid.append(resourceCard(resource)));
+  }
+
+  announce(`${results.length} hasil pencarian ditemukan.`);
+}
+
+const debouncedSearch = debounce(() => renderSearch(searchInput.value));
+searchInput.addEventListener("input", debouncedSearch);
+searchForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const query = searchInput.value.trim();
+  if (query) window.location.href = `resources.html?q=${encodeURIComponent(query)}`;
+});
+
+document.querySelectorAll("[data-search-suggestion]").forEach((button) => {
+  button.addEventListener("click", () => {
+    searchInput.value = button.dataset.searchSuggestion;
+    renderSearch(searchInput.value);
+    searchInput.focus();
+    resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+});
+
+function renderAll() {
+  renderQuickAccess();
+  renderWorkspaces();
+  renderInformation();
+  if (currentQuery) renderSearch(currentQuery);
+}
+
+renderAll();
+setDataStatus("Data folder siap", "ready");
+
+setDataStatus("Menyinkronkan Google Sheets…", "loading");
+refreshFromSheets()
+  .then((result) => {
+    if (result.changed) {
+      data = result.data;
+      applyMetadata(data.settings);
+      renderAll();
+      setDataStatus("Terhubung ke Google Sheets", "connected");
+    } else {
+      setDataStatus("Data lokal siap", "ready");
+    }
+  })
+  .catch(() => setDataStatus("Data lokal aktif", "warning"));

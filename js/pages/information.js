@@ -1,2 +1,53 @@
-import {getAppData} from './common.js';import {activeSorted} from '../services/search-service.js';import {el,mountShell,infoCard,status} from '../components/ui.js';
-const {data,updated}=await getAppData();const infos=activeSorted(data.Information);const id=new URLSearchParams(location.search).get('id');const main=el('main');const ph=el('section','page-hero');const pc=el('div','container');const sec=el('section','section container');if(id){const item=infos.find(x=>x.id===id);if(!item){pc.append(el('h1','', 'Informasi tidak ditemukan'));sec.append(status('Informasi yang diminta tidak tersedia.','error'))}else{pc.append(el('h1','',item.title),el('p','',item.summary||''));const article=el('article','about-panel stack');article.append(el('p','',item.content||item.summary||''));const back=el('a','button button--soft','← Kembali ke informasi');back.href='./information.html';article.append(back);sec.append(article)}}else{pc.append(el('h1','', 'Informasi'),el('p','', 'Pengumuman, pembaruan, dan catatan penting untuk mendukung pekerjaan PEPK.'));const grid=el('div','grid grid-cards');infos.forEach(i=>grid.append(infoCard(i)));sec.append(infos.length?grid:status('Belum ada informasi yang dipublikasikan.','empty'))}ph.append(pc);main.append(ph,sec);mountShell('information',main,updated);
+import { initApp, setDataStatus, applyMetadata } from "../app.js";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js";
+import { informationCard, emptyState } from "../ui.js";
+import { icon } from "../icons.js";
+
+initApp("information");
+
+let data = getInitialData();
+applyMetadata(data.settings);
+const listNode = document.querySelector("[data-information-list]");
+const detailNode = document.querySelector("[data-information-detail]");
+const params = new URLSearchParams(window.location.search);
+const selectedId = params.get("id");
+
+function render() {
+  listNode.replaceChildren();
+  if (selectedId) {
+    const item = data.information.find((entry) => entry.id === selectedId);
+    if (!item) {
+      listNode.append(emptyState("Informasi tidak ditemukan", "Informasi yang dipilih tidak tersedia.", "alert"));
+      return;
+    }
+    listNode.hidden = true;
+    detailNode.hidden = false;
+    detailNode.querySelector("[data-information-title]").textContent = item.title;
+    detailNode.querySelector("[data-information-summary]").textContent = item.summary;
+    detailNode.querySelector("[data-information-content]").textContent = item.content;
+    detailNode.querySelector("[data-information-detail-icon]").innerHTML = icon(item.icon || "info");
+    document.querySelector("[data-information-heading]").textContent = item.title;
+    document.querySelector("[data-information-intro]").textContent = item.summary;
+    document.title = `${item.title} — PEPK Workspace`;
+  } else {
+    detailNode.hidden = true;
+    listNode.hidden = false;
+    data.information.forEach((item) => listNode.append(informationCard(item)));
+  }
+}
+
+render();
+
+setDataStatus("Menyinkronkan Google Sheets…", "loading");
+refreshFromSheets()
+  .then((result) => {
+    if (result.changed) {
+      data = result.data;
+      applyMetadata(data.settings);
+      render();
+      setDataStatus("Terhubung ke Google Sheets", "connected");
+    } else {
+      setDataStatus("Data lokal siap", "ready");
+    }
+  })
+  .catch(() => setDataStatus("Data lokal aktif", "warning"));

@@ -1,1 +1,110 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="PEPK Workspace Dinas Kesehatan Kabupaten Kudus"><meta name="robots" content="noindex,nofollow"><title>PEPK Workspace</title><link rel="stylesheet" href="./css/main.css"><script type="module" src="./js/pages/resources.js"></script></head><body><noscript>PEPK Workspace membutuhkan JavaScript untuk memuat data.</noscript></body></html>
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Pustaka folder dokumen PEPK.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="no-referrer">
+  <title>Pustaka — PEPK Workspace</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="js/pages/resources.js"></script>
+</head>
+<body data-page="resources">
+<a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="PEPK Workspace — Beranda">
+      <img class="brand__logo" src="assets/logo-pepk.png" alt="" width="44" height="64">
+      <span class="brand__text">
+        <strong>PEPK Workspace</strong>
+        <span>Dinas Kesehatan Kabupaten Kudus</span>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Navigasi utama">
+      <a data-nav="home" href="index.html">Beranda</a>
+      <a data-nav="workspace" href="workspace.html?id=perencanaan">Ruang Kerja</a>
+      <a data-nav="resources" href="resources.html">Pustaka</a>
+      <a data-nav="information" href="information.html">Informasi</a>
+      <a data-nav="about" href="about.html">Tentang</a>
+    </nav>
+    <button class="menu-button" type="button" data-menu-button aria-controls="mobile-navigation" aria-expanded="false" aria-label="Buka menu navigasi"><span data-icon="menu"></span></button>
+  </div>
+  <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Navigasi seluler" hidden>
+    <div class="container mobile-nav__inner">
+      <a data-nav="home" href="index.html">Beranda</a>
+      <a data-nav="workspace" href="workspace.html?id=perencanaan">Ruang Kerja</a>
+      <a data-nav="resources" href="resources.html">Pustaka</a>
+      <a data-nav="information" href="information.html">Informasi</a>
+      <a data-nav="about" href="about.html">Tentang</a>
+    </div>
+  </nav>
+</header>
+<main id="main-content">
+  <section class="page-hero page-hero--library">
+    <div class="container page-hero__inner">
+      <span class="page-hero__icon" data-icon="library"></span>
+      <div>
+        <span class="eyebrow">Pustaka PEPK</span>
+        <h1>Seluruh folder dokumen</h1>
+        <p>Cari dan saring folder berdasarkan ruang kerja, kelompok dokumen, dan tahun.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section section--library">
+    <div class="container">
+      <form class="filter-panel" data-resource-filters role="search">
+        <div class="filter-panel__search">
+          <label for="resource-search">Cari dokumen</label>
+          <div class="input-with-icon">
+            <span data-icon="search"></span>
+            <input id="resource-search" type="search" name="q" autocomplete="off" placeholder="Nama dokumen, tahun, atau isi subfolder" data-resource-search>
+          </div>
+        </div>
+        <div>
+          <label for="workspace-filter">Ruang kerja</label>
+          <select id="workspace-filter" name="workspace" data-workspace-filter>
+            <option value="">Semua ruang kerja</option>
+          </select>
+        </div>
+        <div>
+          <label for="year-filter">Tahun</label>
+          <select id="year-filter" name="year" data-year-filter>
+            <option value="">Semua tahun</option>
+          </select>
+        </div>
+        <button class="button button--secondary filter-reset" type="button" data-filter-reset>Reset</button>
+      </form>
+      <div class="results-toolbar">
+        <p><strong data-resource-count>0</strong> folder ditemukan</p>
+        <span class="results-toolbar__hint"><span data-icon="external"></span> Tautan terbuka di tab baru</span>
+      </div>
+      <div class="resource-grid" data-resource-list></div>
+      <div data-resource-empty></div>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__identity">
+      <div class="site-footer__brand">
+        <img src="assets/logo-pepk.png" alt="" width="34" height="50">
+        <strong>PEPK Workspace</strong>
+      </div>
+      <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
+    </div>
+    <div class="site-footer__meta">
+      <p>Versi <span data-version>0.2.0</span></p>
+      <p>Data diperbarui <span data-updated>18 Juli 2026</span></p>
+      <span class="data-status" data-data-status data-state="ready">Data lokal siap</span>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>© 2026 PEPK – Dinas Kesehatan Kabupaten Kudus</p>
+  </div>
+</footer>
+<div class="sr-only" aria-live="polite" aria-atomic="true" data-live-region></div>
+</body>
+</html>

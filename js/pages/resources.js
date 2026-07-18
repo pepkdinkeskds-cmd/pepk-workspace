@@ -1,2 +1,117 @@
-import {getAppData} from './common.js';import {activeSorted,searchResources} from '../services/search-service.js';import {el,mountShell,resourceCard,status} from '../components/ui.js';
-const {data,updated}=await getAppData();const all=activeSorted(data.Resources),syn=data.Synonyms||[];const params=new URLSearchParams(location.search);const main=el('main');const ph=el('section','page-hero');const pc=el('div','container');pc.append(el('h1','', 'Pustaka Resource'),el('p','', 'Cari dan saring dokumen, aplikasi, referensi, serta shortcut pekerjaan PEPK.'));ph.append(pc);main.append(ph);const sec=el('section','section container');const toolbar=el('form','toolbar');const input=el('input');input.type='search';input.name='q';input.value=params.get('q')||'';input.placeholder='Cari resource…';input.setAttribute('aria-label','Cari resource');const type=el('select');type.name='type';type.setAttribute('aria-label','Filter tipe');[['','Semua tipe'],['document','Dokumen'],['application','Aplikasi'],['reference','Referensi'],['shortcut','Shortcut']].forEach(([v,t])=>{const o=el('option','',t);o.value=v;if(params.get('type')===v)o.selected=true;type.append(o)});const btn=el('button','button button--primary','Terapkan');toolbar.append(input,type,btn);sec.append(toolbar);const count=el('div','result-count');const grid=el('div','grid grid-cards');sec.append(count,grid);function render(){let items=searchResources(all,input.value,syn);if(type.value)items=items.filter(r=>r.type===type.value);count.textContent=`${items.length} resource ditemukan`;grid.replaceChildren();if(!items.length)grid.append(status('Tidak ada resource yang sesuai. Coba kata kunci atau filter lain.','empty'));else items.forEach(r=>grid.append(resourceCard(r)));const p=new URLSearchParams();if(input.value.trim())p.set('q',input.value.trim());if(type.value)p.set('type',type.value);history.replaceState(null,'',`${location.pathname}${p.size?'?'+p:''}`)}toolbar.addEventListener('submit',e=>{e.preventDefault();render()});let timer;input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(render,200)});type.addEventListener('change',render);render();main.append(sec);mountShell('resources',main,updated);
+import { initApp, debounce, announce, setDataStatus, applyMetadata } from "../app.js";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js";
+import { searchResources } from "../search.js";
+import { emptyState, resourceCard } from "../ui.js";
+
+initApp("resources");
+
+let data = getInitialData();
+applyMetadata(data.settings);
+const searchInput = document.querySelector("[data-resource-search]");
+const workspaceFilter = document.querySelector("[data-workspace-filter]");
+const yearFilter = document.querySelector("[data-year-filter]");
+const list = document.querySelector("[data-resource-list]");
+const emptyContainer = document.querySelector("[data-resource-empty]");
+const countNode = document.querySelector("[data-resource-count]");
+
+function getParams() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    q: params.get("q") || "",
+    workspace: params.get("workspace") || "",
+    year: params.get("year") || ""
+  };
+}
+
+function setParams({ q, workspace, year }) {
+  const params = new URLSearchParams();
+  if (q) params.set("q", q);
+  if (workspace) params.set("workspace", workspace);
+  if (year) params.set("year", year);
+  const next = `${window.location.pathname}${params.toString() ? `?${params}` : ""}`;
+  history.replaceState(null, "", next);
+}
+
+function populateFilters(preserve = true) {
+  const currentWorkspace = preserve ? workspaceFilter.value : "";
+  const currentYear = preserve ? yearFilter.value : "";
+
+  workspaceFilter.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
+  data.workspaces.forEach((workspace) => {
+    const option = document.createElement("option");
+    option.value = workspace.id;
+    option.textContent = workspace.title;
+    workspaceFilter.append(option);
+  });
+
+  yearFilter.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
+  [...new Set(data.resources.map((item) => item.year).filter(Boolean))].sort((a, b) => b - a).forEach((year) => {
+    const option = document.createElement("option");
+    option.value = String(year);
+    option.textContent = String(year);
+    yearFilter.append(option);
+  });
+
+  if ([...workspaceFilter.options].some((option) => option.value === currentWorkspace)) workspaceFilter.value = currentWorkspace;
+  if ([...yearFilter.options].some((option) => option.value === currentYear)) yearFilter.value = currentYear;
+}
+
+function render() {
+  const q = searchInput.value.trim();
+  const workspace = workspaceFilter.value;
+  const year = yearFilter.value;
+
+  let results = q ? searchResources(data.resources, q, data.synonyms) : data.resources.slice();
+  if (workspace) results = results.filter((item) => item.workspaceId === workspace);
+  if (year) results = results.filter((item) => String(item.year) === year);
+  results.sort((a, b) => b.year - a.year || a.workspaceTitle.localeCompare(b.workspaceTitle, "id") || a.title.localeCompare(b.title, "id"));
+
+  list.replaceChildren();
+  emptyContainer.replaceChildren();
+  results.forEach((resource) => list.append(resourceCard(resource)));
+  if (!results.length) emptyContainer.append(emptyState("Tidak ada folder yang sesuai", "Ubah kata pencarian atau hapus salah satu filter."));
+  countNode.textContent = String(results.length);
+  setParams({ q, workspace, year });
+  announce(`${results.length} folder ditemukan.`);
+}
+
+const initial = getParams();
+populateFilters(false);
+searchInput.value = initial.q;
+workspaceFilter.value = initial.workspace;
+yearFilter.value = initial.year;
+render();
+
+searchInput.addEventListener("input", debounce(render));
+workspaceFilter.addEventListener("change", render);
+yearFilter.addEventListener("change", render);
+document.querySelector("[data-filter-reset]").addEventListener("click", () => {
+  searchInput.value = "";
+  workspaceFilter.value = "";
+  yearFilter.value = "";
+  render();
+  searchInput.focus();
+});
+
+window.addEventListener("popstate", () => {
+  const state = getParams();
+  searchInput.value = state.q;
+  workspaceFilter.value = state.workspace;
+  yearFilter.value = state.year;
+  render();
+});
+
+setDataStatus("Menyinkronkan Google Sheets…", "loading");
+refreshFromSheets()
+  .then((result) => {
+    if (result.changed) {
+      data = result.data;
+      applyMetadata(data.settings);
+      populateFilters(true);
+      render();
+      setDataStatus("Terhubung ke Google Sheets", "connected");
+    } else {
+      setDataStatus("Data lokal siap", "ready");
+    }
+  })
+  .catch(() => setDataStatus("Data lokal aktif", "warning"));

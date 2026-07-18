@@ -1,1 +1,90 @@
-<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="PEPK Workspace Dinas Kesehatan Kabupaten Kudus"><meta name="robots" content="noindex,nofollow"><title>PEPK Workspace</title><link rel="stylesheet" href="./css/main.css"><script type="module" src="./js/pages/information.js"></script></head><body><noscript>PEPK Workspace membutuhkan JavaScript untuk memuat data.</noscript></body></html>
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Informasi dan panduan penggunaan PEPK Workspace.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <meta name="referrer" content="no-referrer">
+  <title>Informasi — PEPK Workspace</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="js/pages/information.js"></script>
+</head>
+<body data-page="information">
+<a class="skip-link" href="#main-content">Lewati ke konten utama</a>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html" aria-label="PEPK Workspace — Beranda">
+      <img class="brand__logo" src="assets/logo-pepk.png" alt="" width="44" height="64">
+      <span class="brand__text">
+        <strong>PEPK Workspace</strong>
+        <span>Dinas Kesehatan Kabupaten Kudus</span>
+      </span>
+    </a>
+    <nav class="desktop-nav" aria-label="Navigasi utama">
+      <a data-nav="home" href="index.html">Beranda</a>
+      <a data-nav="workspace" href="workspace.html?id=perencanaan">Ruang Kerja</a>
+      <a data-nav="resources" href="resources.html">Pustaka</a>
+      <a data-nav="information" href="information.html">Informasi</a>
+      <a data-nav="about" href="about.html">Tentang</a>
+    </nav>
+    <button class="menu-button" type="button" data-menu-button aria-controls="mobile-navigation" aria-expanded="false" aria-label="Buka menu navigasi"><span data-icon="menu"></span></button>
+  </div>
+  <nav class="mobile-nav" id="mobile-navigation" data-mobile-nav aria-label="Navigasi seluler" hidden>
+    <div class="container mobile-nav__inner">
+      <a data-nav="home" href="index.html">Beranda</a>
+      <a data-nav="workspace" href="workspace.html?id=perencanaan">Ruang Kerja</a>
+      <a data-nav="resources" href="resources.html">Pustaka</a>
+      <a data-nav="information" href="information.html">Informasi</a>
+      <a data-nav="about" href="about.html">Tentang</a>
+    </div>
+  </nav>
+</header>
+<main id="main-content">
+  <section class="page-hero page-hero--information">
+    <div class="container page-hero__inner">
+      <span class="page-hero__icon" data-icon="info"></span>
+      <div>
+        <span class="eyebrow">Informasi</span>
+        <h1 data-information-heading>Informasi PEPK Workspace</h1>
+        <p data-information-intro>Panduan singkat dan pemberitahuan penggunaan workspace.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="information-list" data-information-list></div>
+      <article class="information-detail" data-information-detail hidden>
+        <a class="back-link" href="information.html"><span data-icon="arrow"></span> Kembali ke daftar informasi</a>
+        <span class="information-detail__icon" data-information-detail-icon data-icon="info"></span>
+        <h2 data-information-title></h2>
+        <p class="information-detail__summary" data-information-summary></p>
+        <div class="information-detail__content" data-information-content></div>
+      </article>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__identity">
+      <div class="site-footer__brand">
+        <img src="assets/logo-pepk.png" alt="" width="34" height="50">
+        <strong>PEPK Workspace</strong>
+      </div>
+      <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
+    </div>
+    <div class="site-footer__meta">
+      <p>Versi <span data-version>0.2.0</span></p>
+      <p>Data diperbarui <span data-updated>18 Juli 2026</span></p>
+      <span class="data-status" data-data-status data-state="ready">Data lokal siap</span>
+    </div>
+  </div>
+  <div class="container site-footer__bottom">
+    <p>© 2026 PEPK – Dinas Kesehatan Kabupaten Kudus</p>
+  </div>
+</footer>
+<div class="sr-only" aria-live="polite" aria-atomic="true" data-live-region></div>
+</body>
+</html>
