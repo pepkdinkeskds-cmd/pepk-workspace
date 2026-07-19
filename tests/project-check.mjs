@@ -14,7 +14,7 @@ for (const page of pages) {
   assert.match(html, /<main\b/);
   assert.match(html, /css\/main\.css\?v=0\.6\.1/);
   assert.match(html, /contribute\.html/);
-  assert.match(html, /href="contribute\.html">Layanan<\/a>/);
+  assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
 const servicePage = fs.readFileSync(path.join(root, "contribute.html"), "utf8");

@@ -2059,3 +2059,65 @@
     border-block-start: 1px solid rgba(255, 255, 255, .08);
   }
 }
+
+
+/* Homepage Review 04 — vertical and compact application launchpad. */
+@layer components {
+  body[data-page="home"] .home-tools-card .quick-panel--apps .app-launchpad {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel--apps .application-card--compact {
+    min-height: 3.9rem;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: .7rem;
+    padding: .55rem .7rem;
+    border-radius: .85rem;
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel--apps .application-card--compact .app-logo {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: .68rem;
+    object-fit: contain;
+    background: var(--white);
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel--apps .application-card__meta {
+    display: none;
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel--apps .application-card__title {
+    overflow: hidden;
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: .9rem;
+    line-height: 1.25;
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel--apps .application-card__action {
+    position: static;
+    align-self: center;
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  @media (max-width: 40rem) {
+    body[data-page="home"] .home-tools-card .quick-panel--apps .application-card--compact {
+      min-height: 4.15rem;
+    }
+
+    body[data-page="home"] .home-tools-card .quick-panel--apps .application-card__title {
+      display: -webkit-box;
+      overflow: hidden;
+      white-space: normal;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+}
