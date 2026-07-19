@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.7.1
+
+- Memperbaiki pembacaan URL formulir dari sheet Settings pada halaman Layanan, Beranda, dan Informasi.
+- Menambahkan cache busting untuk modul data-service agar browser tidak memakai normalizer versi lama.
+- Membersihkan spasi tersembunyi dan pemisah baris pada nilai URL Settings.
+
 ## 0.7.0 — Materi Monev
 
 - Menambahkan Form dan workflow Materi Monev.

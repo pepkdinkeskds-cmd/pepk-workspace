@@ -1,5 +1,5 @@
 import { initApp, applyMetadata, setDataStatus, scheduleBackgroundTask, createElement, externalLink } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.1-workflow-settings-1";
 import { icon } from "../icons.js";
 
 initApp("contribute");

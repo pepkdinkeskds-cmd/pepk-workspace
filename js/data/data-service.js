@@ -277,6 +277,20 @@ function normalizeSynonyms(rows) {
   }));
 }
 
+function normalizeSettingKey(value) {
+  return String(value ?? "")
+    .replace(/[\u200B-\u200D\uFEFF]/g, "")
+    .trim()
+    .toLowerCase();
+}
+
+function normalizeSettingValue(value, rawKey) {
+  const text = String(value ?? "")
+    .replace(/[\u200B-\u200D\uFEFF]/g, "")
+    .trim();
+  return rawKey.endsWith("_url") ? text.replace(/\s+/g, "") : text;
+}
+
 function normalizeSettings(rows) {
   const keyMap = {
     app_version: "appVersion",
@@ -298,9 +312,12 @@ function normalizeSettings(rows) {
   const numericKeys = new Set(["searchMinimum", "homeResultLimit", "quickFolderLimit", "quickAppLimit", "agendaHomeLimit", "realizationHomeLimit", "deviationBalancedThreshold", "deviationAttentionThreshold"]);
   const booleanKeys = new Set(["workflowEnabled"]);
   const settings = {};
-  rows.filter((row) => row.key).forEach((row) => {
-    const key = keyMap[row.key] || row.key;
-    settings[key] = numericKeys.has(key) ? Number(row.value || 0) : booleanKeys.has(key) ? toBoolean(row.value) : row.value;
+  rows.forEach((row) => {
+    const rawKey = normalizeSettingKey(row.key);
+    if (!rawKey) return;
+    const key = keyMap[rawKey] || rawKey;
+    const value = normalizeSettingValue(row.value, rawKey);
+    settings[key] = numericKeys.has(key) ? Number(value || 0) : booleanKeys.has(key) ? toBoolean(value) : value;
   });
   return settings;
 }
