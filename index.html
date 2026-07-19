@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.3.0">
-  <script type="module" src="js/pages/home.js?v=0.3.0"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.4.0">
+  <script type="module" src="js/pages/home.js?v=0.4.0"></script>
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -101,17 +101,18 @@
         <section class="quick-panel" aria-labelledby="quick-folder-title">
           <div class="quick-panel__heading">
             <span class="quick-panel__icon" data-icon="folderOpen"></span>
-            <div><h3 id="quick-folder-title">Folder kerja</h3><p>Folder tahun yang sering dibutuhkan.</p></div>
+            <div><h3 id="quick-folder-title">Folder kerja</h3><p>Empat folder tahun yang paling sering dibutuhkan.</p></div>
+            <a class="text-link quick-panel__all" href="resources.html?type=document">Lihat semua folder <span data-icon="arrow"></span></a>
           </div>
           <div class="quick-grid quick-grid--folders" data-quick-folders></div>
         </section>
         <section class="quick-panel quick-panel--apps" aria-labelledby="quick-app-title">
           <div class="quick-panel__heading">
             <span class="quick-panel__icon" data-icon="apps"></span>
-            <div><h3 id="quick-app-title">Launchpad aplikasi</h3><p>Aplikasi penunjang yang sering digunakan.</p></div>
+            <div><h3 id="quick-app-title">Launchpad aplikasi</h3><p>Empat aplikasi penunjang yang paling sering digunakan.</p></div>
+            <a class="text-link quick-panel__all" href="resources.html?type=application">Lihat semua aplikasi <span data-icon="arrow"></span></a>
           </div>
           <div class="app-launchpad" data-quick-apps></div>
-          <a class="text-link quick-panel__all" href="resources.html?type=application">Lihat semua aplikasi <span data-icon="arrow"></span></a>
         </section>
       </div>
     </div>
@@ -130,15 +131,43 @@
     </div>
   </section>
 
+  <section class="section section--agenda deferred-section" id="agenda">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow eyebrow--dark">Agenda terdekat</span>
+          <h2>Rapat dan kegiatan yang perlu diperhatikan</h2>
+          <p>Lihat jadwal, lokasi atau media rapat, serta PIC yang menangani agenda berikutnya.</p>
+        </div>
+        <a class="text-link text-link--standalone" href="information.html#agenda">Lihat semua agenda <span data-icon="arrow"></span></a>
+      </div>
+      <div class="agenda-grid" data-agenda-preview></div>
+    </div>
+  </section>
+
+  <section class="section section--realization deferred-section" id="realisasi">
+    <div class="container realization-shell">
+      <div class="section-heading section-heading--realization">
+        <div>
+          <span class="eyebrow">Capaian realisasi</span>
+          <h2>Ringkasan kinerja periode berjalan</h2>
+          <p>Angka utama ditampilkan secara sederhana agar mudah dibaca dan diperbarui.</p>
+        </div>
+        <a class="text-link text-link--light" href="information.html#realisasi">Lihat rincian <span data-icon="arrow"></span></a>
+      </div>
+      <div class="realization-grid" data-realization-preview></div>
+    </div>
+  </section>
+
   <section class="section section--information deferred-section">
     <div class="container">
       <div class="section-heading">
         <div>
-          <span class="eyebrow eyebrow--dark">Informasi</span>
-          <h2>Panduan penggunaan</h2>
-          <p>Informasi singkat untuk membantu penggunaan PEPK Workspace sehari-hari.</p>
+          <span class="eyebrow eyebrow--dark">Panduan dan pengumuman</span>
+          <h2>Informasi pendukung penggunaan workspace</h2>
+          <p>Panduan singkat, pengumuman, dan catatan penting untuk pekerjaan sehari-hari.</p>
         </div>
-        <a class="text-link text-link--standalone" href="information.html">Lihat semua <span data-icon="arrow"></span></a>
+        <a class="text-link text-link--standalone" href="information.html#panduan">Lihat semua <span data-icon="arrow"></span></a>
       </div>
       <div class="information-grid" data-information-preview></div>
     </div>
@@ -154,7 +183,7 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.3.0</span></p>
+      <p>Versi <span data-version>0.4.0</span></p>
       <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
       <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
     </div>

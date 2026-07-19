@@ -14,6 +14,28 @@ function toBoolean(value) {
   return !["false", "0", "tidak", "no", ""].includes(String(value).trim().toLowerCase());
 }
 
+function toNumber(value, fallback = 0) {
+  const text = String(value ?? "").trim();
+  let normalized = text;
+  if (text.includes(",") && text.includes(".")) normalized = text.replace(/\./g, "").replace(",", ".");
+  else if (text.includes(",")) normalized = text.replace(",", ".");
+  const number = Number(normalized);
+  return Number.isFinite(number) ? number : fallback;
+}
+
+function normalizeDate(value = "") {
+  const text = String(value).trim();
+  return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : "";
+}
+
+function normalizeTime(value = "") {
+  const text = String(value).trim().replace(".", ":");
+  const match = text.match(/^(\d{1,2}):([0-5]\d)(?::[0-5]\d)?$/);
+  if (!match) return "";
+  const hour = Number(match[1]);
+  return hour >= 0 && hour <= 23 ? `${String(hour).padStart(2, "0")}:${match[2]}` : "";
+}
+
 function isAllowedExternalUrl(value) {
   try {
     const url = new URL(value);
@@ -136,6 +158,45 @@ function normalizeInformation(rows) {
     .sort((a, b) => a.sortOrder - b.sortOrder);
 }
 
+
+function normalizeAgenda(rows) {
+  return rows
+    .filter((row) => row.id && row.title && normalizeDate(row.date) && toBoolean(row.is_active))
+    .map((row) => ({
+      id: row.id,
+      title: row.title,
+      date: normalizeDate(row.date),
+      startTime: normalizeTime(row.start_time),
+      endTime: normalizeTime(row.end_time),
+      category: row.category || "Agenda",
+      location: row.location || "",
+      pic: row.pic || "",
+      description: row.description || "",
+      url: isAllowedExternalUrl(row.url) ? row.url : "",
+      sortOrder: Number(row.sort_order || 999),
+      isActive: true
+    }))
+    .sort((a, b) => `${a.date}T${a.startTime || "00:00"}`.localeCompare(`${b.date}T${b.startTime || "00:00"}`) || a.sortOrder - b.sortOrder);
+}
+
+function normalizeRealization(rows) {
+  return rows
+    .filter((row) => row.id && row.title && toBoolean(row.is_active))
+    .map((row) => ({
+      id: row.id,
+      title: row.title,
+      value: toNumber(row.value),
+      target: toNumber(row.target, 100),
+      unit: row.unit || "%",
+      period: row.period || "",
+      updatedAt: normalizeDate(row.updated_at),
+      description: row.description || "",
+      sortOrder: Number(row.sort_order || 999),
+      isActive: true
+    }))
+    .sort((a, b) => a.sortOrder - b.sortOrder);
+}
+
 function normalizeSynonyms(rows) {
   return rows.filter((row) => row.term && toBoolean(row.is_active)).map((row) => ({
     term: row.term,
@@ -149,9 +210,13 @@ function normalizeSettings(rows) {
     content_updated_at: "contentUpdatedAt",
     workspace_title: "appName",
     search_minimum: "searchMinimum",
-    home_result_limit: "homeResultLimit"
+    home_result_limit: "homeResultLimit",
+    quick_folder_limit: "quickFolderLimit",
+    quick_app_limit: "quickAppLimit",
+    agenda_home_limit: "agendaHomeLimit",
+    realization_home_limit: "realizationHomeLimit"
   };
-  const numericKeys = new Set(["searchMinimum", "homeResultLimit"]);
+  const numericKeys = new Set(["searchMinimum", "homeResultLimit", "quickFolderLimit", "quickAppLimit", "agendaHomeLimit", "realizationHomeLimit"]);
   const settings = {};
   rows.filter((row) => row.key).forEach((row) => {
     const key = keyMap[row.key] || row.key;
@@ -209,6 +274,15 @@ export function validateData(data) {
     if (!resourceIds.has(id)) warnings.push(`Quick Access tidak menemukan resource: ${id}`);
   });
 
+  data.agenda.forEach((item) => {
+    if (!item.date) warnings.push(`Tanggal agenda tidak valid: ${item.id}`);
+    if (item.url && !isAllowedExternalUrl(item.url)) warnings.push(`URL agenda tidak valid: ${item.id}`);
+  });
+
+  data.realization.forEach((item) => {
+    if (!Number.isFinite(item.value)) warnings.push(`Nilai realisasi tidak valid: ${item.id}`);
+  });
+
   return warnings;
 }
 
@@ -264,6 +338,16 @@ export async function refreshFromSheets() {
       data.information = mergeMigrationInformation(normalized);
       changed = true;
     }
+  }
+
+  if (loaded.agenda?.length) {
+    data.agenda = normalizeAgenda(loaded.agenda);
+    changed = true;
+  }
+
+  if (loaded.realization?.length) {
+    data.realization = normalizeRealization(loaded.realization);
+    changed = true;
   }
 
   if (loaded.synonyms?.length) {

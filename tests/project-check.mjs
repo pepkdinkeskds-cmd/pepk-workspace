@@ -12,11 +12,11 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.3\.0/);
-  assert.doesNotMatch(html, /data-version>0\.2\.1/);
+  assert.match(html, /css\/main\.css\?v=0\.4\.0/);
+  assert.doesNotMatch(html, /data-version>0\.3\.0/);
 }
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
-assert.match(localData, /"appVersion": "0\.3\.0"/);
+assert.match(localData, /"appVersion": "0\.4\.0"/);
 assert.ok(fs.existsSync(path.join(root, "manifest.webmanifest")));
 console.log(`Project check lulus untuk ${pages.length} halaman.`);

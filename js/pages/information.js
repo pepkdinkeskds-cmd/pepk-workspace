@@ -1,41 +1,79 @@
 import { initApp, setDataStatus, applyMetadata, scheduleBackgroundTask } from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
-import { informationCard, emptyState } from "../ui.js";
+import { agendaCard, informationCard, realizationCard, emptyState } from "../ui.js";
+import { upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
 
 initApp("information");
 
 let data = getInitialData();
 applyMetadata(data.settings);
+
+const dashboardNode = document.querySelector("[data-information-dashboard]");
+const agendaNode = document.querySelector("[data-agenda-list]");
+const realizationNode = document.querySelector("[data-realization-list]");
 const listNode = document.querySelector("[data-information-list]");
 const detailNode = document.querySelector("[data-information-detail]");
 const params = new URLSearchParams(window.location.search);
 const selectedId = params.get("id");
 
-function render() {
+function renderOverview() {
+  dashboardNode.hidden = false;
+  detailNode.hidden = true;
+  agendaNode.replaceChildren();
+  realizationNode.replaceChildren();
   listNode.replaceChildren();
-  if (selectedId) {
-    const item = data.information.find((entry) => entry.id === selectedId);
-    if (!item) {
-      detailNode.hidden = true;
-      listNode.hidden = false;
-      listNode.append(emptyState("Informasi tidak ditemukan", "Informasi yang dipilih tidak tersedia.", "alert", { label: "Kembali ke daftar informasi", href: "information.html" }));
-      return;
-    }
-    listNode.hidden = true;
-    detailNode.hidden = false;
-    detailNode.querySelector("[data-information-title]").textContent = item.title;
-    detailNode.querySelector("[data-information-summary]").textContent = item.summary;
-    detailNode.querySelector("[data-information-content]").textContent = item.content;
-    detailNode.querySelector("[data-information-detail-icon]").innerHTML = icon(item.icon || "info");
-    document.querySelector("[data-information-heading]").textContent = item.title;
-    document.querySelector("[data-information-intro]").textContent = item.summary;
-    document.title = `${item.title} — PEPK Workspace`;
-  } else {
-    detailNode.hidden = true;
-    listNode.hidden = false;
-    data.information.forEach((item) => listNode.append(informationCard(item)));
+
+  const agendas = upcomingAgenda(data.agenda);
+  agendas.forEach((item) => agendaNode.append(agendaCard(item)));
+  if (!agendas.length) {
+    agendaNode.append(emptyState(
+      "Belum ada agenda aktif",
+      "Rapat internal, undangan eksternal, lokasi, dan PIC akan tampil di bagian ini setelah sheet Agenda diisi.",
+      "calendar"
+    ));
   }
+
+  data.realization.forEach((item) => realizationNode.append(realizationCard(item)));
+  if (!data.realization.length) {
+    realizationNode.append(emptyState(
+      "Data capaian belum tersedia",
+      "Tambahkan indikator capaian pada sheet Realization untuk menampilkan angka, target, dan progres periode berjalan.",
+      "trend"
+    ));
+  }
+
+  data.information.forEach((item) => listNode.append(informationCard(item)));
+}
+
+function renderDetail() {
+  const item = data.information.find((entry) => entry.id === selectedId);
+  if (!item) {
+    dashboardNode.hidden = false;
+    detailNode.hidden = true;
+    listNode.replaceChildren(emptyState(
+      "Informasi tidak ditemukan",
+      "Informasi yang dipilih tidak tersedia.",
+      "alert",
+      { label: "Kembali ke Pusat Informasi", href: "information.html" }
+    ));
+    return;
+  }
+
+  dashboardNode.hidden = true;
+  detailNode.hidden = false;
+  detailNode.querySelector("[data-information-title]").textContent = item.title;
+  detailNode.querySelector("[data-information-summary]").textContent = item.summary;
+  detailNode.querySelector("[data-information-content]").textContent = item.content;
+  detailNode.querySelector("[data-information-detail-icon]").innerHTML = icon(item.icon || "info");
+  document.querySelector("[data-information-heading]").textContent = item.title;
+  document.querySelector("[data-information-intro]").textContent = item.summary;
+  document.title = `${item.title} — PEPK Workspace`;
+}
+
+function render() {
+  if (selectedId) renderDetail();
+  else renderOverview();
 }
 
 render();

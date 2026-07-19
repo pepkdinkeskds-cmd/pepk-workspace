@@ -1,4 +1,4 @@
-# Audit Resource v0.3.0
+# Audit Resource v0.4.0
 
 Ringkasan data lokal yang telah divalidasi:
 

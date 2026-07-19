@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.4.0] - 2026-07-19
+
+### Added
+- Pusat Informasi yang terdiri dari Agenda, Capaian Realisasi, serta Panduan dan Pengumuman.
+- Sheet `Agenda` untuk jadwal rapat internal, undangan eksternal, lokasi, PIC, dan tautan pendukung.
+- Sheet `Realization` untuk indikator capaian, target, periode, dan tanggal pembaruan.
+- Kartu agenda dengan status otomatis Hari ini, Akan datang, atau Selesai.
+- Kartu realisasi dengan angka utama dan progress bar.
+
+### Changed
+- Akses Cepat dibatasi menjadi empat folder dan empat aplikasi.
+- Halaman Informasi dikembangkan menjadi pusat informasi operasional.
+- Bagian panduan dipindahkan setelah Agenda dan Capaian Realisasi.
+- Struktur Google Sheets bertambah dari enam menjadi delapan sheet.
+
 ## [0.3.0] - 2026-07-19
 
 ### Added

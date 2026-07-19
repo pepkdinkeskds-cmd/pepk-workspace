@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Informasi dan panduan penggunaan PEPK Workspace.">
+  <meta name="description" content="Agenda, capaian realisasi, panduan, dan pengumuman PEPK Workspace.">
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta name="referrer" content="no-referrer">
@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.3.0">
-  <script type="module" src="js/pages/information.js?v=0.3.0"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.4.0">
+  <script type="module" src="js/pages/information.js?v=0.4.0"></script>
 </head>
 <body data-page="information">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -52,16 +52,50 @@
       <span class="page-hero__icon" data-icon="info"></span>
       <div>
         <span class="eyebrow">Informasi</span>
-        <h1 data-information-heading>Informasi PEPK Workspace</h1>
-        <p data-information-intro>Panduan singkat dan pemberitahuan penggunaan workspace.</p>
+        <h1 data-information-heading>Pusat Informasi</h1>
+        <p data-information-intro>Agenda, capaian realisasi, panduan, dan pengumuman dalam satu halaman.</p>
       </div>
     </div>
   </section>
-  <section class="section">
+  <section class="section information-hub-section">
     <div class="container">
-      <div class="information-list" data-information-list></div>
+      <div class="information-dashboard" data-information-dashboard>
+        <section class="information-hub-block" id="agenda" aria-labelledby="agenda-title">
+          <div class="section-heading section-heading--compact">
+            <div>
+              <span class="eyebrow eyebrow--dark">Agenda</span>
+              <h2 id="agenda-title">Rapat dan kegiatan yang akan datang</h2>
+              <p>Jadwal internal maupun eksternal dilengkapi lokasi, waktu, dan PIC.</p>
+            </div>
+          </div>
+          <div class="agenda-list" data-agenda-list></div>
+        </section>
+
+        <section class="information-hub-block information-hub-block--realization" id="realisasi" aria-labelledby="realization-title">
+          <div class="section-heading section-heading--compact">
+            <div>
+              <span class="eyebrow eyebrow--dark">Capaian realisasi</span>
+              <h2 id="realization-title">Ringkasan capaian Dinas Kesehatan</h2>
+              <p>Indikator utama periode berjalan ditampilkan dalam angka dan progress bar.</p>
+            </div>
+          </div>
+          <div class="realization-grid realization-grid--information" data-realization-list></div>
+        </section>
+
+        <section class="information-hub-block" id="panduan" aria-labelledby="guide-title">
+          <div class="section-heading section-heading--compact">
+            <div>
+              <span class="eyebrow eyebrow--dark">Panduan dan pengumuman</span>
+              <h2 id="guide-title">Informasi pendukung</h2>
+              <p>Panduan singkat, pengumuman, dan catatan penting penggunaan workspace.</p>
+            </div>
+          </div>
+          <div class="information-list" data-information-list></div>
+        </section>
+      </div>
+
       <article class="information-detail" data-information-detail hidden>
-        <a class="back-link" href="information.html"><span data-icon="arrow"></span> Kembali ke daftar informasi</a>
+        <a class="back-link" href="information.html"><span data-icon="arrow"></span> Kembali ke Pusat Informasi</a>
         <span class="information-detail__icon" data-information-detail-icon data-icon="info"></span>
         <h2 data-information-title></h2>
         <p class="information-detail__summary" data-information-summary></p>
@@ -80,7 +114,7 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.3.0</span></p>
+      <p>Versi <span data-version>0.4.0</span></p>
       <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
       <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
     </div>

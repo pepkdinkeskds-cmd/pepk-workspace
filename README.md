@@ -1,18 +1,15 @@
-# PEPK Workspace v0.3.0
+# PEPK Workspace v0.4.0
 
 Workspace internal Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan, Dinas Kesehatan Kabupaten Kudus.
 
-## Peningkatan versi 0.3.0
+## Peningkatan versi 0.4.0
 
-- Pencarian lebih akurat untuk judul, singkatan, sinonim, subfolder, dan tahun.
-- Halaman Pustaka memiliki pengurutan berdasarkan relevansi, tahun, judul, atau ruang kerja.
-- Setiap Ruang Kerja memiliki ringkasan resource, tombol folder utama, dan tautan Pustaka terfilter.
-- Loading memakai pola local-first sehingga tampilan tidak menunggu Google Sheets.
-- Sinkronisasi Google Sheets berjalan di latar belakang dengan satu kali percobaan ulang.
-- Empty state, error state, dan status data dibuat lebih jelas.
-- Mode khusus Google Sites tersedia melalui parameter `?embed=1`.
-- Manifest dan ikon perangkat ditambahkan.
-- Unit test untuk pencarian, data, dan CSV tersedia tanpa dependency tambahan.
+- Akses Cepat dipadatkan menjadi empat folder dan empat aplikasi.
+- Pusat Informasi memiliki Agenda, Capaian Realisasi, serta Panduan dan Pengumuman.
+- Agenda memuat tanggal, waktu, kategori, lokasi, PIC, dan tautan bahan rapat.
+- Capaian Realisasi menampilkan angka, target, periode, progress bar, dan tanggal pembaruan.
+- Dua sheet baru tersedia: `Agenda` dan `Realization`.
+- Homepage tetap ringan dan menggunakan data lokal sebelum sinkronisasi Google Sheets.
 
 ## Menjalankan secara lokal
 
@@ -41,14 +38,10 @@ Perintah tersebut menggunakan Node.js bawaan dan tidak membutuhkan instalasi pac
 
 ## Google Sheets
 
-Import file `docs/PEPK_Workspace_Data_v0.3.0.xlsx` menggunakan opsi **Replace spreadsheet**. Kolom `root_url` pada sheet Workspaces digunakan untuk tombol **Buka folder utama**.
+Import file `docs/PEPK_Workspace_Data_v0.4.0.xlsx` menggunakan opsi **Replace spreadsheet**.
 
-## Google Sites
+Baris contoh pada sheet `Agenda` dan `Realization` menggunakan `is_active = FALSE`, sehingga tidak tampil pada website. Ganti data contoh, lalu ubah menjadi `TRUE` ketika data sudah siap ditampilkan.
 
-Gunakan URL berikut untuk penyematan:
+## Hosting
 
-```text
-https://pepkdinkeskds-cmd.github.io/pepk-workspace/?embed=1
-```
-
-Panduan lengkap tersedia di `docs/GOOGLE-SITES.md`.
+GitHub Pages tetap menjadi hosting utama. Mode `?embed=1` masih tersedia bila di kemudian hari diperlukan untuk penyematan pada portal lain.

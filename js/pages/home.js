@@ -9,7 +9,8 @@ import {
 } from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
 import { searchResources } from "../search.js";
-import { applicationCard, emptyState, informationCard, resourceCard, workspaceCard } from "../ui.js";
+import { agendaCard, applicationCard, emptyState, informationCard, realizationCard, resourceCard, workspaceCard } from "../ui.js";
+import { upcomingAgenda } from "../information-utils.js";
 
 initApp("home");
 
@@ -37,8 +38,8 @@ function renderQuickAccess() {
   appContainer.replaceChildren();
 
   const items = quickResources();
-  const folders = items.filter((item) => item.type !== "application").slice(0, 8);
-  const applications = items.filter((item) => item.type === "application").slice(0, 8);
+  const folders = items.filter((item) => item.type !== "application").slice(0, data.settings.quickFolderLimit || 4);
+  const applications = items.filter((item) => item.type === "application").slice(0, data.settings.quickAppLimit || 4);
 
   folders.forEach((resource) => folderContainer.append(resourceCard(resource, { compact: true })));
   applications.forEach((resource) => appContainer.append(applicationCard(resource, { compact: true })));
@@ -59,6 +60,28 @@ function renderWorkspaces() {
     };
     container.append(workspaceCard(workspace, counts));
   });
+}
+
+function renderAgenda() {
+  const container = document.querySelector("[data-agenda-preview]");
+  if (!container) return;
+  container.replaceChildren();
+  const items = upcomingAgenda(data.agenda).slice(0, data.settings.agendaHomeLimit || 3);
+  items.forEach((item) => container.append(agendaCard(item, { compact: true })));
+  if (!items.length) {
+    container.append(emptyState("Belum ada agenda aktif", "Agenda rapat dan kegiatan akan tampil setelah diisi melalui sheet Agenda.", "calendar", { label: "Buka Pusat Informasi", href: "information.html#agenda" }));
+  }
+}
+
+function renderRealization() {
+  const container = document.querySelector("[data-realization-preview]");
+  if (!container) return;
+  container.replaceChildren();
+  const items = data.realization.slice(0, data.settings.realizationHomeLimit || 4);
+  items.forEach((item) => container.append(realizationCard(item, { compact: true })));
+  if (!items.length) {
+    container.append(emptyState("Data capaian belum tersedia", "Capaian realisasi akan tampil setelah indikator diisi melalui sheet Realization.", "trend", { label: "Buka Pusat Informasi", href: "information.html#realisasi" }));
+  }
 }
 
 function renderInformation() {
@@ -145,6 +168,8 @@ document.querySelectorAll("[data-search-suggestion]").forEach((button) => {
 function renderAll() {
   renderQuickAccess();
   renderWorkspaces();
+  renderAgenda();
+  renderRealization();
   renderInformation();
   if (currentQuery) renderSearch(currentQuery);
 }
