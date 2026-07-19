@@ -53,3 +53,8 @@ test("application resources use optimized local logo files", () => {
   assert.equal(applications.length, 19);
   assert.ok(applications.every((item) => item.icon.endsWith(".webp")));
 });
+
+test("Monev material collection and form setting are available", () => {
+  assert.ok(Array.isArray(data.monevMaterials));
+  assert.equal(typeof data.settings.monevMaterialFormUrl, "string");
+});

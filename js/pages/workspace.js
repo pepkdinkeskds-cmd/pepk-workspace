@@ -36,6 +36,7 @@ const appsCountNode = document.querySelector("[data-workspace-app-count]");
 const rootLink = document.querySelector("[data-workspace-root-link]");
 const libraryLink = document.querySelector("[data-workspace-library-link]");
 const statsNode = document.querySelector("[data-workspace-stats]");
+const monevCallout = document.querySelector("[data-monev-workspace-callout]");
 
 searchInput.value = query;
 
@@ -97,6 +98,8 @@ function render() {
   appsNode.replaceChildren();
   emptyNode.replaceChildren();
   statsNode.replaceChildren();
+
+  if (monevCallout) monevCallout.hidden = workspaceId !== "evaluasi";
 
   if (!workspace) {
     titleNode.textContent = "Ruang kerja tidak ditemukan";

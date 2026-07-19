@@ -1,4 +1,4 @@
-# PEPK Workflow Apps Script v0.6.1
+# PEPK Workflow Apps Script v0.7.0
 
 Gunakan satu file saja: `Code.gs`.
 
@@ -18,3 +18,10 @@ Untuk instalasi pada project Spreadsheet-bound:
 2. Salin seluruh isi `Code.gs` pada folder ini.
 3. Jalankan `testWorkflowConfiguration` untuk verifikasi.
 4. Jalankan `setupPepkWorkflow` hanya jika memang perlu membangun ulang konfigurasi/Form.
+
+## v0.7.0 — Materi Monev
+
+1. Buat Form dengan pertanyaan File upload `File Materi`.
+2. Isi `Workflow_Config.monev_form_id`.
+3. Jalankan `setupMonevWorkflow`.
+4. Uji kiriman dan persetujuan pada `Monev_Inbox`.

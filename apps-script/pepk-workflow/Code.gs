@@ -1,20 +1,21 @@
 /**
- * PEPK Workflow v0.6.1 Final — complete copy/paste file.
+ * PEPK Workflow v0.7.0 Final — complete copy/paste file.
  * Paste the entire contents into Code.gs in the spreadsheet-bound Apps Script project.
  */
 
 /**
- * PEPK Workspace Workflow v0.6.1
+ * PEPK Workspace Workflow v0.7.0
  * Spreadsheet-bound Apps Script.
  *
  * Handles:
  * - document upload form submissions -> Upload_Inbox
  * - agenda form submissions -> Agenda_Inbox
+ * - Monev material submissions -> Monev_Inbox
  * - admin approvals from Inbox sheets
  */
 
 const PEPK = Object.freeze({
-  VERSION: '0.6.1',
+  VERSION: '0.7.0',
   SHEETS: {
     RESOURCES: 'Resources',
     WORKSPACES: 'Workspaces',
@@ -23,7 +24,9 @@ const PEPK = Object.freeze({
     UPLOAD_INBOX: 'Upload_Inbox',
     AGENDA_INBOX: 'Agenda_Inbox',
     AGENDA: 'Agenda',
-    UPLOAD_ROUTES: 'Upload_Routes'
+    UPLOAD_ROUTES: 'Upload_Routes',
+    MONEV_INBOX: 'Monev_Inbox',
+    MONEV_MATERIALS: 'Monev_Materials'
   },
   CONFIG_KEYS: {
     UPLOAD_FORM_ID: 'upload_form_id',
@@ -33,7 +36,11 @@ const PEPK = Object.freeze({
     INBOX_FOLDER_ID: 'upload_inbox_folder_id',
     REJECTED_FOLDER_ID: 'rejected_folder_id',
     INSTALLED_AT: 'installed_at',
-    ROUTES_SYNCED_AT: 'routes_synced_at'
+    ROUTES_SYNCED_AT: 'routes_synced_at',
+    MONEV_FORM_ID: 'monev_form_id',
+    MONEV_FORM_URL: 'monev_form_url',
+    MONEV_INBOX_FOLDER_ID: 'monev_inbox_folder_id',
+    MONEV_ROOT_FOLDER_ID: 'monev_root_folder_id'
   },
   FORM_TITLES: {
     PIC: 'Nama PIC',
@@ -52,7 +59,17 @@ const PEPK = Object.freeze({
     AGENDA_PIC: 'PIC',
     DESCRIPTION: 'Deskripsi',
     URL: 'Tautan Undangan / Bahan',
-    ROUTE_PREFIX: 'Tujuan Folder — '
+    ROUTE_PREFIX: 'Tujuan Folder — ',
+    MONEV_YEAR: 'Tahun Monev',
+    MONEV_MONTH: 'Bulan Monev',
+    MONEV_DATE: 'Tanggal Rapat',
+    MONEV_SENDER_TYPE: 'Jenis Pengirim',
+    MONEV_UNIT: 'Nama Bidang / Puskesmas',
+    MONEV_PRESENTER: 'Nama PIC / Penyaji',
+    MONEV_TITLE: 'Judul Materi',
+    MONEV_ORDER: 'Urutan Presentasi',
+    MONEV_DESCRIPTION: 'Keterangan Materi',
+    MONEV_FILE: 'File Materi'
   },
   STATUS: {
     WAITING: 'Menunggu',
@@ -72,9 +89,11 @@ function onOpen() {
     .addItem('Perbarui pilihan formulir', 'refreshFormChoices')
     .addItem('Periksa konfigurasi', 'testWorkflowConfiguration')
     .addItem('Perbaiki ID agenda lama', 'repairAgendaIds')
+    .addItem('Setup Materi Monev', 'setupMonevWorkflow')
     .addSeparator()
     .addItem('Buka formulir unggah', 'openUploadForm')
     .addItem('Buka formulir agenda', 'openAgendaForm')
+    .addItem('Buka formulir Materi Monev', 'openMonevForm')
     .addToUi();
 }
 
@@ -89,6 +108,10 @@ function onWorkflowFormSubmit(e) {
   }
   if (formId === config[PEPK.CONFIG_KEYS.AGENDA_FORM_ID]) {
     handleAgendaSubmission_(e.response);
+    return;
+  }
+  if (formId === config[PEPK.CONFIG_KEYS.MONEV_FORM_ID]) {
+    handleMonevSubmission_(e.response);
   }
 }
 
@@ -106,6 +129,7 @@ function onWorkflowEdit(e) {
   try {
     if (sheet.getName() === PEPK.SHEETS.UPLOAD_INBOX) processUploadStatus_(sheet, row, status, headers);
     if (sheet.getName() === PEPK.SHEETS.AGENDA_INBOX) processAgendaStatus_(sheet, row, status, headers);
+    if (sheet.getName() === PEPK.SHEETS.MONEV_INBOX) processMonevStatus_(sheet, row, status, headers);
   } catch (error) {
     writeAdminNote_(sheet, row, headers, `Gagal diproses: ${error.message}`);
     throw error;
@@ -185,6 +209,52 @@ function handleAgendaSubmission_(response) {
   });
 }
 
+
+function handleMonevSubmission_(response) {
+  const answers = formAnswers_(response);
+  const fileIds = answers.__files || [];
+  if (!fileIds.length) throw new Error('Tidak ada file pada pengiriman Materi Monev.');
+
+  const config = getWorkflowConfig_();
+  const inboxFolderId = String(config[PEPK.CONFIG_KEYS.MONEV_INBOX_FOLDER_ID] || '').trim();
+  if (!inboxFolderId) throw new Error('Folder antrean Monev belum tersedia. Jalankan Setup Materi Monev.');
+
+  const inboxFolder = DriveApp.getFolderById(inboxFolderId);
+  const sheet = sheet_(PEPK.SHEETS.MONEV_INBOX);
+  const submittedAt = response.getTimestamp() || new Date();
+  const submitterEmail = response.getRespondentEmail() || '';
+  const year = Number(answers[PEPK.FORM_TITLES.MONEV_YEAR] || 0);
+  const month = Number(String(answers[PEPK.FORM_TITLES.MONEV_MONTH] || '').match(/\d{1,2}/)?.[0] || 0);
+  const order = Number(String(answers[PEPK.FORM_TITLES.MONEV_ORDER] || '').replace(/[^0-9]/g, '')) || 999;
+
+  fileIds.forEach((fileId, index) => {
+    const file = DriveApp.getFileById(fileId);
+    file.moveTo(inboxFolder);
+    const submissionId = `MV-${Utilities.formatDate(submittedAt, Session.getScriptTimeZone(), 'yyyyMMdd-HHmmss')}-${index + 1}`;
+    appendByHeaders_(sheet, {
+      submission_id: submissionId,
+      submitted_at: submittedAt,
+      submitter_email: submitterEmail,
+      year,
+      month,
+      meeting_date: formatFormDate_(answers[PEPK.FORM_TITLES.MONEV_DATE]),
+      sender_type: answers[PEPK.FORM_TITLES.MONEV_SENDER_TYPE] || '',
+      unit_name: answers[PEPK.FORM_TITLES.MONEV_UNIT] || '',
+      presenter: answers[PEPK.FORM_TITLES.MONEV_PRESENTER] || '',
+      title: answers[PEPK.FORM_TITLES.MONEV_TITLE] || '',
+      presentation_order: order,
+      description: answers[PEPK.FORM_TITLES.MONEV_DESCRIPTION] || '',
+      file_name: file.getName(),
+      file_id: file.getId(),
+      file_url: file.getUrl(),
+      status: PEPK.STATUS.WAITING,
+      destination_url: '',
+      admin_note: '',
+      processed_at: ''
+    });
+  });
+}
+
 function processUploadStatus_(sheet, row, status, headers) {
   if (![PEPK.STATUS.APPROVE, PEPK.STATUS.REJECT].includes(status)) return;
   const record = rowObject_(sheet, row, headers);
@@ -253,6 +323,83 @@ function processAgendaStatus_(sheet, row, status, headers) {
   updateRow_(sheet, row, headers, {
     status: PEPK.STATUS.PUBLISHED,
     published_id: publishedId,
+    processed_at: new Date()
+  });
+}
+
+
+function processMonevStatus_(sheet, row, status, headers) {
+  if (![PEPK.STATUS.APPROVE, PEPK.STATUS.REJECT].includes(status)) return;
+  const record = rowObject_(sheet, row, headers);
+  if (record.processed_at) return;
+  const config = getWorkflowConfig_();
+  const file = DriveApp.getFileById(String(record.file_id));
+
+  if (status === PEPK.STATUS.REJECT) {
+    const rejectedFolder = DriveApp.getFolderById(config[PEPK.CONFIG_KEYS.REJECTED_FOLDER_ID]);
+    file.moveTo(rejectedFolder);
+    updateRow_(sheet, row, headers, {
+      status: PEPK.STATUS.REJECT,
+      destination_url: rejectedFolder.getUrl(),
+      processed_at: new Date()
+    });
+    return;
+  }
+
+  const rootId = String(config[PEPK.CONFIG_KEYS.MONEV_ROOT_FOLDER_ID] || '').trim();
+  if (!rootId) throw new Error('Folder utama Materi Monev belum dikonfigurasi.');
+  const root = DriveApp.getFolderById(rootId);
+  const year = Number(record.year || 0);
+  const month = Number(record.month || 0);
+  if (!year || month < 1 || month > 12) throw new Error('Tahun atau bulan Monev tidak valid.');
+
+  const yearFolder = getOrCreateFolder_(root, String(year));
+  const monthFolder = getOrCreateFolder_(yearFolder, `${String(month).padStart(2, '0')} ${monthNameId_(month)}`);
+  const senderType = normalizeText_(record.sender_type) === 'puskesmas' ? 'Puskesmas' : 'Bidang';
+  const senderFolder = getOrCreateFolder_(monthFolder, senderType === 'Puskesmas' ? '02 Puskesmas' : '01 Bidang');
+  const unitName = safeDriveName_(record.unit_name || 'Unit Tanpa Nama');
+  const unitFolder = getOrCreateFolder_(senderFolder, unitName);
+
+  const extension = fileExtension_(record.file_name || file.getName());
+  const sequence = String(record.submission_id || '').split('-').pop() || '1';
+  const order = Number(record.presentation_order || 999);
+  const standardized = [
+    `${year}-${String(month).padStart(2, '0')}`,
+    order < 999 ? String(order).padStart(2, '0') : '99',
+    slugFilePart_(unitName),
+    slugFilePart_(record.title || 'Materi-Monev'),
+    sequence
+  ].join('_') + extension;
+
+  file.setName(standardized);
+  file.moveTo(unitFolder);
+
+  const materials = sheet_(PEPK.SHEETS.MONEV_MATERIALS);
+  const materialId = `monev-${year}-${String(month).padStart(2, '0')}-${order < 999 ? String(order).padStart(2, '0') : '99'}-${slugFilePart_(unitName).toLowerCase()}-${String(file.getId()).slice(-6)}`;
+  const publishedAt = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd');
+  appendByHeaders_(materials, {
+    material_id: materialId,
+    year,
+    month,
+    meeting_date: formatFormDate_(record.meeting_date),
+    sender_type: senderType,
+    unit_name: unitName,
+    presenter: record.presenter || '',
+    title: record.title || file.getName(),
+    presentation_order: order,
+    description: record.description || '',
+    file_name: file.getName(),
+    file_type: fileTypeLabel_(file.getName(), file.getMimeType()),
+    file_url: file.getUrl(),
+    folder_url: unitFolder.getUrl(),
+    published_at: publishedAt,
+    is_active: true
+  });
+
+  updateRow_(sheet, row, headers, {
+    status: PEPK.STATUS.PUBLISHED,
+    destination_url: unitFolder.getUrl(),
+    admin_note: `Dipindahkan ke ${year} › ${String(month).padStart(2, '0')} ${monthNameId_(month)} › ${senderType} › ${unitName}.`,
     processed_at: new Date()
   });
 }
@@ -478,7 +625,7 @@ function upsertSetting_(key, value) {
 }
 
 
-/** Setup and maintenance functions for PEPK Workflow v0.6.1. */
+/** Setup and maintenance functions for PEPK Workflow v0.7.0. */
 
 function setupPepkWorkflow() {
   const ui = SpreadsheetApp.getUi();
@@ -505,6 +652,11 @@ function setupPepkWorkflow() {
 
   const agendaForm = getOrCreateAgendaForm_(spreadsheet);
   const folders = ensureWorkflowFolders_(spreadsheet);
+  const refreshedConfig = getWorkflowConfig_();
+  const monevFormId = String(refreshedConfig[PEPK.CONFIG_KEYS.MONEV_FORM_ID] || '').trim();
+  const monevForm = monevFormId ? FormApp.openById(monevFormId) : null;
+  const monevFolders = monevForm ? ensureMonevFolders_(spreadsheet, folders) : null;
+  if (monevForm) prepareMonevForm_(monevForm);
 
   setWorkflowConfig_(PEPK.CONFIG_KEYS.UPLOAD_FORM_URL, uploadForm.getPublishedUrl());
   setWorkflowConfig_(PEPK.CONFIG_KEYS.AGENDA_FORM_ID, agendaForm.getId());
@@ -512,21 +664,27 @@ function setupPepkWorkflow() {
   setWorkflowConfig_(PEPK.CONFIG_KEYS.INBOX_FOLDER_ID, folders.inbox.getId());
   setWorkflowConfig_(PEPK.CONFIG_KEYS.REJECTED_FOLDER_ID, folders.rejected.getId());
   setWorkflowConfig_(PEPK.CONFIG_KEYS.ROUTES_SYNCED_AT, new Date());
+  if (monevForm && monevFolders) {
+    setWorkflowConfig_(PEPK.CONFIG_KEYS.MONEV_FORM_URL, monevForm.getPublishedUrl());
+    setWorkflowConfig_(PEPK.CONFIG_KEYS.MONEV_INBOX_FOLDER_ID, monevFolders.inbox.getId());
+    setWorkflowConfig_(PEPK.CONFIG_KEYS.MONEV_ROOT_FOLDER_ID, monevFolders.root.getId());
+  }
   setWorkflowConfig_(PEPK.CONFIG_KEYS.INSTALLED_AT, new Date());
 
   upsertSetting_('app_version', PEPK.VERSION);
   upsertSetting_('workflow_enabled', 'TRUE');
   upsertSetting_('document_upload_form_url', uploadForm.getPublishedUrl());
   upsertSetting_('agenda_submit_form_url', agendaForm.getPublishedUrl());
+  if (monevForm) upsertSetting_('monev_material_form_url', monevForm.getPublishedUrl());
 
-  installTriggers_(uploadForm, agendaForm, spreadsheet);
+  installTriggers_(uploadForm, agendaForm, spreadsheet, monevForm);
   formatWorkflowSheets_();
 
   const warning = syncResult.errors.length
     ? `\n\nCatatan: ${syncResult.errors.length} folder gagal dibaca. Lihat log eksekusi.`
     : '';
   ui.alert(
-    'PEPK Workflow v0.6.1 siap',
+    'PEPK Workflow v0.7.0 siap',
     `Form unggah:\n${uploadForm.getPublishedUrl()}\n\nForm agenda:\n${agendaForm.getPublishedUrl()}\n\n${syncResult.routes.length} tujuan folder telah disinkronkan.${warning}`,
     ui.ButtonSet.OK
   );
@@ -548,6 +706,15 @@ function ensureWorkflowSheets_() {
     [PEPK.SHEETS.AGENDA_INBOX]: [
       'submission_id', 'submitted_at', 'submitter_email', 'title', 'date', 'start_time', 'end_time', 'category', 'location',
       'pic', 'description', 'url', 'status', 'published_id', 'admin_note', 'processed_at'
+    ],
+    [PEPK.SHEETS.MONEV_INBOX]: [
+      'submission_id', 'submitted_at', 'submitter_email', 'year', 'month', 'meeting_date', 'sender_type', 'unit_name',
+      'presenter', 'title', 'presentation_order', 'description', 'file_name', 'file_id', 'file_url', 'status',
+      'destination_url', 'admin_note', 'processed_at'
+    ],
+    [PEPK.SHEETS.MONEV_MATERIALS]: [
+      'material_id', 'year', 'month', 'meeting_date', 'sender_type', 'unit_name', 'presenter', 'title',
+      'presentation_order', 'description', 'file_name', 'file_type', 'file_url', 'folder_url', 'published_at', 'is_active'
     ]
   };
 
@@ -566,6 +733,10 @@ function ensureWorkflowSheets_() {
     [PEPK.CONFIG_KEYS.INBOX_FOLDER_ID, '', 'Folder antrean unggahan.'],
     [PEPK.CONFIG_KEYS.REJECTED_FOLDER_ID, '', 'Folder dokumen yang ditolak.'],
     [PEPK.CONFIG_KEYS.ROUTES_SYNCED_AT, '', 'Waktu sinkronisasi struktur folder terakhir.'],
+    [PEPK.CONFIG_KEYS.MONEV_FORM_ID, '', 'ID Google Form Materi Monev yang dibuat manual.'],
+    [PEPK.CONFIG_KEYS.MONEV_FORM_URL, '', 'Diisi otomatis oleh setup Materi Monev.'],
+    [PEPK.CONFIG_KEYS.MONEV_INBOX_FOLDER_ID, '', 'Folder antrean Materi Monev.'],
+    [PEPK.CONFIG_KEYS.MONEV_ROOT_FOLDER_ID, '', 'Folder utama Materi Monev pada Ruang Kerja Evaluasi.'],
     [PEPK.CONFIG_KEYS.INSTALLED_AT, '', 'Waktu setup terakhir.']
   ];
   defaults.filter(([key]) => !(key in existing)).forEach((row) => configSheet.appendRow(row));
@@ -744,6 +915,85 @@ function getOrCreateAgendaForm_(spreadsheet) {
   return form;
 }
 
+
+function setupMonevWorkflow() {
+  const ui = SpreadsheetApp.getUi();
+  const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  ensureWorkflowSheets_();
+  const config = getWorkflowConfig_();
+  const formId = String(config[PEPK.CONFIG_KEYS.MONEV_FORM_ID] || '').trim();
+  if (!formId) {
+    ui.alert(
+      'Form Materi Monev belum tersedia',
+      'Buat Google Form dengan satu pertanyaan File upload berjudul “File Materi”. Salin ID form ke Workflow_Config pada baris monev_form_id, lalu jalankan Setup Materi Monev kembali.',
+      ui.ButtonSet.OK
+    );
+    return;
+  }
+
+  const form = FormApp.openById(formId);
+  prepareMonevForm_(form);
+  const workflowFolders = ensureWorkflowFolders_(spreadsheet);
+  const folders = ensureMonevFolders_(spreadsheet, workflowFolders);
+  setWorkflowConfig_(PEPK.CONFIG_KEYS.MONEV_FORM_URL, form.getPublishedUrl());
+  setWorkflowConfig_(PEPK.CONFIG_KEYS.MONEV_INBOX_FOLDER_ID, folders.inbox.getId());
+  setWorkflowConfig_(PEPK.CONFIG_KEYS.MONEV_ROOT_FOLDER_ID, folders.root.getId());
+  upsertSetting_('app_version', PEPK.VERSION);
+  upsertSetting_('workflow_enabled', 'TRUE');
+  upsertSetting_('monev_material_form_url', form.getPublishedUrl());
+
+  const latestConfig = getWorkflowConfig_();
+  const uploadForm = latestConfig[PEPK.CONFIG_KEYS.UPLOAD_FORM_ID] ? FormApp.openById(latestConfig[PEPK.CONFIG_KEYS.UPLOAD_FORM_ID]) : null;
+  const agendaForm = latestConfig[PEPK.CONFIG_KEYS.AGENDA_FORM_ID] ? FormApp.openById(latestConfig[PEPK.CONFIG_KEYS.AGENDA_FORM_ID]) : null;
+  installTriggers_(uploadForm, agendaForm, spreadsheet, form);
+  formatWorkflowSheets_();
+
+  ui.alert(
+    'Materi Monev siap',
+    `Form Materi Monev:\n${form.getPublishedUrl()}\n\nFolder utama:\n${folders.root.getUrl()}`,
+    ui.ButtonSet.OK
+  );
+}
+
+function prepareMonevForm_(form) {
+  form.setTitle('PEPK — Unggah Materi Monev');
+  form.setDescription('Kirim materi paparan Bidang atau Puskesmas untuk rapat monitoring dan evaluasi capaian anggaran. Materi tampil setelah disetujui administrator.');
+  form.setCollectEmail(true);
+  form.setConfirmationMessage('Materi Monev telah masuk ke antrean pemeriksaan PEPK.');
+  publishFormForResponses_(form);
+
+  const uploadItem = form.getItems().find((item) => item.getType().toString() === 'FILE_UPLOAD');
+  if (!uploadItem) throw new Error('Form Materi Monev harus memiliki pertanyaan File upload berjudul “File Materi”.');
+  clearUploadFormItems_(form, uploadItem);
+  uploadItem.setTitle(PEPK.FORM_TITLES.MONEV_FILE);
+
+  ensureListItem_(form, PEPK.FORM_TITLES.MONEV_YEAR, resourceYearChoices_(), true);
+  ensureListItem_(form, PEPK.FORM_TITLES.MONEV_MONTH, monthChoices_(), true);
+  ensureDateItem_(form, PEPK.FORM_TITLES.MONEV_DATE, true);
+  ensureListItem_(form, PEPK.FORM_TITLES.MONEV_SENDER_TYPE, ['Bidang', 'Puskesmas'], true);
+  ensureTextItem_(form, PEPK.FORM_TITLES.MONEV_UNIT, true, 'Tuliskan nama resmi Bidang atau Puskesmas.');
+  ensureTextItem_(form, PEPK.FORM_TITLES.MONEV_PRESENTER, true, 'Nama PIC atau penyaji materi.');
+  ensureTextItem_(form, PEPK.FORM_TITLES.MONEV_TITLE, true, 'Judul materi yang akan dipresentasikan.');
+  ensureTextItem_(form, PEPK.FORM_TITLES.MONEV_ORDER, true, 'Isi nomor urut presentasi, misalnya 1, 2, atau 10.');
+  ensureParagraphItem_(form, PEPK.FORM_TITLES.MONEV_DESCRIPTION, false, 'Keterangan tambahan bila diperlukan.');
+}
+
+function ensureMonevFolders_(spreadsheet, workflowFolders) {
+  const workspaces = sheet_(PEPK.SHEETS.WORKSPACES).getDataRange().getDisplayValues();
+  if (workspaces.length < 2) throw new Error('Sheet Workspaces kosong.');
+  const headers = workspaces[0].map(normalizeKey_);
+  const index = Object.fromEntries(headers.map((header, i) => [header, i]));
+  const evaluasi = workspaces.slice(1).find((row) => normalizeText_(row[index.id]) === 'evaluasi');
+  if (!evaluasi) throw new Error('Ruang Kerja Evaluasi tidak ditemukan.');
+  const rootId = extractDriveId_(evaluasi[index.root_url]);
+  if (!rootId) throw new Error('URL folder utama Evaluasi tidak valid.');
+  const evaluationRoot = DriveApp.getFolderById(rootId);
+  return {
+    inbox: getOrCreateFolder_(workflowFolders.root, '01_MONEV_INBOX'),
+    root: getOrCreateFolder_(evaluationRoot, 'MONEV CAPAIAN ANGGARAN')
+  };
+}
+
 function ensureWorkflowFolders_(spreadsheet) {
   const spreadsheetFile = DriveApp.getFileById(spreadsheet.getId());
   const parents = spreadsheetFile.getParents();
@@ -756,13 +1006,14 @@ function ensureWorkflowFolders_(spreadsheet) {
   };
 }
 
-function installTriggers_(uploadForm, agendaForm, spreadsheet) {
+function installTriggers_(uploadForm, agendaForm, spreadsheet, monevForm = null) {
   const managed = ['onWorkflowFormSubmit', 'onWorkflowEdit', 'syncUploadRoutesSilently'];
   ScriptApp.getProjectTriggers().forEach((trigger) => {
     if (managed.includes(trigger.getHandlerFunction())) ScriptApp.deleteTrigger(trigger);
   });
-  ScriptApp.newTrigger('onWorkflowFormSubmit').forForm(uploadForm).onFormSubmit().create();
-  ScriptApp.newTrigger('onWorkflowFormSubmit').forForm(agendaForm).onFormSubmit().create();
+  if (uploadForm) ScriptApp.newTrigger('onWorkflowFormSubmit').forForm(uploadForm).onFormSubmit().create();
+  if (agendaForm) ScriptApp.newTrigger('onWorkflowFormSubmit').forForm(agendaForm).onFormSubmit().create();
+  if (monevForm) ScriptApp.newTrigger('onWorkflowFormSubmit').forForm(monevForm).onFormSubmit().create();
   ScriptApp.newTrigger('onWorkflowEdit').forSpreadsheet(spreadsheet).onEdit().create();
   ScriptApp.newTrigger('syncUploadRoutesSilently').timeBased().everyDays(1).atHour(3).create();
 }
@@ -782,14 +1033,16 @@ function testWorkflowConfiguration() {
   const missing = required.filter((key) => !config[key]);
   const routeSheet = sheet_(PEPK.SHEETS.UPLOAD_ROUTES);
   const routeCount = Math.max(routeSheet.getLastRow() - 1, 0);
+  const monevReady = Boolean(config[PEPK.CONFIG_KEYS.MONEV_FORM_ID] && config[PEPK.CONFIG_KEYS.MONEV_ROOT_FOLDER_ID]);
   const message = missing.length
     ? `Belum lengkap: ${missing.join(', ')}`
-    : `Konfigurasi utama lengkap. ${routeCount} rute folder aktif tersedia. Sinkronisasi terakhir: ${config[PEPK.CONFIG_KEYS.ROUTES_SYNCED_AT] || 'belum tercatat'}.`;
+    : `Konfigurasi utama lengkap. ${routeCount} rute folder aktif tersedia. Materi Monev: ${monevReady ? 'siap' : 'belum dikonfigurasi'}. Sinkronisasi terakhir: ${config[PEPK.CONFIG_KEYS.ROUTES_SYNCED_AT] || 'belum tercatat'}.`;
   SpreadsheetApp.getUi().alert('Pemeriksaan PEPK Workflow', message, SpreadsheetApp.getUi().ButtonSet.OK);
 }
 
 function openUploadForm() { openConfiguredUrl_(PEPK.CONFIG_KEYS.UPLOAD_FORM_URL); }
 function openAgendaForm() { openConfiguredUrl_(PEPK.CONFIG_KEYS.AGENDA_FORM_URL); }
+function openMonevForm() { openConfiguredUrl_(PEPK.CONFIG_KEYS.MONEV_FORM_URL); }
 
 function openConfiguredUrl_(key) {
   const url = getWorkflowConfig_()[key];
@@ -1137,6 +1390,45 @@ function findItemByTitle_(form, title) {
   return form.getItems().find((item) => item.getTitle() === title) || null;
 }
 
+
+function monthChoices_() {
+  return [
+    '01 Januari', '02 Februari', '03 Maret', '04 April', '05 Mei', '06 Juni',
+    '07 Juli', '08 Agustus', '09 September', '10 Oktober', '11 November', '12 Desember'
+  ];
+}
+
+function monthNameId_(month) {
+  return ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'][Number(month) - 1] || 'Bulan';
+}
+
+function safeDriveName_(value) {
+  const cleaned = String(value || '').replace(/[\\/:*?"<>|]/g, ' ').replace(/\s+/g, ' ').trim();
+  return cleaned || 'Unit Tanpa Nama';
+}
+
+function slugFilePart_(value) {
+  return String(value || '')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^A-Za-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 60) || 'materi';
+}
+
+function fileExtension_(name) {
+  const match = String(name || '').match(/(\.[A-Za-z0-9]{1,8})$/);
+  return match ? match[1].toLowerCase() : '';
+}
+
+function fileTypeLabel_(name, mimeType) {
+  const extension = fileExtension_(name);
+  if (extension === '.pdf' || String(mimeType).includes('pdf')) return 'PDF';
+  if (['.ppt', '.pptx'].includes(extension) || String(mimeType).includes('presentation')) return 'PowerPoint';
+  if (['.doc', '.docx'].includes(extension) || String(mimeType).includes('wordprocessing')) return 'Word';
+  if (['.xls', '.xlsx', '.csv'].includes(extension) || String(mimeType).includes('spreadsheet')) return 'Excel';
+  return 'Dokumen';
+}
+
 function getOrCreateFolder_(parent, name) {
   const folders = parent.getFoldersByName(name);
   return folders.hasNext() ? folders.next() : parent.createFolder(name);
@@ -1144,7 +1436,7 @@ function getOrCreateFolder_(parent, name) {
 
 function formatWorkflowSheets_() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  [PEPK.SHEETS.CONFIG, PEPK.SHEETS.UPLOAD_ROUTES, PEPK.SHEETS.UPLOAD_INBOX, PEPK.SHEETS.AGENDA_INBOX].forEach((name) => {
+  [PEPK.SHEETS.CONFIG, PEPK.SHEETS.UPLOAD_ROUTES, PEPK.SHEETS.UPLOAD_INBOX, PEPK.SHEETS.AGENDA_INBOX, PEPK.SHEETS.MONEV_INBOX, PEPK.SHEETS.MONEV_MATERIALS].forEach((name) => {
     const sheet = ss.getSheetByName(name);
     if (!sheet) return;
     sheet.setFrozenRows(1);
@@ -1157,6 +1449,14 @@ function formatWorkflowSheets_() {
   if (uploadHeaders.status) upload.getRange(2, uploadHeaders.status, Math.max(upload.getMaxRows() - 1, 1)).setDataValidation(
     SpreadsheetApp.newDataValidation().requireValueInList([
       PEPK.STATUS.WAITING, PEPK.STATUS.APPROVE, PEPK.STATUS.REJECT, PEPK.STATUS.NEEDS_PLACEMENT, PEPK.STATUS.DONE
+    ], true).build()
+  );
+
+  const monev = ss.getSheetByName(PEPK.SHEETS.MONEV_INBOX);
+  const monevHeaders = headerMap_(monev);
+  if (monevHeaders.status) monev.getRange(2, monevHeaders.status, Math.max(monev.getMaxRows() - 1, 1)).setDataValidation(
+    SpreadsheetApp.newDataValidation().requireValueInList([
+      PEPK.STATUS.WAITING, PEPK.STATUS.APPROVE, PEPK.STATUS.REJECT, PEPK.STATUS.PUBLISHED
     ], true).build()
   );
 

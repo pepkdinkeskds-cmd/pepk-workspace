@@ -1,4 +1,4 @@
-# PEPK Workflow v0.6.1 — Rute Folder Terkontrol
+# PEPK Workflow v0.7.0 — Rute Folder Terkontrol
 
 Patch ini menghapus isian bebas **Subfolder / Jenis Dokumen** dan menggantinya dengan pilihan folder yang dibaca langsung dari struktur Google Drive.
 
@@ -19,7 +19,7 @@ Patch ini menghapus isian bebas **Subfolder / Jenis Dokumen** dan menggantinya d
 2. Buka Spreadsheet PEPK Workspace Data.
 3. Pilih `Ekstensi → Apps Script`.
 4. Buka `Code.gs`, tekan `Ctrl+A`, lalu hapus kode lama.
-5. Salin seluruh isi `PEPK_Workflow_Complete_v0.6.1.gs.txt` ke `Code.gs`.
+5. Salin seluruh isi `PEPK_Workflow_Complete_v0.7.0.gs.txt` ke `Code.gs`.
 6. Simpan.
 7. Pilih fungsi `setupPepkWorkflow` lalu klik **Jalankan**.
 8. Setujui izin jika diminta.

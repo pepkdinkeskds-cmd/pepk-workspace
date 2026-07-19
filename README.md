@@ -1,4 +1,4 @@
-# PEPK Workspace v0.6.1
+# PEPK Workspace v0.7.0
 
 Workspace internal Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan, Dinas Kesehatan Kabupaten Kudus.
 
@@ -23,14 +23,21 @@ Workspace internal Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan, Din
 ## Upgrade dari v0.6.0
 
 1. Jangan mengganti Spreadsheet yang sudah dikonfigurasi.
-2. Pastikan Apps Script menggunakan `apps-script/pepk-workflow/Code.gs` versi 0.6.1.
+2. Pastikan Apps Script menggunakan `apps-script/pepk-workflow/Code.gs` versi 0.7.0.
 3. Unggah seluruh isi folder ini ke root repository GitHub.
 4. Lakukan `Ctrl + F5` setelah GitHub Pages selesai diperbarui.
 
 ## Instalasi baru
 
-Gunakan template data di folder `docs`, lalu ikuti `docs/WORKFLOW-SETUP.md` dan `docs/WORKFLOW-ROUTING-v0.6.1.md`.
+Gunakan template data di folder `docs`, lalu ikuti `docs/WORKFLOW-SETUP.md` dan `docs/WORKFLOW-ROUTING-v0.7.0.md`.
 
 ## URL produksi
 
 `https://pepkdinkeskds-cmd.github.io/pepk-workspace/`
+
+## Materi Monev v0.7.0
+
+- Form khusus materi Monev bulanan.
+- Persetujuan administrator dan routing folder otomatis.
+- Pustaka materi dengan filter periode, unit, pengirim, dan jenis file.
+- Urutan presentasi untuk asisten sorot/operator.

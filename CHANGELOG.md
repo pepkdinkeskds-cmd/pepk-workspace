@@ -1,3 +1,13 @@
+# Changelog
+
+## 0.7.0 — Materi Monev
+
+- Menambahkan Form dan workflow Materi Monev.
+- Menambahkan sheet Monev_Inbox dan Monev_Materials.
+- Menambahkan halaman Materi Monev dengan filter dan urutan presentasi.
+- Menambahkan layanan ketiga pada Pusat Layanan.
+- Menambahkan akses Materi Monev pada Ruang Kerja Evaluasi.
+
 ## [Unreleased]
 
 ### Changed
@@ -13,7 +23,7 @@
 - Memadatkan panel folder, aplikasi, unggah dokumen, dan tambah agenda.
 - Menghapus Panduan dan Pengumuman dari Beranda; konten tetap tersedia di halaman Informasi.
 
-## [0.6.1] - 2026-07-19
+## [0.7.0] - 2026-07-19
 
 ### Added
 - `Upload_Routes` untuk daftar tujuan folder yang disinkronkan dari Google Drive.
@@ -31,7 +41,7 @@
 - Pembangunan ulang Google Form aman terhadap navigasi antarbagian.
 - File disetujui dipindahkan menggunakan ID folder, bukan pencocokan nama.
 
-## [0.6.1] - 2026-07-19
+## [0.7.0] - 2026-07-19
 
 ### Added
 - Pusat Kontribusi untuk unggah dokumen dan tambah agenda.
@@ -43,7 +53,7 @@
 ### Changed
 - Layout capaian realisasi tahunan dibuat lebih compact dan seimbang.
 - Navigasi ditambah menu Kontribusi.
-- Versi aplikasi diperbarui menjadi 0.6.1.
+- Versi aplikasi diperbarui menjadi 0.7.0.
 
 ### Security
 - PIC dapat mengirim dokumen tanpa memperoleh akses Editor ke folder utama.

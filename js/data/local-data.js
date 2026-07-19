@@ -3897,7 +3897,7 @@ export const LOCAL_DATA = {
   ],
   "settings": {
     "appName": "PEPK Workspace",
-    "appVersion": "0.6.1",
+    "appVersion": "0.7.0",
     "contentUpdatedAt": "19 Juli 2026",
     "spreadsheetId": "1eEYRJmxYqqZuXABbQL2cCcKKeOt1ENk9mt_S7LgKfno",
     "searchMinimum": 2,
@@ -3910,8 +3910,10 @@ export const LOCAL_DATA = {
     "deviationAttentionThreshold": 5,
     "workflowEnabled": true,
     "documentUploadFormUrl": "",
-    "agendaSubmitFormUrl": ""
+    "agendaSubmitFormUrl": "",
+    "monevMaterialFormUrl": ""
   },
+  "monevMaterials": [],
   "agenda": [],
   "realization": [
     {

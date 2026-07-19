@@ -1,22 +1,21 @@
 <!doctype html>
 <html lang="id">
 <head>
-  <!-- Review Layanan 02: cache-busted service page -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Pusat layanan unggah dokumen, agenda, dan materi Monev PEPK Workspace.">
+  <meta name="description" content="Pustaka materi rapat monitoring dan evaluasi capaian anggaran Dinas Kesehatan Kabupaten Kudus.">
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#0a347d">
-  <title>Layanan — PEPK Workspace</title>
+  <title>Materi Monev — PEPK Workspace</title>
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="css/main.css?v=0.7.0-monev">
-  <script type="module" src="js/pages/contribute.js?v=0.7.0-monev"></script>
+  <script type="module" src="js/pages/monev.js?v=0.7.0-monev"></script>
 </head>
-<body data-page="contribute">
+<body data-page="monev">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
 <header class="site-header">
   <div class="container site-header__inner">
@@ -46,41 +45,37 @@
   </nav>
 </header>
 <main id="main-content">
-  <section class="page-hero page-hero--contribute">
+  <section class="page-hero page-hero--monev">
     <div class="container page-hero__inner">
-      <span class="page-hero__icon" data-icon="upload"></span>
+      <span class="page-hero__icon" data-icon="presentation"></span>
       <div>
-        <span class="eyebrow">Layanan</span>
-        <h1>Pusat Layanan PEPK</h1>
-        <p>Gunakan layanan unggah dokumen, tambah agenda, dan pengiriman materi Monev tanpa memberikan akses Editor ke folder maupun spreadsheet utama.</p>
+        <span class="eyebrow">Evaluasi</span>
+        <h1>Materi Monev Capaian Anggaran</h1>
+        <p>Temukan bahan paparan Bidang dan Puskesmas berdasarkan periode, unit, jenis file, dan urutan presentasi.</p>
       </div>
     </div>
   </section>
 
-  <section class="section contribution-page-section">
+  <section class="section monev-page-section">
     <div class="container">
-      <div class="contribution-page-grid" data-contribution-page-actions></div>
+      <div class="monev-summary" data-monev-summary aria-label="Ringkasan materi Monev"></div>
 
-      <section class="workflow-explainer" aria-labelledby="workflow-title">
-        <div class="section-heading section-heading--compact">
-          <div>
-            <span class="eyebrow eyebrow--dark">Alur Layanan</span>
-            <h2 id="workflow-title">Setiap kiriman melewati antrean pemeriksaan</h2>
-            <p>PIC hanya mengirim data. Hak pengelolaan folder dan publikasi tetap berada pada administrator.</p>
-          </div>
-        </div>
-        <ol class="workflow-steps">
-          <li><span class="workflow-step__number">1</span><div><strong>PIC mengisi formulir</strong><p>Pilih tujuan folder, isi informasi agenda, atau kirim materi Monev sesuai periode rapat.</p></div></li>
-          <li><span class="workflow-step__number">2</span><div><strong>Masuk ke Inbox</strong><p>Dokumen, agenda, dan materi Monev tercatat otomatis beserta pengirim dan waktu pengiriman.</p></div></li>
-          <li><span class="workflow-step__number">3</span><div><strong>Administrator memeriksa</strong><p>Status diubah menjadi Disetujui atau Ditolak melalui spreadsheet.</p></div></li>
-          <li><span class="workflow-step__number">4</span><div><strong>Dipindahkan atau dipublikasikan</strong><p>Dokumen dipindahkan ke folder tujuan, agenda dipublikasikan, dan materi Monev masuk ke pustaka operator.</p></div></li>
-        </ol>
-      </section>
+      <form class="filter-bar monev-filter-bar" data-monev-filter-form>
+        <label><span>Cari materi</span><span class="filter-control filter-control--search"><span data-icon="search"></span><input type="search" name="q" placeholder="Judul, unit, penyaji, atau nama file"></span></label>
+        <label><span>Tahun</span><select name="year"><option value="">Semua tahun</option></select></label>
+        <label><span>Bulan</span><select name="month"><option value="">Semua bulan</option></select></label>
+        <label><span>Pengirim</span><select name="sender"><option value="">Semua pengirim</option><option value="Bidang">Bidang</option><option value="Puskesmas">Puskesmas</option></select></label>
+        <label><span>Jenis file</span><select name="type"><option value="">Semua file</option></select></label>
+        <label><span>Urutkan</span><select name="sort"><option value="presentation">Urutan presentasi</option><option value="latest">Periode terbaru</option><option value="unit">Nama unit A–Z</option><option value="title">Judul A–Z</option></select></label>
+        <button class="button button--secondary" type="reset">Reset</button>
+      </form>
 
-      <aside class="workflow-note">
-        <span class="workflow-note__icon" data-icon="shield"></span>
-        <div><strong>Hak akses folder utama tetap aman</strong><p>PIC tidak perlu menjadi Editor Google Drive. Pengiriman dilakukan melalui Google Forms dan diproses oleh Apps Script milik administrator.</p></div>
-      </aside>
+      <div class="monev-results-heading">
+        <div><strong data-monev-result-count>0 materi</strong><span data-monev-result-detail></span></div>
+        <a class="button button--primary button--small" data-monev-upload-link href="contribute.html">Unggah Materi</a>
+      </div>
+      <div class="monev-material-list" data-monev-material-list></div>
+      <div data-monev-empty></div>
     </div>
   </section>
 </main>

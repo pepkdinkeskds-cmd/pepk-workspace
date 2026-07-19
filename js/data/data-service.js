@@ -244,6 +244,32 @@ function normalizeRealization(rows) {
   return normalized.sort((a, b) => a.year - b.year || a.month - b.month || a.sortOrder - b.sortOrder);
 }
 
+
+function normalizeMonevMaterials(rows) {
+  return rows
+    .filter((row) => row.material_id && row.title && row.file_url && toBoolean(row.is_active) && isAllowedExternalUrl(row.file_url))
+    .map((row) => ({
+      id: row.material_id,
+      year: toNumber(row.year),
+      month: toNumber(row.month),
+      meetingDate: normalizeDate(row.meeting_date),
+      senderType: row.sender_type || "Unit",
+      unitName: row.unit_name || "Unit tidak dicantumkan",
+      presenter: row.presenter || "",
+      title: row.title,
+      presentationOrder: toNumber(row.presentation_order, 999),
+      description: row.description || "",
+      fileName: row.file_name || row.title,
+      fileType: row.file_type || "Dokumen",
+      fileUrl: row.file_url,
+      folderUrl: isAllowedExternalUrl(row.folder_url) ? row.folder_url : "",
+      publishedAt: normalizeDate(row.published_at),
+      isActive: true
+    }))
+    .filter((item) => item.year >= 2000 && item.year <= 2100 && item.month >= 1 && item.month <= 12)
+    .sort((a, b) => b.year - a.year || b.month - a.month || a.presentationOrder - b.presentationOrder || a.title.localeCompare(b.title, "id"));
+}
+
 function normalizeSynonyms(rows) {
   return rows.filter((row) => row.term && toBoolean(row.is_active)).map((row) => ({
     term: row.term,
@@ -266,7 +292,8 @@ function normalizeSettings(rows) {
     deviation_attention_threshold: "deviationAttentionThreshold",
     workflow_enabled: "workflowEnabled",
     document_upload_form_url: "documentUploadFormUrl",
-    agenda_submit_form_url: "agendaSubmitFormUrl"
+    agenda_submit_form_url: "agendaSubmitFormUrl",
+    monev_material_form_url: "monevMaterialFormUrl"
   };
   const numericKeys = new Set(["searchMinimum", "homeResultLimit", "quickFolderLimit", "quickAppLimit", "agendaHomeLimit", "realizationHomeLimit", "deviationBalancedThreshold", "deviationAttentionThreshold"]);
   const booleanKeys = new Set(["workflowEnabled"]);
@@ -330,6 +357,10 @@ export function validateData(data) {
   data.agenda.forEach((item) => {
     if (!item.date) warnings.push(`Tanggal agenda tidak valid: ${item.id}`);
     if (item.url && !isAllowedExternalUrl(item.url)) warnings.push(`URL agenda tidak valid: ${item.id}`);
+  });
+
+  data.monevMaterials.forEach((item) => {
+    if (!isAllowedExternalUrl(item.fileUrl)) warnings.push(`URL materi Monev tidak valid: ${item.id}`);
   });
 
   data.realization.forEach((item) => {
@@ -401,6 +432,11 @@ export async function refreshFromSheets() {
 
   if (loaded.realization?.length) {
     data.realization = normalizeRealization(loaded.realization);
+    changed = true;
+  }
+
+  if (loaded.monevMaterials?.length) {
+    data.monevMaterials = normalizeMonevMaterials(loaded.monevMaterials);
     changed = true;
   }
 

@@ -1,4 +1,4 @@
-# Setup PEPK Workflow v0.6.1
+# Setup PEPK Workflow v0.7.0
 
 Panduan ini dilakukan satu kali oleh administrator. Setelah selesai, PIC dapat mengirim dokumen dan agenda tanpa akses Editor ke folder utama.
 
@@ -13,9 +13,9 @@ Panduan ini dilakukan satu kali oleh administrator. Setelah selesai, PIC dapat m
 
 ---
 
-## Langkah 1 — Import data v0.6.1
+## Langkah 1 — Import data v0.7.0
 
-Untuk instalasi baru, import `PEPK_Workspace_Data_v0.6.1.xlsx` ke Google Spreadsheet PEPK Workspace dengan pilihan **Ganti spreadsheet**.
+Untuk instalasi baru, import `PEPK_Workspace_Data_v0.7.0.xlsx` ke Google Spreadsheet PEPK Workspace dengan pilihan **Ganti spreadsheet**.
 
 Pastikan terdapat sheet:
 
@@ -119,7 +119,7 @@ Setelah setup, salin URL form dari sheet `Settings`:
 - `document_upload_form_url`
 - `agenda_submit_form_url`
 
-Kedua URL dapat dikirim atau disematkan pada grup WhatsApp. WhatsApp hanya menjadi pintu masuk menuju formulir; pesan biasa belum diproses otomatis pada v0.6.1.
+Kedua URL dapat dikirim atau disematkan pada grup WhatsApp. WhatsApp hanya menjadi pintu masuk menuju formulir; pesan biasa belum diproses otomatis pada v0.7.0.
 
 ## Catatan keamanan
 
@@ -130,6 +130,6 @@ Kedua URL dapat dikirim atau disematkan pada grup WhatsApp. WhatsApp hanya menja
 - File upload Google Forms memerlukan pengguna masuk dengan akun Google.
 
 
-## Catatan upgrade v0.6.0 ke v0.6.1
+## Catatan upgrade v0.6.0 ke v0.7.0
 
-Jangan mengganti Spreadsheet yang sudah berjalan. Ganti kode Apps Script dengan versi final v0.6.1, lalu jalankan `testWorkflowConfiguration`. Jalankan `setupPepkWorkflow` hanya bila perlu membangun ulang Form.
+Jangan mengganti Spreadsheet yang sudah berjalan. Ganti kode Apps Script dengan versi final v0.7.0, lalu jalankan `testWorkflowConfiguration`. Jalankan `setupPepkWorkflow` hanya bila perlu membangun ulang Form.
