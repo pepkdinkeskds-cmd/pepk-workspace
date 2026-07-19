@@ -1,6 +1,24 @@
 # Changelog
 
-## [0.6.0] - 2026-07-19
+## [0.6.1] - 2026-07-19
+
+### Added
+- `Upload_Routes` untuk daftar tujuan folder yang disinkronkan dari Google Drive.
+- Pilihan tujuan unggah berdasarkan ruang kerja dan `folder_id`.
+- Sinkronisasi struktur folder manual dan harian.
+- Fungsi pemeriksaan konfigurasi serta perbaikan ID agenda lama.
+
+### Changed
+- PIC tidak lagi mengetik nama subfolder secara bebas.
+- Form unggah menampilkan tujuan folder yang valid sesuai Ruang Kerja.
+- Salinan halaman Kontribusi disesuaikan dengan routing folder terkontrol.
+
+### Fixed
+- Format `published_id`, tanggal, dan waktu agenda dibuat konsisten.
+- Pembangunan ulang Google Form aman terhadap navigasi antarbagian.
+- File disetujui dipindahkan menggunakan ID folder, bukan pencocokan nama.
+
+## [0.6.1] - 2026-07-19
 
 ### Added
 - Pusat Kontribusi untuk unggah dokumen dan tambah agenda.
@@ -12,7 +30,7 @@
 ### Changed
 - Layout capaian realisasi tahunan dibuat lebih compact dan seimbang.
 - Navigasi ditambah menu Kontribusi.
-- Versi aplikasi diperbarui menjadi 0.6.0.
+- Versi aplikasi diperbarui menjadi 0.6.1.
 
 ### Security
 - PIC dapat mengirim dokumen tanpa memperoleh akses Editor ke folder utama.

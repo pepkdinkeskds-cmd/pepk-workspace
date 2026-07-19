@@ -38,7 +38,7 @@ function render() {
       iconName: "upload",
       eyebrow: "Dokumen",
       title: "Unggah Dokumen",
-      description: "Kirim file ke antrean pemeriksaan dengan memilih ruang kerja, kelompok dokumen, tahun, dan subfolder tujuan.",
+      description: "Kirim file ke antrean pemeriksaan dengan memilih ruang kerja dan tujuan folder yang telah disinkronkan dari Google Drive.",
       url: data.settings.workflowEnabled !== false ? data.settings.documentUploadFormUrl : "",
       buttonLabel: "Buka formulir unggah",
       unavailableText: "Formulir unggah belum dikonfigurasi"

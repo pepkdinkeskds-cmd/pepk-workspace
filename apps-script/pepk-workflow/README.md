@@ -1,18 +1,20 @@
-# PEPK Workflow Apps Script v0.6.0
+# PEPK Workflow Apps Script v0.6.1
 
-Project ini ditempelkan pada Google Spreadsheet **PEPK Workspace Data** melalui **Ekstensi → Apps Script**.
+Gunakan satu file saja: `Code.gs`.
 
-## Fungsi
+Versi ini sudah mencakup:
 
-- Menerima dokumen dari Google Form tanpa memberi PIC akses Editor ke Drive.
-- Menyimpan seluruh kiriman pada `Upload_Inbox`.
-- Memindahkan dokumen setelah administrator memilih status `Disetujui`.
-- Menerima agenda pada `Agenda_Inbox`.
-- Menerbitkan agenda ke sheet `Agenda` setelah disetujui.
+- Form unggah dokumen dan agenda.
+- Persetujuan melalui `Upload_Inbox` dan `Agenda_Inbox`.
+- Routing berdasarkan `folder_id`, bukan teks subfolder.
+- Sheet `Upload_Routes` yang disinkronkan dari Google Drive.
+- Sinkronisasi manual dan harian.
+- Perbaikan ID dan format tanggal agenda lama.
+- Pembangunan ulang Form yang aman terhadap navigasi antarbagian.
 
-Ikuti panduan lengkap pada `docs/WORKFLOW-SETUP.md` di paket website.
+Untuk instalasi pada project Spreadsheet-bound:
 
-
-## Cara termudah memasang
-
-Buka `PEPK_Workflow_Complete.gs.txt`, salin seluruh isinya, lalu tempel ke `Code.gs` pada project Apps Script yang terikat ke Spreadsheet.
+1. Hapus kode lama di `Code.gs`.
+2. Salin seluruh isi `Code.gs` pada folder ini.
+3. Jalankan `testWorkflowConfiguration` untuk verifikasi.
+4. Jalankan `setupPepkWorkflow` hanya jika memang perlu membangun ulang konfigurasi/Form.

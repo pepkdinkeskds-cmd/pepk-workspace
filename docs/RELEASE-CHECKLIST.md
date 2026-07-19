@@ -1,10 +1,12 @@
-# Release Checklist v0.6.0
+# Release Checklist v0.6.1
 
-- [ ] Seluruh file v0.6.0 terunggah ke branch `main`.
-- [ ] Footer menampilkan versi 0.6.0.
-- [ ] Spreadsheet baru dapat dibaca.
-- [ ] Status halaman berubah menjadi `Data tersinkron`.
-- [ ] Agenda aktif tampil pada homepage dan halaman Informasi.
-- [ ] Capaian Realisasi aktif tampil pada homepage dan halaman Informasi.
-- [ ] Pencarian, Pustaka, dan Ruang Kerja tetap berfungsi.
-- [ ] Tampilan desktop dan seluler diperiksa.
+- [ ] Apps Script final v0.6.1 sudah tersimpan pada `Code.gs`.
+- [ ] `testWorkflowConfiguration` menyatakan konfigurasi lengkap.
+- [ ] `Upload_Routes` berisi rute folder aktif.
+- [ ] Uji upload dokumen berakhir dengan status `Selesai`.
+- [ ] Uji agenda berakhir dengan status `Dipublikasikan`.
+- [ ] Seluruh file v0.6.1 terunggah ke branch `main`.
+- [ ] Footer menampilkan versi 0.6.1.
+- [ ] Menu Kontribusi membuka kedua Google Form.
+- [ ] Pencarian, Pustaka, Ruang Kerja, Agenda, dan Realisasi tetap berfungsi.
+- [ ] Tampilan desktop dan HP diperiksa.

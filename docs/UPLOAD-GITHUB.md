@@ -1,16 +1,15 @@
-# Upload PEPK Workspace v0.6.0 ke GitHub
+# Upload PEPK Workspace v0.6.1 ke GitHub
 
-1. Ekstrak `pepk-workspace-v0.6.0.zip`.
-2. Buka repository `pepk-workspace`.
-3. Pilih **Add file → Upload files**.
-4. Upload seluruh isi folder `pepk-workspace-v0.6.0` ke root repository.
-5. Timpa file versi sebelumnya.
-6. Commit dengan pesan: `fix(data): hubungkan spreadsheet baru pada v0.6.0`.
-7. Tunggu GitHub Pages selesai memperbarui situs.
-8. Buka situs menggunakan `Ctrl + F5`.
+1. Ekstrak `pepk-workspace-v0.6.1.zip`.
+2. Buka folder `pepk-workspace-v0.6.1`.
+3. Pilih seluruh isi di dalam folder tersebut.
+4. Upload ke root repository `pepk-workspace` dan timpa file lama.
+5. Commit: `fix(workflow): rilis PEPK Workspace v0.6.1`.
+6. Tunggu GitHub Pages selesai melakukan deployment.
+7. Buka situs dan tekan `Ctrl + F5`.
 
-## Pemeriksaan
+Verifikasi:
 
-- Footer menampilkan versi `0.6.0`.
-- Status berubah menjadi `Data tersinkron` setelah sinkronisasi berhasil.
-- Agenda dan Capaian Realisasi tampil ketika baris memiliki `is_active = TRUE`.
+- Footer menampilkan versi `0.6.1`.
+- Menu `Kontribusi` tersedia.
+- Tombol formulir membaca URL dari Google Sheets.

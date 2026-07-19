@@ -12,17 +12,23 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.6\.0/);
+  assert.match(html, /css\/main\.css\?v=0\.6\.1/);
   assert.match(html, /contribute\.html/);
 }
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
-assert.match(localData, /"appVersion": "0\.6\.0"/);
+assert.match(localData, /"appVersion": "0\.6\.1"/);
 assert.match(localData, /"workflowEnabled": true/);
 assert.ok(fs.existsSync(path.join(root, "manifest.webmanifest")));
 assert.ok(fs.existsSync(path.join(root, "apps-script/pepk-workflow/Code.gs")));
-assert.ok(fs.existsSync(path.join(root, "apps-script/pepk-workflow/Setup.gs")));
 assert.ok(fs.existsSync(path.join(root, "docs/WORKFLOW-SETUP.md")));
+assert.ok(fs.existsSync(path.join(root, "docs/WORKFLOW-ROUTING-v0.6.1.md")));
+
+const workflowScript = fs.readFileSync(path.join(root, "apps-script/pepk-workflow/Code.gs"), "utf8");
+assert.match(workflowScript, /VERSION: '0\.6\.1'/);
+assert.match(workflowScript, /function syncUploadRoutes/);
+assert.match(workflowScript, /function repairAgendaIds/);
+assert.match(workflowScript, /function testWorkflowConfiguration/);
 
 const appLogoDir = path.join(root, "assets/apps");
 const webpLogos = fs.readdirSync(appLogoDir).filter((name) => name.endsWith(".webp"));
