@@ -1,43 +1,39 @@
-# PEPK Workspace v0.4.1
+# PEPK Workspace v0.5.0
 
-Patch pemulihan koneksi data untuk PEPK Workspace.
+Versi penyempurnaan capaian realisasi dan identitas visual aplikasi.
 
-## Perubahan versi 0.4.1
+## Perubahan utama
 
-- Mengganti sumber data Google Sheets ke spreadsheet baru.
-- Mempertahankan seluruh fitur v0.4.0 tanpa perubahan desain atau struktur data.
-- Memperbarui parameter versi aset agar browser tidak memakai cache versi lama.
+- Realisasi keuangan dan fisik digabung menjadi satu indikator bulanan.
+- Deviasi dihitung otomatis dengan rumus `fisik - keuangan` dalam poin persentase.
+- Homepage menampilkan bulan terbaru.
+- Pusat Informasi menampilkan grafik Januari–Desember, pemilih tahun, dan tabel bulanan.
+- Bulan tanpa data ditampilkan sebagai `Belum tersedia`, bukan nol.
+- Ikon aplikasi diperbarui menjadi identitas visual yang lebih mudah dikenali dengan fallback monogram.
 
-## Spreadsheet aktif
-
-PEPK Workspace membaca spreadsheet dengan ID:
-
-```text
-1eEYRJmxYqqZuXABbQL2cCcKKeOt1ENk9mt_S7LgKfno
-```
-
-Spreadsheet harus memiliki sheet berikut:
+## Struktur sheet Realization
 
 ```text
-Resources
-Workspaces
-Quick_Access
-Information
-Synonyms
-Settings
-Agenda
-Realization
+id
+year
+month
+financial_value
+physical_value
+updated_at
+description
+sort_order
+is_active
 ```
 
-Pastikan akses spreadsheet menggunakan **Siapa saja yang memiliki link → Pelihat**.
+Satu baris mewakili satu bulan. Nilai disarankan berupa capaian kumulatif 0–100.
 
 ## Upload ke GitHub
 
-1. Ekstrak ZIP.
-2. Unggah seluruh isi folder ke root repository `pepk-workspace`.
-3. Timpa file versi sebelumnya.
-4. Commit dengan pesan `fix(data): hubungkan spreadsheet baru pada v0.4.1`.
-5. Tunggu GitHub Pages memperbarui situs.
-6. Buka ulang situs menggunakan `Ctrl + F5`.
+1. Unggah seluruh isi folder ke root repository.
+2. Timpa file versi sebelumnya.
+3. Commit: `feat(release): perbarui PEPK Workspace ke v0.5.0`.
+4. Tunggu GitHub Pages lalu tekan `Ctrl + F5`.
 
-Tidak perlu mengimpor ulang spreadsheet karena struktur datanya tidak berubah dari v0.4.0.
+## Google Sheets
+
+Impor `PEPK_Workspace_Data_v0.5.0.xlsx` menggunakan **Ganti spreadsheet** agar ID spreadsheet tetap sama.

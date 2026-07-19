@@ -1,6 +1,20 @@
 # Changelog
 
-## [0.4.1] - 2026-07-19
+## [0.5.0] - 2026-07-19
+
+### Added
+- Kartu gabungan realisasi keuangan, capaian fisik, dan deviasi bulan terbaru.
+- Grafik garis perkembangan Januari–Desember tanpa library eksternal.
+- Tabel rincian bulanan dan pemilih tahun pada Pusat Informasi.
+- Status deviasi relatif seimbang, perlu perhatian, dan deviasi besar.
+- Identitas visual aplikasi yang lebih mudah dikenali dengan fallback otomatis.
+
+### Changed
+- Sheet `Realization` menggunakan satu baris per bulan dengan nilai keuangan dan fisik.
+- Deviasi dihitung otomatis sebagai capaian fisik dikurangi realisasi keuangan.
+- Homepage hanya menampilkan ringkasan bulan terbaru agar tetap ringkas.
+
+## [0.5.0] - 2026-07-19
 
 ### Fixed
 - Mengganti ID sumber Google Sheets setelah spreadsheet lama terhapus.

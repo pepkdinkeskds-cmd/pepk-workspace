@@ -1,7 +1,7 @@
 import { initApp, setDataStatus, applyMetadata, scheduleBackgroundTask } from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
-import { agendaCard, informationCard, realizationCard, emptyState } from "../ui.js";
-import { upcomingAgenda } from "../information-utils.js";
+import { agendaCard, informationCard, realizationCard, realizationChart, realizationTable, emptyState } from "../ui.js";
+import { latestRealization, realizationForYear, realizationYears, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
 
 initApp("information");
@@ -12,10 +12,12 @@ applyMetadata(data.settings);
 const dashboardNode = document.querySelector("[data-information-dashboard]");
 const agendaNode = document.querySelector("[data-agenda-list]");
 const realizationNode = document.querySelector("[data-realization-list]");
+const realizationYearSelect = document.querySelector("[data-realization-year]");
 const listNode = document.querySelector("[data-information-list]");
 const detailNode = document.querySelector("[data-information-detail]");
 const params = new URLSearchParams(window.location.search);
 const selectedId = params.get("id");
+let selectedRealizationYear = Number(params.get("year")) || null;
 
 function renderOverview() {
   dashboardNode.hidden = false;
@@ -34,11 +36,32 @@ function renderOverview() {
     ));
   }
 
-  data.realization.forEach((item) => realizationNode.append(realizationCard(item)));
-  if (!data.realization.length) {
+  const years = realizationYears(data.realization);
+  if (!selectedRealizationYear || !years.includes(selectedRealizationYear)) selectedRealizationYear = years[0] || null;
+  realizationYearSelect.replaceChildren();
+  years.forEach((year) => realizationYearSelect.append(new Option(String(year), String(year), year === selectedRealizationYear, year === selectedRealizationYear)));
+  realizationYearSelect.disabled = !years.length;
+
+  const yearItems = selectedRealizationYear ? realizationForYear(data.realization, selectedRealizationYear) : [];
+  const latest = latestRealization(yearItems);
+  if (latest) {
+    realizationNode.append(
+      realizationCard(latest, {
+        balancedThreshold: data.settings.deviationBalancedThreshold || 2,
+        attentionThreshold: data.settings.deviationAttentionThreshold || 5
+      }),
+      realizationChart(yearItems, selectedRealizationYear),
+      realizationTable(
+        yearItems,
+        selectedRealizationYear,
+        data.settings.deviationBalancedThreshold || 2,
+        data.settings.deviationAttentionThreshold || 5
+      )
+    );
+  } else {
     realizationNode.append(emptyState(
       "Data capaian belum tersedia",
-      "Tambahkan indikator capaian pada sheet Realization untuk menampilkan angka, target, dan progres periode berjalan.",
+      "Tambahkan satu baris untuk setiap bulan pada sheet Realization. Deviasi akan dihitung otomatis dari capaian fisik dikurangi realisasi keuangan.",
       "trend"
     ));
   }
@@ -75,6 +98,16 @@ function render() {
   if (selectedId) renderDetail();
   else renderOverview();
 }
+
+
+realizationYearSelect?.addEventListener("change", () => {
+  selectedRealizationYear = Number(realizationYearSelect.value);
+  const url = new URL(window.location.href);
+  url.searchParams.set("year", String(selectedRealizationYear));
+  history.replaceState({}, "", url);
+  renderOverview();
+  document.querySelector("#realisasi")?.scrollIntoView({ behavior: "smooth", block: "start" });
+});
 
 render();
 setDataStatus("Siap digunakan", "ready");

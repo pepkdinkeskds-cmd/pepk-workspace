@@ -52,17 +52,58 @@ export function formatTimeRange(startTime, endTime) {
   return startTime || endTime;
 }
 
-export function realizationProgress(item) {
-  const value = Number(item?.value || 0);
-  const target = Number(item?.target || 0);
-  const maximum = item?.unit === "%" ? 100 : (target > 0 ? target : 100);
-  const percent = maximum > 0 ? Math.max(0, Math.min(100, (value / maximum) * 100)) : 0;
-  const attainment = target > 0 ? (value / target) * 100 : 0;
-  return { percent, attainment };
+const MONTH_NAMES = [
+  "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+  "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+];
+
+export function monthName(month, short = false) {
+  const name = MONTH_NAMES[Number(month) - 1] || "Bulan";
+  return short ? name.slice(0, 3) : name;
 }
 
-export function formatMetricValue(value, unit = "") {
-  const number = Number(value || 0);
-  const formatted = new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2 }).format(number);
-  return unit === "%" ? `${formatted}%` : `${formatted}${unit ? ` ${unit}` : ""}`;
+export function formatPercentage(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return "—";
+  return `${new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2 }).format(number)}%`;
+}
+
+export function realizationForYear(items = [], year) {
+  return items
+    .filter((item) => item?.isActive !== false && Number(item.year) === Number(year))
+    .slice()
+    .sort((a, b) => Number(a.month) - Number(b.month));
+}
+
+export function realizationYears(items = []) {
+  return [...new Set(items.filter((item) => item?.isActive !== false).map((item) => Number(item.year)).filter(Number.isFinite))]
+    .sort((a, b) => b - a);
+}
+
+export function latestRealization(items = [], year = null) {
+  const candidates = items.filter((item) => item?.isActive !== false && (year === null || Number(item.year) === Number(year)));
+  return candidates.slice().sort((a, b) => Number(b.year) - Number(a.year) || Number(b.month) - Number(a.month))[0] || null;
+}
+
+export function realizationDeviation(item, balancedThreshold = 2, attentionThreshold = 5) {
+  const financial = Number(item?.financialValue);
+  const physical = Number(item?.physicalValue);
+  if (!Number.isFinite(financial) || !Number.isFinite(physical)) {
+    return { value: null, absolute: null, severity: "unknown", direction: "unknown", label: "Deviasi belum tersedia" };
+  }
+
+  const value = physical - financial;
+  const absolute = Math.abs(value);
+  const severity = absolute <= balancedThreshold ? "balanced" : absolute <= attentionThreshold ? "attention" : "large";
+  const direction = value > 0 ? "physical" : value < 0 ? "financial" : "balanced";
+  const number = new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2 }).format(absolute);
+  let label = "Capaian fisik dan keuangan seimbang";
+  if (direction === "physical") label = `Fisik lebih tinggi ${number} poin`;
+  if (direction === "financial") label = `Keuangan lebih tinggi ${number} poin`;
+  return { value, absolute, severity, direction, label };
+}
+
+export function realizationPeriod(item) {
+  if (!item) return "Periode belum tersedia";
+  return `${monthName(item.month)} ${item.year}`;
 }

@@ -1,6 +1,14 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { agendaStatus, upcomingAgenda, realizationProgress, formatMetricValue } from "../js/information-utils.js";
+import {
+  agendaStatus,
+  upcomingAgenda,
+  formatPercentage,
+  latestRealization,
+  realizationDeviation,
+  realizationForYear,
+  realizationYears
+} from "../js/information-utils.js";
 
 const now = new Date("2026-07-19T10:00:00");
 
@@ -19,9 +27,21 @@ test("upcoming agenda excludes completed items and sorts chronologically", () =>
   assert.deepEqual(result.map((item) => item.id), ["a", "b"]);
 });
 
-test("realization progress uses a 100 point scale for percentages", () => {
-  const result = realizationProgress({ value: 72.45, target: 75, unit: "%" });
-  assert.equal(Number(result.percent.toFixed(2)), 72.45);
-  assert.equal(Number(result.attainment.toFixed(1)), 96.6);
-  assert.equal(formatMetricValue(72.45, "%"), "72,45%");
+test("deviation is physical minus financial", () => {
+  const result = realizationDeviation({ financialValue: 72.45, physicalValue: 68.20 });
+  assert.equal(Number(result.value.toFixed(2)), -4.25);
+  assert.equal(result.direction, "financial");
+  assert.equal(result.severity, "attention");
+  assert.equal(formatPercentage(72.45), "72,45%");
+});
+
+test("realization utilities select years, series, and latest month", () => {
+  const items = [
+    { id: "a", year: 2025, month: 12, isActive: true },
+    { id: "b", year: 2026, month: 6, isActive: true },
+    { id: "c", year: 2026, month: 7, isActive: true }
+  ];
+  assert.deepEqual(realizationYears(items), [2026, 2025]);
+  assert.deepEqual(realizationForYear(items, 2026).map((item) => item.id), ["b", "c"]);
+  assert.equal(latestRealization(items).id, "c");
 });

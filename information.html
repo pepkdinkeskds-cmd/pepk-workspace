@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.4.1">
-  <script type="module" src="js/pages/information.js?v=0.4.1"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.5.0">
+  <script type="module" src="js/pages/information.js?v=0.5.0"></script>
 </head>
 <body data-page="information">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -75,11 +75,15 @@
           <div class="section-heading section-heading--compact">
             <div>
               <span class="eyebrow eyebrow--dark">Capaian realisasi</span>
-              <h2 id="realization-title">Ringkasan capaian Dinas Kesehatan</h2>
-              <p>Indikator utama periode berjalan ditampilkan dalam angka dan progress bar.</p>
+              <h2 id="realization-title">Perkembangan realisasi tahunan</h2>
+              <p>Bandingkan capaian keuangan dan fisik setiap bulan serta pantau deviasinya.</p>
             </div>
           </div>
-          <div class="realization-grid realization-grid--information" data-realization-list></div>
+          <div class="realization-toolbar">
+            <label for="realization-year">Tahun</label>
+            <select id="realization-year" data-realization-year aria-label="Pilih tahun capaian realisasi"></select>
+          </div>
+          <div class="realization-dashboard" data-realization-list></div>
         </section>
 
         <section class="information-hub-block" id="panduan" aria-labelledby="guide-title">
@@ -114,7 +118,7 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.4.1</span></p>
+      <p>Versi <span data-version>0.5.0</span></p>
       <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
       <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
     </div>

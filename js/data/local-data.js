@@ -3887,7 +3887,7 @@ export const LOCAL_DATA = {
   ],
   "settings": {
     "appName": "PEPK Workspace",
-    "appVersion": "0.4.1",
+    "appVersion": "0.5.0",
     "contentUpdatedAt": "19 Juli 2026",
     "spreadsheetId": "1eEYRJmxYqqZuXABbQL2cCcKKeOt1ENk9mt_S7LgKfno",
     "searchMinimum": 2,
@@ -3895,8 +3895,88 @@ export const LOCAL_DATA = {
     "quickFolderLimit": 4,
     "quickAppLimit": 4,
     "agendaHomeLimit": 3,
-    "realizationHomeLimit": 4
+    "realizationHomeLimit": 1,
+    "deviationBalancedThreshold": 2,
+    "deviationAttentionThreshold": 5
   },
   "agenda": [],
-  "realization": []
+  "realization": [
+    {
+      "id": "realisasi-2026-01",
+      "year": 2026,
+      "month": 1,
+      "financialValue": 7.8,
+      "physicalValue": 7.2,
+      "updatedAt": "2026-01-28",
+      "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
+      "sortOrder": 1,
+      "isActive": true
+    },
+    {
+      "id": "realisasi-2026-02",
+      "year": 2026,
+      "month": 2,
+      "financialValue": 15.4,
+      "physicalValue": 14.9,
+      "updatedAt": "2026-02-28",
+      "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
+      "sortOrder": 2,
+      "isActive": true
+    },
+    {
+      "id": "realisasi-2026-03",
+      "year": 2026,
+      "month": 3,
+      "financialValue": 24.6,
+      "physicalValue": 23.2,
+      "updatedAt": "2026-03-28",
+      "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
+      "sortOrder": 3,
+      "isActive": true
+    },
+    {
+      "id": "realisasi-2026-04",
+      "year": 2026,
+      "month": 4,
+      "financialValue": 35.1,
+      "physicalValue": 33.8,
+      "updatedAt": "2026-04-28",
+      "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
+      "sortOrder": 4,
+      "isActive": true
+    },
+    {
+      "id": "realisasi-2026-05",
+      "year": 2026,
+      "month": 5,
+      "financialValue": 47.8,
+      "physicalValue": 45.6,
+      "updatedAt": "2026-05-28",
+      "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
+      "sortOrder": 5,
+      "isActive": true
+    },
+    {
+      "id": "realisasi-2026-06",
+      "year": 2026,
+      "month": 6,
+      "financialValue": 60.9,
+      "physicalValue": 58.7,
+      "updatedAt": "2026-06-28",
+      "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
+      "sortOrder": 6,
+      "isActive": true
+    },
+    {
+      "id": "realisasi-2026-07",
+      "year": 2026,
+      "month": 7,
+      "financialValue": 72.45,
+      "physicalValue": 68.2,
+      "updatedAt": "2026-07-19",
+      "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
+      "sortOrder": 7,
+      "isActive": true
+    }
+  ]
 };

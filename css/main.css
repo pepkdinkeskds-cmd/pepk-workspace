@@ -1387,3 +1387,208 @@
     .information-dashboard { gap: 3rem; }
   }
 }
+
+/* v0.5.0 — combined realization and annual trend */
+@layer layout {
+  .realization-latest { display: grid; }
+  .realization-dashboard { display: grid; gap: 1.25rem; }
+}
+
+@layer components {
+  .app-logo {
+    padding: .18rem;
+    border: 1px solid var(--ink-100);
+    object-fit: contain;
+    background: var(--white);
+    box-shadow: 0 5px 12px rgba(13, 70, 157, .10);
+  }
+
+  .realization-latest > .realization-card { width: 100%; }
+  .realization-card--combined {
+    min-height: 0;
+    padding: clamp(1.15rem, 2.6vw, 1.7rem);
+  }
+  .realization-card--combined.realization-card--compact {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(15rem, .7fr);
+    column-gap: clamp(1rem, 3vw, 2rem);
+    align-items: start;
+  }
+  .realization-card--combined.realization-card--compact .realization-card__top,
+  .realization-card--combined.realization-card--compact .realization-card__title,
+  .realization-card--combined.realization-card--compact .realization-card__metrics {
+    grid-column: 1;
+  }
+  .realization-card--combined.realization-card--compact .realization-deviation {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    align-self: stretch;
+    justify-content: center;
+  }
+  .realization-card--combined.realization-card--compact .realization-card__updated {
+    grid-column: 1 / -1;
+  }
+  .realization-card__metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .9rem;
+    margin-block-start: 1rem;
+  }
+  .realization-metric {
+    padding: 1rem;
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-md);
+    background: var(--ink-050);
+  }
+  .realization-metric__heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: .75rem;
+    color: var(--ink-700);
+    font-size: .78rem;
+    font-weight: 750;
+  }
+  .realization-metric__heading strong {
+    color: var(--blue-900);
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    line-height: 1;
+    letter-spacing: -.035em;
+  }
+  .realization-metric--physical .realization-metric__heading strong { color: var(--teal-700); }
+  .realization-metric__progress {
+    width: 100%;
+    height: .62rem;
+    margin-block-start: .85rem;
+    overflow: hidden;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink-100);
+    appearance: none;
+  }
+  .realization-metric__progress::-webkit-progress-bar { border-radius: 999px; background: var(--ink-100); }
+  .realization-metric__progress--financial::-webkit-progress-value { border-radius: 999px; background: linear-gradient(90deg, var(--blue-700), var(--blue-500)); }
+  .realization-metric__progress--physical::-webkit-progress-value { border-radius: 999px; background: linear-gradient(90deg, var(--teal-700), var(--teal-500)); }
+  .realization-metric__progress--financial::-moz-progress-bar { border-radius: 999px; background: linear-gradient(90deg, var(--blue-700), var(--blue-500)); }
+  .realization-metric__progress--physical::-moz-progress-bar { border-radius: 999px; background: linear-gradient(90deg, var(--teal-700), var(--teal-500)); }
+  .realization-deviation {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    margin-block-start: 1rem;
+    padding: 1.05rem;
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-md);
+    background: var(--blue-050);
+  }
+  .realization-deviation--balanced { border-color: #a7e4d4; background: #ecfbf6; }
+  .realization-deviation--attention { border-color: #f1d39a; background: #fff8e8; }
+  .realization-deviation--large { border-color: #f1b6b1; background: #fff1f0; }
+  .realization-deviation__label {
+    color: var(--ink-600);
+    font-size: .68rem;
+    font-weight: 850;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .realization-deviation__value {
+    color: var(--blue-950);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.1;
+    letter-spacing: -.035em;
+  }
+  .realization-deviation__description { color: var(--ink-700); font-size: .78rem; }
+
+  .realization-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .65rem;
+    margin-block: -1rem 1rem;
+  }
+  .realization-toolbar label { color: var(--ink-700); font-size: .8rem; font-weight: 800; }
+  .realization-toolbar select {
+    min-width: 7rem;
+    min-height: 2.75rem;
+    padding-inline: .8rem 2.3rem;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--radius-sm);
+    background-color: var(--white);
+  }
+  .realization-dashboard > .realization-card {
+    width: min(100%, 42rem);
+  }
+  .realization-chart {
+    overflow: hidden;
+    padding: 1rem;
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+  .realization-chart__legend {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1.2rem;
+    margin-block-end: .5rem;
+    color: var(--ink-700);
+    font-size: .78rem;
+    font-weight: 750;
+  }
+  .realization-chart__legend-item { display: inline-flex; align-items: center; gap: .4rem; }
+  .realization-chart__legend-item::before { width: .75rem; height: .22rem; border-radius: 999px; content: ""; }
+  .realization-chart__legend-item--financial::before { background: var(--blue-600); }
+  .realization-chart__legend-item--physical::before { background: var(--teal-600); }
+  .realization-chart__svg { width: 100%; height: auto; min-width: 42rem; }
+  .realization-chart__grid { stroke: var(--ink-100); stroke-width: 1; }
+  .realization-chart__axis-label,
+  .realization-chart__month { fill: var(--ink-500); font-family: inherit; font-size: 11px; }
+  .realization-chart__line { stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .realization-chart__line--financial { stroke: var(--blue-600); }
+  .realization-chart__line--physical { stroke: var(--teal-600); }
+  .realization-chart__point { stroke: var(--white); stroke-width: 3; }
+  .realization-chart__point--financial { fill: var(--blue-600); }
+  .realization-chart__point--physical { fill: var(--teal-600); }
+
+  .realization-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+  .realization-table { width: 100%; min-width: 46rem; border-collapse: collapse; font-size: .82rem; }
+  .realization-table th,
+  .realization-table td { padding: .85rem 1rem; border-block-end: 1px solid var(--ink-100); text-align: start; }
+  .realization-table thead th { color: var(--ink-700); background: var(--blue-050); font-size: .72rem; letter-spacing: .035em; text-transform: uppercase; }
+  .realization-table tbody th { color: var(--ink-950); }
+  .realization-table tbody tr:last-child th,
+  .realization-table tbody tr:last-child td { border-block-end: 0; }
+  .realization-table__empty-row { color: var(--ink-500); background: var(--ink-050); }
+  .deviation-badge {
+    display: inline-flex;
+    padding: .28rem .55rem;
+    border-radius: 999px;
+    font-size: .7rem;
+    font-weight: 750;
+  }
+  .deviation-badge--balanced { color: var(--success); background: #e7f8f1; }
+  .deviation-badge--attention { color: #8a4b00; background: #fff1d5; }
+  .deviation-badge--large { color: var(--danger); background: #ffe9e7; }
+}
+
+@layer utilities {
+  @media (max-width: 52rem) {
+    .realization-card--combined.realization-card--compact { display: flex; }
+    .realization-card__metrics { grid-template-columns: 1fr; }
+    .realization-toolbar { justify-content: flex-start; margin-block-start: 0; }
+    .realization-chart { overflow-x: auto; }
+  }
+
+  @media (max-width: 40rem) {
+    .realization-chart__legend { justify-content: flex-start; }
+    .realization-card--combined { padding: 1rem; }
+    .realization-metric { padding: .85rem; }
+  }
+}

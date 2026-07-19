@@ -16,6 +16,7 @@ function toBoolean(value) {
 
 function toNumber(value, fallback = 0) {
   const text = String(value ?? "").trim();
+  if (!text) return fallback;
   let normalized = text;
   if (text.includes(",") && text.includes(".")) normalized = text.replace(/\./g, "").replace(",", ".");
   else if (text.includes(",")) normalized = text.replace(",", ".");
@@ -179,22 +180,67 @@ function normalizeAgenda(rows) {
     .sort((a, b) => `${a.date}T${a.startTime || "00:00"}`.localeCompare(`${b.date}T${b.startTime || "00:00"}`) || a.sortOrder - b.sortOrder);
 }
 
-function normalizeRealization(rows) {
+const MONTH_INDEX = new Map([
+  ["januari", 1], ["jan", 1], ["februari", 2], ["feb", 2], ["maret", 3], ["mar", 3],
+  ["april", 4], ["apr", 4], ["mei", 5], ["juni", 6], ["jun", 6], ["juli", 7], ["jul", 7],
+  ["agustus", 8], ["agu", 8], ["september", 9], ["sep", 9], ["oktober", 10], ["okt", 10],
+  ["november", 11], ["nov", 11], ["desember", 12], ["des", 12]
+]);
+
+function parsePeriod(value = "") {
+  const text = String(value).trim().toLowerCase();
+  const yearMatch = text.match(/\b(20\d{2})\b/);
+  const month = [...MONTH_INDEX.entries()].find(([name]) => new RegExp(`\\b${name}\\b`).test(text))?.[1] || 0;
+  return { year: yearMatch ? Number(yearMatch[1]) : 0, month };
+}
+
+function normalizeMonthlyRealization(rows) {
   return rows
-    .filter((row) => row.id && row.title && toBoolean(row.is_active))
+    .filter((row) => row.id && toBoolean(row.is_active))
     .map((row) => ({
       id: row.id,
-      title: row.title,
-      value: toNumber(row.value),
-      target: toNumber(row.target, 100),
-      unit: row.unit || "%",
-      period: row.period || "",
+      year: toNumber(row.year),
+      month: toNumber(row.month),
+      financialValue: toNumber(row.financial_value, NaN),
+      physicalValue: toNumber(row.physical_value, NaN),
       updatedAt: normalizeDate(row.updated_at),
       description: row.description || "",
-      sortOrder: Number(row.sort_order || 999),
+      sortOrder: Number(row.sort_order || row.month || 999),
       isActive: true
     }))
-    .sort((a, b) => a.sortOrder - b.sortOrder);
+    .filter((item) => item.year >= 2000 && item.year <= 2100 && item.month >= 1 && item.month <= 12 && Number.isFinite(item.financialValue) && Number.isFinite(item.physicalValue));
+}
+
+function normalizeLegacyRealization(rows) {
+  const grouped = new Map();
+  rows.filter((row) => row.id && row.title && toBoolean(row.is_active)).forEach((row) => {
+    const period = parsePeriod(row.period);
+    if (!period.year || !period.month) return;
+    const key = `${period.year}-${period.month}`;
+    if (!grouped.has(key)) grouped.set(key, {
+      id: `realisasi-${period.year}-${String(period.month).padStart(2, "0")}`,
+      year: period.year,
+      month: period.month,
+      financialValue: NaN,
+      physicalValue: NaN,
+      updatedAt: normalizeDate(row.updated_at),
+      description: row.description || "",
+      sortOrder: period.month,
+      isActive: true
+    });
+    const item = grouped.get(key);
+    const title = String(row.title).toLowerCase();
+    if (/fisik/.test(title)) item.physicalValue = toNumber(row.value, NaN);
+    if (/anggaran|keuangan/.test(title)) item.financialValue = toNumber(row.value, NaN);
+    if (!item.updatedAt) item.updatedAt = normalizeDate(row.updated_at);
+  });
+  return [...grouped.values()].filter((item) => Number.isFinite(item.financialValue) && Number.isFinite(item.physicalValue));
+}
+
+function normalizeRealization(rows) {
+  const hasMonthlySchema = rows.some((row) => row.year || row.month || row.financial_value || row.physical_value);
+  const normalized = hasMonthlySchema ? normalizeMonthlyRealization(rows) : normalizeLegacyRealization(rows);
+  return normalized.sort((a, b) => a.year - b.year || a.month - b.month || a.sortOrder - b.sortOrder);
 }
 
 function normalizeSynonyms(rows) {
@@ -214,9 +260,11 @@ function normalizeSettings(rows) {
     quick_folder_limit: "quickFolderLimit",
     quick_app_limit: "quickAppLimit",
     agenda_home_limit: "agendaHomeLimit",
-    realization_home_limit: "realizationHomeLimit"
+    realization_home_limit: "realizationHomeLimit",
+    deviation_balanced_threshold: "deviationBalancedThreshold",
+    deviation_attention_threshold: "deviationAttentionThreshold"
   };
-  const numericKeys = new Set(["searchMinimum", "homeResultLimit", "quickFolderLimit", "quickAppLimit", "agendaHomeLimit", "realizationHomeLimit"]);
+  const numericKeys = new Set(["searchMinimum", "homeResultLimit", "quickFolderLimit", "quickAppLimit", "agendaHomeLimit", "realizationHomeLimit", "deviationBalancedThreshold", "deviationAttentionThreshold"]);
   const settings = {};
   rows.filter((row) => row.key).forEach((row) => {
     const key = keyMap[row.key] || row.key;
@@ -280,7 +328,8 @@ export function validateData(data) {
   });
 
   data.realization.forEach((item) => {
-    if (!Number.isFinite(item.value)) warnings.push(`Nilai realisasi tidak valid: ${item.id}`);
+    if (!Number.isFinite(item.financialValue) || !Number.isFinite(item.physicalValue)) warnings.push(`Nilai realisasi tidak valid: ${item.id}`);
+    if (item.financialValue < 0 || item.financialValue > 100 || item.physicalValue < 0 || item.physicalValue > 100) warnings.push(`Nilai realisasi di luar 0–100: ${item.id}`);
   });
 
   return warnings;

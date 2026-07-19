@@ -37,5 +37,6 @@ test("information hub data collections are available", () => {
   assert.ok(Array.isArray(data.agenda));
   assert.ok(Array.isArray(data.realization));
   assert.equal(data.settings.agendaHomeLimit, 3);
-  assert.equal(data.settings.realizationHomeLimit, 4);
+  assert.equal(data.settings.realizationHomeLimit, 1);
+  assert.ok(data.realization.every((item) => Number.isFinite(item.financialValue) && Number.isFinite(item.physicalValue)));
 });

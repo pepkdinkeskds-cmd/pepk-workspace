@@ -16,22 +16,28 @@ Kolom utama:
 - `url`: opsional, dapat berupa tautan undangan atau bahan rapat.
 - `is_active`: `TRUE` agar tampil.
 
-Agenda yang telah selesai otomatis tidak muncul pada homepage. Baris tetap dapat dinonaktifkan melalui `is_active`.
+Agenda yang telah selesai otomatis tidak muncul pada homepage.
 
 ## Realization
 
-Isi satu baris untuk setiap indikator utama.
+Isi satu baris untuk setiap bulan. Nilai keuangan dan fisik disarankan berupa capaian kumulatif tahun berjalan.
 
 Kolom utama:
 
-- `id`: kode unik.
-- `title`: nama indikator.
-- `value`: capaian saat ini.
-- `target`: target periode.
-- `unit`: `%`, Dokumen, Kegiatan, atau Program.
-- `period`: contoh `Juli 2026` atau `Triwulan II 2026`.
+- `id`: kode unik, contoh `realisasi-2026-07`.
+- `year`: tahun data, contoh `2026`.
+- `month`: nomor bulan `1` sampai `12`.
+- `financial_value`: realisasi keuangan dalam persen.
+- `physical_value`: capaian fisik dalam persen.
+- `deviation_preview`: dihitung otomatis oleh Excel sebagai fisik dikurangi keuangan; tidak perlu diedit.
 - `updated_at`: format `YYYY-MM-DD`.
-- `description`: penjelasan singkat.
+- `description`: catatan singkat.
 - `is_active`: `TRUE` agar tampil.
 
-Homepage disarankan menampilkan maksimal empat indikator agar tetap ringkas.
+PEPK Workspace menghitung deviasi secara mandiri menggunakan rumus:
+
+```text
+deviasi = capaian fisik - realisasi keuangan
+```
+
+Bulan yang belum memiliki data sebaiknya dinonaktifkan, bukan diisi nol.
