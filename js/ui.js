@@ -145,7 +145,7 @@ function metricProgress(label, value, kind) {
 export function realizationCard(item, { compact = false, balancedThreshold = 2, attentionThreshold = 5 } = {}) {
   const deviation = realizationDeviation(item, balancedThreshold, attentionThreshold);
   const article = createElement("article", { className: `realization-card realization-card--combined${compact ? " realization-card--compact" : ""}` });
-  article.append(
+  const children = [
     createElement("span", { className: "realization-card__top" }, [
       createElement("span", { className: "realization-card__icon", html: icon("trend") }),
       createElement("span", { className: "realization-card__period", text: realizationPeriod(item) })
@@ -160,9 +160,14 @@ export function realizationCard(item, { compact = false, balancedThreshold = 2, 
       createElement("strong", { className: "realization-deviation__value", text: deviation.value === null ? "—" : `${new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2, signDisplay: "always" }).format(deviation.value)} poin` }),
       createElement("span", { className: "realization-deviation__description", text: deviation.label })
     ]),
-    !compact && item.description ? createElement("p", { className: "realization-card__description", text: item.description }) : null,
-    item.updatedAt ? createElement("span", { className: "realization-card__updated", text: `Diperbarui ${formatAgendaDate(item.updatedAt)}` }) : null
-  );
+    !compact && item.description && String(item.description).trim().toLowerCase() !== "null"
+      ? createElement("p", { className: "realization-card__description", text: item.description })
+      : null,
+    item.updatedAt
+      ? createElement("span", { className: "realization-card__updated", text: `Diperbarui ${formatAgendaDate(item.updatedAt)}` })
+      : null
+  ].filter(Boolean);
+  article.append(...children);
   return article;
 }
 

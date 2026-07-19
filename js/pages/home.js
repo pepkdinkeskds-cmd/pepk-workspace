@@ -11,7 +11,7 @@ import {
 } from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
 import { searchResources } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js";
+import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js?v=0.6.1-home-review-3";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
 

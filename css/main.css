@@ -1997,3 +1997,65 @@
     }
   }
 }
+
+
+/* Homepage Review 03 — white realization section with soft teal data surface. */
+@layer pages {
+  body[data-page="home"] .section--realization {
+    color: var(--ink-800);
+    border-block-start: 1px solid var(--ink-100);
+    border-block-end: 0;
+    background: var(--white) !important;
+  }
+
+  body[data-page="home"] .section--realization h2 { color: var(--ink-950); }
+  body[data-page="home"] .section--realization .section-heading p { color: var(--ink-600); }
+  body[data-page="home"] .section--realization .eyebrow { color: var(--blue-700); }
+  body[data-page="home"] .section--realization .text-link--standalone,
+  body[data-page="home"] .section--realization .text-link--light { color: var(--blue-700); }
+  body[data-page="home"] .section--realization .text-link--standalone:hover,
+  body[data-page="home"] .section--realization .text-link--light:hover { color: var(--blue-900); }
+
+  body[data-page="home"] .realization-latest .realization-card--combined {
+    border-color: #d4eee8;
+    background: #f0faf8;
+    box-shadow: 0 14px 34px rgba(10, 82, 107, .09);
+  }
+
+  body[data-page="home"] .realization-latest .realization-metric {
+    border-color: #d3ebe6;
+    background: #e7f7f3;
+  }
+
+  body[data-page="home"] .realization-latest .realization-metric__progress,
+  body[data-page="home"] .realization-latest .realization-metric__progress::-webkit-progress-bar {
+    background: rgba(74, 121, 136, .14);
+  }
+
+  body[data-page="home"] .realization-latest .realization-deviation {
+    margin-block-start: 0;
+  }
+
+  body[data-page="home"] .realization-latest .realization-deviation--balanced {
+    border-color: #a7e4d4;
+    background: #e7f8f3;
+  }
+
+  body[data-page="home"] .realization-latest .realization-deviation--attention {
+    border-color: #efcf91;
+    background: #fff7e5;
+  }
+
+  body[data-page="home"] .realization-latest .realization-deviation--large {
+    border-color: #efb3ad;
+    background: #fff0ef;
+  }
+
+  body[data-page="home"] .realization-latest .realization-card__updated {
+    color: var(--ink-500);
+  }
+
+  body[data-page="home"] .section--realization + .site-footer {
+    border-block-start: 1px solid rgba(255, 255, 255, .08);
+  }
+}
