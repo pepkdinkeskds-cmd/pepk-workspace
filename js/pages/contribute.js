@@ -1,5 +1,5 @@
 import { initApp, applyMetadata, setDataStatus, scheduleBackgroundTask, createElement, externalLink } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.4-home-spacing";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.5-home-spacing";
 import { icon } from "../icons.js";
 
 initApp("contribute");

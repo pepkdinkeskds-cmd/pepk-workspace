@@ -2358,41 +2358,41 @@
 }
 
 
-/* v0.7.4 — Moderate Homepage section spacing. */
+/* v0.7.5 — Refined Homepage section spacing. */
 @layer pages {
   body[data-page="home"] .section--home-tools {
-    padding-block: clamp(2.15rem, 4vw, 3.35rem);
+    padding-block: clamp(1.8rem, 3.4vw, 2.9rem);
   }
 
   body[data-page="home"] .section--workspaces,
   body[data-page="home"] .section--agenda,
   body[data-page="home"] .section--realization {
-    padding-block: clamp(2.9rem, 5vw, 4.9rem);
+    padding-block: clamp(2.45rem, 4.3vw, 4.1rem);
   }
 
   body[data-page="home"] .section--workspaces .section-heading,
   body[data-page="home"] .section--agenda .section-heading,
   body[data-page="home"] .section--realization .section-heading {
-    margin-block-end: clamp(1.4rem, 2.4vw, 1.7rem);
+    margin-block-end: clamp(1.15rem, 2vw, 1.45rem);
   }
 }
 
 @layer utilities {
   @media (max-width: 40rem) {
     body[data-page="home"] .section--home-tools {
-      padding-block: 1.8rem;
+      padding-block: 1.55rem;
     }
 
     body[data-page="home"] .section--workspaces,
     body[data-page="home"] .section--agenda,
     body[data-page="home"] .section--realization {
-      padding-block: 2.75rem;
+      padding-block: 2.3rem;
     }
 
     body[data-page="home"] .section--workspaces .section-heading,
     body[data-page="home"] .section--agenda .section-heading,
     body[data-page="home"] .section--realization .section-heading {
-      margin-block-end: 1.2rem;
+      margin-block-end: 1rem;
     }
   }
 }

@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 0.7.5 — Refined Homepage Spacing
+
+- Memadatkan jarak Beranda sedikit lagi setelah evaluasi v0.7.4.
+- Akses Cepat dibuat lebih dekat dengan bagian berikutnya.
+- Ruang Kerja, Agenda Terdekat, dan Capaian Realisasi dikurangi secara ringan.
+- Ukuran kartu, tipografi, serta jarak internal komponen tetap dipertahankan.
+
+
 ## 0.7.4 — Homepage Spacing
 
 - Mengurangi jarak vertikal antara Akses Cepat, Ruang Kerja, Agenda Terdekat, dan Capaian Realisasi.

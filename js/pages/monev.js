@@ -9,7 +9,7 @@ import {
   updateQueryString,
   announce
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.4-home-spacing";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.5-home-spacing";
 import { emptyState } from "../ui.js";
 import { icon } from "../icons.js";
 
