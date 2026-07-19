@@ -9,7 +9,7 @@ import {
   updateQueryString,
   safeUrl
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.3-ui-consistency";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.4-home-spacing";
 import { searchResources } from "../search.js";
 import { applicationCard, emptyState, groupCard } from "../ui.js";
 import { icon } from "../icons.js";

@@ -1,6 +1,14 @@
 # Changelog
 
 
+## 0.7.4 — Homepage Spacing
+
+- Mengurangi jarak vertikal antara Akses Cepat, Ruang Kerja, Agenda Terdekat, dan Capaian Realisasi.
+- Pemadatan dilakukan khusus pada Beranda dengan intensitas sedang.
+- Ukuran kartu, isi, tipografi, dan halaman lain tidak berubah.
+- Jarak pada perangkat seluler tetap cukup lega untuk menjaga keterbacaan.
+
+
 ## 0.7.3 — UI Consistency
 
 - Menyamakan pola Launchpad aplikasi pada Beranda dan seluruh Ruang Kerja.

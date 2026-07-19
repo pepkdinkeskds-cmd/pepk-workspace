@@ -8,7 +8,7 @@ import {
   minimumSearchLength,
   updateQueryString
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.3-ui-consistency";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.4-home-spacing";
 import { searchResourcesWithScores } from "../search.js";
 import { emptyState, resourceCard } from "../ui.js";
 

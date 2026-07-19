@@ -13,7 +13,7 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.7\.3-ui-consistency/);
+  assert.match(html, /css\/main\.css\?v=0\.7\.4-home-spacing/);
   assert.match(html, /contribute\.html/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
@@ -23,7 +23,7 @@ assert.match(servicePage, /<title>Layanan — PEPK Workspace<\/title>/);
 assert.match(servicePage, /<h1>Pusat Layanan PEPK<\/h1>/);
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
-assert.match(localData, /"appVersion": "0\.7\.3"/);
+assert.match(localData, /"appVersion": "0\.7\.4"/);
 assert.match(localData, /"workflowEnabled": true/);
 assert.ok(fs.existsSync(path.join(root, "manifest.webmanifest")));
 assert.ok(fs.existsSync(path.join(root, "apps-script/pepk-workflow/Code.gs")));

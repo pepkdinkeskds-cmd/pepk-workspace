@@ -2356,3 +2356,43 @@
     }
   }
 }
+
+
+/* v0.7.4 — Moderate Homepage section spacing. */
+@layer pages {
+  body[data-page="home"] .section--home-tools {
+    padding-block: clamp(2.15rem, 4vw, 3.35rem);
+  }
+
+  body[data-page="home"] .section--workspaces,
+  body[data-page="home"] .section--agenda,
+  body[data-page="home"] .section--realization {
+    padding-block: clamp(2.9rem, 5vw, 4.9rem);
+  }
+
+  body[data-page="home"] .section--workspaces .section-heading,
+  body[data-page="home"] .section--agenda .section-heading,
+  body[data-page="home"] .section--realization .section-heading {
+    margin-block-end: clamp(1.4rem, 2.4vw, 1.7rem);
+  }
+}
+
+@layer utilities {
+  @media (max-width: 40rem) {
+    body[data-page="home"] .section--home-tools {
+      padding-block: 1.8rem;
+    }
+
+    body[data-page="home"] .section--workspaces,
+    body[data-page="home"] .section--agenda,
+    body[data-page="home"] .section--realization {
+      padding-block: 2.75rem;
+    }
+
+    body[data-page="home"] .section--workspaces .section-heading,
+    body[data-page="home"] .section--agenda .section-heading,
+    body[data-page="home"] .section--realization .section-heading {
+      margin-block-end: 1.2rem;
+    }
+  }
+}
