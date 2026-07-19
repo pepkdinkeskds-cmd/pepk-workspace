@@ -1,6 +1,15 @@
 # Changelog
 
 
+## 0.7.3 — UI Consistency
+
+- Menyamakan pola Launchpad aplikasi pada Beranda dan seluruh Ruang Kerja.
+- Mengubah kartu aplikasi Ruang Kerja menjadi baris horizontal yang rapi dan responsif.
+- Mencegah nama aplikasi terpecah per huruf atau suku kata pada layar seluler.
+- Menyamakan panel pencarian dan filter Materi Monev dengan Pustaka utama.
+- Menambahkan perilaku responsif konsisten untuk desktop, tablet, dan ponsel.
+
+
 ## 0.7.2 — Google Sheets Header Fix
 
 - Menetapkan `headers=1` pada seluruh permintaan Google Visualization CSV.

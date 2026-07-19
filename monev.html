@@ -12,8 +12,8 @@
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="css/main.css?v=0.7.2-header-fix">
-  <script type="module" src="js/pages/monev.js?v=0.7.2-header-fix"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.7.3-ui-consistency">
+  <script type="module" src="js/pages/monev.js?v=0.7.3-ui-consistency"></script>
 </head>
 <body data-page="monev">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -60,14 +60,44 @@
     <div class="container">
       <div class="monev-summary" data-monev-summary aria-label="Ringkasan materi Monev"></div>
 
-      <form class="filter-bar monev-filter-bar" data-monev-filter-form>
-        <label><span>Cari materi</span><span class="filter-control filter-control--search"><span data-icon="search"></span><input type="search" name="q" placeholder="Judul, unit, penyaji, atau nama file"></span></label>
-        <label><span>Tahun</span><select name="year"><option value="">Semua tahun</option></select></label>
-        <label><span>Bulan</span><select name="month"><option value="">Semua bulan</option></select></label>
-        <label><span>Pengirim</span><select name="sender"><option value="">Semua pengirim</option><option value="Bidang">Bidang</option><option value="Puskesmas">Puskesmas</option></select></label>
-        <label><span>Jenis file</span><select name="type"><option value="">Semua file</option></select></label>
-        <label><span>Urutkan</span><select name="sort"><option value="presentation">Urutan presentasi</option><option value="latest">Periode terbaru</option><option value="unit">Nama unit A–Z</option><option value="title">Judul A–Z</option></select></label>
-        <button class="button button--secondary" type="reset">Reset</button>
+      <form class="filter-panel monev-filter-panel" data-monev-filter-form role="search">
+        <div class="filter-panel__search">
+          <label for="monev-search">Cari materi</label>
+          <div class="input-with-icon">
+            <span data-icon="search"></span>
+            <input id="monev-search" type="search" name="q" autocomplete="off" placeholder="Judul, unit, penyaji, atau nama file">
+          </div>
+        </div>
+        <div>
+          <label for="monev-year">Tahun</label>
+          <select id="monev-year" name="year"><option value="">Semua tahun</option></select>
+        </div>
+        <div>
+          <label for="monev-month">Bulan</label>
+          <select id="monev-month" name="month"><option value="">Semua bulan</option></select>
+        </div>
+        <div>
+          <label for="monev-sender">Pengirim</label>
+          <select id="monev-sender" name="sender">
+            <option value="">Semua pengirim</option>
+            <option value="Bidang">Bidang</option>
+            <option value="Puskesmas">Puskesmas</option>
+          </select>
+        </div>
+        <div>
+          <label for="monev-type">Jenis file</label>
+          <select id="monev-type" name="type"><option value="">Semua file</option></select>
+        </div>
+        <div>
+          <label for="monev-sort">Urutkan</label>
+          <select id="monev-sort" name="sort">
+            <option value="presentation">Urutan presentasi</option>
+            <option value="latest">Periode terbaru</option>
+            <option value="unit">Nama unit A–Z</option>
+            <option value="title">Judul A–Z</option>
+          </select>
+        </div>
+        <button class="button button--secondary filter-reset" type="reset">Reset</button>
       </form>
 
       <div class="monev-results-heading">
@@ -86,7 +116,7 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.7.2</span></p>
+      <p>Versi <span data-version>0.7.3</span></p>
       <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
       <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
     </div>

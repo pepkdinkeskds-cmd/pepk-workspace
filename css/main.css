@@ -2252,3 +2252,107 @@
     .monev-material-card__actions { grid-column: 1 / -1; }
   }
 }
+
+
+/* v0.7.3 — Cross-page UI consistency. */
+@layer components {
+  /* Workspace launchpad: horizontal application rows, matching the Homepage. */
+  body[data-page="workspace"] .app-launchpad--workspace {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .65rem;
+  }
+
+  body[data-page="workspace"] .app-launchpad--workspace .application-card--compact {
+    min-height: 4.2rem;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: .75rem;
+    padding: .65rem .75rem;
+    border-radius: .9rem;
+  }
+
+  body[data-page="workspace"] .app-launchpad--workspace .app-logo {
+    width: 2.45rem;
+    height: 2.45rem;
+    border-radius: .7rem;
+    object-fit: contain;
+  }
+
+  body[data-page="workspace"] .app-launchpad--workspace .application-card__meta {
+    display: none;
+  }
+
+  body[data-page="workspace"] .app-launchpad--workspace .application-card__title {
+    overflow: hidden;
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: .92rem;
+    line-height: 1.25;
+  }
+
+  body[data-page="workspace"] .app-launchpad--workspace .application-card__action {
+    position: static;
+    align-self: center;
+    margin: 0;
+  }
+
+  /* Monev material filters reuse the Library filter-panel component. */
+  .monev-filter-panel {
+    grid-template-columns:
+      minmax(15rem, 1.65fr)
+      repeat(5, minmax(7.8rem, .72fr))
+      auto;
+  }
+}
+
+@layer utilities {
+  @media (max-width: 76rem) {
+    .monev-filter-panel {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .monev-filter-panel .filter-panel__search {
+      grid-column: 1 / -1;
+    }
+
+    .monev-filter-panel .filter-reset {
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: 52rem) {
+    body[data-page="workspace"] .app-launchpad--workspace {
+      grid-template-columns: 1fr;
+    }
+
+    body[data-page="workspace"] .app-launchpad--workspace .application-card--compact {
+      min-height: 4.25rem;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .monev-filter-panel {
+      grid-template-columns: 1fr;
+    }
+
+    .monev-filter-panel .filter-panel__search {
+      grid-column: auto;
+    }
+
+    .monev-filter-panel .filter-reset {
+      width: 100%;
+      justify-content: center;
+    }
+
+    body[data-page="workspace"] .workspace-apps {
+      padding: 1rem;
+    }
+
+    body[data-page="workspace"] .app-launchpad--workspace .application-card__title {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
