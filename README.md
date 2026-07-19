@@ -1,39 +1,30 @@
-# PEPK Workspace v0.5.0
+# PEPK Workspace v0.6.0
 
-Versi penyempurnaan capaian realisasi dan identitas visual aplikasi.
+Workspace internal Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan, Dinas Kesehatan Kabupaten Kudus.
 
-## Perubahan utama
+## Fitur utama
 
-- Realisasi keuangan dan fisik digabung menjadi satu indikator bulanan.
-- Deviasi dihitung otomatis dengan rumus `fisik - keuangan` dalam poin persentase.
-- Homepage menampilkan bulan terbaru.
-- Pusat Informasi menampilkan grafik Januari–Desember, pemilih tahun, dan tabel bulanan.
-- Bulan tanpa data ditampilkan sebagai `Belum tersedia`, bukan nol.
-- Ikon aplikasi diperbarui menjadi identitas visual yang lebih mudah dikenali dengan fallback monogram.
+- Pencarian folder dokumen dan aplikasi.
+- Empat Ruang Kerja PEPK.
+- Akses cepat folder dan launchpad aplikasi.
+- Agenda dan capaian realisasi keuangan/fisik.
+- Kontribusi dokumen tanpa akses Editor.
+- Pengajuan agenda melalui formulir.
+- Inbox persetujuan administrator berbasis Google Sheets.
 
-## Struktur sheet Realization
+## Teknologi
 
-```text
-id
-year
-month
-financial_value
-physical_value
-updated_at
-description
-sort_order
-is_active
-```
+- GitHub Pages
+- HTML, CSS, Vanilla JavaScript
+- Google Sheets dan Google Drive
+- Google Forms dan Google Apps Script untuk workflow kontribusi
 
-Satu baris mewakili satu bulan. Nilai disarankan berupa capaian kumulatif 0–100.
+## Setup
 
-## Upload ke GitHub
+1. Upload isi folder ini ke root repository GitHub.
+2. Import `docs/PEPK_Workspace_Data_v0.6.0.xlsx` dengan pilihan **Ganti spreadsheet**.
+3. Ikuti `docs/WORKFLOW-SETUP.md`.
 
-1. Unggah seluruh isi folder ke root repository.
-2. Timpa file versi sebelumnya.
-3. Commit: `feat(release): perbarui PEPK Workspace ke v0.5.0`.
-4. Tunggu GitHub Pages lalu tekan `Ctrl + F5`.
+## URL produksi
 
-## Google Sheets
-
-Impor `PEPK_Workspace_Data_v0.5.0.xlsx` menggunakan **Ganti spreadsheet** agar ID spreadsheet tetap sama.
+`https://pepkdinkeskds-cmd.github.io/pepk-workspace/`

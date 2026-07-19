@@ -1,4 +1,4 @@
-# Capaian Realisasi v0.5.0
+# Capaian Realisasi v0.6.0
 
 ## Rumus deviasi
 

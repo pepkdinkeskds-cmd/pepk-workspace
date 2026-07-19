@@ -138,7 +138,8 @@ function informationIcon(id) {
     "akses-folder": "shield",
     "launchpad-aplikasi": "apps",
     "mode-google-sites": "external",
-    "pemecahan-masalah": "alert"
+    "pemecahan-masalah": "alert",
+    "kontribusi-aman": "upload"
   };
   return map[id] || "info";
 }
@@ -262,13 +263,17 @@ function normalizeSettings(rows) {
     agenda_home_limit: "agendaHomeLimit",
     realization_home_limit: "realizationHomeLimit",
     deviation_balanced_threshold: "deviationBalancedThreshold",
-    deviation_attention_threshold: "deviationAttentionThreshold"
+    deviation_attention_threshold: "deviationAttentionThreshold",
+    workflow_enabled: "workflowEnabled",
+    document_upload_form_url: "documentUploadFormUrl",
+    agenda_submit_form_url: "agendaSubmitFormUrl"
   };
   const numericKeys = new Set(["searchMinimum", "homeResultLimit", "quickFolderLimit", "quickAppLimit", "agendaHomeLimit", "realizationHomeLimit", "deviationBalancedThreshold", "deviationAttentionThreshold"]);
+  const booleanKeys = new Set(["workflowEnabled"]);
   const settings = {};
   rows.filter((row) => row.key).forEach((row) => {
     const key = keyMap[row.key] || row.key;
-    settings[key] = numericKeys.has(key) ? Number(row.value || 0) : row.value;
+    settings[key] = numericKeys.has(key) ? Number(row.value || 0) : booleanKeys.has(key) ? toBoolean(row.value) : row.value;
   });
   return settings;
 }

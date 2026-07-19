@@ -3182,7 +3182,7 @@ export const LOCAL_DATA = {
         "sipd ri perencanaan",
         "sipd perencanaan"
       ],
-      "icon": "assets/apps/app-sipd-perencanaan.svg",
+      "icon": "assets/apps/app-sipd-perencanaan.webp",
       "openMode": "new_tab",
       "sortOrder": 85,
       "isActive": true,
@@ -3209,7 +3209,7 @@ export const LOCAL_DATA = {
         "sipd ri keuangan",
         "sipd keuangan"
       ],
-      "icon": "assets/apps/app-sipd-keuangan.svg",
+      "icon": "assets/apps/app-sipd-keuangan.webp",
       "openMode": "new_tab",
       "sortOrder": 86,
       "isActive": true,
@@ -3236,7 +3236,7 @@ export const LOCAL_DATA = {
         "sipd akuntansi",
         "sipd akuntasi"
       ],
-      "icon": "assets/apps/app-sipd-akuntansi.svg",
+      "icon": "assets/apps/app-sipd-akuntansi.webp",
       "openMode": "new_tab",
       "sortOrder": 87,
       "isActive": true,
@@ -3264,7 +3264,7 @@ export const LOCAL_DATA = {
         "erenggar",
         "e renggar"
       ],
-      "icon": "assets/apps/app-e-renggar.svg",
+      "icon": "assets/apps/app-e-renggar.webp",
       "openMode": "new_tab",
       "sortOrder": 88,
       "isActive": true,
@@ -3292,7 +3292,7 @@ export const LOCAL_DATA = {
         "dashboard bok",
         "bni bok"
       ],
-      "icon": "assets/apps/app-bni-dashboard-bok.svg",
+      "icon": "assets/apps/app-bni-dashboard-bok.webp",
       "openMode": "new_tab",
       "sortOrder": 89,
       "isActive": true,
@@ -3317,7 +3317,7 @@ export const LOCAL_DATA = {
       "aliases": [
         "kolaborasi perencanaan"
       ],
-      "icon": "assets/apps/app-krisna.svg",
+      "icon": "assets/apps/app-krisna.webp",
       "openMode": "new_tab",
       "sortOrder": 90,
       "isActive": true,
@@ -3343,7 +3343,7 @@ export const LOCAL_DATA = {
       "aliases": [
         "insentif upaya kesehatan masyarakat"
       ],
-      "icon": "assets/apps/app-insentif-ukm.svg",
+      "icon": "assets/apps/app-insentif-ukm.webp",
       "openMode": "new_tab",
       "sortOrder": 91,
       "isActive": true,
@@ -3370,7 +3370,7 @@ export const LOCAL_DATA = {
         "e planning",
         "evaluasi sakip"
       ],
-      "icon": "assets/apps/app-e-planning.svg",
+      "icon": "assets/apps/app-e-planning.webp",
       "openMode": "new_tab",
       "sortOrder": 92,
       "isActive": true,
@@ -3398,7 +3398,7 @@ export const LOCAL_DATA = {
         "e monev",
         "monitoring evaluasi"
       ],
-      "icon": "assets/apps/app-e-monev.svg",
+      "icon": "assets/apps/app-e-monev.webp",
       "openMode": "new_tab",
       "sortOrder": 93,
       "isActive": true,
@@ -3425,7 +3425,7 @@ export const LOCAL_DATA = {
       "aliases": [
         "dashboard spik"
       ],
-      "icon": "assets/apps/app-spik.svg",
+      "icon": "assets/apps/app-spik.webp",
       "openMode": "new_tab",
       "sortOrder": 94,
       "isActive": true,
@@ -3452,7 +3452,7 @@ export const LOCAL_DATA = {
       "aliases": [
         "fifo kudus"
       ],
-      "icon": "assets/apps/app-sififo.svg",
+      "icon": "assets/apps/app-sififo.webp",
       "openMode": "new_tab",
       "sortOrder": 95,
       "isActive": true,
@@ -3480,7 +3480,7 @@ export const LOCAL_DATA = {
         "e-sptpd",
         "esptpd"
       ],
-      "icon": "assets/apps/app-pajak-daerah.svg",
+      "icon": "assets/apps/app-pajak-daerah.webp",
       "openMode": "new_tab",
       "sortOrder": 96,
       "isActive": true,
@@ -3507,7 +3507,7 @@ export const LOCAL_DATA = {
       "aliases": [
         "coretax djp"
       ],
-      "icon": "assets/apps/app-coretax.svg",
+      "icon": "assets/apps/app-coretax.webp",
       "openMode": "new_tab",
       "sortOrder": 97,
       "isActive": true,
@@ -3535,7 +3535,7 @@ export const LOCAL_DATA = {
         "gebyok kudus",
         "gebyok"
       ],
-      "icon": "assets/apps/app-gebyok.svg",
+      "icon": "assets/apps/app-gebyok.webp",
       "openMode": "new_tab",
       "sortOrder": 98,
       "isActive": true,
@@ -3561,7 +3561,7 @@ export const LOCAL_DATA = {
       "aliases": [
         "katalog inaproc"
       ],
-      "icon": "assets/apps/app-inaproc.svg",
+      "icon": "assets/apps/app-inaproc.webp",
       "openMode": "new_tab",
       "sortOrder": 99,
       "isActive": true,
@@ -3589,7 +3589,7 @@ export const LOCAL_DATA = {
         "si rup",
         "sistem informasi rencana umum pengadaan"
       ],
-      "icon": "assets/apps/app-sirup.svg",
+      "icon": "assets/apps/app-sirup.webp",
       "openMode": "new_tab",
       "sortOrder": 100,
       "isActive": true,
@@ -3615,7 +3615,7 @@ export const LOCAL_DATA = {
       "aliases": [
         "mbiz market"
       ],
-      "icon": "assets/apps/app-mbiz.svg",
+      "icon": "assets/apps/app-mbiz.webp",
       "openMode": "new_tab",
       "sortOrder": 101,
       "isActive": true,
@@ -3641,7 +3641,7 @@ export const LOCAL_DATA = {
       "aliases": [
         "tisera id"
       ],
-      "icon": "assets/apps/app-tisera.svg",
+      "icon": "assets/apps/app-tisera.webp",
       "openMode": "new_tab",
       "sortOrder": 102,
       "isActive": true,
@@ -3668,7 +3668,7 @@ export const LOCAL_DATA = {
       "aliases": [
         "kinerja asn"
       ],
-      "icon": "assets/apps/app-penilaian-kinerja.svg",
+      "icon": "assets/apps/app-penilaian-kinerja.webp",
       "openMode": "new_tab",
       "sortOrder": 103,
       "isActive": true,
@@ -3734,6 +3734,16 @@ export const LOCAL_DATA = {
       "icon": "alert",
       "date": "2026-07-19",
       "sortOrder": 5,
+      "isActive": true
+    },
+    {
+      "id": "kontribusi-aman",
+      "title": "Kirim dokumen tanpa akses Editor",
+      "summary": "PIC menggunakan formulir unggah, sedangkan administrator tetap memegang kontrol folder utama.",
+      "content": "Dokumen dan agenda baru masuk ke antrean pemeriksaan. Administrator cukup mengubah status menjadi Disetujui atau Ditolak. Dokumen yang disetujui dipindahkan otomatis ke folder tujuan dan agenda yang disetujui diterbitkan ke Pusat Informasi.",
+      "icon": "upload",
+      "date": "2026-07-19",
+      "sortOrder": 6,
       "isActive": true
     }
   ],
@@ -3887,7 +3897,7 @@ export const LOCAL_DATA = {
   ],
   "settings": {
     "appName": "PEPK Workspace",
-    "appVersion": "0.5.0",
+    "appVersion": "0.6.0",
     "contentUpdatedAt": "19 Juli 2026",
     "spreadsheetId": "1eEYRJmxYqqZuXABbQL2cCcKKeOt1ENk9mt_S7LgKfno",
     "searchMinimum": 2,
@@ -3897,7 +3907,10 @@ export const LOCAL_DATA = {
     "agendaHomeLimit": 3,
     "realizationHomeLimit": 1,
     "deviationBalancedThreshold": 2,
-    "deviationAttentionThreshold": 5
+    "deviationAttentionThreshold": 5,
+    "workflowEnabled": true,
+    "documentUploadFormUrl": "",
+    "agendaSubmitFormUrl": ""
   },
   "agenda": [],
   "realization": [

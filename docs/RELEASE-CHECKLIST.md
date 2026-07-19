@@ -1,7 +1,7 @@
-# Release Checklist v0.5.0
+# Release Checklist v0.6.0
 
-- [ ] Seluruh file v0.5.0 terunggah ke branch `main`.
-- [ ] Footer menampilkan versi 0.5.0.
+- [ ] Seluruh file v0.6.0 terunggah ke branch `main`.
+- [ ] Footer menampilkan versi 0.6.0.
 - [ ] Spreadsheet baru dapat dibaca.
 - [ ] Status halaman berubah menjadi `Data tersinkron`.
 - [ ] Agenda aktif tampil pada homepage dan halaman Informasi.

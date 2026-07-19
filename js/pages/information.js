@@ -19,6 +19,24 @@ const params = new URLSearchParams(window.location.search);
 const selectedId = params.get("id");
 let selectedRealizationYear = Number(params.get("year")) || null;
 
+
+function renderAgendaSubmitLink() {
+  const link = document.querySelector("[data-agenda-submit-link]");
+  if (!link) return;
+  const url = data.settings.workflowEnabled !== false ? data.settings.agendaSubmitFormUrl : "";
+  if (url) {
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.hidden = false;
+  } else {
+    link.href = "contribute.html";
+    link.removeAttribute("target");
+    link.removeAttribute("rel");
+    link.hidden = false;
+  }
+}
+
 function renderOverview() {
   dashboardNode.hidden = false;
   detailNode.hidden = true;
@@ -67,6 +85,7 @@ function renderOverview() {
   }
 
   data.information.forEach((item) => listNode.append(informationCard(item)));
+  renderAgendaSubmitLink();
 }
 
 function renderDetail() {

@@ -1592,3 +1592,168 @@
     .realization-metric { padding: .85rem; }
   }
 }
+
+/* v0.6.0 — safe contribution workflow and compact realization layout */
+@layer layout {
+  .contribution-grid,
+  .contribution-page-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .workflow-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .85rem; }
+  .page-hero--contribute { background: linear-gradient(120deg, var(--blue-950), var(--blue-700) 62%, var(--teal-700)); }
+
+  .information-hub-block--realization .realization-dashboard {
+    grid-template-columns: minmax(18rem, .72fr) minmax(0, 1.45fr);
+    align-items: stretch;
+  }
+  .information-hub-block--realization .realization-table-wrap { grid-column: 1 / -1; }
+}
+
+@layer components {
+  .section--contribution { background: linear-gradient(180deg, #f7fbff, var(--white)); }
+  .contribution-quick-card,
+  .contribution-action-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-lg);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+  .contribution-quick-card__icon,
+  .contribution-action-card__icon {
+    display: grid;
+    place-items: center;
+    width: 3.1rem;
+    height: 3.1rem;
+    flex: 0 0 auto;
+    border-radius: .95rem;
+    color: var(--blue-700);
+    background: var(--blue-100);
+  }
+  .contribution-quick-card:nth-child(2) .contribution-quick-card__icon,
+  .contribution-action-card:nth-child(2) .contribution-action-card__icon {
+    color: var(--teal-700);
+    background: #dcf7f0;
+  }
+  .contribution-quick-card__icon .icon,
+  .contribution-action-card__icon .icon { width: 1.35rem; height: 1.35rem; }
+  .contribution-quick-card__content h3 { font-size: 1.05rem; }
+  .contribution-quick-card__content p { margin-block-start: .3rem; color: var(--ink-600); font-size: .82rem; }
+  .contribution-quick-card__action { white-space: nowrap; }
+
+  .contribution-page-section { background: var(--ink-050); }
+  .contribution-action-card {
+    min-height: 18rem;
+    grid-template-columns: 1fr;
+    align-content: start;
+    padding: clamp(1.3rem, 3vw, 2rem);
+  }
+  .contribution-action-card__heading { display: flex; align-items: center; gap: .75rem; }
+  .contribution-action-card__eyebrow { color: var(--blue-700); font-size: .72rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+  .contribution-action-card h2 { margin-block-start: .45rem; font-size: clamp(1.35rem, 2.4vw, 1.8rem); }
+  .contribution-action-card > p { color: var(--ink-600); }
+  .contribution-action-card__button { justify-self: start; margin-block-start: auto; }
+  .contribution-action-card__status {
+    justify-self: start;
+    margin-block-start: auto;
+    padding: .48rem .7rem;
+    border-radius: 999px;
+    color: #8a4b00;
+    background: #fff1d5;
+    font-size: .74rem;
+    font-weight: 800;
+  }
+  .contribution-action-card__hint { margin-block-start: .55rem; color: var(--ink-500) !important; font-size: .75rem; }
+
+  .workflow-explainer {
+    margin-block-start: 2.2rem;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-xl);
+    background: var(--white);
+  }
+  .workflow-steps { margin: 0; padding: 0; list-style: none; }
+  .workflow-steps li {
+    display: flex;
+    gap: .75rem;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    background: var(--blue-050);
+  }
+  .workflow-step__number {
+    display: grid;
+    place-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    color: var(--white);
+    background: var(--blue-700);
+    font-size: .75rem;
+    font-weight: 850;
+  }
+  .workflow-steps strong { font-size: .86rem; }
+  .workflow-steps p { margin-block-start: .3rem; color: var(--ink-600); font-size: .76rem; }
+  .workflow-note {
+    display: flex;
+    gap: .9rem;
+    margin-block-start: 1rem;
+    padding: 1rem 1.15rem;
+    border: 1px solid #a7e4d4;
+    border-radius: var(--radius-md);
+    background: #ecfbf6;
+  }
+  .workflow-note__icon { color: var(--teal-700); }
+  .workflow-note__icon .icon { width: 1.4rem; height: 1.4rem; }
+  .workflow-note p { margin-block-start: .25rem; color: var(--ink-700); font-size: .8rem; }
+  .information-action { gap: .45rem; white-space: nowrap; }
+
+  /* A more compact, balanced annual realization composition. */
+  .information-hub-block--realization .realization-dashboard > .realization-card {
+    width: auto;
+    height: 100%;
+  }
+  .information-hub-block--realization .realization-card__metrics { grid-template-columns: 1fr; gap: .7rem; }
+  .information-hub-block--realization .realization-metric { padding: .85rem; }
+  .information-hub-block--realization .realization-deviation {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: .7rem;
+    align-items: center;
+    padding: .85rem;
+  }
+  .information-hub-block--realization .realization-deviation__label { grid-column: 1 / -1; }
+  .information-hub-block--realization .realization-deviation__value { font-size: 1.55rem; }
+  .information-hub-block--realization .realization-chart {
+    min-height: 100%;
+    display: grid;
+    align-content: center;
+    padding: .85rem 1rem;
+  }
+  .information-hub-block--realization .realization-chart__svg { min-width: 36rem; }
+}
+
+@layer utilities {
+  @media (max-width: 64rem) {
+    .workflow-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .information-hub-block--realization .realization-dashboard { grid-template-columns: 1fr; }
+    .information-hub-block--realization .realization-table-wrap { grid-column: auto; }
+    .information-hub-block--realization .realization-card__metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 44rem) {
+    .contribution-grid,
+    .contribution-page-grid,
+    .workflow-steps { grid-template-columns: 1fr; }
+    .contribution-quick-card { grid-template-columns: auto minmax(0, 1fr); }
+    .contribution-quick-card__action { grid-column: 1 / -1; width: 100%; }
+    .information-action { width: 100%; }
+    .information-hub-block--realization .realization-card__metrics { grid-template-columns: 1fr; }
+  }
+}

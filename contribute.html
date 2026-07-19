@@ -3,29 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Halaman tidak ditemukan.">
+  <meta name="description" content="Pusat kontribusi dokumen dan agenda PEPK Workspace.">
   <meta name="robots" content="noindex,nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self' https://docs.google.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#0a347d">
-  <title>Halaman Tidak Ditemukan — PEPK Workspace</title>
+  <title>Kontribusi — PEPK Workspace</title>
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
   <link rel="stylesheet" href="css/main.css?v=0.6.0">
-  <script type="module" src="js/pages/about.js?v=0.6.0"></script>
+  <script type="module" src="js/pages/contribute.js?v=0.6.0"></script>
 </head>
-<body data-page="">
+<body data-page="contribute">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="brand" href="index.html" aria-label="PEPK Workspace — Beranda">
       <img class="brand__logo" src="assets/logo-pepk.png" alt="" width="44" height="64">
-      <span class="brand__text">
-        <strong>PEPK Workspace</strong>
-        <span>Dinas Kesehatan Kabupaten Kudus</span>
-      </span>
+      <span class="brand__text"><strong>PEPK Workspace</strong><span>Dinas Kesehatan Kabupaten Kudus</span></span>
     </a>
     <nav class="desktop-nav" aria-label="Navigasi utama">
       <a data-nav="home" href="index.html">Beranda</a>
@@ -48,25 +44,49 @@
     </div>
   </nav>
 </header>
-<main id="main-content" class="not-found">
-  <div class="container not-found__inner">
-    <img src="assets/logo-pepk.png" alt="" width="110" height="164">
-    <span class="eyebrow eyebrow--dark">404</span>
-    <h1>Halaman tidak ditemukan</h1>
-    <p>Alamat yang dibuka tidak tersedia atau sudah berubah.</p>
-    <div class="not-found__actions">
-      <a class="button button--primary" href="index.html">Kembali ke Beranda</a>
-      <a class="button button--secondary" href="resources.html">Buka Pustaka</a>
+<main id="main-content">
+  <section class="page-hero page-hero--contribute">
+    <div class="container page-hero__inner">
+      <span class="page-hero__icon" data-icon="upload"></span>
+      <div>
+        <span class="eyebrow">Kontribusi</span>
+        <h1>Kirim dokumen dan agenda dengan aman</h1>
+        <p>PIC dapat mengirim berkas atau informasi agenda tanpa memperoleh akses Editor ke folder dan spreadsheet utama.</p>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section contribution-page-section">
+    <div class="container">
+      <div class="contribution-page-grid" data-contribution-page-actions></div>
+
+      <section class="workflow-explainer" aria-labelledby="workflow-title">
+        <div class="section-heading section-heading--compact">
+          <div>
+            <span class="eyebrow eyebrow--dark">Alur Aman</span>
+            <h2 id="workflow-title">Setiap kiriman melewati antrean pemeriksaan</h2>
+            <p>PIC hanya mengirim data. Hak pengelolaan folder dan publikasi tetap berada pada administrator.</p>
+          </div>
+        </div>
+        <ol class="workflow-steps">
+          <li><span class="workflow-step__number">1</span><div><strong>PIC mengisi formulir</strong><p>Pilih ruang kerja, kelompok dokumen, tahun, atau isi agenda.</p></div></li>
+          <li><span class="workflow-step__number">2</span><div><strong>Masuk ke Inbox</strong><p>File dan agenda tercatat otomatis beserta nama pengirim dan waktu pengiriman.</p></div></li>
+          <li><span class="workflow-step__number">3</span><div><strong>Administrator memeriksa</strong><p>Status diubah menjadi Disetujui atau Ditolak melalui spreadsheet.</p></div></li>
+          <li><span class="workflow-step__number">4</span><div><strong>Dipindahkan atau dipublikasikan</strong><p>Dokumen dipindahkan ke folder tujuan dan agenda masuk ke Pusat Informasi.</p></div></li>
+        </ol>
+      </section>
+
+      <aside class="workflow-note">
+        <span class="workflow-note__icon" data-icon="shield"></span>
+        <div><strong>Hak akses folder utama tetap aman</strong><p>PIC tidak perlu menjadi Editor Google Drive. Pengiriman dilakukan melalui Google Forms dan diproses oleh Apps Script milik administrator.</p></div>
+      </aside>
+    </div>
+  </section>
 </main>
 <footer class="site-footer">
   <div class="container site-footer__grid">
     <div class="site-footer__identity">
-      <div class="site-footer__brand">
-        <img src="assets/logo-pepk.png" alt="" width="34" height="50">
-        <strong>PEPK Workspace</strong>
-      </div>
+      <div class="site-footer__brand"><img src="assets/logo-pepk.png" alt="" width="34" height="50"><strong>PEPK Workspace</strong></div>
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
@@ -75,9 +95,7 @@
       <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
     </div>
   </div>
-  <div class="container site-footer__bottom">
-    <p>© 2026 PEPK – Dinas Kesehatan Kabupaten Kudus</p>
-  </div>
+  <div class="container site-footer__bottom"><p>© 2026 PEPK – Dinas Kesehatan Kabupaten Kudus</p></div>
 </footer>
 <div class="sr-only" aria-live="polite" aria-atomic="true" data-live-region></div>
 </body>

@@ -5,12 +5,15 @@ import {
   setDataStatus,
   applyMetadata,
   scheduleBackgroundTask,
-  minimumSearchLength
+  minimumSearchLength,
+  createElement,
+  externalLink
 } from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
 import { searchResources } from "../search.js";
 import { agendaCard, applicationCard, emptyState, informationCard, realizationCard, resourceCard, workspaceCard } from "../ui.js";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
+import { icon } from "../icons.js";
 
 initApp("home");
 
@@ -46,6 +49,47 @@ function renderQuickAccess() {
 
   if (!folders.length) folderContainer.append(emptyState("Belum ada folder cepat", "Pilih folder melalui halaman Pustaka.", "folder", { label: "Buka Pustaka", href: "resources.html?type=document" }));
   if (!applications.length) appContainer.append(emptyState("Belum ada aplikasi cepat", "Semua aplikasi tetap tersedia di Pustaka.", "apps", { label: "Lihat aplikasi", href: "resources.html?type=application" }));
+}
+
+
+function contributionAction({ title, description, iconName, url, fallbackHref }) {
+  const article = createElement("article", { className: "contribution-quick-card" });
+  article.append(
+    createElement("span", { className: "contribution-quick-card__icon", html: icon(iconName) }),
+    createElement("div", { className: "contribution-quick-card__content" }, [
+      createElement("h3", { text: title }),
+      createElement("p", { text: description })
+    ])
+  );
+  if (url) {
+    const link = externalLink(url, title, "button button--secondary contribution-quick-card__action");
+    link.innerHTML = `${icon(iconName)} Buka formulir`;
+    article.append(link);
+  } else {
+    article.append(createElement("a", { className: "button button--secondary contribution-quick-card__action", href: fallbackHref, html: `${icon("arrow")} Lihat cara penggunaan` }));
+  }
+  return article;
+}
+
+function renderContributionActions() {
+  const container = document.querySelector("[data-contribution-actions]");
+  if (!container) return;
+  container.replaceChildren(
+    contributionAction({
+      title: "Unggah Dokumen",
+      description: "Kirim file tanpa akses Editor. Dokumen masuk ke antrean pemeriksaan administrator.",
+      iconName: "upload",
+      url: data.settings.workflowEnabled !== false ? data.settings.documentUploadFormUrl : "",
+      fallbackHref: "contribute.html"
+    }),
+    contributionAction({
+      title: "Tambah Agenda",
+      description: "Kirim jadwal rapat atau kegiatan untuk diperiksa sebelum tampil di Pusat Informasi.",
+      iconName: "send",
+      url: data.settings.workflowEnabled !== false ? data.settings.agendaSubmitFormUrl : "",
+      fallbackHref: "contribute.html"
+    })
+  );
 }
 
 function renderWorkspaces() {
@@ -171,6 +215,7 @@ document.querySelectorAll("[data-search-suggestion]").forEach((button) => {
 
 function renderAll() {
   renderQuickAccess();
+  renderContributionActions();
   renderWorkspaces();
   renderAgenda();
   renderRealization();

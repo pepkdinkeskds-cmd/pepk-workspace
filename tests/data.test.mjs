@@ -40,3 +40,16 @@ test("information hub data collections are available", () => {
   assert.equal(data.settings.realizationHomeLimit, 1);
   assert.ok(data.realization.every((item) => Number.isFinite(item.financialValue) && Number.isFinite(item.physicalValue)));
 });
+
+
+test("workflow settings are available", () => {
+  assert.equal(data.settings.workflowEnabled, true);
+  assert.equal(typeof data.settings.documentUploadFormUrl, "string");
+  assert.equal(typeof data.settings.agendaSubmitFormUrl, "string");
+});
+
+test("application resources use optimized local logo files", () => {
+  const applications = data.resources.filter((item) => item.type === "application");
+  assert.equal(applications.length, 19);
+  assert.ok(applications.every((item) => item.icon.endsWith(".webp")));
+});

@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.6.0] - 2026-07-19
+
+### Added
+- Pusat Kontribusi untuk unggah dokumen dan tambah agenda.
+- `Upload_Inbox`, `Agenda_Inbox`, dan `Workflow_Config`.
+- Google Apps Script untuk routing file, persetujuan, dan publikasi agenda.
+- Form URL dinamis dari sheet Settings.
+- Aset logo aplikasi WebP berdasarkan file yang diberikan Product Owner.
+
+### Changed
+- Layout capaian realisasi tahunan dibuat lebih compact dan seimbang.
+- Navigasi ditambah menu Kontribusi.
+- Versi aplikasi diperbarui menjadi 0.6.0.
+
+### Security
+- PIC dapat mengirim dokumen tanpa memperoleh akses Editor ke folder utama.
+- Dokumen dan agenda harus melewati persetujuan administrator.
+
 ## [0.5.0] - 2026-07-19
 
 ### Added
@@ -14,7 +32,7 @@
 - Deviasi dihitung otomatis sebagai capaian fisik dikurangi realisasi keuangan.
 - Homepage hanya menampilkan ringkasan bulan terbaru agar tetap ringkas.
 
-## [0.5.0] - 2026-07-19
+## [0.4.1] - 2026-07-19
 
 ### Fixed
 - Mengganti ID sumber Google Sheets setelah spreadsheet lama terhapus.
