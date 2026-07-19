@@ -11,7 +11,7 @@ import {
 } from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js";
 import { searchResources } from "../search.js";
-import { agendaCard, applicationCard, emptyState, informationCard, realizationCard, resourceCard, workspaceCard } from "../ui.js";
+import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
 
@@ -132,12 +132,6 @@ function renderRealization() {
   }
 }
 
-function renderInformation() {
-  const container = document.querySelector("[data-information-preview]");
-  container.replaceChildren();
-  data.information.slice(0, 3).forEach((item) => container.append(informationCard(item)));
-}
-
 function clearHomeSearch() {
   currentQuery = "";
   searchInput.value = "";
@@ -219,7 +213,6 @@ function renderAll() {
   renderWorkspaces();
   renderAgenda();
   renderRealization();
-  renderInformation();
   if (currentQuery) renderSearch(currentQuery);
 }
 

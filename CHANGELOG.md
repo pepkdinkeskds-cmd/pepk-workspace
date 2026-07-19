@@ -1,5 +1,12 @@
 # Changelog
 
+## [Unreleased] — Review Beranda 01
+
+### Changed
+- Menggabungkan Akses Cepat dan Kontribusi Cepat dalam satu komposisi homepage.
+- Memadatkan panel folder, aplikasi, unggah dokumen, dan tambah agenda.
+- Menghapus Panduan dan Pengumuman dari Beranda; konten tetap tersedia di halaman Informasi.
+
 ## [0.6.1] - 2026-07-19
 
 ### Added

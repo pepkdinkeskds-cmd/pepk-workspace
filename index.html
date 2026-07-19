@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.6.1">
-  <script type="module" src="js/pages/home.js?v=0.6.1"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.6.1-home-review-1">
+  <script type="module" src="js/pages/home.js?v=0.6.1-home-review-1"></script>
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -90,47 +90,47 @@
     </div>
   </section>
 
-  <section class="section section--quick">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow eyebrow--dark">Akses Cepat</span>
-          <h2>Folder dan aplikasi yang sering digunakan</h2>
-          <p>Buka resource pekerjaan tanpa menelusuri Google Drive atau mencari alamat aplikasi dari awal.</p>
+  <section class="section section--home-tools">
+    <div class="container home-tools-layout">
+      <section class="home-tools-card home-tools-card--quick" aria-labelledby="home-quick-title">
+        <div class="home-tools-heading">
+          <div>
+            <span class="eyebrow eyebrow--dark">Akses Cepat</span>
+            <h2 id="home-quick-title">Folder dan aplikasi yang sering digunakan</h2>
+            <p>Buka kebutuhan kerja utama tanpa menelusuri Drive atau mencari alamat aplikasi dari awal.</p>
+          </div>
         </div>
-      </div>
-      <div class="quick-access-layout">
-        <section class="quick-panel" aria-labelledby="quick-folder-title">
-          <div class="quick-panel__heading">
-            <span class="quick-panel__icon" data-icon="folderOpen"></span>
-            <div><h3 id="quick-folder-title">Folder kerja</h3><p>Empat folder tahun yang paling sering dibutuhkan.</p></div>
-            <a class="text-link quick-panel__all" href="resources.html?type=document">Lihat semua folder <span data-icon="arrow"></span></a>
-          </div>
-          <div class="quick-grid quick-grid--folders" data-quick-folders></div>
-        </section>
-        <section class="quick-panel quick-panel--apps" aria-labelledby="quick-app-title">
-          <div class="quick-panel__heading">
-            <span class="quick-panel__icon" data-icon="apps"></span>
-            <div><h3 id="quick-app-title">Launchpad aplikasi</h3><p>Empat aplikasi penunjang yang paling sering digunakan.</p></div>
-            <a class="text-link quick-panel__all" href="resources.html?type=application">Lihat semua aplikasi <span data-icon="arrow"></span></a>
-          </div>
-          <div class="app-launchpad" data-quick-apps></div>
-        </section>
-      </div>
-    </div>
-  </section>
 
-  <section class="section section--contribution deferred-section" id="kontribusi">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow eyebrow--dark">Kontribusi Cepat</span>
-          <h2>Kirim dokumen dan agenda tanpa akses Editor</h2>
-          <p>Staf mengirim melalui formulir. Dokumen dan agenda masuk ke antrean pemeriksaan sebelum dipublikasikan.</p>
+        <div class="home-quick-panels">
+          <section class="quick-panel" aria-labelledby="quick-folder-title">
+            <div class="quick-panel__heading">
+              <span class="quick-panel__icon" data-icon="folderOpen"></span>
+              <div><h3 id="quick-folder-title">Folder kerja</h3></div>
+              <a class="text-link quick-panel__all" href="resources.html?type=document">Lihat semua <span data-icon="arrow"></span></a>
+            </div>
+            <div class="quick-grid quick-grid--folders" data-quick-folders></div>
+          </section>
+
+          <section class="quick-panel quick-panel--apps" aria-labelledby="quick-app-title">
+            <div class="quick-panel__heading">
+              <span class="quick-panel__icon" data-icon="apps"></span>
+              <div><h3 id="quick-app-title">Launchpad aplikasi</h3></div>
+              <a class="text-link quick-panel__all" href="resources.html?type=application">Lihat semua <span data-icon="arrow"></span></a>
+            </div>
+            <div class="app-launchpad" data-quick-apps></div>
+          </section>
         </div>
-        <a class="text-link text-link--standalone" href="contribute.html">Lihat alur kontribusi <span data-icon="arrow"></span></a>
-      </div>
-      <div class="contribution-grid" data-contribution-actions></div>
+      </section>
+
+      <aside class="home-tools-card home-tools-card--contribution" id="kontribusi" aria-labelledby="home-contribution-title">
+        <div class="home-contribution-heading">
+          <span class="eyebrow eyebrow--dark">Kontribusi Cepat</span>
+          <h2 id="home-contribution-title">Kirim dokumen dan agenda</h2>
+          <p>Tanpa akses Editor ke folder utama. Semua kiriman masuk ke antrean pemeriksaan.</p>
+        </div>
+        <div class="home-contribution-actions" data-contribution-actions></div>
+        <a class="text-link home-contribution-all" href="contribute.html">Lihat alur kontribusi <span data-icon="arrow"></span></a>
+      </aside>
     </div>
   </section>
 
@@ -175,19 +175,6 @@
     </div>
   </section>
 
-  <section class="section section--information deferred-section">
-    <div class="container">
-      <div class="section-heading">
-        <div>
-          <span class="eyebrow eyebrow--dark">Panduan dan pengumuman</span>
-          <h2>Informasi pendukung penggunaan workspace</h2>
-          <p>Panduan singkat, pengumuman, dan catatan penting untuk pekerjaan sehari-hari.</p>
-        </div>
-        <a class="text-link text-link--standalone" href="information.html#panduan">Lihat semua <span data-icon="arrow"></span></a>
-      </div>
-      <div class="information-grid" data-information-preview></div>
-    </div>
-  </section>
 </main>
 <footer class="site-footer">
   <div class="container site-footer__grid">

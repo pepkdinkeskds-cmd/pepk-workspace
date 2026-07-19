@@ -1757,3 +1757,241 @@
     .information-hub-block--realization .realization-card__metrics { grid-template-columns: 1fr; }
   }
 }
+
+
+/* Homepage Review 01 — compact access and contribution composition */
+@layer layout {
+  .home-tools-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(17.5rem, 1fr);
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .home-quick-panels {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .85rem;
+    margin-block-start: 1rem;
+  }
+
+  .home-contribution-actions {
+    display: grid;
+    gap: .7rem;
+    margin-block-start: 1rem;
+  }
+}
+
+@layer components {
+  .section--home-tools {
+    padding-block: clamp(2.4rem, 5vw, 4rem);
+    background: linear-gradient(180deg, var(--white), #f8fbff);
+  }
+
+  .home-tools-card {
+    min-width: 0;
+    padding: clamp(1rem, 2vw, 1.35rem);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-xl);
+    background: var(--white);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .home-tools-card--quick {
+    background: linear-gradient(180deg, var(--white), #fbfdff);
+  }
+
+  .home-tools-heading h2,
+  .home-contribution-heading h2 {
+    margin-block-start: .35rem;
+    font-size: clamp(1.45rem, 2.4vw, 2rem);
+    line-height: 1.18;
+  }
+
+  .home-tools-heading p,
+  .home-contribution-heading p {
+    margin-block-start: .45rem;
+    color: var(--ink-600);
+    font-size: .88rem;
+    line-height: 1.55;
+  }
+
+  .home-tools-card .quick-panel {
+    padding: .9rem;
+    border-radius: var(--radius-lg);
+    box-shadow: none;
+  }
+
+  .home-tools-card .quick-panel__heading {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: .65rem;
+    margin-block-end: .75rem;
+    padding-block-end: .7rem;
+  }
+
+  .home-tools-card .quick-panel__heading h3 {
+    font-size: .98rem;
+  }
+
+  .home-tools-card .quick-panel__icon {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: .72rem;
+  }
+
+  .home-tools-card .quick-panel__all {
+    margin: 0;
+    align-self: center;
+    font-size: .72rem;
+    white-space: nowrap;
+  }
+
+  .home-tools-card .quick-grid--folders,
+  .home-tools-card .app-launchpad {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: .65rem;
+  }
+
+  .home-tools-card .resource-card--compact,
+  .home-tools-card .application-card--compact {
+    min-height: 5.35rem;
+    padding: .75rem;
+  }
+
+  .home-tools-card .application-card--compact .app-logo {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .home-tools-card--contribution {
+    display: flex;
+    flex-direction: column;
+    border-color: rgba(15, 92, 192, .2);
+    background:
+      radial-gradient(circle at 100% 0, rgba(11, 179, 149, .1), transparent 34%),
+      linear-gradient(180deg, var(--blue-050), var(--white));
+  }
+
+  .home-contribution-heading h2 {
+    font-size: clamp(1.3rem, 2vw, 1.7rem);
+  }
+
+  .home-contribution-actions .contribution-quick-card {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: .75rem;
+    padding: .85rem;
+    border-radius: var(--radius-md);
+    box-shadow: none;
+  }
+
+  .home-contribution-actions .contribution-quick-card__icon {
+    width: 2.55rem;
+    height: 2.55rem;
+    border-radius: .78rem;
+  }
+
+  .home-contribution-actions .contribution-quick-card__content h3 {
+    font-size: .94rem;
+  }
+
+  .home-contribution-actions .contribution-quick-card__content p {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-block-start: .22rem;
+    font-size: .74rem;
+    line-height: 1.4;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .home-contribution-actions .contribution-quick-card__action {
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 2.55rem;
+    padding: .55rem .75rem;
+    font-size: .78rem;
+  }
+
+  .home-contribution-all {
+    align-self: flex-start;
+    margin-block-start: auto;
+    padding-block-start: 1rem;
+    font-size: .8rem;
+  }
+}
+
+@layer utilities {
+  @media (max-width: 68rem) {
+    .home-tools-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .home-tools-card--contribution {
+      display: grid;
+      grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+      column-gap: 1rem;
+      align-items: start;
+    }
+
+    .home-contribution-actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-block-start: 0;
+    }
+
+    .home-contribution-all {
+      grid-column: 1;
+      margin-block-start: .5rem;
+      padding-block-start: 0;
+    }
+  }
+
+  @media (max-width: 52rem) {
+    .home-quick-panels,
+    .home-tools-card--contribution {
+      grid-template-columns: 1fr;
+    }
+
+    .home-contribution-actions {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-block-start: 1rem;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .section--home-tools {
+      padding-block: 2rem;
+    }
+
+    .home-tools-card {
+      padding: .9rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .home-tools-card .quick-panel__heading {
+      grid-template-columns: auto minmax(0, 1fr);
+    }
+
+    .home-tools-card .quick-panel__all {
+      grid-column: 2;
+      justify-self: start;
+    }
+
+    .home-tools-card .quick-grid--folders,
+    .home-tools-card .app-launchpad,
+    .home-contribution-actions {
+      grid-template-columns: 1fr;
+    }
+
+    .home-tools-card .resource-card--compact,
+    .home-tools-card .application-card--compact {
+      min-height: 4.9rem;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      justify-items: initial;
+    }
+
+    .home-tools-card .resource-card__action,
+    .home-tools-card .application-card__action {
+      position: static;
+    }
+  }
+}
