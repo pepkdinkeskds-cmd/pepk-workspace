@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.6.1">
-  <script type="module" src="js/pages/workspace.js?v=0.6.1"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.7.0-monev">
+  <script type="module" src="js/pages/workspace.js?v=0.7.0-monev"></script>
 </head>
 <body data-page="workspace">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -84,6 +84,15 @@
           <input type="search" placeholder="Cari dalam ruang kerja" data-workspace-search>
         </label>
       </div>
+      <section class="monev-workspace-callout" data-monev-workspace-callout hidden aria-labelledby="monev-workspace-title">
+        <span class="monev-workspace-callout__icon" data-icon="presentation"></span>
+        <div class="monev-workspace-callout__content">
+          <span class="eyebrow eyebrow--dark">Materi Rapat Bulanan</span>
+          <h2 id="monev-workspace-title">Materi Monev Capaian Anggaran</h2>
+          <p>Buka materi paparan Bidang dan Puskesmas berdasarkan periode serta urutan presentasi.</p>
+        </div>
+        <a class="button button--secondary" href="monev.html">Buka Materi Monev</a>
+      </section>
       <section class="workspace-apps" data-workspace-apps-section hidden>
         <div class="workspace-section-heading">
           <div>
@@ -117,7 +126,7 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.6.1</span></p>
+      <p>Versi <span data-version>0.7.0</span></p>
       <p>Data diperbarui <span data-updated>19 Juli 2026</span></p>
       <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
     </div>
