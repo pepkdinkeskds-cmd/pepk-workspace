@@ -11,5 +11,5 @@
 Verifikasi:
 
 - Footer menampilkan versi `0.6.1`.
-- Menu `Kontribusi` tersedia.
+- Menu `Layanan` tersedia.
 - Tombol formulir membaca URL dari Google Sheets.

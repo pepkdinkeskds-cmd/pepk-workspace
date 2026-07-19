@@ -8,7 +8,7 @@ Workspace internal Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan, Din
 - Empat Ruang Kerja PEPK.
 - Akses cepat folder dan launchpad aplikasi.
 - Agenda dan capaian realisasi keuangan/fisik.
-- Kontribusi dokumen tanpa akses Editor.
+- Layanan unggah dokumen tanpa akses Editor.
 - Tujuan unggah dipilih dari rute folder Google Drive yang valid.
 - Pengajuan agenda melalui formulir dan persetujuan administrator.
 - Sinkronisasi struktur folder manual dan terjadwal.
@@ -18,7 +18,7 @@ Workspace internal Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan, Din
 - GitHub Pages
 - HTML, CSS, Vanilla JavaScript
 - Google Sheets dan Google Drive
-- Google Forms dan Google Apps Script untuk workflow kontribusi
+- Google Forms dan Google Apps Script untuk workflow layanan
 
 ## Upgrade dari v0.6.0
 

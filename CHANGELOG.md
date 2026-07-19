@@ -1,3 +1,9 @@
+## [Unreleased]
+
+### Changed
+- Mengubah label antarmuka `Kontribusi` menjadi `Layanan`.
+- Mengubah judul halaman menjadi `Pusat Layanan PEPK` tanpa mengubah rute internal.
+
 # Changelog
 
 ## [Unreleased] — Review Beranda 01

@@ -14,7 +14,12 @@ for (const page of pages) {
   assert.match(html, /<main\b/);
   assert.match(html, /css\/main\.css\?v=0\.6\.1/);
   assert.match(html, /contribute\.html/);
+  assert.match(html, /href="contribute\.html">Layanan<\/a>/);
 }
+
+const servicePage = fs.readFileSync(path.join(root, "contribute.html"), "utf8");
+assert.match(servicePage, /<title>Layanan — PEPK Workspace<\/title>/);
+assert.match(servicePage, /<h1>Pusat Layanan PEPK<\/h1>/);
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
 assert.match(localData, /"appVersion": "0\.6\.1"/);

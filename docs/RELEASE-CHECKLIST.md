@@ -7,6 +7,6 @@
 - [ ] Uji agenda berakhir dengan status `Dipublikasikan`.
 - [ ] Seluruh file v0.6.1 terunggah ke branch `main`.
 - [ ] Footer menampilkan versi 0.6.1.
-- [ ] Menu Kontribusi membuka kedua Google Form.
+- [ ] Menu Layanan membuka kedua Google Form.
 - [ ] Pencarian, Pustaka, Ruang Kerja, Agenda, dan Realisasi tetap berfungsi.
 - [ ] Tampilan desktop dan HP diperiksa.
