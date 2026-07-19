@@ -1,6 +1,6 @@
 export const CONFIG = Object.freeze({
-  spreadsheetId: "1X3xW2pxmaoPiLX4nHVYVG8sinsUNpXlT8rk6HTtwSrk",
-  appVersion: "0.4.0",
+  spreadsheetId: "1eEYRJmxYqqZuXABbQL2cCcKKeOt1ENk9mt_S7LgKfno",
+  appVersion: "0.4.1",
   contentUpdatedAt: "19 Juli 2026",
   fetchTimeoutMs: 4000,
   searchDebounceMs: 160,

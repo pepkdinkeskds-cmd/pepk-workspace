@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.1] - 2026-07-19
+
+### Fixed
+- Mengganti ID sumber Google Sheets setelah spreadsheet lama terhapus.
+- Memperbarui versi aset untuk mencegah browser memakai cache v0.4.0.
+
 ## [0.4.0] - 2026-07-19
 
 ### Added

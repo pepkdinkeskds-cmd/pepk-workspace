@@ -3887,9 +3887,9 @@ export const LOCAL_DATA = {
   ],
   "settings": {
     "appName": "PEPK Workspace",
-    "appVersion": "0.4.0",
+    "appVersion": "0.4.1",
     "contentUpdatedAt": "19 Juli 2026",
-    "spreadsheetId": "1X3xW2pxmaoPiLX4nHVYVG8sinsUNpXlT8rk6HTtwSrk",
+    "spreadsheetId": "1eEYRJmxYqqZuXABbQL2cCcKKeOt1ENk9mt_S7LgKfno",
     "searchMinimum": 2,
     "homeResultLimit": 6,
     "quickFolderLimit": 4,

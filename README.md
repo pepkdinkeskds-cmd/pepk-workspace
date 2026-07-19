@@ -1,47 +1,43 @@
-# PEPK Workspace v0.4.0
+# PEPK Workspace v0.4.1
 
-Workspace internal Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan, Dinas Kesehatan Kabupaten Kudus.
+Patch pemulihan koneksi data untuk PEPK Workspace.
 
-## Peningkatan versi 0.4.0
+## Perubahan versi 0.4.1
 
-- Akses Cepat dipadatkan menjadi empat folder dan empat aplikasi.
-- Pusat Informasi memiliki Agenda, Capaian Realisasi, serta Panduan dan Pengumuman.
-- Agenda memuat tanggal, waktu, kategori, lokasi, PIC, dan tautan bahan rapat.
-- Capaian Realisasi menampilkan angka, target, periode, progress bar, dan tanggal pembaruan.
-- Dua sheet baru tersedia: `Agenda` dan `Realization`.
-- Homepage tetap ringan dan menggunakan data lokal sebelum sinkronisasi Google Sheets.
+- Mengganti sumber data Google Sheets ke spreadsheet baru.
+- Mempertahankan seluruh fitur v0.4.0 tanpa perubahan desain atau struktur data.
+- Memperbarui parameter versi aset agar browser tidak memakai cache versi lama.
 
-## Menjalankan secara lokal
+## Spreadsheet aktif
 
-```bash
-python -m http.server 8000
+PEPK Workspace membaca spreadsheet dengan ID:
+
+```text
+1eEYRJmxYqqZuXABbQL2cCcKKeOt1ENk9mt_S7LgKfno
 ```
 
-Buka `http://localhost:8000`.
+Spreadsheet harus memiliki sheet berikut:
 
-## Pemeriksaan opsional
-
-```bash
-npm test
-npm run check
+```text
+Resources
+Workspaces
+Quick_Access
+Information
+Synonyms
+Settings
+Agenda
+Realization
 ```
 
-Perintah tersebut menggunakan Node.js bawaan dan tidak membutuhkan instalasi package.
+Pastikan akses spreadsheet menggunakan **Siapa saja yang memiliki link → Pelihat**.
 
 ## Upload ke GitHub
 
 1. Ekstrak ZIP.
-2. Upload seluruh isi folder ke root repository `pepk-workspace`.
+2. Unggah seluruh isi folder ke root repository `pepk-workspace`.
 3. Timpa file versi sebelumnya.
-4. Commit dan tunggu GitHub Pages memperbarui website.
-5. Buka halaman dengan `Ctrl + F5`.
+4. Commit dengan pesan `fix(data): hubungkan spreadsheet baru pada v0.4.1`.
+5. Tunggu GitHub Pages memperbarui situs.
+6. Buka ulang situs menggunakan `Ctrl + F5`.
 
-## Google Sheets
-
-Import file `docs/PEPK_Workspace_Data_v0.4.0.xlsx` menggunakan opsi **Replace spreadsheet**.
-
-Baris contoh pada sheet `Agenda` dan `Realization` menggunakan `is_active = FALSE`, sehingga tidak tampil pada website. Ganti data contoh, lalu ubah menjadi `TRUE` ketika data sudah siap ditampilkan.
-
-## Hosting
-
-GitHub Pages tetap menjadi hosting utama. Mode `?embed=1` masih tersedia bila di kemudian hari diperlukan untuk penyematan pada portal lain.
+Tidak perlu mengimpor ulang spreadsheet karena struktur datanya tidak berubah dari v0.4.0.
