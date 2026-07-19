@@ -1183,13 +1183,15 @@
 @layer layout {
   .section--agenda { background: var(--white); }
   .section--realization {
-    color: rgba(255, 255, 255, .82);
-    background:
-      radial-gradient(circle at 88% 12%, rgba(11, 179, 149, .20), transparent 30%),
-      linear-gradient(135deg, var(--blue-950), var(--blue-800) 62%, #086f86);
+    color: var(--ink-800);
+    border-block: 1px solid var(--ink-100);
+    background: var(--blue-050);
   }
-  .section--realization h2 { color: var(--white); }
-  .section--realization .section-heading p { color: rgba(255,255,255,.72); }
+  .section--realization h2 { color: var(--ink-950); }
+  .section--realization .section-heading p { color: var(--ink-600); }
+  .section--realization .eyebrow { color: var(--blue-700); }
+  .section--realization .text-link--light { color: var(--blue-700); }
+  .section--realization .text-link--light:hover { color: var(--blue-900); }
   .agenda-grid,
   .realization-grid {
     display: grid;
@@ -1329,14 +1331,14 @@
     grid-column: 1 / -1;
     max-width: none;
     margin: 0;
-    border-color: rgba(255,255,255,.35);
-    color: var(--white);
-    background: rgba(255,255,255,.09);
+    border-color: var(--ink-200);
+    color: var(--ink-800);
+    background: var(--white);
   }
-  .section--realization .empty-state__title { color: var(--white); }
-  .section--realization .empty-state__description { color: rgba(255,255,255,.76); }
-  .section--realization .empty-state__icon { color: var(--white); background: rgba(255,255,255,.14); }
-  .section--realization .empty-state__action { color: var(--blue-950); background: var(--white); }
+  .section--realization .empty-state__title { color: var(--ink-950); }
+  .section--realization .empty-state__description { color: var(--ink-600); }
+  .section--realization .empty-state__icon { color: var(--blue-700); background: var(--blue-100); }
+  .section--realization .empty-state__action { color: var(--white); background: var(--blue-700); }
 
   .agenda-grid > .empty-state,
   .agenda-list > .empty-state,
