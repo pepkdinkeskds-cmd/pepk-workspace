@@ -8,7 +8,7 @@ import {
   minimumSearchLength,
   updateQueryString
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.2-header-fix";
 import { searchResourcesWithScores } from "../search.js";
 import { emptyState, resourceCard } from "../ui.js";
 

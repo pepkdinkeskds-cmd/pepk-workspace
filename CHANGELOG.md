@@ -1,5 +1,13 @@
 # Changelog
 
+
+## 0.7.2 — Google Sheets Header Fix
+
+- Menetapkan `headers=1` pada seluruh permintaan Google Visualization CSV.
+- Mencegah Google Sheets menebak banyak baris Settings sebagai header.
+- Memulihkan pembacaan URL Form Unggah Dokumen, Agenda, dan Materi Monev.
+- Memperbarui cache key modul frontend.
+
 ## 0.7.1
 
 - Memperbaiki pembacaan URL formulir dari sheet Settings pada halaman Layanan, Beranda, dan Informasi.

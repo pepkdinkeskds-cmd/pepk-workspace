@@ -2,7 +2,7 @@ import { CONFIG } from "../config.js";
 
 function csvUrl(sheetName) {
   const encoded = encodeURIComponent(sheetName);
-  return `https://docs.google.com/spreadsheets/d/${CONFIG.spreadsheetId}/gviz/tq?tqx=out:csv&sheet=${encoded}`;
+  return `https://docs.google.com/spreadsheets/d/${CONFIG.spreadsheetId}/gviz/tq?tqx=out:csv&sheet=${encoded}&headers=1`;
 }
 
 function parseCsv(text) {

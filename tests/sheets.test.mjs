@@ -13,3 +13,9 @@ test("rows are mapped using the first row as headers", () => {
   const objects = rowsToObjects([["id", "title"], ["1", "RENJA"]]);
   assert.deepEqual(objects, [{ id: "1", title: "RENJA" }]);
 });
+
+
+test("Google Sheets CSV URL forces exactly one header row", async () => {
+  const source = await import("node:fs/promises").then(({ readFile }) => readFile(new URL("../js/data/sheets.js", import.meta.url), "utf8"));
+  assert.match(source, /&headers=1/);
+});
