@@ -2457,3 +2457,24 @@
     }
   }
 }
+
+
+/* v0.9.3 — Referensi as the fifth Workspace navigation area. */
+@layer components {
+  .workspace-tabs a[href*="id=document-center"] {
+    border-color: #b8d9d5;
+    color: #176b64;
+    background: #f2fbf9;
+  }
+
+  .workspace-tabs a[href*="id=document-center"]:hover {
+    border-color: #58aaa0;
+    color: #0b5f58;
+  }
+
+  .workspace-tabs a[href*="id=document-center"][aria-current="page"] {
+    border-color: #0a8176;
+    color: var(--white);
+    background: #0a8176;
+  }
+}

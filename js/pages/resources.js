@@ -8,7 +8,7 @@ import {
   minimumSearchLength,
   updateQueryString
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.2-folder-list";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.3-reference-workspace";
 import { searchResourcesWithScores } from "../search.js";
 import { emptyState, resourceCard } from "../ui.js";
 

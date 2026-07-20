@@ -13,12 +13,12 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.2\-folder\-list/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.3\-reference\-workspace/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
-assert.match(localData, /"appVersion": "0.9.2"/);
+assert.match(localData, /"appVersion": "0.9.3"/);
 assert.match(localData, /"workspaceGeneration": "V2"/);
 assert.match(localData, /"workspaceId": "document-center"/);
 
@@ -37,3 +37,9 @@ const webpLogos = fs.readdirSync(appLogoDir).filter((name) => name.endsWith(".we
 assert.equal(webpLogos.length, 19);
 
 console.log(`Project check lulus untuk ${pages.length} halaman dan ${webpLogos.length} logo aplikasi.`);
+
+const workspacePageScript = fs.readFileSync(path.join(root, "js/pages/workspace.js"), "utf8");
+assert.match(workspacePageScript, /id:\s*"document-center"/);
+assert.match(workspacePageScript, /title:\s*"Referensi"/);
+assert.match(workspacePageScript, /referenceGroups/);
+assert.match(fs.readFileSync(path.join(root, "workspace.html"), "utf8"), /data-workspace-documents-heading/);

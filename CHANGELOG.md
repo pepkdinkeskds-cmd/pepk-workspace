@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.3 — Referensi Workspace
+
+- Menambahkan Referensi sebagai tab kelima setelah Keuangan pada halaman Ruang Kerja.
+- Menggunakan root folder Document Center untuk tombol Buka folder utama.
+- Menampilkan kelompok dan folder referensi dengan pola yang sama seperti Ruang Kerja lainnya.
+- Menambahkan pencarian khusus dalam Referensi.
+- Referensi tetap bersifat baca saja dan tidak dimasukkan ke Form unggah atau Upload_Routes.
+- Empat kartu Ruang Kerja di Beranda tetap tidak berubah.
+
 ## 0.9.2 — Homepage Folder List
 
 - Mengubah Folder Kerja pada Akses Cepat menjadi daftar horizontal satu kolom.

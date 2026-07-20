@@ -1,6 +1,6 @@
 import { CONFIG } from "../config.js";
 import { LOCAL_DATA } from "./local-data.js";
-import { loadSheet } from "./sheets.js?v=0.9.2-folder-list";
+import { loadSheet } from "./sheets.js?v=0.9.3-reference-workspace";
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));

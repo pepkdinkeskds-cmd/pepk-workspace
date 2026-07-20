@@ -300,13 +300,18 @@ export function emptyState(title, description, iconName = "search", action = nul
 }
 
 export function groupCard(group, resources) {
+  const isReference = group.workspaceId === "document-center"
+    || resources.some((resource) => resource.scope === "reference");
   const article = createElement("article", { className: "document-group" });
   const header = createElement("div", { className: "document-group__header" });
   header.append(
-    createElement("span", { className: "document-group__icon", html: icon("folder") }),
+    createElement("span", { className: "document-group__icon", html: icon(isReference ? "library" : "folder") }),
     createElement("div", { className: "document-group__heading" }, [
       createElement("h3", { className: "document-group__title", text: group.title }),
-      createElement("p", { className: "document-group__meta", text: `${resources.length} periode tersedia` })
+      createElement("p", {
+        className: "document-group__meta",
+        text: `${resources.length} ${isReference ? "folder" : "periode"} tersedia`
+      })
     ])
   );
 
@@ -315,16 +320,18 @@ export function groupCard(group, resources) {
     .slice()
     .sort((a, b) => (b.sortYear || b.yearEnd || b.year || 0) - (a.sortYear || a.yearEnd || a.year || 0) || a.title.localeCompare(b.title, "id"))
     .forEach((resource) => {
-      const periodLabel = resource.period || (resource.year ? String(resource.year) : "Umum");
+      const periodLabel = resource.period || (resource.year ? String(resource.year) : (isReference ? "Folder" : "Umum"));
       const link = externalLink(resource.url, resource.title, "year-link");
       link.append(
         createElement("span", { className: "year-link__year", text: periodLabel }),
         createElement("span", { className: "year-link__detail" }, [
-          createElement("strong", { text: `Buka ${group.title}` }),
+          createElement("strong", {
+            text: isReference ? `Buka ${resource.title}` : `Buka ${group.title}`
+          }),
           createElement("span", {
             text: resource.subfolders?.length
               ? resource.subfolders.map((item) => item.replace(/\b\w/g, (char) => char.toUpperCase())).join(" • ")
-              : "Folder dokumen periode"
+              : (isReference ? "Folder bahan referensi" : "Folder dokumen periode")
           })
         ]),
         createElement("span", { className: "year-link__icon", html: icon("external") })

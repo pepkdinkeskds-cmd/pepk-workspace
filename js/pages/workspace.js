@@ -9,7 +9,7 @@ import {
   updateQueryString,
   safeUrl
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.2-folder-list";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.3-reference-workspace";
 import { searchResources } from "../search.js";
 import { applicationCard, emptyState, groupCard } from "../ui.js";
 import { icon } from "../icons.js";
@@ -37,22 +37,55 @@ const rootLink = document.querySelector("[data-workspace-root-link]");
 const libraryLink = document.querySelector("[data-workspace-library-link]");
 const statsNode = document.querySelector("[data-workspace-stats]");
 const monevCallout = document.querySelector("[data-monev-workspace-callout]");
+const documentsHeading = document.querySelector("[data-workspace-documents-heading]");
 
 searchInput.value = query;
 
+function referenceWorkspace() {
+  return {
+    id: "document-center",
+    title: "Referensi",
+    description: "Dokumen pendukung, regulasi, pedoman, profil, dan bahan pertimbangan untuk mempercepat pekerjaan.",
+    icon: "library",
+    rootUrl: data.settings.documentCenterUrl || "",
+    sortOrder: 5,
+    isActive: true
+  };
+}
+
+function availableWorkspaces() {
+  return [...data.workspaces, referenceWorkspace()];
+}
+
 function activeWorkspace() {
-  return data.workspaces.find((item) => item.id === workspaceId);
+  return availableWorkspaces().find((item) => item.id === workspaceId);
 }
 
 function renderTabs() {
   tabsNode.replaceChildren();
-  data.workspaces.forEach((workspace) => {
+  availableWorkspaces().forEach((workspace) => {
     const link = document.createElement("a");
     link.href = `workspace.html?id=${encodeURIComponent(workspace.id)}`;
     link.textContent = workspace.title;
     if (workspace.id === workspaceId) link.setAttribute("aria-current", "page");
     tabsNode.append(link);
   });
+}
+
+function referenceGroups(resources) {
+  const grouped = new Map();
+  resources.forEach((resource) => {
+    const title = resource.category || resource.title || "Referensi";
+    if (!grouped.has(title)) {
+      grouped.set(title, {
+        id: `document-center-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+        workspaceId: "document-center",
+        title,
+        icon: "library"
+      });
+    }
+  });
+  return [...grouped.values()].sort((left, right) => left.title.localeCompare(right.title, "id"));
 }
 
 function clearWorkspaceSearch() {
@@ -74,13 +107,20 @@ function renderActions(workspace) {
   libraryLink.href = `resources.html?workspace=${encodeURIComponent(workspace.id)}`;
 }
 
-function renderStats(groups, applications, documents) {
+function renderStats(groups, applications, documents, workspace) {
   statsNode.replaceChildren();
-  [
-    [String(groups.length), "Kelompok dokumen"],
-    [String(documents.length), "Folder periode"],
-    [String(applications.length), "Aplikasi"]
-  ].forEach(([value, label]) => {
+  const entries = workspace.id === "document-center"
+    ? [
+        [String(groups.length), "Kelompok referensi"],
+        [String(documents.length), "Folder referensi"]
+      ]
+    : [
+        [String(groups.length), "Kelompok dokumen"],
+        [String(documents.length), "Folder periode"],
+        [String(applications.length), "Aplikasi"]
+      ];
+
+  entries.forEach(([value, label]) => {
     const item = document.createElement("span");
     item.className = "workspace-stat";
     const number = document.createElement("strong");
@@ -100,6 +140,11 @@ function render() {
   statsNode.replaceChildren();
 
   if (monevCallout) monevCallout.hidden = workspaceId !== "evaluasi";
+  if (documentsHeading) {
+    documentsHeading.textContent = workspaceId === "document-center"
+      ? "Kelompok referensi dan periode"
+      : "Kelompok dokumen berdasarkan periode";
+  }
 
   if (!workspace) {
     titleNode.textContent = "Ruang kerja tidak ditemukan";
@@ -134,7 +179,11 @@ function render() {
       "search",
       { label: "Hapus pencarian", onClick: clearWorkspaceSearch }
     ));
-    renderStats(data.groups.filter((group) => group.workspaceId === workspaceId), [], workspaceResources.filter((item) => item.type !== "application"));
+    const allDocuments = workspaceResources.filter((item) => item.type !== "application");
+    const allGroups = workspaceId === "document-center"
+      ? referenceGroups(allDocuments)
+      : data.groups.filter((group) => group.workspaceId === workspaceId);
+    renderStats(allGroups, [], allDocuments, workspace);
     return;
   }
 
@@ -144,22 +193,30 @@ function render() {
     .filter((item) => item.type === "application" && (!query || matchingIds.has(item.id)))
     .sort((a, b) => a.sortOrder - b.sortOrder || a.title.localeCompare(b.title, "id"));
   const documents = workspaceResources.filter((item) => item.type !== "application");
-  const groups = data.groups
-    .filter((group) => group.workspaceId === workspaceId)
+  const workspaceGroups = workspaceId === "document-center"
+    ? referenceGroups(documents)
+    : data.groups.filter((group) => group.workspaceId === workspaceId);
+  const groups = workspaceGroups
     .map((group) => ({
       group,
       resources: documents.filter((item) => item.category === group.title && (!query || matchingIds.has(item.id)))
     }))
     .filter((entry) => entry.resources.length);
 
-  subtitleNode.textContent = query
-    ? `${groups.length} kelompok dokumen • ${applications.length} aplikasi cocok dengan “${query}”`
-    : `${groups.length} kelompok dokumen • ${applications.length} aplikasi tersedia`;
+  if (workspaceId === "document-center") {
+    subtitleNode.textContent = query
+      ? `${groups.length} kelompok referensi cocok dengan “${query}”`
+      : `${groups.length} kelompok referensi tersedia`;
+  } else {
+    subtitleNode.textContent = query
+      ? `${groups.length} kelompok dokumen • ${applications.length} aplikasi cocok dengan “${query}”`
+      : `${groups.length} kelompok dokumen • ${applications.length} aplikasi tersedia`;
+  }
   appsSection.hidden = !applications.length;
   appsCountNode.textContent = applications.length ? `${applications.length} aplikasi` : "";
   applications.forEach((application) => appsNode.append(applicationCard(application, { compact: true })));
   groups.forEach((entry) => groupsNode.append(groupCard(entry.group, entry.resources)));
-  renderStats(groups, applications, documents.filter((item) => !query || matchingIds.has(item.id)));
+  renderStats(groups, applications, documents.filter((item) => !query || matchingIds.has(item.id)), workspace);
 
   if (!groups.length && !applications.length) {
     emptyNode.append(emptyState(
@@ -169,7 +226,11 @@ function render() {
       { label: "Hapus pencarian", onClick: clearWorkspaceSearch }
     ));
   }
-  announce(`${groups.length} kelompok dokumen dan ${applications.length} aplikasi ditampilkan.`);
+  announce(
+    workspaceId === "document-center"
+      ? `${groups.length} kelompok referensi ditampilkan.`
+      : `${groups.length} kelompok dokumen dan ${applications.length} aplikasi ditampilkan.`
+  );
 }
 
 searchInput.addEventListener("input", debounce(() => {
