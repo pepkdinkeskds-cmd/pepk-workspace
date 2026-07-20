@@ -8470,7 +8470,7 @@ export const LOCAL_DATA = {
   ],
   "settings": {
     "appName": "PEPK Workspace",
-    "appVersion": "0.9.0",
+    "appVersion": "0.9.1",
     "contentUpdatedAt": "20 Juli 2026",
     "spreadsheetId": "1rSbyazj5MSdRYHgBYLBA7jeMjYKattvRPCG9SKHSxCM",
     "searchMinimum": 2,
@@ -8482,14 +8482,15 @@ export const LOCAL_DATA = {
     "deviationBalancedThreshold": 2,
     "deviationAttentionThreshold": 5,
     "workflowEnabled": true,
-    "documentUploadFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLScLSE3dYd-T8f8bJWnuquORyWGgoGY-tWoRkEUCxGOyvaQBRA/viewform",
-    "agendaSubmitFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdFIA89pB1RiAc7gnSGsBz8SaBywVPQGnT21t26uEqT7FJBVA/viewform",
-    "monevMaterialFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSenh_RUcfVOlJ8LgMxl6Sa5yvE67cSU3ArW_0sLl6W9pUgCIA/viewform",
+    "documentUploadFormUrl": "",
+    "agendaSubmitFormUrl": "",
+    "monevMaterialFormUrl": "",
     "dataModelVersion": "2.0.0",
     "workflowVersion": "2.0.0",
     "workspaceGeneration": "V2",
     "folderRootUrl": "https://drive.google.com/drive/folders/1Sp4YwP76clexsW5uoyYGm6qczB53WHGB",
-    "documentCenterUrl": "https://drive.google.com/drive/folders/1VcWlqjCUUU-YbGATrMmZ4Sy9yOq6ehUW"
+    "documentCenterUrl": "https://drive.google.com/drive/folders/1VcWlqjCUUU-YbGATrMmZ4Sy9yOq6ehUW",
+    "serviceLinksSource": "local-fallback"
   },
   "monevMaterials": [],
   "agenda": [

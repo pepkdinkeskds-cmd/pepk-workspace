@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.1 — Runtime Hotfix
+
+- Memperbaiki kesalahan sintaks `export export` pada `js/ui.js` yang menghentikan rendering seluruh kartu folder, Ruang Kerja, Pustaka, dan Akses Cepat.
+- Menambahkan pemeriksaan sintaks otomatis untuk seluruh file JavaScript browser.
+- Menghapus URL formulir statis dari fallback lokal.
+- Halaman Layanan sekarang membaca URL formulir secara langsung dari sheet `Settings` V2.
+- Menambahkan cache key baru agar browser tidak memakai modul v0.9.0 yang rusak.
+
 ## 0.9.0 RC — Struktur Google Drive V2
 
 - Mengalihkan sumber data ke Spreadsheet V2.

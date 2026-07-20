@@ -9,9 +9,9 @@ import {
   createElement,
   externalLink
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.0-rc-v2";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.1-runtime-hotfix";
 import { searchResources } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.0-rc-v2";
+import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.1-runtime-hotfix";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
 

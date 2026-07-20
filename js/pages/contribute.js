@@ -1,5 +1,5 @@
 import { initApp, applyMetadata, setDataStatus, scheduleBackgroundTask, createElement, externalLink } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.0-rc-v2";
+import { getInitialData, refreshSettingsFromSheets } from "../data/data-service.js?v=0.9.1-runtime-hotfix";
 import { icon } from "../icons.js";
 
 initApp("contribute");
@@ -26,7 +26,7 @@ function actionCard({ iconName, eyebrow, title, description, url, buttonLabel, u
   } else {
     card.append(
       createElement("span", { className: "contribution-action-card__status", text: unavailableText }),
-      createElement("p", { className: "contribution-action-card__hint", text: "Administrator perlu menjalankan setup Apps Script dan menyimpan URL formulir pada sheet Settings." })
+      createElement("p", { className: "contribution-action-card__hint", text: "Tautan formulir diambil langsung dari sheet Settings V2. Pastikan spreadsheet dapat dibaca sebagai Viewer." })
     );
   }
   if (secondaryLink) {
@@ -69,20 +69,16 @@ function render() {
 }
 
 render();
-setDataStatus("Siap digunakan", "ready");
+setDataStatus("Memuat tautan layanan…", "loading");
 
 scheduleBackgroundTask(async () => {
-  setDataStatus("Memeriksa pembaruan…", "loading");
   try {
-    const result = await refreshFromSheets();
-    if (result.changed) {
-      data = result.data;
-      applyMetadata(data.settings);
-      render();
-    }
-    if (result.partialFailure) setDataStatus("Data lokal aktif", "warning", `Sebagian sumber belum dapat dibaca: ${result.failedSheets.join(", ")}.`);
-    else setDataStatus(result.changed ? "Data tersinkron" : "Siap digunakan", result.changed ? "connected" : "ready");
+    data.settings = await refreshSettingsFromSheets();
+    applyMetadata(data.settings);
+    render();
+    setDataStatus("Tautan layanan tersinkron", "connected", "URL formulir dibaca langsung dari sheet Settings V2.");
   } catch {
-    setDataStatus("Data lokal aktif", "warning", "Google Sheets belum dapat dihubungi.");
+    render();
+    setDataStatus("Tautan layanan belum termuat", "warning", "Pastikan Spreadsheet V2 dibagikan sebagai Viewer kepada siapa saja yang memiliki link.");
   }
 });

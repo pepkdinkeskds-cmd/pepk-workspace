@@ -13,12 +13,12 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.0\-rc\-v2/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.1\-runtime\-hotfix/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
-assert.match(localData, /"appVersion": "0.9.0"/);
+assert.match(localData, /"appVersion": "0.9.1"/);
 assert.match(localData, /"workspaceGeneration": "V2"/);
 assert.match(localData, /"workspaceId": "document-center"/);
 

@@ -299,7 +299,7 @@ export function emptyState(title, description, iconName = "search", action = nul
   return createElement("div", { className: "empty-state" }, children);
 }
 
-export export function groupCard(group, resources) {
+export function groupCard(group, resources) {
   const article = createElement("article", { className: "document-group" });
   const header = createElement("div", { className: "document-group__header" });
   header.append(

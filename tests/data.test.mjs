@@ -51,9 +51,10 @@ test("homepage quick access is four folders and four applications", () => {
 test("workflow settings and form URLs are available", () => {
   assert.equal(data.settings.workflowEnabled, true);
   assert.equal(data.settings.workflowVersion, "2.0.0");
-  assert.ok(data.settings.documentUploadFormUrl.startsWith("https://"));
-  assert.ok(data.settings.agendaSubmitFormUrl.startsWith("https://"));
-  assert.ok(data.settings.monevMaterialFormUrl.startsWith("https://"));
+  assert.equal(data.settings.documentUploadFormUrl, "");
+  assert.equal(data.settings.agendaSubmitFormUrl, "");
+  assert.equal(data.settings.monevMaterialFormUrl, "");
+  assert.equal(data.settings.serviceLinksSource, "local-fallback");
 });
 
 test("application resources use optimized local logo files", () => {

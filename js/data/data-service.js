@@ -1,6 +1,6 @@
 import { CONFIG } from "../config.js";
 import { LOCAL_DATA } from "./local-data.js";
-import { loadSheet } from "./sheets.js?v=0.9.0-rc-v2";
+import { loadSheet } from "./sheets.js?v=0.9.1-runtime-hotfix";
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -448,6 +448,18 @@ export function getInitialData() {
   return data;
 }
 
+
+export async function refreshSettingsFromSheets() {
+  const rows = await loadSheet(CONFIG.sheets.settings);
+  if (!rows.length) throw new Error("Sheet Settings tidak dapat dibaca atau kosong.");
+  const liveSettings = normalizeSettings(rows);
+  return {
+    ...clone(LOCAL_DATA.settings),
+    ...liveSettings,
+    serviceLinksSource: "live-sheet"
+  };
+}
+
 export async function refreshFromSheets() {
   const entries = Object.entries(CONFIG.sheets);
   const results = await Promise.allSettled(entries.map(([, sheetName]) => loadSheet(sheetName)));
@@ -518,7 +530,7 @@ export async function refreshFromSheets() {
   }
 
   if (loaded.settings?.length) {
-    data.settings = { ...data.settings, ...normalizeSettings(loaded.settings) };
+    data.settings = { ...data.settings, ...normalizeSettings(loaded.settings), serviceLinksSource: "live-sheet" };
     changed = true;
   }
 
