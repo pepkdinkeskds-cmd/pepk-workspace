@@ -1,5 +1,5 @@
 import { initApp, applyMetadata, setDataStatus, scheduleBackgroundTask, createElement, externalLink } from "../app.js";
-import { getInitialData, refreshSettingsFromSheets } from "../data/data-service.js?v=0.9.1-runtime-hotfix";
+import { getInitialData, refreshSettingsFromSheets } from "../data/data-service.js?v=0.9.2-folder-list";
 import { icon } from "../icons.js";
 
 initApp("contribute");

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.2 — Homepage Folder List
+
+- Mengubah Folder Kerja pada Akses Cepat menjadi daftar horizontal satu kolom.
+- Menyamakan pola kartu Folder Kerja dengan Launchpad aplikasi.
+- Ikon berada di kiri, nama folder di tengah, dan ikon buka di kanan.
+- Nama folder panjang tidak lagi terpecah pada kartu sempit.
+- Data, tautan, Spreadsheet, Google Form, dan Apps Script tidak berubah.
+
 ## 0.9.1 — Runtime Hotfix
 
 - Memperbaiki kesalahan sintaks `export export` pada `js/ui.js` yang menghentikan rendering seluruh kartu folder, Ruang Kerja, Pustaka, dan Akses Cepat.

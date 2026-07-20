@@ -2396,3 +2396,64 @@
     }
   }
 }
+
+
+/* v0.9.2 — Homepage Folder Kerja follows the Launchpad list pattern. */
+@layer components {
+  body[data-page="home"] .home-tools-card .quick-panel:not(.quick-panel--apps) .quick-grid--folders {
+    grid-template-columns: 1fr;
+    gap: .5rem;
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel:not(.quick-panel--apps) .resource-card--compact {
+    min-height: 3.9rem;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: .7rem;
+    padding: .55rem .7rem;
+    border-radius: .85rem;
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel:not(.quick-panel--apps) .resource-card__icon {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: .68rem;
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel:not(.quick-panel--apps) .resource-card__meta {
+    display: none;
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel:not(.quick-panel--apps) .resource-card__title {
+    display: block;
+    overflow: hidden;
+    overflow-wrap: normal;
+    word-break: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: .9rem;
+    line-height: 1.25;
+  }
+
+  body[data-page="home"] .home-tools-card .quick-panel:not(.quick-panel--apps) .resource-card__action {
+    position: static;
+    align-self: center;
+    margin: 0;
+  }
+}
+
+@layer utilities {
+  @media (max-width: 40rem) {
+    body[data-page="home"] .home-tools-card .quick-panel:not(.quick-panel--apps) .resource-card--compact {
+      min-height: 4.15rem;
+    }
+
+    body[data-page="home"] .home-tools-card .quick-panel:not(.quick-panel--apps) .resource-card__title {
+      display: -webkit-box;
+      overflow: hidden;
+      white-space: normal;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+}
