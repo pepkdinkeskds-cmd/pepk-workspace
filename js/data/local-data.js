@@ -5,9 +5,9 @@ export const LOCAL_DATA = {
       "title": "Perencanaan",
       "description": "Dokumen perencanaan program, kegiatan, anggaran, dan pengembangan layanan kesehatan.",
       "icon": "clipboard",
-      "rootUrl": "https://drive.google.com/drive/folders/1Ui2NLPSi4RMW26KN1yq2NcSi1OiN39ud?usp=sharing",
-      "groupCount": 8,
-      "resourceCount": 24,
+      "rootUrl": "https://drive.google.com/drive/folders/1iCOdA7wt3VpZJDo8Umqx1l2vCHDyhu1W",
+      "groupCount": 10,
+      "resourceCount": 31,
       "sortOrder": 1,
       "isActive": true,
       "applicationCount": 4
@@ -17,9 +17,9 @@ export const LOCAL_DATA = {
       "title": "Evaluasi",
       "description": "Dokumen pengukuran kinerja, evaluasi program, pengendalian, dan akuntabilitas.",
       "icon": "chart",
-      "rootUrl": "https://drive.google.com/drive/folders/1r1WgLrHBVPsNymInqvAjYfQlcTeTSc5c?usp=sharing",
-      "groupCount": 7,
-      "resourceCount": 21,
+      "rootUrl": "https://drive.google.com/drive/folders/1Qsfk68eoa4_pNc2VIHS-M_6FuhJTCqDs",
+      "groupCount": 12,
+      "resourceCount": 33,
       "sortOrder": 2,
       "isActive": true,
       "applicationCount": 3
@@ -29,9 +29,9 @@ export const LOCAL_DATA = {
       "title": "Pelaporan",
       "description": "Laporan berkala, data dukung, infografis, dan penyajian informasi kinerja.",
       "icon": "report",
-      "rootUrl": "https://drive.google.com/drive/folders/1yeVc7aXb9oyjriYFXPQtzClNy3CGipIj?usp=sharing",
-      "groupCount": 7,
-      "resourceCount": 21,
+      "rootUrl": "https://drive.google.com/drive/folders/1SN27LcoAw-IwBS2augYF_flyBfcgje_C",
+      "groupCount": 8,
+      "resourceCount": 24,
       "sortOrder": 3,
       "isActive": true,
       "applicationCount": 2
@@ -41,9 +41,9 @@ export const LOCAL_DATA = {
       "title": "Keuangan",
       "description": "Dokumen pengelolaan anggaran, penatausahaan, pertanggungjawaban, dan pemeriksaan keuangan.",
       "icon": "wallet",
-      "rootUrl": "https://drive.google.com/drive/folders/12qnvbfCKAoqmzWG4MzrQQ4gEIRLi3-8x?usp=sharing",
-      "groupCount": 6,
-      "resourceCount": 18,
+      "rootUrl": "https://drive.google.com/drive/folders/1_tcvG6bnLKuG8uXUb5yylaVq8sGNoKfE",
+      "groupCount": 7,
+      "resourceCount": 21,
       "sortOrder": 4,
       "isActive": true,
       "applicationCount": 10
@@ -51,314 +51,179 @@ export const LOCAL_DATA = {
   ],
   "groups": [
     {
-      "id": "perencanaan-anggaran",
-      "workspaceId": "perencanaan",
-      "title": "ANGGARAN",
-      "url": "https://drive.google.com/drive/folders/16Zyuyj030VlubMgUzwzaGNhsqKBLErH9?usp=sharing",
-      "icon": "folder",
-      "years": [
-        {
-          "year": 2025,
-          "resourceId": "perencanaan-anggaran-2025",
-          "url": "https://drive.google.com/drive/folders/1pqvaZTqD8rog4aMgwbK-8n8ZlQBkPLx5?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "perencanaan-anggaran-2026",
-          "url": "https://drive.google.com/drive/folders/1J7G2tdp1_bZdxahCYMchHXGkkfaix-TT?usp=drive_link"
-        },
-        {
-          "year": 2027,
-          "resourceId": "perencanaan-anggaran-2027",
-          "url": "https://drive.google.com/drive/folders/1Aj6RYGwD8uTSUc9d-v1U7n-bdxDaXvXM?usp=drive_link"
-        }
-      ]
-    },
-    {
-      "id": "perencanaan-dak",
-      "workspaceId": "perencanaan",
-      "title": "DAK",
-      "url": "https://drive.google.com/drive/folders/1SpL163JT4Ml_9FXfd7xyaUBPUDY6fT71?usp=sharing",
-      "icon": "folder",
-      "years": [
-        {
-          "year": 2025,
-          "resourceId": "perencanaan-dak-2025",
-          "url": "https://drive.google.com/drive/folders/1VyHKPU32PhQkiAc_RrxdciS1lr5C2gev?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "perencanaan-dak-2026",
-          "url": "https://drive.google.com/drive/folders/1fwWqNvIfy_jIhEglZIzP9Z3NpkQ107cn?usp=drive_link"
-        },
-        {
-          "year": 2027,
-          "resourceId": "perencanaan-dak-2027",
-          "url": "https://drive.google.com/drive/folders/1v5nBo71ivI9szyev3KQei-rHD2o7eIFF?usp=drive_link"
-        }
-      ]
-    },
-    {
-      "id": "perencanaan-pkp",
-      "workspaceId": "perencanaan",
-      "title": "PKP",
-      "url": "https://drive.google.com/drive/folders/1r7eGaC6qnNpnwB8sWJdTAZGb72ARAUqJ?usp=sharing",
-      "icon": "folder",
-      "years": [
-        {
-          "year": 2025,
-          "resourceId": "perencanaan-pkp-2025",
-          "url": "https://drive.google.com/drive/folders/1Adh8P9B09LbUbouOUg-shXgqjmRADJQy?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "perencanaan-pkp-2026",
-          "url": "https://drive.google.com/drive/folders/1kngms86VLjwAqfiUWbhTU9AVWulSRg4g?usp=drive_link"
-        },
-        {
-          "year": 2027,
-          "resourceId": "perencanaan-pkp-2027",
-          "url": "https://drive.google.com/drive/folders/1GP2hlJc6m93OPQ4_y12HIYUqergV2IEL?usp=drive_link"
-        }
-      ]
-    },
-    {
-      "id": "perencanaan-rba",
-      "workspaceId": "perencanaan",
-      "title": "RBA",
-      "url": "https://drive.google.com/drive/folders/1ZfM0wZW9OFj1XnBBwSN4B3SoGA7CqJxV?usp=sharing",
-      "icon": "folder",
-      "years": [
-        {
-          "year": 2025,
-          "resourceId": "perencanaan-rba-2025",
-          "url": "https://drive.google.com/drive/folders/1K4oFoH5Uz7uBNboV489qDafjmnL6GOuQ?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "perencanaan-rba-2026",
-          "url": "https://drive.google.com/drive/folders/19v2njWnneRB9UFVciqLws1NCDqwMYvt2?usp=drive_link"
-        },
-        {
-          "year": 2027,
-          "resourceId": "perencanaan-rba-2027",
-          "url": "https://drive.google.com/drive/folders/1-6lT4UwSbwj_t6_xxbR4qOL-CySlD0Ma?usp=drive_link"
-        }
-      ]
-    },
-    {
-      "id": "perencanaan-renja",
-      "workspaceId": "perencanaan",
-      "title": "RENJA",
-      "url": "https://drive.google.com/drive/folders/1mRJT_cyniIwN3ztt6awalkHi-YVboru5?usp=drive_link",
-      "icon": "folder",
-      "years": [
-        {
-          "year": 2025,
-          "resourceId": "perencanaan-renja-2025",
-          "url": "https://drive.google.com/drive/folders/1qLZ8aRJ1ZzgE4MNVSP0XjZmFOPBCl6lQ?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "perencanaan-renja-2026",
-          "url": "https://drive.google.com/drive/folders/1EDqx-nSntHqJkQGQqS5d_XYKcPAq_QsW?usp=drive_link"
-        },
-        {
-          "year": 2027,
-          "resourceId": "perencanaan-renja-2027",
-          "url": "https://drive.google.com/drive/folders/1-FruPLeFr6eKMr8cj4GxN_EF5T1lRrbV?usp=drive_link"
-        }
-      ]
-    },
-    {
-      "id": "perencanaan-renstra",
-      "workspaceId": "perencanaan",
-      "title": "RENSTRA",
-      "url": "https://drive.google.com/drive/folders/1oKlugZE0RA_wngAZvSgnPvblDDJu1aRD?usp=drive_link",
-      "icon": "folder",
-      "years": [
-        {
-          "year": 2025,
-          "resourceId": "perencanaan-renstra-2025",
-          "url": "https://drive.google.com/drive/folders/1rq_JVUuId5FQbnbif7xxPi-XfEU1U2uH?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "perencanaan-renstra-2026",
-          "url": "https://drive.google.com/drive/folders/1Ip_O_zRUtlPfW8QbrFDXJP4AmU5w5ODc?usp=drive_link"
-        },
-        {
-          "year": 2027,
-          "resourceId": "perencanaan-renstra-2027",
-          "url": "https://drive.google.com/drive/folders/19cmLpFZlH2Qtzd7ByNeNHfgHiMnvsiJQ?usp=drive_link"
-        }
-      ]
-    },
-    {
-      "id": "perencanaan-rsb",
-      "workspaceId": "perencanaan",
-      "title": "RSB",
-      "url": "https://drive.google.com/drive/folders/1qOk8bnrEuDfaB05Xemlz65nZ7IefgjhR?usp=sharing",
-      "icon": "folder",
-      "years": [
-        {
-          "year": 2025,
-          "resourceId": "perencanaan-rsb-2025",
-          "url": "https://drive.google.com/drive/folders/1NvJzwhqJ8zVRFdqc06yX7uft91N_NtAY?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "perencanaan-rsb-2026",
-          "url": "https://drive.google.com/drive/folders/1iYwJsqW7V7YeFSHqHRUPEyQJqPEZS5IW?usp=drive_link"
-        },
-        {
-          "year": 2027,
-          "resourceId": "perencanaan-rsb-2027",
-          "url": "https://drive.google.com/drive/folders/1uf7Lmpc7vcz33Bgma-aEYay3Lf2W01aC?usp=drive_link"
-        }
-      ]
-    },
-    {
-      "id": "perencanaan-rtp",
-      "workspaceId": "perencanaan",
-      "title": "RTP",
-      "url": "https://drive.google.com/drive/folders/1WYMpHl4JNm5XZJtFQgYdrdIUTsA9WQjB?usp=drive_link",
-      "icon": "folder",
-      "years": [
-        {
-          "year": 2025,
-          "resourceId": "perencanaan-rtp-2025",
-          "url": "https://drive.google.com/drive/folders/115ieUt2_a1XoGcAbvlZqoJtawg0Ko8Dp?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "perencanaan-rtp-2026",
-          "url": "https://drive.google.com/drive/folders/1gsABoz-DMergOzGaYKWOy93WQHbX3QX2?usp=drive_link"
-        },
-        {
-          "year": 2027,
-          "resourceId": "perencanaan-rtp-2027",
-          "url": "https://drive.google.com/drive/folders/1O_zrT4zHmu978LvvlOrTk4zlO917jSud?usp=drive_link"
-        }
-      ]
-    },
-    {
-      "id": "evaluasi-iku",
+      "id": "evaluasi-bahan-evaluasi-anggaran-dan-pendapatan-untuk-dprd",
       "workspaceId": "evaluasi",
-      "title": "IKU",
-      "url": "https://drive.google.com/drive/folders/19ksZhdaRRyl4rIGq43czgam33pTAnPik?usp=sharing",
+      "title": "BAHAN EVALUASI ANGGARAN DAN PENDAPATAN UNTUK DPRD",
+      "url": "https://drive.google.com/drive/folders/185hqLQJWnrMrxEGqDcJICNNraEBR_4MX",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-bahan-evaluasi-anggaran-dan-pendapatan-untuk-dprd-2027",
+          "url": "https://drive.google.com/drive/folders/185hqLQJWnrMrxEGqDcJICNNraEBR_4MX"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-bahan-evaluasi-anggaran-dan-pendapatan-untuk-dprd-2026",
+          "url": "https://drive.google.com/drive/folders/1b7ksbWZrCCtyQTPfXaZBMTGleshYL7_F"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "evaluasi-iku-2025",
-          "url": "https://drive.google.com/drive/folders/1LcorzS-8N68N9E_7GX_VGOlqE8gWApQ4?usp=sharing"
-        },
-        {
-          "year": 2026,
-          "resourceId": "evaluasi-iku-2026",
-          "url": "https://drive.google.com/drive/folders/1jHrnDCm7J4uCTsiXnUv23QsKudKFqpXD?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "evaluasi-iku-2027",
-          "url": "https://drive.google.com/drive/folders/1_A7VK-IJYiTLfBo-Fj9hqL4k5z49AEDh?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-bahan-evaluasi-anggaran-dan-pendapatan-untuk-dprd-2027",
+          "url": "https://drive.google.com/drive/folders/185hqLQJWnrMrxEGqDcJICNNraEBR_4MX"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-bahan-evaluasi-anggaran-dan-pendapatan-untuk-dprd-2026",
+          "url": "https://drive.google.com/drive/folders/1b7ksbWZrCCtyQTPfXaZBMTGleshYL7_F"
         }
       ]
     },
     {
-      "id": "evaluasi-sakip",
+      "id": "evaluasi-evaluasi-kinerja",
       "workspaceId": "evaluasi",
-      "title": "SAKIP",
-      "url": "https://drive.google.com/drive/folders/1Hk_kGG3JfUDrHpEsmHSQqFH90ozZ4AGL?usp=drive_link",
+      "title": "EVALUASI KINERJA",
+      "url": "https://drive.google.com/drive/folders/1wvQpcKsaKhDDL_Zsx_QDUi0I_Bik2w_E",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-evaluasi-kinerja-2027",
+          "url": "https://drive.google.com/drive/folders/1wvQpcKsaKhDDL_Zsx_QDUi0I_Bik2w_E"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-kinerja-2026",
+          "url": "https://drive.google.com/drive/folders/1hp7zqcPlhlKAk1a8Bhn2_9rfEyZPFeCB"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-kinerja-2025",
+          "url": "https://drive.google.com/drive/folders/1kWSHLrs4AkMtV_IMYcpL5UUAaHCMCXNi"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "evaluasi-sakip-2025",
-          "url": "https://drive.google.com/drive/folders/1zRCv-fqXxFkkFskjrp2p7TD92muxMdPy?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "evaluasi-sakip-2026",
-          "url": "https://drive.google.com/drive/folders/1cWQ22Ecpz5HoiZQAj9yMWYXlNAS1aAIy?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "evaluasi-sakip-2027",
-          "url": "https://drive.google.com/drive/folders/1B160B9mv2B5tXHqxtkYg3an5M3QW7bg9?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-evaluasi-kinerja-2027",
+          "url": "https://drive.google.com/drive/folders/1wvQpcKsaKhDDL_Zsx_QDUi0I_Bik2w_E"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-kinerja-2026",
+          "url": "https://drive.google.com/drive/folders/1hp7zqcPlhlKAk1a8Bhn2_9rfEyZPFeCB"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-kinerja-2025",
+          "url": "https://drive.google.com/drive/folders/1kWSHLrs4AkMtV_IMYcpL5UUAaHCMCXNi"
         }
       ]
     },
     {
-      "id": "evaluasi-spip",
+      "id": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi",
       "workspaceId": "evaluasi",
-      "title": "SPIP",
-      "url": "https://drive.google.com/drive/folders/1m7HrV7WY0_kjyFJRAb3IUFdRwrYnX1ES?usp=drive_link",
+      "title": "EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI)",
+      "url": "https://drive.google.com/drive/folders/1jwfHgD-MvzTyN2UkXlYdWYepmBvzdVc-",
       "icon": "folder",
-      "years": [
+      "periods": [
         {
-          "year": 2025,
-          "resourceId": "evaluasi-spip-2025",
-          "url": "https://drive.google.com/drive/folders/1Jt8j54A8SUv5F9bjlYJ0zFfaRyxG-4FM?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "evaluasi-spip-2026",
-          "url": "https://drive.google.com/drive/folders/1bSX3zuOX8H_gLqNcW6zR8mUOYSyWJTg4?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "evaluasi-spip-2027",
-          "url": "https://drive.google.com/drive/folders/1M3e2JkNUflfceVoLQzj2D3ZaPx6BJAIq?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi-2027",
+          "url": "https://drive.google.com/drive/folders/1jwfHgD-MvzTyN2UkXlYdWYepmBvzdVc-"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi-2026",
+          "url": "https://drive.google.com/drive/folders/1XiGLEClJWAj05qFQM-rLzdgBuzTIuU8z"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi-2025",
+          "url": "https://drive.google.com/drive/folders/1IAgKzHmLcwyo7urA19qXQUqNF1IAFQbo"
         }
-      ]
-    },
-    {
-      "id": "evaluasi-spm",
-      "workspaceId": "evaluasi",
-      "title": "SPM",
-      "url": "https://drive.google.com/drive/folders/1STwQf1xmWwlfQY45OoJ9zkYVlWZEU5ts?usp=sharing",
-      "icon": "folder",
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "evaluasi-spm-2025",
-          "url": "https://drive.google.com/drive/folders/1-EOi74ekph4h4c172kRl-RWcKSq3vZ0N?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "evaluasi-spm-2026",
-          "url": "https://drive.google.com/drive/folders/1F3fOSsFh_I-pKjuhCfR8EGdJPmN6joqy?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "evaluasi-spm-2027",
-          "url": "https://drive.google.com/drive/folders/1_xtrUXbRVZiEKPbOXqcxYpwpUh_h1sl_?usp=drive_link"
-        }
-      ]
-    },
-    {
-      "id": "evaluasi-perjanjian-kinerja",
-      "workspaceId": "evaluasi",
-      "title": "PERJANJIAN KINERJA",
-      "url": "https://drive.google.com/drive/folders/1kcVBJ8ER7nHcY-tfaXBW2wLu1Aeyn-5-?usp=drive_link",
-      "icon": "folder",
-      "years": [
-        {
-          "year": 2025,
-          "resourceId": "evaluasi-perjanjian-kinerja-2025",
-          "url": "https://drive.google.com/drive/folders/1HxqPNQF-DO57WdujobXsqT39CYOxzLQo?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi-2027",
+          "url": "https://drive.google.com/drive/folders/1jwfHgD-MvzTyN2UkXlYdWYepmBvzdVc-"
         },
         {
+          "period": "2026",
           "year": 2026,
-          "resourceId": "evaluasi-perjanjian-kinerja-2026",
-          "url": "https://drive.google.com/drive/folders/1YjgMrU7pCFx13mnZlX38TxgCArCNxYPM?usp=drive_link"
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi-2026",
+          "url": "https://drive.google.com/drive/folders/1XiGLEClJWAj05qFQM-rLzdgBuzTIuU8z"
         },
         {
-          "year": 2027,
-          "resourceId": "evaluasi-perjanjian-kinerja-2027",
-          "url": "https://drive.google.com/drive/folders/16DCebU1cqb8QugNiFm-IcNB53iVU7jMA?usp=drive_link"
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi-2025",
+          "url": "https://drive.google.com/drive/folders/1IAgKzHmLcwyo7urA19qXQUqNF1IAFQbo"
         }
       ]
     },
@@ -366,215 +231,548 @@ export const LOCAL_DATA = {
       "id": "evaluasi-evaluasi-renja",
       "workspaceId": "evaluasi",
       "title": "EVALUASI RENJA",
-      "url": "https://drive.google.com/drive/folders/1WBulIYn5rH1qWFO2vL90wFKaz5tYy0eB?usp=sharing",
+      "url": "https://drive.google.com/drive/folders/1wYmVI75i5BCsa5L3UiLlQMEy82MbZ_zb",
       "icon": "folder",
-      "years": [
+      "periods": [
         {
-          "year": 2025,
-          "resourceId": "evaluasi-evaluasi-renja-2025",
-          "url": "https://drive.google.com/drive/folders/1UqbXlv-QeW0DZQtBikMVYAI9WrWdS0pV?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "evaluasi-evaluasi-renja-2026",
-          "url": "https://drive.google.com/drive/folders/1FdY0ZF7eJazCtSCR8y2A67rvFylquSdM?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
           "resourceId": "evaluasi-evaluasi-renja-2027",
-          "url": "https://drive.google.com/drive/folders/1W4nGV4eFopuHFfiRptW8hCl8axFX5B1b?usp=drive_link"
+          "url": "https://drive.google.com/drive/folders/1wYmVI75i5BCsa5L3UiLlQMEy82MbZ_zb"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-renja-2026",
+          "url": "https://drive.google.com/drive/folders/1xwaGuPN-NI7fB0y11lKDLpJi-c8KqToU"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-renja-2025",
+          "url": "https://drive.google.com/drive/folders/1fCuEmNZ65Pvp98lGDGxxnExY-DmDqWVi"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-evaluasi-renja-2027",
+          "url": "https://drive.google.com/drive/folders/1wYmVI75i5BCsa5L3UiLlQMEy82MbZ_zb"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-renja-2026",
+          "url": "https://drive.google.com/drive/folders/1xwaGuPN-NI7fB0y11lKDLpJi-c8KqToU"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-renja-2025",
+          "url": "https://drive.google.com/drive/folders/1fCuEmNZ65Pvp98lGDGxxnExY-DmDqWVi"
         }
       ]
     },
     {
-      "id": "evaluasi-data-lain",
+      "id": "evaluasi-evaluasi-renstra",
       "workspaceId": "evaluasi",
-      "title": "DATA LAIN",
-      "url": "https://drive.google.com/drive/folders/112swsKgFK-ZPbzb8NAjUgar1ktMI98ZV?usp=drive_link",
+      "title": "EVALUASI RENSTRA",
+      "url": "https://drive.google.com/drive/folders/1QaokhksFwKG5pT77uIVGzOdnn9XoIfL7",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-evaluasi-renstra-2027",
+          "url": "https://drive.google.com/drive/folders/1QaokhksFwKG5pT77uIVGzOdnn9XoIfL7"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-renstra-2026",
+          "url": "https://drive.google.com/drive/folders/1i__tMe80TPmJQeaaZpy5S_oMJWcf22wj"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-renstra-2025",
+          "url": "https://drive.google.com/drive/folders/1-kyEtBFl7rvPHVkoUy7mCjjAG0Qft6Tu"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "evaluasi-data-lain-2025",
-          "url": "https://drive.google.com/drive/folders/12fLnNvN-LK4h1HObe2tM62ZLc0E472NK?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "evaluasi-data-lain-2026",
-          "url": "https://drive.google.com/drive/folders/12S1HildTlTZKjOn4MbDyHHdrLZdObnp-?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "evaluasi-data-lain-2027",
-          "url": "https://drive.google.com/drive/folders/1cJM45CmR9gOT0ScQ9gTrufwDaS6Vgswc?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-evaluasi-renstra-2027",
+          "url": "https://drive.google.com/drive/folders/1QaokhksFwKG5pT77uIVGzOdnn9XoIfL7"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-renstra-2026",
+          "url": "https://drive.google.com/drive/folders/1i__tMe80TPmJQeaaZpy5S_oMJWcf22wj"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-renstra-2025",
+          "url": "https://drive.google.com/drive/folders/1-kyEtBFl7rvPHVkoUy7mCjjAG0Qft6Tu"
         }
       ]
     },
     {
-      "id": "pelaporan-infografis",
-      "workspaceId": "pelaporan",
-      "title": "INFOGRAFIS",
-      "url": "https://drive.google.com/drive/folders/1XNx1xXOoVvuHeB96h-bK05nMLzLO6QGw?usp=drive_link",
+      "id": "evaluasi-evaluasi-rtp",
+      "workspaceId": "evaluasi",
+      "title": "EVALUASI RTP",
+      "url": "https://drive.google.com/drive/folders/1_izRWmUVkBNlIx8tvKdHVMTb3JXqBG_8",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-evaluasi-rtp-2027",
+          "url": "https://drive.google.com/drive/folders/1_izRWmUVkBNlIx8tvKdHVMTb3JXqBG_8"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-rtp-2026",
+          "url": "https://drive.google.com/drive/folders/1khejYgNqQN10JGehchdoUpzlpvAe7Qo-"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-rtp-2025",
+          "url": "https://drive.google.com/drive/folders/1rWqwVH40vXkyvX-X9oJ1mfD-Ko-d6Ddd"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "pelaporan-infografis-2025",
-          "url": "https://drive.google.com/drive/folders/1zLPNRrDbr16GrOrA5d7_5JeKODAaN6hO?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "pelaporan-infografis-2026",
-          "url": "https://drive.google.com/drive/folders/1o0M22EungsnQUfv3poK8Ndi5D1twVBJy?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "pelaporan-infografis-2027",
-          "url": "https://drive.google.com/drive/folders/1lM0KtvfI-ebArz75EZ3cjesz0uxt05Uh?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-evaluasi-rtp-2027",
+          "url": "https://drive.google.com/drive/folders/1_izRWmUVkBNlIx8tvKdHVMTb3JXqBG_8"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-evaluasi-rtp-2026",
+          "url": "https://drive.google.com/drive/folders/1khejYgNqQN10JGehchdoUpzlpvAe7Qo-"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-evaluasi-rtp-2025",
+          "url": "https://drive.google.com/drive/folders/1rWqwVH40vXkyvX-X9oJ1mfD-Ko-d6Ddd"
         }
       ]
     },
     {
-      "id": "pelaporan-lkjip",
-      "workspaceId": "pelaporan",
-      "title": "LKJiP",
-      "url": "https://drive.google.com/drive/folders/1IT4AV63FdQvuMrXQ6q3MBB0Unt7nGYAV?usp=sharing",
+      "id": "evaluasi-kopd",
+      "workspaceId": "evaluasi",
+      "title": "KOPD",
+      "url": "https://drive.google.com/drive/folders/1hMqmVuAmfCqzXYAa-0pT-KPKfivUFoYk",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-kopd-2025",
+          "url": "https://drive.google.com/drive/folders/1hMqmVuAmfCqzXYAa-0pT-KPKfivUFoYk"
+        }
+      ],
       "years": [
         {
+          "period": "2025",
           "year": 2025,
-          "resourceId": "pelaporan-lkjip-2025",
-          "url": "https://drive.google.com/drive/folders/1WcwfI9Wf7RBc86xrI1cudhPeqTzKM9Mc?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "pelaporan-lkjip-2026",
-          "url": "https://drive.google.com/drive/folders/1clMCG9C_QPUxOTddCzUoc8T_Mrxho-LJ?usp=drive_link"
-        },
-        {
-          "year": 2027,
-          "resourceId": "pelaporan-lkjip-2027",
-          "url": "https://drive.google.com/drive/folders/1fJrT58gCLCLPF-DfuW0xE5D0jBzvC1MW?usp=drive_link"
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-kopd-2025",
+          "url": "https://drive.google.com/drive/folders/1hMqmVuAmfCqzXYAa-0pT-KPKfivUFoYk"
         }
       ]
     },
     {
-      "id": "pelaporan-lppd",
-      "workspaceId": "pelaporan",
-      "title": "LPPD",
-      "url": "https://drive.google.com/drive/folders/1hbdCEoMVycIKjWy6pMQmN4DbD05MBSnY?usp=drive_link",
+      "id": "evaluasi-monev-kinerja-dan-anggaran",
+      "workspaceId": "evaluasi",
+      "title": "MONEV KINERJA DAN ANGGARAN",
+      "url": "https://drive.google.com/drive/folders/1N9BbczKWSN9cJJPzlr-J03EM_KdH2SOw",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-monev-kinerja-dan-anggaran-2027",
+          "url": "https://drive.google.com/drive/folders/1N9BbczKWSN9cJJPzlr-J03EM_KdH2SOw"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-monev-kinerja-dan-anggaran-2026",
+          "url": "https://drive.google.com/drive/folders/1UGAEnfl2pZSKiMgI48JvPDVpEP-W2QFW"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-monev-kinerja-dan-anggaran-2025",
+          "url": "https://drive.google.com/drive/folders/10Kc8_X1akNoHUzFFzzl8DhuwqyOBb4gM"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "pelaporan-lppd-2025",
-          "url": "https://drive.google.com/drive/folders/1Uhf-fEd5iAYSRE_P5rNTzJFmZtDV6Gkn?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "pelaporan-lppd-2026",
-          "url": "https://drive.google.com/drive/folders/1ubQ2hgaFrZX-ZpMlKUG89YHlJ4-m26OB?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "pelaporan-lppd-2027",
-          "url": "https://drive.google.com/drive/folders/1jru0ykDmOrmhuCL3FJdkeidhP4ZNq60Y?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-monev-kinerja-dan-anggaran-2027",
+          "url": "https://drive.google.com/drive/folders/1N9BbczKWSN9cJJPzlr-J03EM_KdH2SOw"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-monev-kinerja-dan-anggaran-2026",
+          "url": "https://drive.google.com/drive/folders/1UGAEnfl2pZSKiMgI48JvPDVpEP-W2QFW"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-monev-kinerja-dan-anggaran-2025",
+          "url": "https://drive.google.com/drive/folders/10Kc8_X1akNoHUzFFzzl8DhuwqyOBb4gM"
         }
       ]
     },
     {
-      "id": "pelaporan-walidata",
-      "workspaceId": "pelaporan",
-      "title": "WALIDATA",
-      "url": "https://drive.google.com/drive/folders/1BYUgamG2Bl6hnsaLmMZ82ck4aBWK2aUP?usp=drive_link",
+      "id": "evaluasi-pkp-puskesmas",
+      "workspaceId": "evaluasi",
+      "title": "PKP PUSKESMAS",
+      "url": "https://drive.google.com/drive/folders/1z3ShoPbpqtjiLhRO_wd75aT1XM3FtW_Z",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-pkp-puskesmas-2027",
+          "url": "https://drive.google.com/drive/folders/1z3ShoPbpqtjiLhRO_wd75aT1XM3FtW_Z"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-pkp-puskesmas-2026",
+          "url": "https://drive.google.com/drive/folders/10H7xsxMIRlsDe0vn3SdY-6Aq7cy2N37C"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-pkp-puskesmas-2025",
+          "url": "https://drive.google.com/drive/folders/1uBHrczxk0jIk4mvhm8nB0pUxbDiBLSvl"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "pelaporan-walidata-2025",
-          "url": "https://drive.google.com/drive/folders/1gIL8QWv0_Flw3emufob83OP55OgUJk-W?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "pelaporan-walidata-2026",
-          "url": "https://drive.google.com/drive/folders/10VvqTLDZf-fe5bpQvQnqq35-dt1FGGh2?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "pelaporan-walidata-2027",
-          "url": "https://drive.google.com/drive/folders/1-6dgv_W-ofbff411_WCaR1o1mUnbkhZc?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-pkp-puskesmas-2027",
+          "url": "https://drive.google.com/drive/folders/1z3ShoPbpqtjiLhRO_wd75aT1XM3FtW_Z"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-pkp-puskesmas-2026",
+          "url": "https://drive.google.com/drive/folders/10H7xsxMIRlsDe0vn3SdY-6Aq7cy2N37C"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-pkp-puskesmas-2025",
+          "url": "https://drive.google.com/drive/folders/1uBHrczxk0jIk4mvhm8nB0pUxbDiBLSvl"
         }
       ]
     },
     {
-      "id": "pelaporan-laporan-bulanan",
-      "workspaceId": "pelaporan",
-      "title": "LAPORAN BULANAN",
-      "url": "https://drive.google.com/drive/folders/1wS43G15jMa4pf3MO2UKzgAYKlS89Mu_Z?usp=drive_link",
+      "id": "evaluasi-realisasi-rencana-aksi",
+      "workspaceId": "evaluasi",
+      "title": "REALISASI RENCANA AKSI",
+      "url": "https://drive.google.com/drive/folders/1Agh3PT4QeInU0ZiG6gF8M3yq5UYvxowe",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-realisasi-rencana-aksi-2027",
+          "url": "https://drive.google.com/drive/folders/1Agh3PT4QeInU0ZiG6gF8M3yq5UYvxowe"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-realisasi-rencana-aksi-2026",
+          "url": "https://drive.google.com/drive/folders/1758Izhk0IKrK__Mh3Yo6X5BVfMSeWLF1"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-realisasi-rencana-aksi-2025",
+          "url": "https://drive.google.com/drive/folders/1lqkhCqlZ4sFcd-Fy0S5G_4iYmrRbfH6e"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "pelaporan-laporan-bulanan-2025",
-          "url": "https://drive.google.com/drive/folders/1e1513Vz_nMKwQe5RFek0LMATuqZcGUYc?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "pelaporan-laporan-bulanan-2026",
-          "url": "https://drive.google.com/drive/folders/1jHu8LmisMWVQl6sGU2dUXKI3T5zWkZT4?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "pelaporan-laporan-bulanan-2027",
-          "url": "https://drive.google.com/drive/folders/1DwS6cCoENPIxy2MKms8aZ3TTVPyABfrW?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-realisasi-rencana-aksi-2027",
+          "url": "https://drive.google.com/drive/folders/1Agh3PT4QeInU0ZiG6gF8M3yq5UYvxowe"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-realisasi-rencana-aksi-2026",
+          "url": "https://drive.google.com/drive/folders/1758Izhk0IKrK__Mh3Yo6X5BVfMSeWLF1"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-realisasi-rencana-aksi-2025",
+          "url": "https://drive.google.com/drive/folders/1lqkhCqlZ4sFcd-Fy0S5G_4iYmrRbfH6e"
         }
       ]
     },
     {
-      "id": "pelaporan-laporan-tahunan",
-      "workspaceId": "pelaporan",
-      "title": "LAPORAN TAHUNAN",
-      "url": "https://drive.google.com/drive/folders/1qI1YbqUHewEDXGfKmscF-a4yqhRxvhdS?usp=drive_link",
+      "id": "evaluasi-sakip",
+      "workspaceId": "evaluasi",
+      "title": "SAKIP",
+      "url": "https://drive.google.com/drive/folders/1YIrCayNXFuX8V-ROiZjqizNWvJAdK2pc",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-sakip-2027",
+          "url": "https://drive.google.com/drive/folders/1YIrCayNXFuX8V-ROiZjqizNWvJAdK2pc"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-sakip-2026",
+          "url": "https://drive.google.com/drive/folders/1Fie4ABua8IOni81UEEoPQFrhj2bxprCq"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-sakip-2025",
+          "url": "https://drive.google.com/drive/folders/16BYeL3SEbQFzq9eHmsFlxS3DmksfLKVK"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "pelaporan-laporan-tahunan-2025",
-          "url": "https://drive.google.com/drive/folders/16iY8gFuxhgorzUdONsXFiJ2nZpMnI2i3?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "pelaporan-laporan-tahunan-2026",
-          "url": "https://drive.google.com/drive/folders/1nUKJ3FsLitWqwH_LIi_rrvx_pF3_H1s6?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "pelaporan-laporan-tahunan-2027",
-          "url": "https://drive.google.com/drive/folders/1zc1uJk-Z0-nINEagF9ZcltG0PXeJZwak?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-sakip-2027",
+          "url": "https://drive.google.com/drive/folders/1YIrCayNXFuX8V-ROiZjqizNWvJAdK2pc"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-sakip-2026",
+          "url": "https://drive.google.com/drive/folders/1Fie4ABua8IOni81UEEoPQFrhj2bxprCq"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-sakip-2025",
+          "url": "https://drive.google.com/drive/folders/16BYeL3SEbQFzq9eHmsFlxS3DmksfLKVK"
         }
       ]
     },
     {
-      "id": "pelaporan-data-lain",
-      "workspaceId": "pelaporan",
-      "title": "DATA LAIN",
-      "url": "https://drive.google.com/drive/folders/1oJtNf0wuSK0sI9V_1kfeRsAuzZIfogeA?usp=drive_link",
+      "id": "evaluasi-spip",
+      "workspaceId": "evaluasi",
+      "title": "SPIP",
+      "url": "https://drive.google.com/drive/folders/1I03ZcoYhbu5j0Y8_roGNq_OFJmg8uzSJ",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-spip-2027",
+          "url": "https://drive.google.com/drive/folders/1I03ZcoYhbu5j0Y8_roGNq_OFJmg8uzSJ"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-spip-2026",
+          "url": "https://drive.google.com/drive/folders/1VyF2vW58sHKEab2SpA2BXZkHEu2LznS2"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-spip-2025",
+          "url": "https://drive.google.com/drive/folders/1VYs2uItXf5YqQ4yxh__IuUAG7z0BvjL1"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "pelaporan-data-lain-2025",
-          "url": "https://drive.google.com/drive/folders/1kM2N-ygm6nEggr5twVXqRkDyDx-_p5N1?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "pelaporan-data-lain-2026",
-          "url": "https://drive.google.com/drive/folders/1keyt74DF0mLX6Hlh52o8fk1_Y_0z-zSM?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "pelaporan-data-lain-2027",
-          "url": "https://drive.google.com/drive/folders/1KFFUbQCE4mGz2eJ38CE_BKX5WK2hHY6M?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "evaluasi-spip-2027",
+          "url": "https://drive.google.com/drive/folders/1I03ZcoYhbu5j0Y8_roGNq_OFJmg8uzSJ"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "evaluasi-spip-2026",
+          "url": "https://drive.google.com/drive/folders/1VyF2vW58sHKEab2SpA2BXZkHEu2LznS2"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "evaluasi-spip-2025",
+          "url": "https://drive.google.com/drive/folders/1VYs2uItXf5YqQ4yxh__IuUAG7z0BvjL1"
         }
       ]
     },
@@ -582,23 +780,64 @@ export const LOCAL_DATA = {
       "id": "keuangan-bpk",
       "workspaceId": "keuangan",
       "title": "BPK",
-      "url": "https://drive.google.com/drive/folders/1l1YxrW3imvIbQLU-eoQTIAS28dgZZsRn?usp=sharing",
+      "url": "https://drive.google.com/drive/folders/189m-fgmx68sAxNfHmNFYQQkNDYIDeqMH",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "keuangan-bpk-2027",
+          "url": "https://drive.google.com/drive/folders/189m-fgmx68sAxNfHmNFYQQkNDYIDeqMH"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-bpk-2026",
+          "url": "https://drive.google.com/drive/folders/1eyukAI2AQ6arC6HnHRXCuaemG-NOFs62"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-bpk-2025",
+          "url": "https://drive.google.com/drive/folders/14rEtLhznI27tzgEURwoMmrS1SJCLUTfk"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "keuangan-bpk-2025",
-          "url": "https://drive.google.com/drive/folders/131rKtXssKvgU9ussmr4tlg5w6u7HNtAV?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "keuangan-bpk-2026",
-          "url": "https://drive.google.com/drive/folders/1J0cGgqmisusMke8i-IoubAD7yV0tEuqW?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
           "resourceId": "keuangan-bpk-2027",
-          "url": "https://drive.google.com/drive/folders/1_cspnRlmjYtu7XbiS2S9RMHSbOayjunm?usp=drive_link"
+          "url": "https://drive.google.com/drive/folders/189m-fgmx68sAxNfHmNFYQQkNDYIDeqMH"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-bpk-2026",
+          "url": "https://drive.google.com/drive/folders/1eyukAI2AQ6arC6HnHRXCuaemG-NOFs62"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-bpk-2025",
+          "url": "https://drive.google.com/drive/folders/14rEtLhznI27tzgEURwoMmrS1SJCLUTfk"
         }
       ]
     },
@@ -606,23 +845,64 @@ export const LOCAL_DATA = {
       "id": "keuangan-buku-kas-umum",
       "workspaceId": "keuangan",
       "title": "BUKU KAS UMUM",
-      "url": "https://drive.google.com/drive/folders/1F8JFb5dzJ91OGWK_lT67m7mr2TSEB4dS?usp=drive_link",
+      "url": "https://drive.google.com/drive/folders/1RtEsUJwsTxaY3xFoLIOkC89piU7p01Gs",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "keuangan-buku-kas-umum-2027",
+          "url": "https://drive.google.com/drive/folders/1RtEsUJwsTxaY3xFoLIOkC89piU7p01Gs"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-buku-kas-umum-2026",
+          "url": "https://drive.google.com/drive/folders/1ESwpKzmxwjxxcnBx8sr5vcF003VqgPzK"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-buku-kas-umum-2025",
+          "url": "https://drive.google.com/drive/folders/1mi9ZCLX-zKW7B6ZgTaZlpBSq_1BCV3jd"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "keuangan-buku-kas-umum-2025",
-          "url": "https://drive.google.com/drive/folders/1LytD_LWhj4xZy0n7dA-bHdR0RcCHoVGd?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "keuangan-buku-kas-umum-2026",
-          "url": "https://drive.google.com/drive/folders/1eDCMguAmxDdYu5aajbCVFBn19Q51oz-S?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
           "resourceId": "keuangan-buku-kas-umum-2027",
-          "url": "https://drive.google.com/drive/folders/1TJtgxFQNuH_sxnJHCXYLxqMgUNQgEcUi?usp=drive_link"
+          "url": "https://drive.google.com/drive/folders/1RtEsUJwsTxaY3xFoLIOkC89piU7p01Gs"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-buku-kas-umum-2026",
+          "url": "https://drive.google.com/drive/folders/1ESwpKzmxwjxxcnBx8sr5vcF003VqgPzK"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-buku-kas-umum-2025",
+          "url": "https://drive.google.com/drive/folders/1mi9ZCLX-zKW7B6ZgTaZlpBSq_1BCV3jd"
         }
       ]
     },
@@ -630,23 +910,64 @@ export const LOCAL_DATA = {
       "id": "keuangan-chr",
       "workspaceId": "keuangan",
       "title": "CHR",
-      "url": "https://drive.google.com/drive/folders/1G2PLjYWHeuvOUMesmhSh7Hubb0Ro3_IL?usp=drive_link",
+      "url": "https://drive.google.com/drive/folders/1czvBCF_B5ilR9UsAXXWek96DEA541JXC",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "keuangan-chr-2027",
+          "url": "https://drive.google.com/drive/folders/1czvBCF_B5ilR9UsAXXWek96DEA541JXC"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-chr-2026",
+          "url": "https://drive.google.com/drive/folders/12Wo2pXZH0l2jTjv_15y7pFFpZOrfpG_Y"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-chr-2025",
+          "url": "https://drive.google.com/drive/folders/1jnYGY-4g_WnfK8z5B7BHsj_QionXnX15"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "keuangan-chr-2025",
-          "url": "https://drive.google.com/drive/folders/1URRqR8G9FLVC4bjIWrxgkE461GB9kUYT?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "keuangan-chr-2026",
-          "url": "https://drive.google.com/drive/folders/1e5DdHrpg5QAFqvQMd7ngJOfgMhZHsamz?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
           "resourceId": "keuangan-chr-2027",
-          "url": "https://drive.google.com/drive/folders/1nw3eCMhLVHcljeDr15udUCAPopom4770?usp=drive_link"
+          "url": "https://drive.google.com/drive/folders/1czvBCF_B5ilR9UsAXXWek96DEA541JXC"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-chr-2026",
+          "url": "https://drive.google.com/drive/folders/12Wo2pXZH0l2jTjv_15y7pFFpZOrfpG_Y"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-chr-2025",
+          "url": "https://drive.google.com/drive/folders/1jnYGY-4g_WnfK8z5B7BHsj_QionXnX15"
         }
       ]
     },
@@ -654,23 +975,64 @@ export const LOCAL_DATA = {
       "id": "keuangan-dpa",
       "workspaceId": "keuangan",
       "title": "DPA",
-      "url": "https://drive.google.com/drive/folders/1O7z-yDxCBfXIUX_X4wduqCSsEtbmU_Md?usp=drive_link",
+      "url": "https://drive.google.com/drive/folders/1py-eqy4sd-5y1lTxm3ApYGVubR8TbT7I",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "keuangan-dpa-2027",
+          "url": "https://drive.google.com/drive/folders/1py-eqy4sd-5y1lTxm3ApYGVubR8TbT7I"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-dpa-2026",
+          "url": "https://drive.google.com/drive/folders/1kKLODuNg_Ntmdv0Epi5FBGdtRjZAv720"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-dpa-2025",
+          "url": "https://drive.google.com/drive/folders/1NYt6CHVl-JbQEIiteM9yIYTBrUk50Vss"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "keuangan-dpa-2025",
-          "url": "https://drive.google.com/drive/folders/1QQTqFRovrwGAsNt_Lp6PZsTVGlYqQgFK?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "keuangan-dpa-2026",
-          "url": "https://drive.google.com/drive/folders/1h1IRbfYGplWWDmPkjb0WRKY3GS_zY7dQ?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
           "resourceId": "keuangan-dpa-2027",
-          "url": "https://drive.google.com/drive/folders/1_mtmb29ZZMBqi94yi9tt13r3M9rK8vyE?usp=drive_link"
+          "url": "https://drive.google.com/drive/folders/1py-eqy4sd-5y1lTxm3ApYGVubR8TbT7I"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-dpa-2026",
+          "url": "https://drive.google.com/drive/folders/1kKLODuNg_Ntmdv0Epi5FBGdtRjZAv720"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-dpa-2025",
+          "url": "https://drive.google.com/drive/folders/1NYt6CHVl-JbQEIiteM9yIYTBrUk50Vss"
         }
       ]
     },
@@ -678,440 +1040,1575 @@ export const LOCAL_DATA = {
       "id": "keuangan-prognosis",
       "workspaceId": "keuangan",
       "title": "PROGNOSIS",
-      "url": "https://drive.google.com/drive/folders/1nFJmxsdw2VzYZn3gXU9v5EJvbGhJi2DT?usp=drive_link",
+      "url": "https://drive.google.com/drive/folders/1gCrg0U590D3IW86C7QNG8SUlKL503epP",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "keuangan-prognosis-2027",
+          "url": "https://drive.google.com/drive/folders/1gCrg0U590D3IW86C7QNG8SUlKL503epP"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-prognosis-2026",
+          "url": "https://drive.google.com/drive/folders/1hdGuKY4LIbVJ0vLTJ0nr4mXNsq7jr2oO"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-prognosis-2025",
+          "url": "https://drive.google.com/drive/folders/1Vs_KDKFlv_bivkgeofPUmY42DfXiHk5g"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "keuangan-prognosis-2025",
-          "url": "https://drive.google.com/drive/folders/1zqCgjUsc-pqykNwbDAfZw_jM5tPoZID9?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "keuangan-prognosis-2026",
-          "url": "https://drive.google.com/drive/folders/1iOPiwdtaVbVY90Hi_CC4NPp5remK-ti7?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
           "resourceId": "keuangan-prognosis-2027",
-          "url": "https://drive.google.com/drive/folders/1npKCvJQ5j-lnjr4kueWM0CI3R3fkzBXU?usp=drive_link"
+          "url": "https://drive.google.com/drive/folders/1gCrg0U590D3IW86C7QNG8SUlKL503epP"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-prognosis-2026",
+          "url": "https://drive.google.com/drive/folders/1hdGuKY4LIbVJ0vLTJ0nr4mXNsq7jr2oO"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-prognosis-2025",
+          "url": "https://drive.google.com/drive/folders/1Vs_KDKFlv_bivkgeofPUmY42DfXiHk5g"
         }
       ]
     },
     {
-      "id": "keuangan-rpk-dan-rok",
+      "id": "keuangan-rpk-rok",
       "workspaceId": "keuangan",
       "title": "RPK & ROK",
-      "url": "https://drive.google.com/drive/folders/1So8Nc2QpeYAHd_95ZUvpFmv0NfBBWH3t?usp=drive_link",
+      "url": "https://drive.google.com/drive/folders/16KAozcGDaKT4MhmqJXjKcaoF0p4vDj8Z",
       "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "keuangan-rpk-rok-2027",
+          "url": "https://drive.google.com/drive/folders/16KAozcGDaKT4MhmqJXjKcaoF0p4vDj8Z"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-rpk-rok-2026",
+          "url": "https://drive.google.com/drive/folders/1-0PhhK76cZy2OUecnFHc0bb0m9GK0JcJ"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-rpk-rok-2025",
+          "url": "https://drive.google.com/drive/folders/1LXwsy2xouR4TSINiOchKTrpza3NBH1uC"
+        }
+      ],
       "years": [
         {
-          "year": 2025,
-          "resourceId": "keuangan-rpk-dan-rok-2025",
-          "url": "https://drive.google.com/drive/folders/1D0jrle4al5kfJ-PDBXlMJCUg02cp2ZLz?usp=drive_link"
-        },
-        {
-          "year": 2026,
-          "resourceId": "keuangan-rpk-dan-rok-2026",
-          "url": "https://drive.google.com/drive/folders/1NS1-uYQJ3_IFOp4CccM31UHICU9SfLQ4?usp=drive_link"
-        },
-        {
+          "period": "2027",
           "year": 2027,
-          "resourceId": "keuangan-rpk-dan-rok-2027",
-          "url": "https://drive.google.com/drive/folders/1EG2X3qLxLo73pPJIBVTRO-t6nomLtsHP?usp=drive_link"
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "keuangan-rpk-rok-2027",
+          "url": "https://drive.google.com/drive/folders/16KAozcGDaKT4MhmqJXjKcaoF0p4vDj8Z"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-rpk-rok-2026",
+          "url": "https://drive.google.com/drive/folders/1-0PhhK76cZy2OUecnFHc0bb0m9GK0JcJ"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-rpk-rok-2025",
+          "url": "https://drive.google.com/drive/folders/1LXwsy2xouR4TSINiOchKTrpza3NBH1uC"
+        }
+      ]
+    },
+    {
+      "id": "keuangan-tl-chr",
+      "workspaceId": "keuangan",
+      "title": "TL CHR",
+      "url": "https://drive.google.com/drive/folders/15j9Jlxj9dCUzjzFZ4Q7hXmfT-s2oXYIk",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "keuangan-tl-chr-2027",
+          "url": "https://drive.google.com/drive/folders/15j9Jlxj9dCUzjzFZ4Q7hXmfT-s2oXYIk"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-tl-chr-2026",
+          "url": "https://drive.google.com/drive/folders/1XHA-xNuKbld1WmFO9vgQxOJcML736NDP"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-tl-chr-2025",
+          "url": "https://drive.google.com/drive/folders/1AveW-RsJs69eUGXte1tKS4hijbR6kX6r"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "keuangan-tl-chr-2027",
+          "url": "https://drive.google.com/drive/folders/15j9Jlxj9dCUzjzFZ4Q7hXmfT-s2oXYIk"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "keuangan-tl-chr-2026",
+          "url": "https://drive.google.com/drive/folders/1XHA-xNuKbld1WmFO9vgQxOJcML736NDP"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "keuangan-tl-chr-2025",
+          "url": "https://drive.google.com/drive/folders/1AveW-RsJs69eUGXte1tKS4hijbR6kX6r"
+        }
+      ]
+    },
+    {
+      "id": "pelaporan-data-lain",
+      "workspaceId": "pelaporan",
+      "title": "DATA LAIN",
+      "url": "https://drive.google.com/drive/folders/1m1BV6TZeA2JsPDlhBaRjmfAVEVI-OTab",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-data-lain-2027",
+          "url": "https://drive.google.com/drive/folders/1m1BV6TZeA2JsPDlhBaRjmfAVEVI-OTab"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-data-lain-2026",
+          "url": "https://drive.google.com/drive/folders/1YjoDRqWdITEFTii5U5wm2TX_u3axGS8j"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-data-lain-2025",
+          "url": "https://drive.google.com/drive/folders/12TXy5QDJHu2vxCSxZE-3lUgXC1PemKrD"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-data-lain-2027",
+          "url": "https://drive.google.com/drive/folders/1m1BV6TZeA2JsPDlhBaRjmfAVEVI-OTab"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-data-lain-2026",
+          "url": "https://drive.google.com/drive/folders/1YjoDRqWdITEFTii5U5wm2TX_u3axGS8j"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-data-lain-2025",
+          "url": "https://drive.google.com/drive/folders/12TXy5QDJHu2vxCSxZE-3lUgXC1PemKrD"
+        }
+      ]
+    },
+    {
+      "id": "pelaporan-implementasi-spm",
+      "workspaceId": "pelaporan",
+      "title": "IMPLEMENTASI SPM",
+      "url": "https://drive.google.com/drive/folders/15qXBK21h_lLtc80rbk9bDWA46qaST3NU",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-implementasi-spm-2027",
+          "url": "https://drive.google.com/drive/folders/15qXBK21h_lLtc80rbk9bDWA46qaST3NU"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-implementasi-spm-2026",
+          "url": "https://drive.google.com/drive/folders/1etn5ur479WsX56pZx5qdRWIS-giC2aDu"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-implementasi-spm-2025",
+          "url": "https://drive.google.com/drive/folders/12E-M1_4zjrXVrS_Lrb_MXXu9RjGzmp-c"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-implementasi-spm-2027",
+          "url": "https://drive.google.com/drive/folders/15qXBK21h_lLtc80rbk9bDWA46qaST3NU"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-implementasi-spm-2026",
+          "url": "https://drive.google.com/drive/folders/1etn5ur479WsX56pZx5qdRWIS-giC2aDu"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-implementasi-spm-2025",
+          "url": "https://drive.google.com/drive/folders/12E-M1_4zjrXVrS_Lrb_MXXu9RjGzmp-c"
+        }
+      ]
+    },
+    {
+      "id": "pelaporan-infografis",
+      "workspaceId": "pelaporan",
+      "title": "INFOGRAFIS",
+      "url": "https://drive.google.com/drive/folders/1quPymEpZkLXoWVLaJYu_4SwM8zjqL3oU",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-infografis-2027",
+          "url": "https://drive.google.com/drive/folders/1quPymEpZkLXoWVLaJYu_4SwM8zjqL3oU"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-infografis-2026",
+          "url": "https://drive.google.com/drive/folders/1lAwk2-fRPUqSpHeQYgNuGAai6ZkKArLW"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-infografis-2025",
+          "url": "https://drive.google.com/drive/folders/1W3b93ghguCWHrq64QUjod3-QoMWKt_vV"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-infografis-2027",
+          "url": "https://drive.google.com/drive/folders/1quPymEpZkLXoWVLaJYu_4SwM8zjqL3oU"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-infografis-2026",
+          "url": "https://drive.google.com/drive/folders/1lAwk2-fRPUqSpHeQYgNuGAai6ZkKArLW"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-infografis-2025",
+          "url": "https://drive.google.com/drive/folders/1W3b93ghguCWHrq64QUjod3-QoMWKt_vV"
+        }
+      ]
+    },
+    {
+      "id": "pelaporan-lkjip",
+      "workspaceId": "pelaporan",
+      "title": "LKJiP",
+      "url": "https://drive.google.com/drive/folders/1xXDuqJ1GriiBD1o7Ir2VBazYxOhWI-5V",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-lkjip-2027",
+          "url": "https://drive.google.com/drive/folders/1xXDuqJ1GriiBD1o7Ir2VBazYxOhWI-5V"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-lkjip-2026",
+          "url": "https://drive.google.com/drive/folders/1MBj6vMHKDocXIMuGRknjvtDs0uVuHw7O"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-lkjip-2025",
+          "url": "https://drive.google.com/drive/folders/1NkKd37TDTJY1Sh8RpJc4-rpQCrbtaiHf"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-lkjip-2027",
+          "url": "https://drive.google.com/drive/folders/1xXDuqJ1GriiBD1o7Ir2VBazYxOhWI-5V"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-lkjip-2026",
+          "url": "https://drive.google.com/drive/folders/1MBj6vMHKDocXIMuGRknjvtDs0uVuHw7O"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-lkjip-2025",
+          "url": "https://drive.google.com/drive/folders/1NkKd37TDTJY1Sh8RpJc4-rpQCrbtaiHf"
+        }
+      ]
+    },
+    {
+      "id": "pelaporan-lkpj",
+      "workspaceId": "pelaporan",
+      "title": "LKPJ",
+      "url": "https://drive.google.com/drive/folders/1flLNN8_Z8UlLKSgLaew9y0Q7TQjAFNZ6",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-lkpj-2027",
+          "url": "https://drive.google.com/drive/folders/1flLNN8_Z8UlLKSgLaew9y0Q7TQjAFNZ6"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-lkpj-2026",
+          "url": "https://drive.google.com/drive/folders/1809lVymhJe8QLyITkygqW1lL2yAW7IqZ"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-lkpj-2025",
+          "url": "https://drive.google.com/drive/folders/1r0_WQchtrqIdpWDvaidUGfcQJ8m2lWxz"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-lkpj-2027",
+          "url": "https://drive.google.com/drive/folders/1flLNN8_Z8UlLKSgLaew9y0Q7TQjAFNZ6"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-lkpj-2026",
+          "url": "https://drive.google.com/drive/folders/1809lVymhJe8QLyITkygqW1lL2yAW7IqZ"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-lkpj-2025",
+          "url": "https://drive.google.com/drive/folders/1r0_WQchtrqIdpWDvaidUGfcQJ8m2lWxz"
+        }
+      ]
+    },
+    {
+      "id": "pelaporan-lppd",
+      "workspaceId": "pelaporan",
+      "title": "LPPD",
+      "url": "https://drive.google.com/drive/folders/1udOYk6LueulB8x6TRX7MNsY3IUVwLzD5",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-lppd-2027",
+          "url": "https://drive.google.com/drive/folders/1udOYk6LueulB8x6TRX7MNsY3IUVwLzD5"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-lppd-2026",
+          "url": "https://drive.google.com/drive/folders/1MP5I1kAJ2A-eVEfbTNX3pZifiGn1gB2C"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-lppd-2025",
+          "url": "https://drive.google.com/drive/folders/1XSGTtVZu7aikO7BMhqu3bNyl0Th0q3u-"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-lppd-2027",
+          "url": "https://drive.google.com/drive/folders/1udOYk6LueulB8x6TRX7MNsY3IUVwLzD5"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-lppd-2026",
+          "url": "https://drive.google.com/drive/folders/1MP5I1kAJ2A-eVEfbTNX3pZifiGn1gB2C"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-lppd-2025",
+          "url": "https://drive.google.com/drive/folders/1XSGTtVZu7aikO7BMhqu3bNyl0Th0q3u-"
+        }
+      ]
+    },
+    {
+      "id": "pelaporan-profil",
+      "workspaceId": "pelaporan",
+      "title": "PROFIL",
+      "url": "https://drive.google.com/drive/folders/1VxHAgEVaSct8ymxyDHxNU5n_SPUvx6uZ",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-profil-2027",
+          "url": "https://drive.google.com/drive/folders/1VxHAgEVaSct8ymxyDHxNU5n_SPUvx6uZ"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-profil-2026",
+          "url": "https://drive.google.com/drive/folders/16Mt2j4SmTttWGCm-jRqCXm166vhNycX0"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-profil-2025",
+          "url": "https://drive.google.com/drive/folders/1HBtm87_v2cZeFYHxsnrbYLty8ko7bL4Q"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-profil-2027",
+          "url": "https://drive.google.com/drive/folders/1VxHAgEVaSct8ymxyDHxNU5n_SPUvx6uZ"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-profil-2026",
+          "url": "https://drive.google.com/drive/folders/16Mt2j4SmTttWGCm-jRqCXm166vhNycX0"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-profil-2025",
+          "url": "https://drive.google.com/drive/folders/1HBtm87_v2cZeFYHxsnrbYLty8ko7bL4Q"
+        }
+      ]
+    },
+    {
+      "id": "pelaporan-walidata",
+      "workspaceId": "pelaporan",
+      "title": "WALIDATA",
+      "url": "https://drive.google.com/drive/folders/1_Ohs_b-fyBTlTH2Domp85_eyj_EeZ353",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-walidata-2027",
+          "url": "https://drive.google.com/drive/folders/1_Ohs_b-fyBTlTH2Domp85_eyj_EeZ353"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-walidata-2026",
+          "url": "https://drive.google.com/drive/folders/1tuy2sKQAHdqu0nrwhTggeMxjWM8iVXf4"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-walidata-2025",
+          "url": "https://drive.google.com/drive/folders/1Skv1F9aJ81WYI7bnAXyRogblu4Vuxprm"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "pelaporan-walidata-2027",
+          "url": "https://drive.google.com/drive/folders/1_Ohs_b-fyBTlTH2Domp85_eyj_EeZ353"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "pelaporan-walidata-2026",
+          "url": "https://drive.google.com/drive/folders/1tuy2sKQAHdqu0nrwhTggeMxjWM8iVXf4"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "pelaporan-walidata-2025",
+          "url": "https://drive.google.com/drive/folders/1Skv1F9aJ81WYI7bnAXyRogblu4Vuxprm"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-anggaran",
+      "workspaceId": "perencanaan",
+      "title": "ANGGARAN",
+      "url": "https://drive.google.com/drive/folders/1KkULtFmqxEi7n87mrRfTYf40J5KMJGiZ",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-anggaran-2027",
+          "url": "https://drive.google.com/drive/folders/1KkULtFmqxEi7n87mrRfTYf40J5KMJGiZ"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-anggaran-2026",
+          "url": "https://drive.google.com/drive/folders/1W-VM4t24QwhVVu2N6S56o_dTRjw_5_fL"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-anggaran-2025",
+          "url": "https://drive.google.com/drive/folders/1PAH79l6fAc55hhusK8pmEEQYAvdGRCU5"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-anggaran-2027",
+          "url": "https://drive.google.com/drive/folders/1KkULtFmqxEi7n87mrRfTYf40J5KMJGiZ"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-anggaran-2026",
+          "url": "https://drive.google.com/drive/folders/1W-VM4t24QwhVVu2N6S56o_dTRjw_5_fL"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-anggaran-2025",
+          "url": "https://drive.google.com/drive/folders/1PAH79l6fAc55hhusK8pmEEQYAvdGRCU5"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-data-dukung-rkpd",
+      "workspaceId": "perencanaan",
+      "title": "DATA DUKUNG RKPD",
+      "url": "https://drive.google.com/drive/folders/1PWpiWUjSVCtId-dV9pyIoJ9I-SSwh93z",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-data-dukung-rkpd-2027",
+          "url": "https://drive.google.com/drive/folders/1PWpiWUjSVCtId-dV9pyIoJ9I-SSwh93z"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-data-dukung-rkpd-2026",
+          "url": "https://drive.google.com/drive/folders/1zVisY4lE8SXB_TQLx29lOmzQ0lw5fJJH"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-data-dukung-rkpd-2025",
+          "url": "https://drive.google.com/drive/folders/1ksD-bRM9nIuWVhFgRcfE4sFoJxCI4dae"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-data-dukung-rkpd-2027",
+          "url": "https://drive.google.com/drive/folders/1PWpiWUjSVCtId-dV9pyIoJ9I-SSwh93z"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-data-dukung-rkpd-2026",
+          "url": "https://drive.google.com/drive/folders/1zVisY4lE8SXB_TQLx29lOmzQ0lw5fJJH"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-data-dukung-rkpd-2025",
+          "url": "https://drive.google.com/drive/folders/1ksD-bRM9nIuWVhFgRcfE4sFoJxCI4dae"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-indikator-kinerja",
+      "workspaceId": "perencanaan",
+      "title": "INDIKATOR KINERJA",
+      "url": "https://drive.google.com/drive/folders/12kBZzI8dq2W6U0IXU6MQmWYE-NGBzdm4",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-indikator-kinerja-2027",
+          "url": "https://drive.google.com/drive/folders/12kBZzI8dq2W6U0IXU6MQmWYE-NGBzdm4"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-indikator-kinerja-2026",
+          "url": "https://drive.google.com/drive/folders/1H5UC78zoRogPg4pYnlqicsvu9hOqz-45"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-indikator-kinerja-2025",
+          "url": "https://drive.google.com/drive/folders/1mxaphUQLUQM7yGxZPYYqFwAJu83_OrAd"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-indikator-kinerja-2027",
+          "url": "https://drive.google.com/drive/folders/12kBZzI8dq2W6U0IXU6MQmWYE-NGBzdm4"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-indikator-kinerja-2026",
+          "url": "https://drive.google.com/drive/folders/1H5UC78zoRogPg4pYnlqicsvu9hOqz-45"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-indikator-kinerja-2025",
+          "url": "https://drive.google.com/drive/folders/1mxaphUQLUQM7yGxZPYYqFwAJu83_OrAd"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-perjanjian-kinerja",
+      "workspaceId": "perencanaan",
+      "title": "PERJANJIAN KINERJA",
+      "url": "https://drive.google.com/drive/folders/1I3aaTbpapmoE5jvWqwjMS_TCk9toPi1y",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-perjanjian-kinerja-2027",
+          "url": "https://drive.google.com/drive/folders/1I3aaTbpapmoE5jvWqwjMS_TCk9toPi1y"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-perjanjian-kinerja-2026",
+          "url": "https://drive.google.com/drive/folders/11XRaS_V8N3f0axeJ9nplpRLpfR3ge8IF"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-perjanjian-kinerja-2025",
+          "url": "https://drive.google.com/drive/folders/1TDGXvdgS-DGGotde0xWHE0pnH1TFz4Es"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-perjanjian-kinerja-2027",
+          "url": "https://drive.google.com/drive/folders/1I3aaTbpapmoE5jvWqwjMS_TCk9toPi1y"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-perjanjian-kinerja-2026",
+          "url": "https://drive.google.com/drive/folders/11XRaS_V8N3f0axeJ9nplpRLpfR3ge8IF"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-perjanjian-kinerja-2025",
+          "url": "https://drive.google.com/drive/folders/1TDGXvdgS-DGGotde0xWHE0pnH1TFz4Es"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-ptp-puskesmas",
+      "workspaceId": "perencanaan",
+      "title": "PTP PUSKESMAS",
+      "url": "https://drive.google.com/drive/folders/1gC-hY0ZjhXNzvDdyl5t-FIMG_MHj_wsK",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-ptp-puskesmas-2027",
+          "url": "https://drive.google.com/drive/folders/1gC-hY0ZjhXNzvDdyl5t-FIMG_MHj_wsK"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-ptp-puskesmas-2026",
+          "url": "https://drive.google.com/drive/folders/1fu-Pea2cuh5It6A-JQS0ynDSJeTVgbiK"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-ptp-puskesmas-2025",
+          "url": "https://drive.google.com/drive/folders/1svd2_WxHgonnj9-jFXe-BZzDDDrGEI_V"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-ptp-puskesmas-2027",
+          "url": "https://drive.google.com/drive/folders/1gC-hY0ZjhXNzvDdyl5t-FIMG_MHj_wsK"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-ptp-puskesmas-2026",
+          "url": "https://drive.google.com/drive/folders/1fu-Pea2cuh5It6A-JQS0ynDSJeTVgbiK"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-ptp-puskesmas-2025",
+          "url": "https://drive.google.com/drive/folders/1svd2_WxHgonnj9-jFXe-BZzDDDrGEI_V"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-rencana-aksi",
+      "workspaceId": "perencanaan",
+      "title": "RENCANA AKSI",
+      "url": "https://drive.google.com/drive/folders/1Xc5mp4nidA9pyoks9v0uubjGIyr0GVya",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-rencana-aksi-2027",
+          "url": "https://drive.google.com/drive/folders/1Xc5mp4nidA9pyoks9v0uubjGIyr0GVya"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-rencana-aksi-2026",
+          "url": "https://drive.google.com/drive/folders/12u9cnDddMoeuUz9CKnlK3G_YeSVgGDgZ"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-rencana-aksi-2025",
+          "url": "https://drive.google.com/drive/folders/1TsR_jMkNLOjujxAA1tIlZ6yHtN0F2GZR"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-rencana-aksi-2027",
+          "url": "https://drive.google.com/drive/folders/1Xc5mp4nidA9pyoks9v0uubjGIyr0GVya"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-rencana-aksi-2026",
+          "url": "https://drive.google.com/drive/folders/12u9cnDddMoeuUz9CKnlK3G_YeSVgGDgZ"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-rencana-aksi-2025",
+          "url": "https://drive.google.com/drive/folders/1TsR_jMkNLOjujxAA1tIlZ6yHtN0F2GZR"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-renja",
+      "workspaceId": "perencanaan",
+      "title": "RENJA",
+      "url": "https://drive.google.com/drive/folders/1-zyBiL7mdEURP0LTumCo_VYvO1d3pspT",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-renja-2027",
+          "url": "https://drive.google.com/drive/folders/1-zyBiL7mdEURP0LTumCo_VYvO1d3pspT"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-renja-2026",
+          "url": "https://drive.google.com/drive/folders/1XEkB5xtoYHwBM7FPchti-nGVNKBrml1X"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-renja-2025",
+          "url": "https://drive.google.com/drive/folders/1KxSsi38cPB5uwOA0M_VeSHCpDbNyhDTx"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-renja-2027",
+          "url": "https://drive.google.com/drive/folders/1-zyBiL7mdEURP0LTumCo_VYvO1d3pspT"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-renja-2026",
+          "url": "https://drive.google.com/drive/folders/1XEkB5xtoYHwBM7FPchti-nGVNKBrml1X"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-renja-2025",
+          "url": "https://drive.google.com/drive/folders/1KxSsi38cPB5uwOA0M_VeSHCpDbNyhDTx"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-renja-perubahan",
+      "workspaceId": "perencanaan",
+      "title": "RENJA PERUBAHAN",
+      "url": "https://drive.google.com/drive/folders/1x8WWriy0sgwAwQ2i1MgVKl5pTwc6TAUD",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-renja-perubahan-2027",
+          "url": "https://drive.google.com/drive/folders/1x8WWriy0sgwAwQ2i1MgVKl5pTwc6TAUD"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-renja-perubahan-2026",
+          "url": "https://drive.google.com/drive/folders/1P8qURTDY34OvNiIqXXTYPRj_Mzxt8To9"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-renja-perubahan-2025",
+          "url": "https://drive.google.com/drive/folders/1OcrWym1MhdMeIsglv6AlHrQ5USvafEZj"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-renja-perubahan-2027",
+          "url": "https://drive.google.com/drive/folders/1x8WWriy0sgwAwQ2i1MgVKl5pTwc6TAUD"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-renja-perubahan-2026",
+          "url": "https://drive.google.com/drive/folders/1P8qURTDY34OvNiIqXXTYPRj_Mzxt8To9"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-renja-perubahan-2025",
+          "url": "https://drive.google.com/drive/folders/1OcrWym1MhdMeIsglv6AlHrQ5USvafEZj"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-renstra",
+      "workspaceId": "perencanaan",
+      "title": "RENSTRA",
+      "url": "https://drive.google.com/drive/folders/1zy42MgAtAsdDC_0Q6nWWT-tzOb72QbOY",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2025 - 2029",
+          "year": null,
+          "yearStart": 2025,
+          "yearEnd": 2029,
+          "sortYear": 2029,
+          "resourceId": "perencanaan-renstra-2025-2029",
+          "url": "https://drive.google.com/drive/folders/1zy42MgAtAsdDC_0Q6nWWT-tzOb72QbOY"
+        },
+        {
+          "period": "2024 - 2026",
+          "year": null,
+          "yearStart": 2024,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-renstra-2024-2026",
+          "url": "https://drive.google.com/drive/folders/1x0QZTDxbtW9E85ZAo2byExB7DIBPx46k"
+        },
+        {
+          "period": "2018 - 2023",
+          "year": null,
+          "yearStart": 2018,
+          "yearEnd": 2023,
+          "sortYear": 2023,
+          "resourceId": "perencanaan-renstra-2018-2023",
+          "url": "https://drive.google.com/drive/folders/1BXSacc68cTM8Xp4M-6f1zLAqeNvDYZje"
+        },
+        {
+          "period": "2013 - 2018",
+          "year": null,
+          "yearStart": 2013,
+          "yearEnd": 2018,
+          "sortYear": 2018,
+          "resourceId": "perencanaan-renstra-2013-2018",
+          "url": "https://drive.google.com/drive/folders/1k6kFc6AUWVjvGiMm07VkIsBwRVBQFxtJ"
+        }
+      ],
+      "years": [
+        {
+          "period": "2025 - 2029",
+          "year": null,
+          "yearStart": 2025,
+          "yearEnd": 2029,
+          "sortYear": 2029,
+          "resourceId": "perencanaan-renstra-2025-2029",
+          "url": "https://drive.google.com/drive/folders/1zy42MgAtAsdDC_0Q6nWWT-tzOb72QbOY"
+        },
+        {
+          "period": "2024 - 2026",
+          "year": null,
+          "yearStart": 2024,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-renstra-2024-2026",
+          "url": "https://drive.google.com/drive/folders/1x0QZTDxbtW9E85ZAo2byExB7DIBPx46k"
+        },
+        {
+          "period": "2018 - 2023",
+          "year": null,
+          "yearStart": 2018,
+          "yearEnd": 2023,
+          "sortYear": 2023,
+          "resourceId": "perencanaan-renstra-2018-2023",
+          "url": "https://drive.google.com/drive/folders/1BXSacc68cTM8Xp4M-6f1zLAqeNvDYZje"
+        },
+        {
+          "period": "2013 - 2018",
+          "year": null,
+          "yearStart": 2013,
+          "yearEnd": 2018,
+          "sortYear": 2018,
+          "resourceId": "perencanaan-renstra-2013-2018",
+          "url": "https://drive.google.com/drive/folders/1k6kFc6AUWVjvGiMm07VkIsBwRVBQFxtJ"
+        }
+      ]
+    },
+    {
+      "id": "perencanaan-rtp",
+      "workspaceId": "perencanaan",
+      "title": "RTP",
+      "url": "https://drive.google.com/drive/folders/10iQiKncz6pibqtbajFbDMbP4MLidg_AA",
+      "icon": "folder",
+      "periods": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-rtp-2027",
+          "url": "https://drive.google.com/drive/folders/10iQiKncz6pibqtbajFbDMbP4MLidg_AA"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-rtp-2026",
+          "url": "https://drive.google.com/drive/folders/1ujd9KuoZ-X2m0LZRUa1dVOfS_tMfj2C5"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-rtp-2025",
+          "url": "https://drive.google.com/drive/folders/118tWkQWUiIOLG0CpIzKv16G7zWo0Z2ss"
+        }
+      ],
+      "years": [
+        {
+          "period": "2027",
+          "year": 2027,
+          "yearStart": 2027,
+          "yearEnd": 2027,
+          "sortYear": 2027,
+          "resourceId": "perencanaan-rtp-2027",
+          "url": "https://drive.google.com/drive/folders/10iQiKncz6pibqtbajFbDMbP4MLidg_AA"
+        },
+        {
+          "period": "2026",
+          "year": 2026,
+          "yearStart": 2026,
+          "yearEnd": 2026,
+          "sortYear": 2026,
+          "resourceId": "perencanaan-rtp-2026",
+          "url": "https://drive.google.com/drive/folders/1ujd9KuoZ-X2m0LZRUa1dVOfS_tMfj2C5"
+        },
+        {
+          "period": "2025",
+          "year": 2025,
+          "yearStart": 2025,
+          "yearEnd": 2025,
+          "sortYear": 2025,
+          "resourceId": "perencanaan-rtp-2025",
+          "url": "https://drive.google.com/drive/folders/118tWkQWUiIOLG0CpIzKv16G7zWo0Z2ss"
         }
       ]
     }
   ],
   "resources": [
     {
-      "id": "perencanaan-anggaran-2025",
-      "title": "ANGGARAN 2025",
-      "description": "Folder ANGGARAN tahun 2025 berisi Usulan Dinas Kesehatan, Usulan Puskesmas.",
+      "id": "perencanaan-renstra-2013-2018",
+      "title": "RENSTRA 2013 - 2018",
+      "description": "Folder dokumen RENSTRA periode 2013 - 2018 berisi RANCANGAN AWAL, RANCANGAN AKHIR, DATA PENDUKUNG, CASCADING.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
-      "category": "ANGGARAN",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1pqvaZTqD8rog4aMgwbK-8n8ZlQBkPLx5?usp=drive_link",
+      "category": "RENSTRA",
+      "period": "2013 - 2018",
+      "year": null,
+      "yearStart": 2013,
+      "yearEnd": 2018,
+      "sortYear": 2018,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1k6kFc6AUWVjvGiMm07VkIsBwRVBQFxtJ",
       "keywords": [
-        "usulan dinas kesehatan",
-        "usulan puskesmas",
         "perencanaan",
-        "anggaran",
-        "2025",
+        "renstra",
+        "2013 - 2018",
         "google drive",
-        "folder"
+        "folder",
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung",
+        "cascading"
       ],
       "aliases": [
-        "anggaran",
-        "anggaran 2025"
+        "renstra",
+        "renstra 2013 - 2018"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 1,
       "isActive": true,
       "subfolders": [
-        "USULAN DINAS KESEHATAN",
-        "USULAN PUSKESMAS"
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung",
+        "cascading"
       ]
     },
     {
-      "id": "perencanaan-anggaran-2026",
-      "title": "ANGGARAN 2026",
-      "description": "Folder ANGGARAN tahun 2026 berisi Usulan Dinas Kesehatan, Usulan Puskesmas.",
+      "id": "perencanaan-renstra-2018-2023",
+      "title": "RENSTRA 2018 - 2023",
+      "description": "Folder dokumen RENSTRA periode 2018 - 2023 berisi RANCANGAN AWAL, RANCANGAN AKHIR, DATA PENDUKUNG, CASCADING.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
-      "category": "ANGGARAN",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1J7G2tdp1_bZdxahCYMchHXGkkfaix-TT?usp=drive_link",
+      "category": "RENSTRA",
+      "period": "2018 - 2023",
+      "year": null,
+      "yearStart": 2018,
+      "yearEnd": 2023,
+      "sortYear": 2023,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1BXSacc68cTM8Xp4M-6f1zLAqeNvDYZje",
       "keywords": [
-        "usulan dinas kesehatan",
-        "usulan puskesmas",
         "perencanaan",
-        "anggaran",
-        "2026",
+        "renstra",
+        "2018 - 2023",
         "google drive",
-        "folder"
+        "folder",
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung",
+        "cascading"
       ],
       "aliases": [
-        "anggaran",
-        "anggaran 2026"
+        "renstra",
+        "renstra 2018 - 2023"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 2,
       "isActive": true,
       "subfolders": [
-        "USULAN DINAS KESEHATAN",
-        "USULAN PUSKESMAS"
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung",
+        "cascading"
       ]
     },
     {
-      "id": "perencanaan-anggaran-2027",
-      "title": "ANGGARAN 2027",
-      "description": "Folder ANGGARAN tahun 2027 berisi Usulan Dinas Kesehatan, Usulan Puskesmas.",
+      "id": "perencanaan-renstra-2024-2026",
+      "title": "RENSTRA 2024 - 2026",
+      "description": "Folder dokumen RENSTRA periode 2024 - 2026 berisi AWAL, AKHIR, DATA PENDUKUNG, CASCADING.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
-      "category": "ANGGARAN",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1Aj6RYGwD8uTSUc9d-v1U7n-bdxDaXvXM?usp=drive_link",
+      "category": "RENSTRA",
+      "period": "2024 - 2026",
+      "year": null,
+      "yearStart": 2024,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1x0QZTDxbtW9E85ZAo2byExB7DIBPx46k",
       "keywords": [
-        "usulan dinas kesehatan",
-        "usulan puskesmas",
         "perencanaan",
-        "anggaran",
-        "2027",
+        "renstra",
+        "2024 - 2026",
         "google drive",
-        "folder"
+        "folder",
+        "awal",
+        "akhir",
+        "data pendukung",
+        "cascading"
       ],
       "aliases": [
-        "anggaran",
-        "anggaran 2027"
+        "renstra",
+        "renstra 2024 - 2026"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 3,
       "isActive": true,
       "subfolders": [
-        "USULAN DINAS KESEHATAN",
-        "USULAN PUSKESMAS"
+        "awal",
+        "akhir",
+        "data pendukung",
+        "cascading"
       ]
     },
     {
-      "id": "perencanaan-dak-2025",
-      "title": "DAK 2025",
-      "description": "Folder DAK tahun 2025 berisi Dak Fisik, Dak Non Fisik.",
+      "id": "perencanaan-renstra-2025-2029",
+      "title": "RENSTRA 2025 - 2029",
+      "description": "Folder dokumen RENSTRA periode 2025 - 2029 berisi AWAL, AKHIR, DATA PENDUKUNG, CASCADING.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
-      "category": "DAK",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1VyHKPU32PhQkiAc_RrxdciS1lr5C2gev?usp=drive_link",
+      "category": "RENSTRA",
+      "period": "2025 - 2029",
+      "year": null,
+      "yearStart": 2025,
+      "yearEnd": 2029,
+      "sortYear": 2029,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1zy42MgAtAsdDC_0Q6nWWT-tzOb72QbOY",
       "keywords": [
-        "dak fisik",
-        "dak non fisik",
         "perencanaan",
-        "dak",
-        "2025",
+        "renstra",
+        "2025 - 2029",
         "google drive",
-        "folder"
+        "folder",
+        "awal",
+        "akhir",
+        "data pendukung",
+        "cascading"
       ],
       "aliases": [
-        "dak",
-        "dak 2025"
+        "renstra",
+        "renstra 2025 - 2029"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 4,
       "isActive": true,
       "subfolders": [
-        "DAK FISIK",
-        "DAK NON FISIK"
-      ]
-    },
-    {
-      "id": "perencanaan-dak-2026",
-      "title": "DAK 2026",
-      "description": "Folder DAK tahun 2026 berisi Dak Fisik, Dak Non Fisik.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "DAK",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1fwWqNvIfy_jIhEglZIzP9Z3NpkQ107cn?usp=drive_link",
-      "keywords": [
-        "dak fisik",
-        "dak non fisik",
-        "perencanaan",
-        "dak",
-        "2026",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "dak",
-        "dak 2026"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 5,
-      "isActive": true,
-      "subfolders": [
-        "DAK FISIK",
-        "DAK NON FISIK"
-      ]
-    },
-    {
-      "id": "perencanaan-dak-2027",
-      "title": "DAK 2027",
-      "description": "Folder DAK tahun 2027 berisi Dak Fisik, Dak Non Fisik.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "DAK",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1v5nBo71ivI9szyev3KQei-rHD2o7eIFF?usp=drive_link",
-      "keywords": [
-        "dak fisik",
-        "dak non fisik",
-        "perencanaan",
-        "dak",
-        "2027",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "dak",
-        "dak 2027"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 6,
-      "isActive": true,
-      "subfolders": [
-        "DAK FISIK",
-        "DAK NON FISIK"
-      ]
-    },
-    {
-      "id": "perencanaan-pkp-2025",
-      "title": "PKP 2025",
-      "description": "Folder PKP tahun 2025.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "PKP",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1Adh8P9B09LbUbouOUg-shXgqjmRADJQy?usp=drive_link",
-      "keywords": [
-        "perencanaan",
-        "pkp",
-        "2025",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "pkp",
-        "pkp 2025"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 7,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "perencanaan-pkp-2026",
-      "title": "PKP 2026",
-      "description": "Folder PKP tahun 2026.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "PKP",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1kngms86VLjwAqfiUWbhTU9AVWulSRg4g?usp=drive_link",
-      "keywords": [
-        "perencanaan",
-        "pkp",
-        "2026",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "pkp",
-        "pkp 2026"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 8,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "perencanaan-pkp-2027",
-      "title": "PKP 2027",
-      "description": "Folder PKP tahun 2027.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "PKP",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1GP2hlJc6m93OPQ4_y12HIYUqergV2IEL?usp=drive_link",
-      "keywords": [
-        "perencanaan",
-        "pkp",
-        "2027",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "pkp",
-        "pkp 2027"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 9,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "perencanaan-rba-2025",
-      "title": "RBA 2025",
-      "description": "Folder RBA tahun 2025 berisi Awal, Perubahan.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "RBA",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1K4oFoH5Uz7uBNboV489qDafjmnL6GOuQ?usp=drive_link",
-      "keywords": [
         "awal",
-        "perubahan",
-        "perencanaan",
-        "rba",
-        "2025",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "rba",
-        "rba 2025"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 10,
-      "isActive": true,
-      "subfolders": [
-        "AWAL",
-        "PERUBAHAN"
-      ]
-    },
-    {
-      "id": "perencanaan-rba-2026",
-      "title": "RBA 2026",
-      "description": "Folder RBA tahun 2026 berisi Awal, Perubahan.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "RBA",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/19v2njWnneRB9UFVciqLws1NCDqwMYvt2?usp=drive_link",
-      "keywords": [
-        "awal",
-        "perubahan",
-        "perencanaan",
-        "rba",
-        "2026",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "rba",
-        "rba 2026"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 11,
-      "isActive": true,
-      "subfolders": [
-        "AWAL",
-        "PERUBAHAN"
-      ]
-    },
-    {
-      "id": "perencanaan-rba-2027",
-      "title": "RBA 2027",
-      "description": "Folder RBA tahun 2027 berisi Awal, Perubahan.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "RBA",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1-6lT4UwSbwj_t6_xxbR4qOL-CySlD0Ma?usp=drive_link",
-      "keywords": [
-        "awal",
-        "perubahan",
-        "perencanaan",
-        "rba",
-        "2027",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "rba",
-        "rba 2027"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 12,
-      "isActive": true,
-      "subfolders": [
-        "AWAL",
-        "PERUBAHAN"
+        "akhir",
+        "data pendukung",
+        "cascading"
       ]
     },
     {
       "id": "perencanaan-renja-2025",
       "title": "RENJA 2025",
-      "description": "Folder RENJA tahun 2025 berisi Awal, Akhir, Data Pendukung.",
+      "description": "Folder dokumen RENJA periode 2025 berisi RANCANGAN AWAL, RANCANGAN AKHIR, DATA PENDUKUNG.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
       "category": "RENJA",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1qLZ8aRJ1ZzgE4MNVSP0XjZmFOPBCl6lQ?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1KxSsi38cPB5uwOA0M_VeSHCpDbNyhDTx",
       "keywords": [
-        "awal",
-        "akhir",
-        "data pendukung",
         "perencanaan",
         "renja",
         "2025",
         "google drive",
-        "folder"
+        "folder",
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
       ],
       "aliases": [
         "renja",
@@ -1119,33 +2616,38 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 13,
+      "sortOrder": 5,
       "isActive": true,
       "subfolders": [
-        "AWAL",
-        "AKHIR",
-        "DATA PENDUKUNG"
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
       ]
     },
     {
       "id": "perencanaan-renja-2026",
       "title": "RENJA 2026",
-      "description": "Folder RENJA tahun 2026 berisi Awal, Akhir, Data Pendukung.",
+      "description": "Folder dokumen RENJA periode 2026 berisi RANCANGAN AWAL, RANCANGAN AKHIR, DATA PENDUKUNG.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
       "category": "RENJA",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1EDqx-nSntHqJkQGQqS5d_XYKcPAq_QsW?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1XEkB5xtoYHwBM7FPchti-nGVNKBrml1X",
       "keywords": [
-        "awal",
-        "akhir",
-        "data pendukung",
         "perencanaan",
         "renja",
         "2026",
         "google drive",
-        "folder"
+        "folder",
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
       ],
       "aliases": [
         "renja",
@@ -1153,33 +2655,38 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 14,
+      "sortOrder": 6,
       "isActive": true,
       "subfolders": [
-        "AWAL",
-        "AKHIR",
-        "DATA PENDUKUNG"
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
       ]
     },
     {
       "id": "perencanaan-renja-2027",
       "title": "RENJA 2027",
-      "description": "Folder RENJA tahun 2027 berisi Awal, Akhir, Data Pendukung.",
+      "description": "Folder dokumen RENJA periode 2027 berisi RANCANGAN AWAL, RANCANGAN AKHIR, DATA PENDUKUNG.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
       "category": "RENJA",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1-FruPLeFr6eKMr8cj4GxN_EF5T1lRrbV?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1-zyBiL7mdEURP0LTumCo_VYvO1d3pspT",
       "keywords": [
-        "awal",
-        "akhir",
-        "data pendukung",
         "perencanaan",
         "renja",
         "2027",
         "google drive",
-        "folder"
+        "folder",
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
       ],
       "aliases": [
         "renja",
@@ -1187,234 +2694,382 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 15,
+      "sortOrder": 7,
       "isActive": true,
       "subfolders": [
-        "AWAL",
-        "AKHIR",
-        "DATA PENDUKUNG"
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
       ]
     },
     {
-      "id": "perencanaan-renstra-2025",
-      "title": "RENSTRA 2025",
-      "description": "Folder RENSTRA tahun 2025 berisi Awal, Akhir, Data Pendukung.",
+      "id": "perencanaan-renja-perubahan-2025",
+      "title": "RENJA PERUBAHAN 2025",
+      "description": "Folder dokumen RENJA PERUBAHAN periode 2025 berisi RANCANGAN AWAL, RANCANGAN AKHIR, DATA PENDUKUNG.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
-      "category": "RENSTRA",
+      "category": "RENJA PERUBAHAN",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1rq_JVUuId5FQbnbif7xxPi-XfEU1U2uH?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1OcrWym1MhdMeIsglv6AlHrQ5USvafEZj",
       "keywords": [
-        "awal",
-        "akhir",
-        "data pendukung",
         "perencanaan",
-        "renstra",
+        "renja perubahan",
         "2025",
         "google drive",
-        "folder"
+        "folder",
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
       ],
       "aliases": [
-        "renstra",
-        "renstra 2025"
+        "renja perubahan",
+        "renja perubahan 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 8,
+      "isActive": true,
+      "subfolders": [
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
+      ]
+    },
+    {
+      "id": "perencanaan-renja-perubahan-2026",
+      "title": "RENJA PERUBAHAN 2026",
+      "description": "Folder dokumen RENJA PERUBAHAN periode 2026 berisi RANCANGAN AWAL, RANCANGAN AKHIR, DATA PENDUKUNG.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "RENJA PERUBAHAN",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1P8qURTDY34OvNiIqXXTYPRj_Mzxt8To9",
+      "keywords": [
+        "perencanaan",
+        "renja perubahan",
+        "2026",
+        "google drive",
+        "folder",
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
+      ],
+      "aliases": [
+        "renja perubahan",
+        "renja perubahan 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 9,
+      "isActive": true,
+      "subfolders": [
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
+      ]
+    },
+    {
+      "id": "perencanaan-renja-perubahan-2027",
+      "title": "RENJA PERUBAHAN 2027",
+      "description": "Folder dokumen RENJA PERUBAHAN periode 2027 berisi RANCANGAN AWAL, RANCANGAN AKHIR, DATA PENDUKUNG.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "RENJA PERUBAHAN",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1x8WWriy0sgwAwQ2i1MgVKl5pTwc6TAUD",
+      "keywords": [
+        "perencanaan",
+        "renja perubahan",
+        "2027",
+        "google drive",
+        "folder",
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
+      ],
+      "aliases": [
+        "renja perubahan",
+        "renja perubahan 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 10,
+      "isActive": true,
+      "subfolders": [
+        "rancangan awal",
+        "rancangan akhir",
+        "data pendukung"
+      ]
+    },
+    {
+      "id": "perencanaan-data-dukung-rkpd-2025",
+      "title": "DATA DUKUNG RKPD 2025",
+      "description": "Folder dokumen DATA DUKUNG RKPD periode 2025 berisi AWAL, AKHIR.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "DATA DUKUNG RKPD",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1ksD-bRM9nIuWVhFgRcfE4sFoJxCI4dae",
+      "keywords": [
+        "perencanaan",
+        "data dukung rkpd",
+        "2025",
+        "google drive",
+        "folder",
+        "awal",
+        "akhir"
+      ],
+      "aliases": [
+        "data dukung rkpd",
+        "data dukung rkpd 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 11,
+      "isActive": true,
+      "subfolders": [
+        "awal",
+        "akhir"
+      ]
+    },
+    {
+      "id": "perencanaan-data-dukung-rkpd-2026",
+      "title": "DATA DUKUNG RKPD 2026",
+      "description": "Folder dokumen DATA DUKUNG RKPD periode 2026 berisi AWAL, AKHIR.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "DATA DUKUNG RKPD",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1zVisY4lE8SXB_TQLx29lOmzQ0lw5fJJH",
+      "keywords": [
+        "perencanaan",
+        "data dukung rkpd",
+        "2026",
+        "google drive",
+        "folder",
+        "awal",
+        "akhir"
+      ],
+      "aliases": [
+        "data dukung rkpd",
+        "data dukung rkpd 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 12,
+      "isActive": true,
+      "subfolders": [
+        "awal",
+        "akhir"
+      ]
+    },
+    {
+      "id": "perencanaan-data-dukung-rkpd-2027",
+      "title": "DATA DUKUNG RKPD 2027",
+      "description": "Folder dokumen DATA DUKUNG RKPD periode 2027 berisi AWAL, AKHIR.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "DATA DUKUNG RKPD",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1PWpiWUjSVCtId-dV9pyIoJ9I-SSwh93z",
+      "keywords": [
+        "perencanaan",
+        "data dukung rkpd",
+        "2027",
+        "google drive",
+        "folder",
+        "awal",
+        "akhir"
+      ],
+      "aliases": [
+        "data dukung rkpd",
+        "data dukung rkpd 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 13,
+      "isActive": true,
+      "subfolders": [
+        "awal",
+        "akhir"
+      ]
+    },
+    {
+      "id": "perencanaan-indikator-kinerja-2025",
+      "title": "INDIKATOR KINERJA 2025",
+      "description": "Folder dokumen INDIKATOR KINERJA periode 2025 berisi IKU, INDIKATOR KINERJA PROGRAM, KEGIATAN DAN LAINNYA.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "INDIKATOR KINERJA",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1mxaphUQLUQM7yGxZPYYqFwAJu83_OrAd",
+      "keywords": [
+        "perencanaan",
+        "indikator kinerja",
+        "2025",
+        "google drive",
+        "folder",
+        "iku",
+        "indikator kinerja program",
+        "kegiatan dan lainnya"
+      ],
+      "aliases": [
+        "indikator kinerja",
+        "indikator kinerja 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 14,
+      "isActive": true,
+      "subfolders": [
+        "iku",
+        "indikator kinerja program",
+        "kegiatan dan lainnya"
+      ]
+    },
+    {
+      "id": "perencanaan-indikator-kinerja-2026",
+      "title": "INDIKATOR KINERJA 2026",
+      "description": "Folder dokumen INDIKATOR KINERJA periode 2026 berisi IKU, INDIKATOR KINERJA PROGRAM, KEGIATAN DAN LAINNYA.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "INDIKATOR KINERJA",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1H5UC78zoRogPg4pYnlqicsvu9hOqz-45",
+      "keywords": [
+        "perencanaan",
+        "indikator kinerja",
+        "2026",
+        "google drive",
+        "folder",
+        "iku",
+        "indikator kinerja program",
+        "kegiatan dan lainnya"
+      ],
+      "aliases": [
+        "indikator kinerja",
+        "indikator kinerja 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 15,
+      "isActive": true,
+      "subfolders": [
+        "iku",
+        "indikator kinerja program",
+        "kegiatan dan lainnya"
+      ]
+    },
+    {
+      "id": "perencanaan-indikator-kinerja-2027",
+      "title": "INDIKATOR KINERJA 2027",
+      "description": "Folder dokumen INDIKATOR KINERJA periode 2027 berisi IKU, INDIKATOR KINERJA PROGRAM, KEGIATAN DAN LAINNYA.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "INDIKATOR KINERJA",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/12kBZzI8dq2W6U0IXU6MQmWYE-NGBzdm4",
+      "keywords": [
+        "perencanaan",
+        "indikator kinerja",
+        "2027",
+        "google drive",
+        "folder",
+        "iku",
+        "indikator kinerja program",
+        "kegiatan dan lainnya"
+      ],
+      "aliases": [
+        "indikator kinerja",
+        "indikator kinerja 2027"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 16,
       "isActive": true,
       "subfolders": [
-        "AWAL",
-        "AKHIR",
-        "DATA PENDUKUNG"
-      ]
-    },
-    {
-      "id": "perencanaan-renstra-2026",
-      "title": "RENSTRA 2026",
-      "description": "Folder RENSTRA tahun 2026 berisi Awal, Akhir, Data Pendukung.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "RENSTRA",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1Ip_O_zRUtlPfW8QbrFDXJP4AmU5w5ODc?usp=drive_link",
-      "keywords": [
-        "awal",
-        "akhir",
-        "data pendukung",
-        "perencanaan",
-        "renstra",
-        "2026",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "renstra",
-        "renstra 2026"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 17,
-      "isActive": true,
-      "subfolders": [
-        "AWAL",
-        "AKHIR",
-        "DATA PENDUKUNG"
-      ]
-    },
-    {
-      "id": "perencanaan-renstra-2027",
-      "title": "RENSTRA 2027",
-      "description": "Folder RENSTRA tahun 2027 berisi Awal, Akhir, Data Pendukung.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "RENSTRA",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/19cmLpFZlH2Qtzd7ByNeNHfgHiMnvsiJQ?usp=drive_link",
-      "keywords": [
-        "awal",
-        "akhir",
-        "data pendukung",
-        "perencanaan",
-        "renstra",
-        "2027",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "renstra",
-        "renstra 2027"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 18,
-      "isActive": true,
-      "subfolders": [
-        "AWAL",
-        "AKHIR",
-        "DATA PENDUKUNG"
-      ]
-    },
-    {
-      "id": "perencanaan-rsb-2025",
-      "title": "RSB 2025",
-      "description": "Folder RSB tahun 2025 berisi Awal, Perubahan, Data Pendukung.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "RSB",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1NvJzwhqJ8zVRFdqc06yX7uft91N_NtAY?usp=drive_link",
-      "keywords": [
-        "awal",
-        "perubahan",
-        "data pendukung",
-        "perencanaan",
-        "rsb",
-        "2025",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "rsb",
-        "rsb 2025"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 19,
-      "isActive": true,
-      "subfolders": [
-        "AWAL",
-        "PERUBAHAN",
-        "DATA PENDUKUNG"
-      ]
-    },
-    {
-      "id": "perencanaan-rsb-2026",
-      "title": "RSB 2026",
-      "description": "Folder RSB tahun 2026 berisi Awal, Perubahan, Data Pendukung.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "RSB",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1iYwJsqW7V7YeFSHqHRUPEyQJqPEZS5IW?usp=drive_link",
-      "keywords": [
-        "awal",
-        "perubahan",
-        "data pendukung",
-        "perencanaan",
-        "rsb",
-        "2026",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "rsb",
-        "rsb 2026"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 20,
-      "isActive": true,
-      "subfolders": [
-        "AWAL",
-        "PERUBAHAN",
-        "DATA PENDUKUNG"
-      ]
-    },
-    {
-      "id": "perencanaan-rsb-2027",
-      "title": "RSB 2027",
-      "description": "Folder RSB tahun 2027 berisi Awal, Perubahan, Data Pendukung.",
-      "type": "document",
-      "workspaceId": "perencanaan",
-      "workspaceTitle": "Perencanaan",
-      "category": "RSB",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1uf7Lmpc7vcz33Bgma-aEYay3Lf2W01aC?usp=drive_link",
-      "keywords": [
-        "awal",
-        "perubahan",
-        "data pendukung",
-        "perencanaan",
-        "rsb",
-        "2027",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "rsb",
-        "rsb 2027"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 21,
-      "isActive": true,
-      "subfolders": [
-        "AWAL",
-        "PERUBAHAN",
-        "DATA PENDUKUNG"
+        "iku",
+        "indikator kinerja program",
+        "kegiatan dan lainnya"
       ]
     },
     {
       "id": "perencanaan-rtp-2025",
       "title": "RTP 2025",
-      "description": "Folder RTP tahun 2025.",
+      "description": "Folder dokumen RTP periode 2025 berisi STRATEGIS, OPERASIONAL.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
       "category": "RTP",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/115ieUt2_a1XoGcAbvlZqoJtawg0Ko8Dp?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/118tWkQWUiIOLG0CpIzKv16G7zWo0Z2ss",
       "keywords": [
         "perencanaan",
         "rtp",
         "2025",
         "google drive",
-        "folder"
+        "folder",
+        "strategis",
+        "operasional"
       ],
       "aliases": [
         "rtp",
@@ -1422,26 +3077,36 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 22,
+      "sortOrder": 17,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "strategis",
+        "operasional"
+      ]
     },
     {
       "id": "perencanaan-rtp-2026",
       "title": "RTP 2026",
-      "description": "Folder RTP tahun 2026.",
+      "description": "Folder dokumen RTP periode 2026 berisi STRATEGIS, OPERASIONAL.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
       "category": "RTP",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1gsABoz-DMergOzGaYKWOy93WQHbX3QX2?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1ujd9KuoZ-X2m0LZRUa1dVOfS_tMfj2C5",
       "keywords": [
         "perencanaan",
         "rtp",
         "2026",
         "google drive",
-        "folder"
+        "folder",
+        "strategis",
+        "operasional"
       ],
       "aliases": [
         "rtp",
@@ -1449,26 +3114,36 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 23,
+      "sortOrder": 18,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "strategis",
+        "operasional"
+      ]
     },
     {
       "id": "perencanaan-rtp-2027",
       "title": "RTP 2027",
-      "description": "Folder RTP tahun 2027.",
+      "description": "Folder dokumen RTP periode 2027 berisi STRATEGIS, OPERASIONAL.",
       "type": "document",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
       "category": "RTP",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1O_zrT4zHmu978LvvlOrTk4zlO917jSud?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/10iQiKncz6pibqtbajFbDMbP4MLidg_AA",
       "keywords": [
         "perencanaan",
         "rtp",
         "2027",
         "google drive",
-        "folder"
+        "folder",
+        "strategis",
+        "operasional"
       ],
       "aliases": [
         "rtp",
@@ -1476,234 +3151,509 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 24,
+      "sortOrder": 19,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "strategis",
+        "operasional"
+      ]
     },
     {
-      "id": "evaluasi-iku-2025",
-      "title": "IKU 2025",
-      "description": "Folder IKU tahun 2025.",
+      "id": "perencanaan-anggaran-2025",
+      "title": "ANGGARAN 2025",
+      "description": "Folder dokumen ANGGARAN periode 2025 berisi APBD (NON DAK), DAK FISIK, DAK NON FISIK.",
       "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "IKU",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "ANGGARAN",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1LcorzS-8N68N9E_7GX_VGOlqE8gWApQ4?usp=sharing",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1PAH79l6fAc55hhusK8pmEEQYAvdGRCU5",
       "keywords": [
-        "evaluasi",
-        "iku",
+        "perencanaan",
+        "anggaran",
         "2025",
         "google drive",
-        "folder"
+        "folder",
+        "apbd (non dak)",
+        "dak fisik",
+        "dak non fisik"
       ],
       "aliases": [
-        "iku",
-        "iku 2025"
+        "anggaran",
+        "anggaran 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 20,
+      "isActive": true,
+      "subfolders": [
+        "apbd (non dak)",
+        "dak fisik",
+        "dak non fisik"
+      ]
+    },
+    {
+      "id": "perencanaan-anggaran-2026",
+      "title": "ANGGARAN 2026",
+      "description": "Folder dokumen ANGGARAN periode 2026 berisi APBD (NON DAK), DAK FISIK, DAK NON FISIK.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "ANGGARAN",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1W-VM4t24QwhVVu2N6S56o_dTRjw_5_fL",
+      "keywords": [
+        "perencanaan",
+        "anggaran",
+        "2026",
+        "google drive",
+        "folder",
+        "apbd (non dak)",
+        "dak fisik",
+        "dak non fisik"
+      ],
+      "aliases": [
+        "anggaran",
+        "anggaran 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 21,
+      "isActive": true,
+      "subfolders": [
+        "apbd (non dak)",
+        "dak fisik",
+        "dak non fisik"
+      ]
+    },
+    {
+      "id": "perencanaan-anggaran-2027",
+      "title": "ANGGARAN 2027",
+      "description": "Folder dokumen ANGGARAN periode 2027 berisi APBD (NON DAK), DAK FISIK, DAK NON FISIK.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "ANGGARAN",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1KkULtFmqxEi7n87mrRfTYf40J5KMJGiZ",
+      "keywords": [
+        "perencanaan",
+        "anggaran",
+        "2027",
+        "google drive",
+        "folder",
+        "apbd (non dak)",
+        "dak fisik",
+        "dak non fisik"
+      ],
+      "aliases": [
+        "anggaran",
+        "anggaran 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 22,
+      "isActive": true,
+      "subfolders": [
+        "apbd (non dak)",
+        "dak fisik",
+        "dak non fisik"
+      ]
+    },
+    {
+      "id": "perencanaan-perjanjian-kinerja-2025",
+      "title": "PERJANJIAN KINERJA 2025",
+      "description": "Folder dokumen PERJANJIAN KINERJA periode 2025 berisi AWAL, PERUBAHAN.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "PERJANJIAN KINERJA",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1TDGXvdgS-DGGotde0xWHE0pnH1TFz4Es",
+      "keywords": [
+        "perencanaan",
+        "perjanjian kinerja",
+        "2025",
+        "google drive",
+        "folder",
+        "awal",
+        "perubahan"
+      ],
+      "aliases": [
+        "perjanjian kinerja",
+        "perjanjian kinerja 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 23,
+      "isActive": true,
+      "subfolders": [
+        "awal",
+        "perubahan"
+      ]
+    },
+    {
+      "id": "perencanaan-perjanjian-kinerja-2026",
+      "title": "PERJANJIAN KINERJA 2026",
+      "description": "Folder dokumen PERJANJIAN KINERJA periode 2026 berisi AWAL, PERUBAHAN.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "PERJANJIAN KINERJA",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/11XRaS_V8N3f0axeJ9nplpRLpfR3ge8IF",
+      "keywords": [
+        "perencanaan",
+        "perjanjian kinerja",
+        "2026",
+        "google drive",
+        "folder",
+        "awal",
+        "perubahan"
+      ],
+      "aliases": [
+        "perjanjian kinerja",
+        "perjanjian kinerja 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 24,
+      "isActive": true,
+      "subfolders": [
+        "awal",
+        "perubahan"
+      ]
+    },
+    {
+      "id": "perencanaan-perjanjian-kinerja-2027",
+      "title": "PERJANJIAN KINERJA 2027",
+      "description": "Folder dokumen PERJANJIAN KINERJA periode 2027 berisi AWAL, PERUBAHAN.",
+      "type": "document",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "PERJANJIAN KINERJA",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1I3aaTbpapmoE5jvWqwjMS_TCk9toPi1y",
+      "keywords": [
+        "perencanaan",
+        "perjanjian kinerja",
+        "2027",
+        "google drive",
+        "folder",
+        "awal",
+        "perubahan"
+      ],
+      "aliases": [
+        "perjanjian kinerja",
+        "perjanjian kinerja 2027"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 25,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "awal",
+        "perubahan"
+      ]
     },
     {
-      "id": "evaluasi-iku-2026",
-      "title": "IKU 2026",
-      "description": "Folder IKU tahun 2026.",
+      "id": "perencanaan-rencana-aksi-2025",
+      "title": "RENCANA AKSI 2025",
+      "description": "Folder dokumen RENCANA AKSI periode 2025 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
       "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "IKU",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1jHrnDCm7J4uCTsiXnUv23QsKudKFqpXD?usp=drive_link",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "RENCANA AKSI",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1TsR_jMkNLOjujxAA1tIlZ6yHtN0F2GZR",
       "keywords": [
-        "evaluasi",
-        "iku",
-        "2026",
+        "perencanaan",
+        "rencana aksi",
+        "2025",
         "google drive",
-        "folder"
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
       ],
       "aliases": [
-        "iku",
-        "iku 2026"
+        "rencana aksi",
+        "rencana aksi 2025"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 26,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
     },
     {
-      "id": "evaluasi-iku-2027",
-      "title": "IKU 2027",
-      "description": "Folder IKU tahun 2027.",
+      "id": "perencanaan-rencana-aksi-2026",
+      "title": "RENCANA AKSI 2026",
+      "description": "Folder dokumen RENCANA AKSI periode 2026 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
       "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "IKU",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1_A7VK-IJYiTLfBo-Fj9hqL4k5z49AEDh?usp=drive_link",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "RENCANA AKSI",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/12u9cnDddMoeuUz9CKnlK3G_YeSVgGDgZ",
       "keywords": [
-        "evaluasi",
-        "iku",
-        "2027",
+        "perencanaan",
+        "rencana aksi",
+        "2026",
         "google drive",
-        "folder"
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
       ],
       "aliases": [
-        "iku",
-        "iku 2027"
+        "rencana aksi",
+        "rencana aksi 2026"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 27,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
     },
     {
-      "id": "evaluasi-sakip-2025",
-      "title": "SAKIP 2025",
-      "description": "Folder SAKIP tahun 2025 berisi Data Pendukung, Dokumen.",
+      "id": "perencanaan-rencana-aksi-2027",
+      "title": "RENCANA AKSI 2027",
+      "description": "Folder dokumen RENCANA AKSI periode 2027 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
       "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "SAKIP",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1zRCv-fqXxFkkFskjrp2p7TD92muxMdPy?usp=drive_link",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "RENCANA AKSI",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1Xc5mp4nidA9pyoks9v0uubjGIyr0GVya",
       "keywords": [
-        "data pendukung",
-        "dokumen",
-        "evaluasi",
-        "sakip",
-        "2025",
+        "perencanaan",
+        "rencana aksi",
+        "2027",
         "google drive",
-        "folder"
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
       ],
       "aliases": [
-        "sakip",
-        "sakip 2025"
+        "rencana aksi",
+        "rencana aksi 2027"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 28,
       "isActive": true,
       "subfolders": [
-        "DATA PENDUKUNG",
-        "DOKUMEN"
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
       ]
     },
     {
-      "id": "evaluasi-sakip-2026",
-      "title": "SAKIP 2026",
-      "description": "Folder SAKIP tahun 2026 berisi Data Pendukung, Dokumen.",
+      "id": "perencanaan-ptp-puskesmas-2025",
+      "title": "PTP PUSKESMAS 2025",
+      "description": "Folder dokumen PTP PUSKESMAS periode 2025 berisi PEDOMAN, SURAT PERMINTAAN, DOKUMEN.",
       "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "SAKIP",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1cWQ22Ecpz5HoiZQAj9yMWYXlNAS1aAIy?usp=drive_link",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "PTP PUSKESMAS",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1svd2_WxHgonnj9-jFXe-BZzDDDrGEI_V",
       "keywords": [
-        "data pendukung",
-        "dokumen",
-        "evaluasi",
-        "sakip",
-        "2026",
+        "perencanaan",
+        "ptp puskesmas",
+        "2025",
         "google drive",
-        "folder"
+        "folder",
+        "pedoman",
+        "surat permintaan",
+        "dokumen"
       ],
       "aliases": [
-        "sakip",
-        "sakip 2026"
+        "ptp puskesmas",
+        "ptp puskesmas 2025"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 29,
       "isActive": true,
       "subfolders": [
-        "DATA PENDUKUNG",
-        "DOKUMEN"
+        "pedoman",
+        "surat permintaan"
       ]
     },
     {
-      "id": "evaluasi-sakip-2027",
-      "title": "SAKIP 2027",
-      "description": "Folder SAKIP tahun 2027 berisi Data Pendukung, Dokumen.",
+      "id": "perencanaan-ptp-puskesmas-2026",
+      "title": "PTP PUSKESMAS 2026",
+      "description": "Folder dokumen PTP PUSKESMAS periode 2026 berisi PEDOMAN, SURAT PERMINTAAN, DOKUMEN.",
       "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "SAKIP",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1B160B9mv2B5tXHqxtkYg3an5M3QW7bg9?usp=drive_link",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "PTP PUSKESMAS",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1fu-Pea2cuh5It6A-JQS0ynDSJeTVgbiK",
       "keywords": [
-        "data pendukung",
-        "dokumen",
-        "evaluasi",
-        "sakip",
-        "2027",
+        "perencanaan",
+        "ptp puskesmas",
+        "2026",
         "google drive",
-        "folder"
+        "folder",
+        "pedoman",
+        "surat permintaan",
+        "dokumen"
       ],
       "aliases": [
-        "sakip",
-        "sakip 2027"
+        "ptp puskesmas",
+        "ptp puskesmas 2026"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 30,
       "isActive": true,
       "subfolders": [
-        "DATA PENDUKUNG",
-        "DOKUMEN"
+        "pedoman",
+        "surat permintaan"
       ]
     },
     {
-      "id": "evaluasi-spip-2025",
-      "title": "SPIP 2025",
-      "description": "Folder SPIP tahun 2025.",
+      "id": "perencanaan-ptp-puskesmas-2027",
+      "title": "PTP PUSKESMAS 2027",
+      "description": "Folder dokumen PTP PUSKESMAS periode 2027 berisi PEDOMAN, SURAT PERMINTAAN, DOKUMEN.",
       "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "SPIP",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1Jt8j54A8SUv5F9bjlYJ0zFfaRyxG-4FM?usp=drive_link",
+      "workspaceId": "perencanaan",
+      "workspaceTitle": "Perencanaan",
+      "category": "PTP PUSKESMAS",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1gC-hY0ZjhXNzvDdyl5t-FIMG_MHj_wsK",
       "keywords": [
-        "evaluasi",
-        "spip",
-        "2025",
+        "perencanaan",
+        "ptp puskesmas",
+        "2027",
         "google drive",
-        "folder"
+        "folder",
+        "pedoman",
+        "surat permintaan",
+        "dokumen"
       ],
       "aliases": [
-        "spip",
-        "spip 2025"
+        "ptp puskesmas",
+        "ptp puskesmas 2027"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 31,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "pedoman",
+        "surat permintaan"
+      ]
     },
     {
-      "id": "evaluasi-spip-2026",
-      "title": "SPIP 2026",
-      "description": "Folder SPIP tahun 2026.",
+      "id": "evaluasi-evaluasi-renstra-2025",
+      "title": "EVALUASI RENSTRA 2025",
+      "description": "Folder dokumen EVALUASI RENSTRA periode 2025.",
       "type": "document",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
-      "category": "SPIP",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1bSX3zuOX8H_gLqNcW6zR8mUOYSyWJTg4?usp=drive_link",
+      "category": "EVALUASI RENSTRA",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1-kyEtBFl7rvPHVkoUy7mCjjAG0Qft6Tu",
       "keywords": [
         "evaluasi",
-        "spip",
-        "2026",
+        "evaluasi renstra",
+        "2025",
         "google drive",
         "folder"
       ],
       "aliases": [
-        "spip",
-        "spip 2026"
+        "evaluasi renstra",
+        "evaluasi renstra 2025"
       ],
       "icon": "folder",
       "openMode": "new_tab",
@@ -1712,25 +3662,30 @@ export const LOCAL_DATA = {
       "subfolders": []
     },
     {
-      "id": "evaluasi-spip-2027",
-      "title": "SPIP 2027",
-      "description": "Folder SPIP tahun 2027.",
+      "id": "evaluasi-evaluasi-renstra-2026",
+      "title": "EVALUASI RENSTRA 2026",
+      "description": "Folder dokumen EVALUASI RENSTRA periode 2026.",
       "type": "document",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
-      "category": "SPIP",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1M3e2JkNUflfceVoLQzj2D3ZaPx6BJAIq?usp=drive_link",
+      "category": "EVALUASI RENSTRA",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1i__tMe80TPmJQeaaZpy5S_oMJWcf22wj",
       "keywords": [
         "evaluasi",
-        "spip",
-        "2027",
+        "evaluasi renstra",
+        "2026",
         "google drive",
         "folder"
       ],
       "aliases": [
-        "spip",
-        "spip 2027"
+        "evaluasi renstra",
+        "evaluasi renstra 2026"
       ],
       "icon": "folder",
       "openMode": "new_tab",
@@ -1739,25 +3694,30 @@ export const LOCAL_DATA = {
       "subfolders": []
     },
     {
-      "id": "evaluasi-spm-2025",
-      "title": "SPM 2025",
-      "description": "Folder SPM tahun 2025.",
+      "id": "evaluasi-evaluasi-renstra-2027",
+      "title": "EVALUASI RENSTRA 2027",
+      "description": "Folder dokumen EVALUASI RENSTRA periode 2027.",
       "type": "document",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
-      "category": "SPM",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1-EOi74ekph4h4c172kRl-RWcKSq3vZ0N?usp=drive_link",
+      "category": "EVALUASI RENSTRA",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1QaokhksFwKG5pT77uIVGzOdnn9XoIfL7",
       "keywords": [
         "evaluasi",
-        "spm",
-        "2025",
+        "evaluasi renstra",
+        "2027",
         "google drive",
         "folder"
       ],
       "aliases": [
-        "spm",
-        "spm 2025"
+        "evaluasi renstra",
+        "evaluasi renstra 2027"
       ],
       "icon": "folder",
       "openMode": "new_tab",
@@ -1766,159 +3726,31 @@ export const LOCAL_DATA = {
       "subfolders": []
     },
     {
-      "id": "evaluasi-spm-2026",
-      "title": "SPM 2026",
-      "description": "Folder SPM tahun 2026.",
-      "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "SPM",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1F3fOSsFh_I-pKjuhCfR8EGdJPmN6joqy?usp=drive_link",
-      "keywords": [
-        "evaluasi",
-        "spm",
-        "2026",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "spm",
-        "spm 2026"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 35,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "evaluasi-spm-2027",
-      "title": "SPM 2027",
-      "description": "Folder SPM tahun 2027.",
-      "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "SPM",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1_xtrUXbRVZiEKPbOXqcxYpwpUh_h1sl_?usp=drive_link",
-      "keywords": [
-        "evaluasi",
-        "spm",
-        "2027",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "spm",
-        "spm 2027"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 36,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "evaluasi-perjanjian-kinerja-2025",
-      "title": "PERJANJIAN KINERJA 2025",
-      "description": "Folder PERJANJIAN KINERJA tahun 2025.",
-      "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "PERJANJIAN KINERJA",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1HxqPNQF-DO57WdujobXsqT39CYOxzLQo?usp=drive_link",
-      "keywords": [
-        "evaluasi",
-        "perjanjian kinerja",
-        "2025",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "perjanjian kinerja",
-        "perjanjian kinerja 2025"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 37,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "evaluasi-perjanjian-kinerja-2026",
-      "title": "PERJANJIAN KINERJA 2026",
-      "description": "Folder PERJANJIAN KINERJA tahun 2026.",
-      "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "PERJANJIAN KINERJA",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1YjgMrU7pCFx13mnZlX38TxgCArCNxYPM?usp=drive_link",
-      "keywords": [
-        "evaluasi",
-        "perjanjian kinerja",
-        "2026",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "perjanjian kinerja",
-        "perjanjian kinerja 2026"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 38,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "evaluasi-perjanjian-kinerja-2027",
-      "title": "PERJANJIAN KINERJA 2027",
-      "description": "Folder PERJANJIAN KINERJA tahun 2027.",
-      "type": "document",
-      "workspaceId": "evaluasi",
-      "workspaceTitle": "Evaluasi",
-      "category": "PERJANJIAN KINERJA",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/16DCebU1cqb8QugNiFm-IcNB53iVU7jMA?usp=drive_link",
-      "keywords": [
-        "evaluasi",
-        "perjanjian kinerja",
-        "2027",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "perjanjian kinerja",
-        "perjanjian kinerja 2027"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 39,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
       "id": "evaluasi-evaluasi-renja-2025",
       "title": "EVALUASI RENJA 2025",
-      "description": "Folder EVALUASI RENJA tahun 2025 berisi Tw Ii, Tw Iii, Tw Iv.",
+      "description": "Folder dokumen EVALUASI RENJA periode 2025 berisi TW I, TW II, TW III, TW IV, TAHUNAN.",
       "type": "document",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
       "category": "EVALUASI RENJA",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1UqbXlv-QeW0DZQtBikMVYAI9WrWdS0pV?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1fCuEmNZ65Pvp98lGDGxxnExY-DmDqWVi",
       "keywords": [
-        "tw ii",
-        "tw iii",
-        "tw iv",
         "evaluasi",
         "evaluasi renja",
         "2025",
         "google drive",
-        "folder"
+        "folder",
+        "tw i",
+        "tw ii",
+        "tw iii",
+        "tw iv",
+        "tahunan"
       ],
       "aliases": [
         "evaluasi renja",
@@ -1926,34 +3758,42 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 40,
+      "sortOrder": 35,
       "isActive": true,
       "subfolders": [
-        "TW II",
-        "TW III",
-        "TW IV"
+        "tw i",
+        "tw ii",
+        "tw iii",
+        "tw iv",
+        "tahunan"
       ]
     },
     {
       "id": "evaluasi-evaluasi-renja-2026",
       "title": "EVALUASI RENJA 2026",
-      "description": "Folder EVALUASI RENJA tahun 2026 berisi Tw I, Tw Ii, Tw Iii, Tw Iv.",
+      "description": "Folder dokumen EVALUASI RENJA periode 2026 berisi TW I, TW II, TW III, TW IV, TAHUNAN.",
       "type": "document",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
       "category": "EVALUASI RENJA",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1FdY0ZF7eJazCtSCR8y2A67rvFylquSdM?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1xwaGuPN-NI7fB0y11lKDLpJi-c8KqToU",
       "keywords": [
-        "tw i",
-        "tw ii",
-        "tw iii",
-        "tw iv",
         "evaluasi",
         "evaluasi renja",
         "2026",
         "google drive",
-        "folder"
+        "folder",
+        "tw i",
+        "tw ii",
+        "tw iii",
+        "tw iv",
+        "tahunan"
       ],
       "aliases": [
         "evaluasi renja",
@@ -1961,35 +3801,42 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 41,
+      "sortOrder": 36,
       "isActive": true,
       "subfolders": [
-        "TW I",
-        "TW II",
-        "TW III",
-        "TW IV"
+        "tw i",
+        "tw ii",
+        "tw iii",
+        "tw iv",
+        "tahunan"
       ]
     },
     {
       "id": "evaluasi-evaluasi-renja-2027",
       "title": "EVALUASI RENJA 2027",
-      "description": "Folder EVALUASI RENJA tahun 2027 berisi Tw I, Tw Ii, Tw Iii, Tw Iv.",
+      "description": "Folder dokumen EVALUASI RENJA periode 2027 berisi TW I, TW II, TW III, TW IV, TAHUNAN.",
       "type": "document",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
       "category": "EVALUASI RENJA",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1W4nGV4eFopuHFfiRptW8hCl8axFX5B1b?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1wYmVI75i5BCsa5L3UiLlQMEy82MbZ_zb",
       "keywords": [
-        "tw i",
-        "tw ii",
-        "tw iii",
-        "tw iv",
         "evaluasi",
         "evaluasi renja",
         "2027",
         "google drive",
-        "folder"
+        "folder",
+        "tw i",
+        "tw ii",
+        "tw iii",
+        "tw iv",
+        "tahunan"
       ],
       "aliases": [
         "evaluasi renja",
@@ -1997,112 +3844,1123 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 42,
+      "sortOrder": 37,
       "isActive": true,
       "subfolders": [
-        "TW I",
-        "TW II",
-        "TW III",
-        "TW IV"
+        "tw i",
+        "tw ii",
+        "tw iii",
+        "tw iv",
+        "tahunan"
       ]
     },
     {
-      "id": "evaluasi-data-lain-2025",
-      "title": "DATA LAIN 2025",
-      "description": "Folder DATA LAIN tahun 2025.",
+      "id": "evaluasi-evaluasi-kinerja-2025",
+      "title": "EVALUASI KINERJA 2025",
+      "description": "Folder dokumen EVALUASI KINERJA periode 2025 berisi IKU, SPM, INDIKATOR PROGRAM DAN KEGIATAN DINKES, PROGRAM STRATEGIS NASIONAL.",
       "type": "document",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
-      "category": "DATA LAIN",
+      "category": "EVALUASI KINERJA",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/12fLnNvN-LK4h1HObe2tM62ZLc0E472NK?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1kWSHLrs4AkMtV_IMYcpL5UUAaHCMCXNi",
       "keywords": [
         "evaluasi",
-        "data lain",
+        "evaluasi kinerja",
         "2025",
         "google drive",
-        "folder"
+        "folder",
+        "iku",
+        "spm",
+        "indikator program dan kegiatan dinkes",
+        "program strategis nasional"
       ],
       "aliases": [
-        "data lain",
-        "data lain 2025"
+        "evaluasi kinerja",
+        "evaluasi kinerja 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 38,
+      "isActive": true,
+      "subfolders": [
+        "iku",
+        "spm",
+        "indikator program dan kegiatan dinkes",
+        "program strategis nasional"
+      ]
+    },
+    {
+      "id": "evaluasi-evaluasi-kinerja-2026",
+      "title": "EVALUASI KINERJA 2026",
+      "description": "Folder dokumen EVALUASI KINERJA periode 2026 berisi IKU, SPM, INDIKATOR PROGRAM DAN KEGIATAN DINKES, PROGRAM STRATEGIS NASIONAL.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "EVALUASI KINERJA",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1hp7zqcPlhlKAk1a8Bhn2_9rfEyZPFeCB",
+      "keywords": [
+        "evaluasi",
+        "evaluasi kinerja",
+        "2026",
+        "google drive",
+        "folder",
+        "iku",
+        "spm",
+        "indikator program dan kegiatan dinkes",
+        "program strategis nasional"
+      ],
+      "aliases": [
+        "evaluasi kinerja",
+        "evaluasi kinerja 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 39,
+      "isActive": true,
+      "subfolders": [
+        "iku",
+        "spm",
+        "indikator program dan kegiatan dinkes",
+        "program strategis nasional"
+      ]
+    },
+    {
+      "id": "evaluasi-evaluasi-kinerja-2027",
+      "title": "EVALUASI KINERJA 2027",
+      "description": "Folder dokumen EVALUASI KINERJA periode 2027 berisi IKU, SPM, INDIKATOR PROGRAM DAN KEGIATAN DINKES, PROGRAM STRATEGIS NASIONAL.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "EVALUASI KINERJA",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1wvQpcKsaKhDDL_Zsx_QDUi0I_Bik2w_E",
+      "keywords": [
+        "evaluasi",
+        "evaluasi kinerja",
+        "2027",
+        "google drive",
+        "folder",
+        "iku",
+        "spm",
+        "indikator program dan kegiatan dinkes",
+        "program strategis nasional"
+      ],
+      "aliases": [
+        "evaluasi kinerja",
+        "evaluasi kinerja 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 40,
+      "isActive": true,
+      "subfolders": [
+        "iku",
+        "spm",
+        "indikator program dan kegiatan dinkes",
+        "program strategis nasional"
+      ]
+    },
+    {
+      "id": "evaluasi-spip-2025",
+      "title": "SPIP 2025",
+      "description": "Folder dokumen SPIP periode 2025 berisi KERTAS KERJA PERENCANAAN TAHUN N DAN REALISASI TAHUN N-1, DATA PENDUKUNG.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "SPIP",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1VYs2uItXf5YqQ4yxh__IuUAG7z0BvjL1",
+      "keywords": [
+        "evaluasi",
+        "spip",
+        "2025",
+        "google drive",
+        "folder",
+        "kertas kerja perencanaan tahun n dan realisasi tahun n-1",
+        "data pendukung"
+      ],
+      "aliases": [
+        "spip",
+        "spip 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 41,
+      "isActive": true,
+      "subfolders": [
+        "kertas kerja perencanaan tahun n dan realisasi tahun n-1",
+        "data pendukung"
+      ]
+    },
+    {
+      "id": "evaluasi-spip-2026",
+      "title": "SPIP 2026",
+      "description": "Folder dokumen SPIP periode 2026 berisi KERTAS KERJA PERENCANAAN TAHUN N DAN REALISASI TAHUN N-1, DATA PENDUKUNG.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "SPIP",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1VyF2vW58sHKEab2SpA2BXZkHEu2LznS2",
+      "keywords": [
+        "evaluasi",
+        "spip",
+        "2026",
+        "google drive",
+        "folder",
+        "kertas kerja perencanaan tahun n dan realisasi tahun n-1",
+        "data pendukung"
+      ],
+      "aliases": [
+        "spip",
+        "spip 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 42,
+      "isActive": true,
+      "subfolders": [
+        "kertas kerja perencanaan tahun n dan realisasi tahun n-1",
+        "data pendukung"
+      ]
+    },
+    {
+      "id": "evaluasi-spip-2027",
+      "title": "SPIP 2027",
+      "description": "Folder dokumen SPIP periode 2027 berisi KERTAS KERJA PERENCANAAN TAHUN N DAN REALISASI TAHUN N-1, DATA PENDUKUNG.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "SPIP",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1I03ZcoYhbu5j0Y8_roGNq_OFJmg8uzSJ",
+      "keywords": [
+        "evaluasi",
+        "spip",
+        "2027",
+        "google drive",
+        "folder",
+        "kertas kerja perencanaan tahun n dan realisasi tahun n-1",
+        "data pendukung"
+      ],
+      "aliases": [
+        "spip",
+        "spip 2027"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 43,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "kertas kerja perencanaan tahun n dan realisasi tahun n-1",
+        "data pendukung"
+      ]
     },
     {
-      "id": "evaluasi-data-lain-2026",
-      "title": "DATA LAIN 2026",
-      "description": "Folder DATA LAIN tahun 2026.",
+      "id": "evaluasi-sakip-2025",
+      "title": "SAKIP 2025",
+      "description": "Folder dokumen SAKIP periode 2025 berisi DATA PENDUKUNG, KERTAS KERJA.",
       "type": "document",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
-      "category": "DATA LAIN",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/12S1HildTlTZKjOn4MbDyHHdrLZdObnp-?usp=drive_link",
+      "category": "SAKIP",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/16BYeL3SEbQFzq9eHmsFlxS3DmksfLKVK",
       "keywords": [
         "evaluasi",
-        "data lain",
-        "2026",
+        "sakip",
+        "2025",
         "google drive",
-        "folder"
+        "folder",
+        "data pendukung",
+        "kertas kerja"
       ],
       "aliases": [
-        "data lain",
-        "data lain 2026"
+        "sakip",
+        "sakip 2025"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 44,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "data pendukung",
+        "kertas kerja"
+      ]
     },
     {
-      "id": "evaluasi-data-lain-2027",
-      "title": "DATA LAIN 2027",
-      "description": "Folder DATA LAIN tahun 2027.",
+      "id": "evaluasi-sakip-2026",
+      "title": "SAKIP 2026",
+      "description": "Folder dokumen SAKIP periode 2026 berisi DATA PENDUKUNG, KERTAS KERJA.",
       "type": "document",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
-      "category": "DATA LAIN",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1cJM45CmR9gOT0ScQ9gTrufwDaS6Vgswc?usp=drive_link",
+      "category": "SAKIP",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1Fie4ABua8IOni81UEEoPQFrhj2bxprCq",
       "keywords": [
         "evaluasi",
-        "data lain",
-        "2027",
+        "sakip",
+        "2026",
         "google drive",
-        "folder"
+        "folder",
+        "data pendukung",
+        "kertas kerja"
       ],
       "aliases": [
-        "data lain",
-        "data lain 2027"
+        "sakip",
+        "sakip 2026"
       ],
       "icon": "folder",
       "openMode": "new_tab",
       "sortOrder": 45,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "data pendukung",
+        "kertas kerja"
+      ]
+    },
+    {
+      "id": "evaluasi-sakip-2027",
+      "title": "SAKIP 2027",
+      "description": "Folder dokumen SAKIP periode 2027 berisi DATA PENDUKUNG, KERTAS KERJA.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "SAKIP",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1YIrCayNXFuX8V-ROiZjqizNWvJAdK2pc",
+      "keywords": [
+        "evaluasi",
+        "sakip",
+        "2027",
+        "google drive",
+        "folder",
+        "data pendukung",
+        "kertas kerja"
+      ],
+      "aliases": [
+        "sakip",
+        "sakip 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 46,
+      "isActive": true,
+      "subfolders": [
+        "data pendukung",
+        "kertas kerja"
+      ]
+    },
+    {
+      "id": "evaluasi-kopd-2025",
+      "title": "KOPD 2025",
+      "description": "Folder dokumen KOPD periode 2025 berisi DATA PENDUKUNG DARI PEPK.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "KOPD",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1hMqmVuAmfCqzXYAa-0pT-KPKfivUFoYk",
+      "keywords": [
+        "evaluasi",
+        "kopd",
+        "2025",
+        "google drive",
+        "folder",
+        "data pendukung dari pepk"
+      ],
+      "aliases": [
+        "kopd",
+        "kopd 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 47,
+      "isActive": true,
+      "subfolders": [
+        "data pendukung dari pepk"
+      ]
+    },
+    {
+      "id": "evaluasi-evaluasi-rtp-2025",
+      "title": "EVALUASI RTP 2025",
+      "description": "Folder dokumen EVALUASI RTP periode 2025 berisi PEMUTAKHIRAN, KERTAS KERJA PENCATATAN MONEV, DOKUMEN LAPORAN EVALUASI.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "EVALUASI RTP",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1rWqwVH40vXkyvX-X9oJ1mfD-Ko-d6Ddd",
+      "keywords": [
+        "evaluasi",
+        "evaluasi rtp",
+        "2025",
+        "google drive",
+        "folder",
+        "pemutakhiran",
+        "kertas kerja pencatatan monev",
+        "dokumen laporan evaluasi"
+      ],
+      "aliases": [
+        "evaluasi rtp",
+        "evaluasi rtp 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 48,
+      "isActive": true,
+      "subfolders": [
+        "pemutakhiran",
+        "kertas kerja pencatatan monev",
+        "dokumen laporan evaluasi"
+      ]
+    },
+    {
+      "id": "evaluasi-evaluasi-rtp-2026",
+      "title": "EVALUASI RTP 2026",
+      "description": "Folder dokumen EVALUASI RTP periode 2026 berisi PEMUTAKHIRAN, KERTAS KERJA PENCATATAN MONEV, DOKUMEN LAPORAN EVALUASI.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "EVALUASI RTP",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1khejYgNqQN10JGehchdoUpzlpvAe7Qo-",
+      "keywords": [
+        "evaluasi",
+        "evaluasi rtp",
+        "2026",
+        "google drive",
+        "folder",
+        "pemutakhiran",
+        "kertas kerja pencatatan monev",
+        "dokumen laporan evaluasi"
+      ],
+      "aliases": [
+        "evaluasi rtp",
+        "evaluasi rtp 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 49,
+      "isActive": true,
+      "subfolders": [
+        "pemutakhiran",
+        "kertas kerja pencatatan monev",
+        "dokumen laporan evaluasi"
+      ]
+    },
+    {
+      "id": "evaluasi-evaluasi-rtp-2027",
+      "title": "EVALUASI RTP 2027",
+      "description": "Folder dokumen EVALUASI RTP periode 2027 berisi PEMUTAKHIRAN, KERTAS KERJA PENCATATAN MONEV, DOKUMEN LAPORAN EVALUASI.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "EVALUASI RTP",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1_izRWmUVkBNlIx8tvKdHVMTb3JXqBG_8",
+      "keywords": [
+        "evaluasi",
+        "evaluasi rtp",
+        "2027",
+        "google drive",
+        "folder",
+        "pemutakhiran",
+        "kertas kerja pencatatan monev",
+        "dokumen laporan evaluasi"
+      ],
+      "aliases": [
+        "evaluasi rtp",
+        "evaluasi rtp 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 50,
+      "isActive": true,
+      "subfolders": [
+        "pemutakhiran",
+        "kertas kerja pencatatan monev",
+        "dokumen laporan evaluasi"
+      ]
+    },
+    {
+      "id": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi-2025",
+      "title": "EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI) 2025",
+      "description": "Folder dokumen EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI) periode 2025 berisi KERTAS KERJA REKAPITULASI APBD, HASIL REVIU BPKP, TINDAK LANJUT HASIL REVIU.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI)",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1IAgKzHmLcwyo7urA19qXQUqNF1IAFQbo",
+      "keywords": [
+        "evaluasi",
+        "evaluasi perencanaan dan penganggaran (asersi)",
+        "2025",
+        "google drive",
+        "folder",
+        "kertas kerja rekapitulasi apbd",
+        "hasil reviu bpkp",
+        "tindak lanjut hasil reviu"
+      ],
+      "aliases": [
+        "evaluasi perencanaan dan penganggaran (asersi)",
+        "evaluasi perencanaan dan penganggaran (asersi) 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 51,
+      "isActive": true,
+      "subfolders": [
+        "kertas kerja rekapitulasi apbd",
+        "hasil reviu bpkp",
+        "tindak lanjut hasil reviu"
+      ]
+    },
+    {
+      "id": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi-2026",
+      "title": "EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI) 2026",
+      "description": "Folder dokumen EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI) periode 2026 berisi KERTAS KERJA REKAPITULASI APBD, HASIL REVIU BPKP, TINDAK LANJUT HASIL REVIU.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI)",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1XiGLEClJWAj05qFQM-rLzdgBuzTIuU8z",
+      "keywords": [
+        "evaluasi",
+        "evaluasi perencanaan dan penganggaran (asersi)",
+        "2026",
+        "google drive",
+        "folder",
+        "kertas kerja rekapitulasi apbd",
+        "hasil reviu bpkp",
+        "tindak lanjut hasil reviu"
+      ],
+      "aliases": [
+        "evaluasi perencanaan dan penganggaran (asersi)",
+        "evaluasi perencanaan dan penganggaran (asersi) 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 52,
+      "isActive": true,
+      "subfolders": [
+        "kertas kerja rekapitulasi apbd",
+        "hasil reviu bpkp",
+        "tindak lanjut hasil reviu"
+      ]
+    },
+    {
+      "id": "evaluasi-evaluasi-perencanaan-dan-penganggaran-asersi-2027",
+      "title": "EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI) 2027",
+      "description": "Folder dokumen EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI) periode 2027 berisi KERTAS KERJA REKAPITULASI APBD, HASIL REVIU BPKP, TINDAK LANJUT HASIL REVIU.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "EVALUASI PERENCANAAN DAN PENGANGGARAN (ASERSI)",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1jwfHgD-MvzTyN2UkXlYdWYepmBvzdVc-",
+      "keywords": [
+        "evaluasi",
+        "evaluasi perencanaan dan penganggaran (asersi)",
+        "2027",
+        "google drive",
+        "folder",
+        "kertas kerja rekapitulasi apbd",
+        "hasil reviu bpkp",
+        "tindak lanjut hasil reviu"
+      ],
+      "aliases": [
+        "evaluasi perencanaan dan penganggaran (asersi)",
+        "evaluasi perencanaan dan penganggaran (asersi) 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 53,
+      "isActive": true,
+      "subfolders": [
+        "kertas kerja rekapitulasi apbd",
+        "hasil reviu bpkp",
+        "tindak lanjut hasil reviu"
+      ]
+    },
+    {
+      "id": "evaluasi-monev-kinerja-dan-anggaran-2025",
+      "title": "MONEV KINERJA DAN ANGGARAN 2025",
+      "description": "Folder dokumen MONEV KINERJA DAN ANGGARAN periode 2025 berisi PELAKSANAAN PROGRAM KEGIATAN APBD, REALISASI PENGGUNAAN DBHCHT.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "MONEV KINERJA DAN ANGGARAN",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/10Kc8_X1akNoHUzFFzzl8DhuwqyOBb4gM",
+      "keywords": [
+        "evaluasi",
+        "monev kinerja dan anggaran",
+        "2025",
+        "google drive",
+        "folder",
+        "pelaksanaan program kegiatan apbd",
+        "realisasi penggunaan dbhcht"
+      ],
+      "aliases": [
+        "monev kinerja dan anggaran",
+        "monev kinerja dan anggaran 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 54,
+      "isActive": true,
+      "subfolders": [
+        "pelaksanaan program kegiatan apbd",
+        "realisasi penggunaan dbhcht"
+      ]
+    },
+    {
+      "id": "evaluasi-monev-kinerja-dan-anggaran-2026",
+      "title": "MONEV KINERJA DAN ANGGARAN 2026",
+      "description": "Folder dokumen MONEV KINERJA DAN ANGGARAN periode 2026 berisi PELAKSANAAN PROGRAM KEGIATAN APBD, REALISASI PENGGUNAAN DBHCHT.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "MONEV KINERJA DAN ANGGARAN",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1UGAEnfl2pZSKiMgI48JvPDVpEP-W2QFW",
+      "keywords": [
+        "evaluasi",
+        "monev kinerja dan anggaran",
+        "2026",
+        "google drive",
+        "folder",
+        "pelaksanaan program kegiatan apbd",
+        "realisasi penggunaan dbhcht"
+      ],
+      "aliases": [
+        "monev kinerja dan anggaran",
+        "monev kinerja dan anggaran 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 55,
+      "isActive": true,
+      "subfolders": [
+        "pelaksanaan program kegiatan apbd",
+        "realisasi penggunaan dbhcht"
+      ]
+    },
+    {
+      "id": "evaluasi-monev-kinerja-dan-anggaran-2027",
+      "title": "MONEV KINERJA DAN ANGGARAN 2027",
+      "description": "Folder dokumen MONEV KINERJA DAN ANGGARAN periode 2027 berisi PELAKSANAAN PROGRAM KEGIATAN APBD, REALISASI PENGGUNAAN DBHCHT.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "MONEV KINERJA DAN ANGGARAN",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1N9BbczKWSN9cJJPzlr-J03EM_KdH2SOw",
+      "keywords": [
+        "evaluasi",
+        "monev kinerja dan anggaran",
+        "2027",
+        "google drive",
+        "folder",
+        "pelaksanaan program kegiatan apbd",
+        "realisasi penggunaan dbhcht"
+      ],
+      "aliases": [
+        "monev kinerja dan anggaran",
+        "monev kinerja dan anggaran 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 56,
+      "isActive": true,
+      "subfolders": [
+        "pelaksanaan program kegiatan apbd",
+        "realisasi penggunaan dbhcht"
+      ]
+    },
+    {
+      "id": "evaluasi-realisasi-rencana-aksi-2025",
+      "title": "REALISASI RENCANA AKSI 2025",
+      "description": "Folder dokumen REALISASI RENCANA AKSI periode 2025 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "REALISASI RENCANA AKSI",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1lqkhCqlZ4sFcd-Fy0S5G_4iYmrRbfH6e",
+      "keywords": [
+        "evaluasi",
+        "realisasi rencana aksi",
+        "2025",
+        "google drive",
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ],
+      "aliases": [
+        "realisasi rencana aksi",
+        "realisasi rencana aksi 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 57,
+      "isActive": true,
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
+    },
+    {
+      "id": "evaluasi-realisasi-rencana-aksi-2026",
+      "title": "REALISASI RENCANA AKSI 2026",
+      "description": "Folder dokumen REALISASI RENCANA AKSI periode 2026 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "REALISASI RENCANA AKSI",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1758Izhk0IKrK__Mh3Yo6X5BVfMSeWLF1",
+      "keywords": [
+        "evaluasi",
+        "realisasi rencana aksi",
+        "2026",
+        "google drive",
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ],
+      "aliases": [
+        "realisasi rencana aksi",
+        "realisasi rencana aksi 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 58,
+      "isActive": true,
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
+    },
+    {
+      "id": "evaluasi-realisasi-rencana-aksi-2027",
+      "title": "REALISASI RENCANA AKSI 2027",
+      "description": "Folder dokumen REALISASI RENCANA AKSI periode 2027 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "REALISASI RENCANA AKSI",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1Agh3PT4QeInU0ZiG6gF8M3yq5UYvxowe",
+      "keywords": [
+        "evaluasi",
+        "realisasi rencana aksi",
+        "2027",
+        "google drive",
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ],
+      "aliases": [
+        "realisasi rencana aksi",
+        "realisasi rencana aksi 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 59,
+      "isActive": true,
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
+    },
+    {
+      "id": "evaluasi-pkp-puskesmas-2025",
+      "title": "PKP PUSKESMAS 2025",
+      "description": "Folder dokumen PKP PUSKESMAS periode 2025 berisi INSTRUMEN, SURAT, SK, DAN PENDUKUNG, NILAI HASIL DESK, FEEDBACK, DOKUMEN FINAL.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "PKP PUSKESMAS",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1uBHrczxk0jIk4mvhm8nB0pUxbDiBLSvl",
+      "keywords": [
+        "evaluasi",
+        "pkp puskesmas",
+        "2025",
+        "google drive",
+        "folder",
+        "instrumen",
+        "surat",
+        "sk",
+        "dan pendukung",
+        "nilai hasil desk",
+        "feedback",
+        "dokumen final"
+      ],
+      "aliases": [
+        "pkp puskesmas",
+        "pkp puskesmas 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 60,
+      "isActive": true,
+      "subfolders": [
+        "instrumen",
+        "surat",
+        "sk",
+        "dan pendukung",
+        "nilai hasil desk",
+        "feedback",
+        "dokumen final"
+      ]
+    },
+    {
+      "id": "evaluasi-pkp-puskesmas-2026",
+      "title": "PKP PUSKESMAS 2026",
+      "description": "Folder dokumen PKP PUSKESMAS periode 2026 berisi INSTRUMEN, SURAT, SK, DAN PENDUKUNG, NILAI HASIL DESK, FEEDBACK, DOKUMEN FINAL.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "PKP PUSKESMAS",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/10H7xsxMIRlsDe0vn3SdY-6Aq7cy2N37C",
+      "keywords": [
+        "evaluasi",
+        "pkp puskesmas",
+        "2026",
+        "google drive",
+        "folder",
+        "instrumen",
+        "surat",
+        "sk",
+        "dan pendukung",
+        "nilai hasil desk",
+        "feedback",
+        "dokumen final"
+      ],
+      "aliases": [
+        "pkp puskesmas",
+        "pkp puskesmas 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 61,
+      "isActive": true,
+      "subfolders": [
+        "instrumen",
+        "surat",
+        "sk",
+        "dan pendukung",
+        "nilai hasil desk",
+        "feedback",
+        "dokumen final"
+      ]
+    },
+    {
+      "id": "evaluasi-pkp-puskesmas-2027",
+      "title": "PKP PUSKESMAS 2027",
+      "description": "Folder dokumen PKP PUSKESMAS periode 2027 berisi INSTRUMEN, SURAT, SK, DAN PENDUKUNG, NILAI HASIL DESK, FEEDBACK, DOKUMEN FINAL.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "PKP PUSKESMAS",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1z3ShoPbpqtjiLhRO_wd75aT1XM3FtW_Z",
+      "keywords": [
+        "evaluasi",
+        "pkp puskesmas",
+        "2027",
+        "google drive",
+        "folder",
+        "instrumen",
+        "surat",
+        "sk",
+        "dan pendukung",
+        "nilai hasil desk",
+        "feedback",
+        "dokumen final"
+      ],
+      "aliases": [
+        "pkp puskesmas",
+        "pkp puskesmas 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 62,
+      "isActive": true,
+      "subfolders": [
+        "instrumen",
+        "surat",
+        "sk",
+        "dan pendukung",
+        "nilai hasil desk",
+        "feedback",
+        "dokumen final"
+      ]
+    },
+    {
+      "id": "evaluasi-bahan-evaluasi-anggaran-dan-pendapatan-untuk-dprd-2026",
+      "title": "BAHAN EVALUASI ANGGARAN DAN PENDAPATAN UNTUK DPRD 2026",
+      "description": "Folder dokumen BAHAN EVALUASI ANGGARAN DAN PENDAPATAN UNTUK DPRD periode 2026 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "BAHAN EVALUASI ANGGARAN DAN PENDAPATAN UNTUK DPRD",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1b7ksbWZrCCtyQTPfXaZBMTGleshYL7_F",
+      "keywords": [
+        "evaluasi",
+        "bahan evaluasi anggaran dan pendapatan untuk dprd",
+        "2026",
+        "google drive",
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ],
+      "aliases": [
+        "bahan evaluasi anggaran dan pendapatan untuk dprd",
+        "bahan evaluasi anggaran dan pendapatan untuk dprd 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 63,
+      "isActive": true,
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
+    },
+    {
+      "id": "evaluasi-bahan-evaluasi-anggaran-dan-pendapatan-untuk-dprd-2027",
+      "title": "BAHAN EVALUASI ANGGARAN DAN PENDAPATAN UNTUK DPRD 2027",
+      "description": "Folder dokumen BAHAN EVALUASI ANGGARAN DAN PENDAPATAN UNTUK DPRD periode 2027 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
+      "type": "document",
+      "workspaceId": "evaluasi",
+      "workspaceTitle": "Evaluasi",
+      "category": "BAHAN EVALUASI ANGGARAN DAN PENDAPATAN UNTUK DPRD",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/185hqLQJWnrMrxEGqDcJICNNraEBR_4MX",
+      "keywords": [
+        "evaluasi",
+        "bahan evaluasi anggaran dan pendapatan untuk dprd",
+        "2027",
+        "google drive",
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ],
+      "aliases": [
+        "bahan evaluasi anggaran dan pendapatan untuk dprd",
+        "bahan evaluasi anggaran dan pendapatan untuk dprd 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 64,
+      "isActive": true,
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
     },
     {
       "id": "pelaporan-infografis-2025",
       "title": "INFOGRAFIS 2025",
-      "description": "Folder INFOGRAFIS tahun 2025.",
+      "description": "Folder dokumen INFOGRAFIS periode 2025 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "INFOGRAFIS",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1zLPNRrDbr16GrOrA5d7_5JeKODAaN6hO?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1W3b93ghguCWHrq64QUjod3-QoMWKt_vV",
       "keywords": [
         "pelaporan",
         "infografis",
         "2025",
         "google drive",
-        "folder"
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
       ],
       "aliases": [
         "infografis",
@@ -2110,26 +4968,42 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 46,
+      "sortOrder": 65,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
     },
     {
       "id": "pelaporan-infografis-2026",
       "title": "INFOGRAFIS 2026",
-      "description": "Folder INFOGRAFIS tahun 2026.",
+      "description": "Folder dokumen INFOGRAFIS periode 2026 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "INFOGRAFIS",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1o0M22EungsnQUfv3poK8Ndi5D1twVBJy?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1lAwk2-fRPUqSpHeQYgNuGAai6ZkKArLW",
       "keywords": [
         "pelaporan",
         "infografis",
         "2026",
         "google drive",
-        "folder"
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
       ],
       "aliases": [
         "infografis",
@@ -2137,26 +5011,42 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 47,
+      "sortOrder": 66,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
     },
     {
       "id": "pelaporan-infografis-2027",
       "title": "INFOGRAFIS 2027",
-      "description": "Folder INFOGRAFIS tahun 2027.",
+      "description": "Folder dokumen INFOGRAFIS periode 2027 berisi JANUARI, FEBRUARI, MARET, APRIL, MEI, dan folder lainnya.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "INFOGRAFIS",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1lM0KtvfI-ebArz75EZ3cjesz0uxt05Uh?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1quPymEpZkLXoWVLaJYu_4SwM8zjqL3oU",
       "keywords": [
         "pelaporan",
         "infografis",
         "2027",
         "google drive",
-        "folder"
+        "folder",
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
       ],
       "aliases": [
         "infografis",
@@ -2164,26 +5054,40 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 48,
+      "sortOrder": 67,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "januari",
+        "februari",
+        "maret",
+        "april",
+        "mei"
+      ]
     },
     {
       "id": "pelaporan-lkjip-2025",
       "title": "LKJiP 2025",
-      "description": "Folder LKJiP tahun 2025.",
+      "description": "Folder dokumen LKJiP periode 2025 berisi DOKUMEN, LAPORAN, TAHUNAN.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "LKJiP",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1WcwfI9Wf7RBc86xrI1cudhPeqTzKM9Mc?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1NkKd37TDTJY1Sh8RpJc4-rpQCrbtaiHf",
       "keywords": [
         "pelaporan",
         "lkjip",
         "2025",
         "google drive",
-        "folder"
+        "folder",
+        "dokumen",
+        "laporan",
+        "tahunan"
       ],
       "aliases": [
         "lkjip",
@@ -2191,26 +5095,37 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 49,
+      "sortOrder": 68,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "laporan",
+        "tahunan"
+      ]
     },
     {
       "id": "pelaporan-lkjip-2026",
       "title": "LKJiP 2026",
-      "description": "Folder LKJiP tahun 2026.",
+      "description": "Folder dokumen LKJiP periode 2026 berisi DOKUMEN, LAPORAN, TAHUNAN.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "LKJiP",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1clMCG9C_QPUxOTddCzUoc8T_Mrxho-LJ?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1MBj6vMHKDocXIMuGRknjvtDs0uVuHw7O",
       "keywords": [
         "pelaporan",
         "lkjip",
         "2026",
         "google drive",
-        "folder"
+        "folder",
+        "dokumen",
+        "laporan",
+        "tahunan"
       ],
       "aliases": [
         "lkjip",
@@ -2218,26 +5133,37 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 50,
+      "sortOrder": 69,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "laporan",
+        "tahunan"
+      ]
     },
     {
       "id": "pelaporan-lkjip-2027",
       "title": "LKJiP 2027",
-      "description": "Folder LKJiP tahun 2027.",
+      "description": "Folder dokumen LKJiP periode 2027 berisi DOKUMEN, LAPORAN, TAHUNAN.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "LKJiP",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1fJrT58gCLCLPF-DfuW0xE5D0jBzvC1MW?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1xXDuqJ1GriiBD1o7Ir2VBazYxOhWI-5V",
       "keywords": [
         "pelaporan",
         "lkjip",
         "2027",
         "google drive",
-        "folder"
+        "folder",
+        "dokumen",
+        "laporan",
+        "tahunan"
       ],
       "aliases": [
         "lkjip",
@@ -2245,20 +5171,28 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 51,
+      "sortOrder": 70,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "laporan",
+        "tahunan"
+      ]
     },
     {
       "id": "pelaporan-lppd-2025",
       "title": "LPPD 2025",
-      "description": "Folder LPPD tahun 2025.",
+      "description": "Folder dokumen LPPD periode 2025.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "LPPD",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1Uhf-fEd5iAYSRE_P5rNTzJFmZtDV6Gkn?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1XSGTtVZu7aikO7BMhqu3bNyl0Th0q3u-",
       "keywords": [
         "pelaporan",
         "lppd",
@@ -2272,20 +5206,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 52,
+      "sortOrder": 71,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "pelaporan-lppd-2026",
       "title": "LPPD 2026",
-      "description": "Folder LPPD tahun 2026.",
+      "description": "Folder dokumen LPPD periode 2026.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "LPPD",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1ubQ2hgaFrZX-ZpMlKUG89YHlJ4-m26OB?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1MP5I1kAJ2A-eVEfbTNX3pZifiGn1gB2C",
       "keywords": [
         "pelaporan",
         "lppd",
@@ -2299,20 +5238,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 53,
+      "sortOrder": 72,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "pelaporan-lppd-2027",
       "title": "LPPD 2027",
-      "description": "Folder LPPD tahun 2027.",
+      "description": "Folder dokumen LPPD periode 2027.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "LPPD",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1jru0ykDmOrmhuCL3FJdkeidhP4ZNq60Y?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1udOYk6LueulB8x6TRX7MNsY3IUVwLzD5",
       "keywords": [
         "pelaporan",
         "lppd",
@@ -2326,20 +5270,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 54,
+      "sortOrder": 73,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "pelaporan-walidata-2025",
       "title": "WALIDATA 2025",
-      "description": "Folder WALIDATA tahun 2025.",
+      "description": "Folder dokumen WALIDATA periode 2025.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "WALIDATA",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1gIL8QWv0_Flw3emufob83OP55OgUJk-W?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1Skv1F9aJ81WYI7bnAXyRogblu4Vuxprm",
       "keywords": [
         "pelaporan",
         "walidata",
@@ -2353,20 +5302,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 55,
+      "sortOrder": 74,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "pelaporan-walidata-2026",
       "title": "WALIDATA 2026",
-      "description": "Folder WALIDATA tahun 2026.",
+      "description": "Folder dokumen WALIDATA periode 2026.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "WALIDATA",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/10VvqTLDZf-fe5bpQvQnqq35-dt1FGGh2?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1tuy2sKQAHdqu0nrwhTggeMxjWM8iVXf4",
       "keywords": [
         "pelaporan",
         "walidata",
@@ -2380,20 +5334,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 56,
+      "sortOrder": 75,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "pelaporan-walidata-2027",
       "title": "WALIDATA 2027",
-      "description": "Folder WALIDATA tahun 2027.",
+      "description": "Folder dokumen WALIDATA periode 2027.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "WALIDATA",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1-6dgv_W-ofbff411_WCaR1o1mUnbkhZc?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1_Ohs_b-fyBTlTH2Domp85_eyj_EeZ353",
       "keywords": [
         "pelaporan",
         "walidata",
@@ -2407,182 +5366,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 57,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "pelaporan-laporan-bulanan-2025",
-      "title": "LAPORAN BULANAN 2025",
-      "description": "Folder LAPORAN BULANAN tahun 2025.",
-      "type": "document",
-      "workspaceId": "pelaporan",
-      "workspaceTitle": "Pelaporan",
-      "category": "LAPORAN BULANAN",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1e1513Vz_nMKwQe5RFek0LMATuqZcGUYc?usp=drive_link",
-      "keywords": [
-        "pelaporan",
-        "laporan bulanan",
-        "2025",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "laporan bulanan",
-        "laporan bulanan 2025"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 58,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "pelaporan-laporan-bulanan-2026",
-      "title": "LAPORAN BULANAN 2026",
-      "description": "Folder LAPORAN BULANAN tahun 2026.",
-      "type": "document",
-      "workspaceId": "pelaporan",
-      "workspaceTitle": "Pelaporan",
-      "category": "LAPORAN BULANAN",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1jHu8LmisMWVQl6sGU2dUXKI3T5zWkZT4?usp=drive_link",
-      "keywords": [
-        "pelaporan",
-        "laporan bulanan",
-        "2026",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "laporan bulanan",
-        "laporan bulanan 2026"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 59,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "pelaporan-laporan-bulanan-2027",
-      "title": "LAPORAN BULANAN 2027",
-      "description": "Folder LAPORAN BULANAN tahun 2027.",
-      "type": "document",
-      "workspaceId": "pelaporan",
-      "workspaceTitle": "Pelaporan",
-      "category": "LAPORAN BULANAN",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1DwS6cCoENPIxy2MKms8aZ3TTVPyABfrW?usp=drive_link",
-      "keywords": [
-        "pelaporan",
-        "laporan bulanan",
-        "2027",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "laporan bulanan",
-        "laporan bulanan 2027"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 60,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "pelaporan-laporan-tahunan-2025",
-      "title": "LAPORAN TAHUNAN 2025",
-      "description": "Folder LAPORAN TAHUNAN tahun 2025.",
-      "type": "document",
-      "workspaceId": "pelaporan",
-      "workspaceTitle": "Pelaporan",
-      "category": "LAPORAN TAHUNAN",
-      "year": 2025,
-      "url": "https://drive.google.com/drive/folders/16iY8gFuxhgorzUdONsXFiJ2nZpMnI2i3?usp=drive_link",
-      "keywords": [
-        "pelaporan",
-        "laporan tahunan",
-        "2025",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "laporan tahunan",
-        "laporan tahunan 2025"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 61,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "pelaporan-laporan-tahunan-2026",
-      "title": "LAPORAN TAHUNAN 2026",
-      "description": "Folder LAPORAN TAHUNAN tahun 2026.",
-      "type": "document",
-      "workspaceId": "pelaporan",
-      "workspaceTitle": "Pelaporan",
-      "category": "LAPORAN TAHUNAN",
-      "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1nUKJ3FsLitWqwH_LIi_rrvx_pF3_H1s6?usp=drive_link",
-      "keywords": [
-        "pelaporan",
-        "laporan tahunan",
-        "2026",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "laporan tahunan",
-        "laporan tahunan 2026"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 62,
-      "isActive": true,
-      "subfolders": []
-    },
-    {
-      "id": "pelaporan-laporan-tahunan-2027",
-      "title": "LAPORAN TAHUNAN 2027",
-      "description": "Folder LAPORAN TAHUNAN tahun 2027.",
-      "type": "document",
-      "workspaceId": "pelaporan",
-      "workspaceTitle": "Pelaporan",
-      "category": "LAPORAN TAHUNAN",
-      "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1zc1uJk-Z0-nINEagF9ZcltG0PXeJZwak?usp=drive_link",
-      "keywords": [
-        "pelaporan",
-        "laporan tahunan",
-        "2027",
-        "google drive",
-        "folder"
-      ],
-      "aliases": [
-        "laporan tahunan",
-        "laporan tahunan 2027"
-      ],
-      "icon": "folder",
-      "openMode": "new_tab",
-      "sortOrder": 63,
+      "sortOrder": 76,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "pelaporan-data-lain-2025",
       "title": "DATA LAIN 2025",
-      "description": "Folder DATA LAIN tahun 2025.",
+      "description": "Folder dokumen DATA LAIN periode 2025.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "DATA LAIN",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1kM2N-ygm6nEggr5twVXqRkDyDx-_p5N1?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/12TXy5QDJHu2vxCSxZE-3lUgXC1PemKrD",
       "keywords": [
         "pelaporan",
         "data lain",
@@ -2596,20 +5398,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 64,
+      "sortOrder": 77,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "pelaporan-data-lain-2026",
       "title": "DATA LAIN 2026",
-      "description": "Folder DATA LAIN tahun 2026.",
+      "description": "Folder dokumen DATA LAIN periode 2026.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "DATA LAIN",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1keyt74DF0mLX6Hlh52o8fk1_Y_0z-zSM?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1YjoDRqWdITEFTii5U5wm2TX_u3axGS8j",
       "keywords": [
         "pelaporan",
         "data lain",
@@ -2623,20 +5430,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 65,
+      "sortOrder": 78,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "pelaporan-data-lain-2027",
       "title": "DATA LAIN 2027",
-      "description": "Folder DATA LAIN tahun 2027.",
+      "description": "Folder dokumen DATA LAIN periode 2027.",
       "type": "document",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
       "category": "DATA LAIN",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1KFFUbQCE4mGz2eJ38CE_BKX5WK2hHY6M?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1m1BV6TZeA2JsPDlhBaRjmfAVEVI-OTab",
       "keywords": [
         "pelaporan",
         "data lain",
@@ -2650,20 +5462,331 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 66,
+      "sortOrder": 79,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "pelaporan-lkpj-2025",
+      "title": "LKPJ 2025",
+      "description": "Folder dokumen LKPJ periode 2025.",
+      "type": "document",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "LKPJ",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1r0_WQchtrqIdpWDvaidUGfcQJ8m2lWxz",
+      "keywords": [
+        "pelaporan",
+        "lkpj",
+        "2025",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "lkpj",
+        "lkpj 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 80,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "pelaporan-lkpj-2026",
+      "title": "LKPJ 2026",
+      "description": "Folder dokumen LKPJ periode 2026.",
+      "type": "document",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "LKPJ",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1809lVymhJe8QLyITkygqW1lL2yAW7IqZ",
+      "keywords": [
+        "pelaporan",
+        "lkpj",
+        "2026",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "lkpj",
+        "lkpj 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 81,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "pelaporan-lkpj-2027",
+      "title": "LKPJ 2027",
+      "description": "Folder dokumen LKPJ periode 2027.",
+      "type": "document",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "LKPJ",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1flLNN8_Z8UlLKSgLaew9y0Q7TQjAFNZ6",
+      "keywords": [
+        "pelaporan",
+        "lkpj",
+        "2027",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "lkpj",
+        "lkpj 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 82,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "pelaporan-implementasi-spm-2025",
+      "title": "IMPLEMENTASI SPM 2025",
+      "description": "Folder dokumen IMPLEMENTASI SPM periode 2025 berisi DOKUMEN, LAPORAN, TAHUNAN.",
+      "type": "document",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "IMPLEMENTASI SPM",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/12E-M1_4zjrXVrS_Lrb_MXXu9RjGzmp-c",
+      "keywords": [
+        "pelaporan",
+        "implementasi spm",
+        "2025",
+        "google drive",
+        "folder",
+        "dokumen",
+        "laporan",
+        "tahunan"
+      ],
+      "aliases": [
+        "implementasi spm",
+        "implementasi spm 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 83,
+      "isActive": true,
+      "subfolders": [
+        "laporan",
+        "tahunan"
+      ]
+    },
+    {
+      "id": "pelaporan-implementasi-spm-2026",
+      "title": "IMPLEMENTASI SPM 2026",
+      "description": "Folder dokumen IMPLEMENTASI SPM periode 2026 berisi DOKUMEN, LAPORAN, TAHUNAN.",
+      "type": "document",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "IMPLEMENTASI SPM",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1etn5ur479WsX56pZx5qdRWIS-giC2aDu",
+      "keywords": [
+        "pelaporan",
+        "implementasi spm",
+        "2026",
+        "google drive",
+        "folder",
+        "dokumen",
+        "laporan",
+        "tahunan"
+      ],
+      "aliases": [
+        "implementasi spm",
+        "implementasi spm 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 84,
+      "isActive": true,
+      "subfolders": [
+        "laporan",
+        "tahunan"
+      ]
+    },
+    {
+      "id": "pelaporan-implementasi-spm-2027",
+      "title": "IMPLEMENTASI SPM 2027",
+      "description": "Folder dokumen IMPLEMENTASI SPM periode 2027 berisi DOKUMEN, LAPORAN, TAHUNAN.",
+      "type": "document",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "IMPLEMENTASI SPM",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/15qXBK21h_lLtc80rbk9bDWA46qaST3NU",
+      "keywords": [
+        "pelaporan",
+        "implementasi spm",
+        "2027",
+        "google drive",
+        "folder",
+        "dokumen",
+        "laporan",
+        "tahunan"
+      ],
+      "aliases": [
+        "implementasi spm",
+        "implementasi spm 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 85,
+      "isActive": true,
+      "subfolders": [
+        "laporan",
+        "tahunan"
+      ]
+    },
+    {
+      "id": "pelaporan-profil-2025",
+      "title": "PROFIL 2025",
+      "description": "Folder dokumen PROFIL periode 2025.",
+      "type": "document",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "PROFIL",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1HBtm87_v2cZeFYHxsnrbYLty8ko7bL4Q",
+      "keywords": [
+        "pelaporan",
+        "profil",
+        "2025",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "profil",
+        "profil 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 86,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "pelaporan-profil-2026",
+      "title": "PROFIL 2026",
+      "description": "Folder dokumen PROFIL periode 2026.",
+      "type": "document",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "PROFIL",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/16Mt2j4SmTttWGCm-jRqCXm166vhNycX0",
+      "keywords": [
+        "pelaporan",
+        "profil",
+        "2026",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "profil",
+        "profil 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 87,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "pelaporan-profil-2027",
+      "title": "PROFIL 2027",
+      "description": "Folder dokumen PROFIL periode 2027.",
+      "type": "document",
+      "workspaceId": "pelaporan",
+      "workspaceTitle": "Pelaporan",
+      "category": "PROFIL",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1VxHAgEVaSct8ymxyDHxNU5n_SPUvx6uZ",
+      "keywords": [
+        "pelaporan",
+        "profil",
+        "2027",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "profil",
+        "profil 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 88,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-bpk-2025",
       "title": "BPK 2025",
-      "description": "Folder BPK tahun 2025.",
+      "description": "Folder dokumen BPK periode 2025.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "BPK",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/131rKtXssKvgU9ussmr4tlg5w6u7HNtAV?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/14rEtLhznI27tzgEURwoMmrS1SJCLUTfk",
       "keywords": [
         "keuangan",
         "bpk",
@@ -2677,20 +5800,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 67,
+      "sortOrder": 89,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-bpk-2026",
       "title": "BPK 2026",
-      "description": "Folder BPK tahun 2026.",
+      "description": "Folder dokumen BPK periode 2026.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "BPK",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1J0cGgqmisusMke8i-IoubAD7yV0tEuqW?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1eyukAI2AQ6arC6HnHRXCuaemG-NOFs62",
       "keywords": [
         "keuangan",
         "bpk",
@@ -2704,20 +5832,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 68,
+      "sortOrder": 90,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-bpk-2027",
       "title": "BPK 2027",
-      "description": "Folder BPK tahun 2027.",
+      "description": "Folder dokumen BPK periode 2027.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "BPK",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1_cspnRlmjYtu7XbiS2S9RMHSbOayjunm?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/189m-fgmx68sAxNfHmNFYQQkNDYIDeqMH",
       "keywords": [
         "keuangan",
         "bpk",
@@ -2731,20 +5864,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 69,
+      "sortOrder": 91,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-buku-kas-umum-2025",
       "title": "BUKU KAS UMUM 2025",
-      "description": "Folder BUKU KAS UMUM tahun 2025.",
+      "description": "Folder dokumen BUKU KAS UMUM periode 2025.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "BUKU KAS UMUM",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1LytD_LWhj4xZy0n7dA-bHdR0RcCHoVGd?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1mi9ZCLX-zKW7B6ZgTaZlpBSq_1BCV3jd",
       "keywords": [
         "keuangan",
         "buku kas umum",
@@ -2758,20 +5896,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 70,
+      "sortOrder": 92,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-buku-kas-umum-2026",
       "title": "BUKU KAS UMUM 2026",
-      "description": "Folder BUKU KAS UMUM tahun 2026.",
+      "description": "Folder dokumen BUKU KAS UMUM periode 2026.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "BUKU KAS UMUM",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1eDCMguAmxDdYu5aajbCVFBn19Q51oz-S?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1ESwpKzmxwjxxcnBx8sr5vcF003VqgPzK",
       "keywords": [
         "keuangan",
         "buku kas umum",
@@ -2785,20 +5928,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 71,
+      "sortOrder": 93,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-buku-kas-umum-2027",
       "title": "BUKU KAS UMUM 2027",
-      "description": "Folder BUKU KAS UMUM tahun 2027.",
+      "description": "Folder dokumen BUKU KAS UMUM periode 2027.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "BUKU KAS UMUM",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1TJtgxFQNuH_sxnJHCXYLxqMgUNQgEcUi?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1RtEsUJwsTxaY3xFoLIOkC89piU7p01Gs",
       "keywords": [
         "keuangan",
         "buku kas umum",
@@ -2812,20 +5960,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 72,
+      "sortOrder": 94,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-chr-2025",
       "title": "CHR 2025",
-      "description": "Folder CHR tahun 2025.",
+      "description": "Folder dokumen CHR periode 2025.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "CHR",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1URRqR8G9FLVC4bjIWrxgkE461GB9kUYT?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1jnYGY-4g_WnfK8z5B7BHsj_QionXnX15",
       "keywords": [
         "keuangan",
         "chr",
@@ -2839,20 +5992,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 73,
+      "sortOrder": 95,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-chr-2026",
       "title": "CHR 2026",
-      "description": "Folder CHR tahun 2026.",
+      "description": "Folder dokumen CHR periode 2026.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "CHR",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1e5DdHrpg5QAFqvQMd7ngJOfgMhZHsamz?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/12Wo2pXZH0l2jTjv_15y7pFFpZOrfpG_Y",
       "keywords": [
         "keuangan",
         "chr",
@@ -2866,20 +6024,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 74,
+      "sortOrder": 96,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-chr-2027",
       "title": "CHR 2027",
-      "description": "Folder CHR tahun 2027.",
+      "description": "Folder dokumen CHR periode 2027.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "CHR",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1nw3eCMhLVHcljeDr15udUCAPopom4770?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1czvBCF_B5ilR9UsAXXWek96DEA541JXC",
       "keywords": [
         "keuangan",
         "chr",
@@ -2893,29 +6056,130 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 75,
+      "sortOrder": 97,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "keuangan-tl-chr-2025",
+      "title": "TL CHR 2025",
+      "description": "Folder dokumen TL CHR periode 2025.",
+      "type": "document",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "TL CHR",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1AveW-RsJs69eUGXte1tKS4hijbR6kX6r",
+      "keywords": [
+        "keuangan",
+        "tl chr",
+        "2025",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "tl chr",
+        "tl chr 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 98,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "keuangan-tl-chr-2026",
+      "title": "TL CHR 2026",
+      "description": "Folder dokumen TL CHR periode 2026.",
+      "type": "document",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "TL CHR",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1XHA-xNuKbld1WmFO9vgQxOJcML736NDP",
+      "keywords": [
+        "keuangan",
+        "tl chr",
+        "2026",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "tl chr",
+        "tl chr 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 99,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "keuangan-tl-chr-2027",
+      "title": "TL CHR 2027",
+      "description": "Folder dokumen TL CHR periode 2027.",
+      "type": "document",
+      "workspaceId": "keuangan",
+      "workspaceTitle": "Keuangan",
+      "category": "TL CHR",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/15j9Jlxj9dCUzjzFZ4Q7hXmfT-s2oXYIk",
+      "keywords": [
+        "keuangan",
+        "tl chr",
+        "2027",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "tl chr",
+        "tl chr 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 100,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-dpa-2025",
       "title": "DPA 2025",
-      "description": "Folder DPA tahun 2025 berisi Awal, Pergeseran, Perubahan.",
+      "description": "Folder dokumen DPA periode 2025 berisi AWAL, PERGESERAN, PERUBAHAN.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "DPA",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1QQTqFRovrwGAsNt_Lp6PZsTVGlYqQgFK?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1NYt6CHVl-JbQEIiteM9yIYTBrUk50Vss",
       "keywords": [
-        "awal",
-        "pergeseran",
-        "perubahan",
         "keuangan",
         "dpa",
         "2025",
         "google drive",
-        "folder"
+        "folder",
+        "awal",
+        "pergeseran",
+        "perubahan"
       ],
       "aliases": [
         "dpa",
@@ -2923,33 +6187,38 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 76,
+      "sortOrder": 101,
       "isActive": true,
       "subfolders": [
-        "AWAL",
-        "PERGESERAN",
-        "PERUBAHAN"
+        "awal",
+        "pergeseran",
+        "perubahan"
       ]
     },
     {
       "id": "keuangan-dpa-2026",
       "title": "DPA 2026",
-      "description": "Folder DPA tahun 2026 berisi Awal, Pergeseran, Perubahan.",
+      "description": "Folder dokumen DPA periode 2026 berisi AWAL, PERGESERAN, PERUBAHAN.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "DPA",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1h1IRbfYGplWWDmPkjb0WRKY3GS_zY7dQ?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1kKLODuNg_Ntmdv0Epi5FBGdtRjZAv720",
       "keywords": [
-        "awal",
-        "pergeseran",
-        "perubahan",
         "keuangan",
         "dpa",
         "2026",
         "google drive",
-        "folder"
+        "folder",
+        "awal",
+        "pergeseran",
+        "perubahan"
       ],
       "aliases": [
         "dpa",
@@ -2957,33 +6226,38 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 77,
+      "sortOrder": 102,
       "isActive": true,
       "subfolders": [
-        "AWAL",
-        "PERGESERAN",
-        "PERUBAHAN"
+        "awal",
+        "pergeseran",
+        "perubahan"
       ]
     },
     {
       "id": "keuangan-dpa-2027",
       "title": "DPA 2027",
-      "description": "Folder DPA tahun 2027 berisi Awal, Pergeseran, Perubahan.",
+      "description": "Folder dokumen DPA periode 2027 berisi AWAL, PERGESERAN, PERUBAHAN.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "DPA",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1_mtmb29ZZMBqi94yi9tt13r3M9rK8vyE?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1py-eqy4sd-5y1lTxm3ApYGVubR8TbT7I",
       "keywords": [
-        "awal",
-        "pergeseran",
-        "perubahan",
         "keuangan",
         "dpa",
         "2027",
         "google drive",
-        "folder"
+        "folder",
+        "awal",
+        "pergeseran",
+        "perubahan"
       ],
       "aliases": [
         "dpa",
@@ -2991,24 +6265,29 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 78,
+      "sortOrder": 103,
       "isActive": true,
       "subfolders": [
-        "AWAL",
-        "PERGESERAN",
-        "PERUBAHAN"
+        "awal",
+        "pergeseran",
+        "perubahan"
       ]
     },
     {
       "id": "keuangan-prognosis-2025",
       "title": "PROGNOSIS 2025",
-      "description": "Folder PROGNOSIS tahun 2025.",
+      "description": "Folder dokumen PROGNOSIS periode 2025.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "PROGNOSIS",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1zqCgjUsc-pqykNwbDAfZw_jM5tPoZID9?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1Vs_KDKFlv_bivkgeofPUmY42DfXiHk5g",
       "keywords": [
         "keuangan",
         "prognosis",
@@ -3022,20 +6301,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 79,
+      "sortOrder": 104,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-prognosis-2026",
       "title": "PROGNOSIS 2026",
-      "description": "Folder PROGNOSIS tahun 2026.",
+      "description": "Folder dokumen PROGNOSIS periode 2026.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "PROGNOSIS",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1iOPiwdtaVbVY90Hi_CC4NPp5remK-ti7?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1hdGuKY4LIbVJ0vLTJ0nr4mXNsq7jr2oO",
       "keywords": [
         "keuangan",
         "prognosis",
@@ -3049,20 +6333,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 80,
+      "sortOrder": 105,
       "isActive": true,
       "subfolders": []
     },
     {
       "id": "keuangan-prognosis-2027",
       "title": "PROGNOSIS 2027",
-      "description": "Folder PROGNOSIS tahun 2027.",
+      "description": "Folder dokumen PROGNOSIS periode 2027.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "PROGNOSIS",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1npKCvJQ5j-lnjr4kueWM0CI3R3fkzBXU?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1gCrg0U590D3IW86C7QNG8SUlKL503epP",
       "keywords": [
         "keuangan",
         "prognosis",
@@ -3076,20 +6365,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 81,
+      "sortOrder": 106,
       "isActive": true,
       "subfolders": []
     },
     {
-      "id": "keuangan-rpk-dan-rok-2025",
+      "id": "keuangan-rpk-rok-2025",
       "title": "RPK & ROK 2025",
-      "description": "Folder RPK & ROK tahun 2025.",
+      "description": "Folder dokumen RPK & ROK periode 2025.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "RPK & ROK",
+      "period": "2025",
       "year": 2025,
-      "url": "https://drive.google.com/drive/folders/1D0jrle4al5kfJ-PDBXlMJCUg02cp2ZLz?usp=drive_link",
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1LXwsy2xouR4TSINiOchKTrpza3NBH1uC",
       "keywords": [
         "keuangan",
         "rpk & rok",
@@ -3103,20 +6397,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 82,
+      "sortOrder": 107,
       "isActive": true,
       "subfolders": []
     },
     {
-      "id": "keuangan-rpk-dan-rok-2026",
+      "id": "keuangan-rpk-rok-2026",
       "title": "RPK & ROK 2026",
-      "description": "Folder RPK & ROK tahun 2026.",
+      "description": "Folder dokumen RPK & ROK periode 2026.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "RPK & ROK",
+      "period": "2026",
       "year": 2026,
-      "url": "https://drive.google.com/drive/folders/1NS1-uYQJ3_IFOp4CccM31UHICU9SfLQ4?usp=drive_link",
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/1-0PhhK76cZy2OUecnFHc0bb0m9GK0JcJ",
       "keywords": [
         "keuangan",
         "rpk & rok",
@@ -3130,20 +6429,25 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 83,
+      "sortOrder": 108,
       "isActive": true,
       "subfolders": []
     },
     {
-      "id": "keuangan-rpk-dan-rok-2027",
+      "id": "keuangan-rpk-rok-2027",
       "title": "RPK & ROK 2027",
-      "description": "Folder RPK & ROK tahun 2027.",
+      "description": "Folder dokumen RPK & ROK periode 2027.",
       "type": "document",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
       "category": "RPK & ROK",
+      "period": "2027",
       "year": 2027,
-      "url": "https://drive.google.com/drive/folders/1EG2X3qLxLo73pPJIBVTRO-t6nomLtsHP?usp=drive_link",
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "workspace",
+      "url": "https://drive.google.com/drive/folders/16KAozcGDaKT4MhmqJXjKcaoF0p4vDj8Z",
       "keywords": [
         "keuangan",
         "rpk & rok",
@@ -3157,7 +6461,1017 @@ export const LOCAL_DATA = {
       ],
       "icon": "folder",
       "openMode": "new_tab",
-      "sortOrder": 84,
+      "sortOrder": 109,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-profil-dkk-2025",
+      "title": "PROFIL DKK 2025",
+      "description": "Folder referensi PROFIL DKK periode 2025.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "PROFIL DKK",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1rCFqrHncxpXYdbCfF2aAIi5je18pPJp-",
+      "keywords": [
+        "referensi",
+        "profil dkk",
+        "2025",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "profil dkk",
+        "profil dkk 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 110,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-profil-dkk-2026",
+      "title": "PROFIL DKK 2026",
+      "description": "Folder referensi PROFIL DKK periode 2026.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "PROFIL DKK",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1vsKDt8fxcACsrqlkaTnENUAIAcC87dnd",
+      "keywords": [
+        "referensi",
+        "profil dkk",
+        "2026",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "profil dkk",
+        "profil dkk 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 111,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-profil-dkk-2027",
+      "title": "PROFIL DKK 2027",
+      "description": "Folder referensi PROFIL DKK periode 2027.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "PROFIL DKK",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/16ZiFlZVKL4TG7Zw4iRB82RbvQRfYmScW",
+      "keywords": [
+        "referensi",
+        "profil dkk",
+        "2027",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "profil dkk",
+        "profil dkk 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 112,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-rpjmn-2025-2029",
+      "title": "RPJMN 2025 - 2029",
+      "description": "Folder referensi RPJMN periode 2025 - 2029.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "RPJMN",
+      "period": "2025 - 2029",
+      "year": null,
+      "yearStart": 2025,
+      "yearEnd": 2029,
+      "sortYear": 2029,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1HT_MG2YGB0Hq5tNAcE5lCDEbZyF0pv6s",
+      "keywords": [
+        "referensi",
+        "rpjmn",
+        "2025 - 2029",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "rpjmn",
+        "rpjmn 2025 - 2029"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 113,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-renstra-kemenkes-2025-2029",
+      "title": "RENSTRA KEMENKES 2025 - 2029",
+      "description": "Folder referensi RENSTRA KEMENKES periode 2025 - 2029.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "RENSTRA KEMENKES",
+      "period": "2025 - 2029",
+      "year": null,
+      "yearStart": 2025,
+      "yearEnd": 2029,
+      "sortYear": 2029,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/19IREY3U8dMb9X9IJodPR6wN7257b0a6r",
+      "keywords": [
+        "referensi",
+        "renstra kemenkes",
+        "2025 - 2029",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "renstra kemenkes",
+        "renstra kemenkes 2025 - 2029"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 114,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-renstra-dinas-kesehatan-prov-jawa-tengah-2025-2029",
+      "title": "RENSTRA DINAS KESEHATAN PROV. JAWA TENGAH 2025 - 2029",
+      "description": "Folder referensi RENSTRA DINAS KESEHATAN PROV. JAWA TENGAH periode 2025 - 2029.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "RENSTRA DINAS KESEHATAN PROV. JAWA TENGAH",
+      "period": "2025 - 2029",
+      "year": null,
+      "yearStart": 2025,
+      "yearEnd": 2029,
+      "sortYear": 2029,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1oPoy0GUG3EqzALyS7OzjH_9xhrkdgNcc",
+      "keywords": [
+        "referensi",
+        "renstra dinas kesehatan prov. jawa tengah",
+        "2025 - 2029",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "renstra dinas kesehatan prov. jawa tengah",
+        "renstra dinas kesehatan prov. jawa tengah 2025 - 2029"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 115,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-rpjpd-kab-kudus-2025-2045",
+      "title": "RPJPD KAB. KUDUS 2025 - 2045",
+      "description": "Folder referensi RPJPD KAB. KUDUS periode 2025 - 2045.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "RPJPD KAB. KUDUS",
+      "period": "2025 - 2045",
+      "year": null,
+      "yearStart": 2025,
+      "yearEnd": 2045,
+      "sortYear": 2045,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1k_Lzu06ROt3bKhC2vMY21To7KB5-LVlr",
+      "keywords": [
+        "referensi",
+        "rpjpd kab. kudus",
+        "2025 - 2045",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "rpjpd kab. kudus",
+        "rpjpd kab. kudus 2025 - 2045"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 116,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-klhs-kab-kudus-2025",
+      "title": "KLHS KAB. KUDUS 2025",
+      "description": "Folder referensi KLHS KAB. KUDUS periode 2025.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "KLHS KAB. KUDUS",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1nurIPcks1leeGd2Mfs7isFVAtNp1S_8a",
+      "keywords": [
+        "referensi",
+        "klhs kab. kudus",
+        "2025",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "klhs kab. kudus",
+        "klhs kab. kudus 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 117,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-klhs-kab-kudus-2026",
+      "title": "KLHS KAB. KUDUS 2026",
+      "description": "Folder referensi KLHS KAB. KUDUS periode 2026.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "KLHS KAB. KUDUS",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1su3UVVEN4Qy3nul89Im6FJOKnSU4nQ9W",
+      "keywords": [
+        "referensi",
+        "klhs kab. kudus",
+        "2026",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "klhs kab. kudus",
+        "klhs kab. kudus 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 118,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-klhs-kab-kudus-2027",
+      "title": "KLHS KAB. KUDUS 2027",
+      "description": "Folder referensi KLHS KAB. KUDUS periode 2027.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "KLHS KAB. KUDUS",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1VNOPeIcn8jyDSnMaj-kp0yO3JxRDdqvR",
+      "keywords": [
+        "referensi",
+        "klhs kab. kudus",
+        "2027",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "klhs kab. kudus",
+        "klhs kab. kudus 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 119,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-rpjmd-2025-2029",
+      "title": "RPJMD 2025 - 2029",
+      "description": "Folder referensi RPJMD periode 2025 - 2029 berisi PROVINSI JAWA TENGAH, KABUPATEN KUDUS.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "RPJMD",
+      "period": "2025 - 2029",
+      "year": null,
+      "yearStart": 2025,
+      "yearEnd": 2029,
+      "sortYear": 2029,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1I7VIpoMY2HOQ6xDxRjNEQjk9Q7ge2Ia6",
+      "keywords": [
+        "referensi",
+        "rpjmd",
+        "2025 - 2029",
+        "google drive",
+        "folder",
+        "provinsi jawa tengah",
+        "kabupaten kudus"
+      ],
+      "aliases": [
+        "rpjmd",
+        "rpjmd 2025 - 2029"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 120,
+      "isActive": true,
+      "subfolders": [
+        "provinsi jawa tengah",
+        "kabupaten kudus"
+      ]
+    },
+    {
+      "id": "document-center-rsb-puskesmas-2025-2029",
+      "title": "RSB PUSKESMAS 2025 - 2029",
+      "description": "Folder referensi RSB PUSKESMAS periode 2025 - 2029.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "RSB PUSKESMAS",
+      "period": "2025 - 2029",
+      "year": null,
+      "yearStart": 2025,
+      "yearEnd": 2029,
+      "sortYear": 2029,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1YMC80qm51e4s2g6q8tqia1SJToWtBkeS",
+      "keywords": [
+        "referensi",
+        "rsb puskesmas",
+        "2025 - 2029",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "rsb puskesmas",
+        "rsb puskesmas 2025 - 2029"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 121,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-rba-puskesmas-2025",
+      "title": "RBA PUSKESMAS 2025",
+      "description": "Folder referensi RBA PUSKESMAS periode 2025 berisi AWAL, PERUBAHAN.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "RBA PUSKESMAS",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1kCMR2C0A5Lm1IZGa907R1FF2axko8NXS",
+      "keywords": [
+        "referensi",
+        "rba puskesmas",
+        "2025",
+        "google drive",
+        "folder",
+        "awal",
+        "perubahan"
+      ],
+      "aliases": [
+        "rba puskesmas",
+        "rba puskesmas 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 122,
+      "isActive": true,
+      "subfolders": [
+        "awal",
+        "perubahan"
+      ]
+    },
+    {
+      "id": "document-center-rba-puskesmas-2026",
+      "title": "RBA PUSKESMAS 2026",
+      "description": "Folder referensi RBA PUSKESMAS periode 2026 berisi AWAL, PERUBAHAN.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "RBA PUSKESMAS",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/13dfeHsTzFos6foKCDoWFDF6r4UFHLnO_",
+      "keywords": [
+        "referensi",
+        "rba puskesmas",
+        "2026",
+        "google drive",
+        "folder",
+        "awal",
+        "perubahan"
+      ],
+      "aliases": [
+        "rba puskesmas",
+        "rba puskesmas 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 123,
+      "isActive": true,
+      "subfolders": [
+        "awal",
+        "perubahan"
+      ]
+    },
+    {
+      "id": "document-center-rba-puskesmas-2027",
+      "title": "RBA PUSKESMAS 2027",
+      "description": "Folder referensi RBA PUSKESMAS periode 2027 berisi AWAL, PERUBAHAN.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "RBA PUSKESMAS",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/14tNtarLbBFTTYiANUfRlW5wZY9G55h5p",
+      "keywords": [
+        "referensi",
+        "rba puskesmas",
+        "2027",
+        "google drive",
+        "folder",
+        "awal",
+        "perubahan"
+      ],
+      "aliases": [
+        "rba puskesmas",
+        "rba puskesmas 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 124,
+      "isActive": true,
+      "subfolders": [
+        "awal",
+        "perubahan"
+      ]
+    },
+    {
+      "id": "document-center-sop-2025",
+      "title": "SOP 2025",
+      "description": "Folder referensi SOP periode 2025.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "SOP",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1uLCi1MezzxUe-a77_zFlfvM5R5DgvLjE",
+      "keywords": [
+        "referensi",
+        "sop",
+        "2025",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "sop",
+        "sop 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 125,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-sop-2026",
+      "title": "SOP 2026",
+      "description": "Folder referensi SOP periode 2026.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "SOP",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1K4ce1cT2XD6smm6iTIXP2Cu0wNG062jG",
+      "keywords": [
+        "referensi",
+        "sop",
+        "2026",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "sop",
+        "sop 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 126,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-sop-2027",
+      "title": "SOP 2027",
+      "description": "Folder referensi SOP periode 2027.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "SOP",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1Ro_qa6K5JoNIpDwv-2A7xfBZ1iSqpEuj",
+      "keywords": [
+        "referensi",
+        "sop",
+        "2027",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "sop",
+        "sop 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 127,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-template-arsip",
+      "title": "TEMPLATE ARSIP",
+      "description": "Folder referensi TEMPLATE ARSIP.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "TEMPLATE ARSIP",
+      "period": "",
+      "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/10qJBDms6Ndus_yuLx1oTBSOycal1rCyi",
+      "keywords": [
+        "referensi",
+        "template arsip",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "template arsip"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 128,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-dokumentasi-2025",
+      "title": "DOKUMENTASI 2025",
+      "description": "Folder referensi DOKUMENTASI periode 2025.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "DOKUMENTASI",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1U9yssfBE2AjtcluN_dBqFuZINTHuPBWT",
+      "keywords": [
+        "referensi",
+        "dokumentasi",
+        "2025",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "dokumentasi",
+        "dokumentasi 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 129,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-dokumentasi-2026",
+      "title": "DOKUMENTASI 2026",
+      "description": "Folder referensi DOKUMENTASI periode 2026.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "DOKUMENTASI",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1g3H08r5WBUMZCapBsxNmJ3XVgXNe4bpq",
+      "keywords": [
+        "referensi",
+        "dokumentasi",
+        "2026",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "dokumentasi",
+        "dokumentasi 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 130,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-dokumentasi-2027",
+      "title": "DOKUMENTASI 2027",
+      "description": "Folder referensi DOKUMENTASI periode 2027.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "DOKUMENTASI",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1OBcib3Ul1poGNnXD_8GcZkSK-K-efrTl",
+      "keywords": [
+        "referensi",
+        "dokumentasi",
+        "2027",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "dokumentasi",
+        "dokumentasi 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 131,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-inovasi-2025",
+      "title": "INOVASI 2025",
+      "description": "Folder referensi INOVASI periode 2025.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "INOVASI",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1N3Guqctx5AiwbCBESwNTHLX1BsZzxIEu",
+      "keywords": [
+        "referensi",
+        "inovasi",
+        "2025",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "inovasi",
+        "inovasi 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 132,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-inovasi-2026",
+      "title": "INOVASI 2026",
+      "description": "Folder referensi INOVASI periode 2026.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "INOVASI",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1_yoafA0ztE759mmsPAFJVGE1rXu7kOLY",
+      "keywords": [
+        "referensi",
+        "inovasi",
+        "2026",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "inovasi",
+        "inovasi 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 133,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-inovasi-2027",
+      "title": "INOVASI 2027",
+      "description": "Folder referensi INOVASI periode 2027.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "INOVASI",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/13OUyyi8sDhhkX804gOazVfJcECPzsNg6",
+      "keywords": [
+        "referensi",
+        "inovasi",
+        "2027",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "inovasi",
+        "inovasi 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 134,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-penghargaan-2025",
+      "title": "PENGHARGAAN 2025",
+      "description": "Folder referensi PENGHARGAAN periode 2025.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "PENGHARGAAN",
+      "period": "2025",
+      "year": 2025,
+      "yearStart": 2025,
+      "yearEnd": 2025,
+      "sortYear": 2025,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1OMEGadHt0aF2pOLtiYZR5r02_llGfNgO",
+      "keywords": [
+        "referensi",
+        "penghargaan",
+        "2025",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "penghargaan",
+        "penghargaan 2025"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 135,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-penghargaan-2026",
+      "title": "PENGHARGAAN 2026",
+      "description": "Folder referensi PENGHARGAAN periode 2026.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "PENGHARGAAN",
+      "period": "2026",
+      "year": 2026,
+      "yearStart": 2026,
+      "yearEnd": 2026,
+      "sortYear": 2026,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1vOXH94X_a14_No5hakKs5RYGaDD1_WEG",
+      "keywords": [
+        "referensi",
+        "penghargaan",
+        "2026",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "penghargaan",
+        "penghargaan 2026"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 136,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-penghargaan-2027",
+      "title": "PENGHARGAAN 2027",
+      "description": "Folder referensi PENGHARGAAN periode 2027.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "PENGHARGAAN",
+      "period": "2027",
+      "year": 2027,
+      "yearStart": 2027,
+      "yearEnd": 2027,
+      "sortYear": 2027,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1g9P4Y-p_4gRqXOzob6ctDgbsZzpE2tU3",
+      "keywords": [
+        "referensi",
+        "penghargaan",
+        "2027",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "penghargaan",
+        "penghargaan 2027"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 137,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-peraturan-nasional-pusat",
+      "title": "PERATURAN NASIONAL - PUSAT",
+      "description": "Folder referensi PERATURAN periode NASIONAL - PUSAT.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "PERATURAN",
+      "period": "NASIONAL - PUSAT",
+      "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1A0VPlAHlX4xtLn9xJtgjqCO86Kv-gcvN",
+      "keywords": [
+        "referensi",
+        "peraturan",
+        "nasional - pusat",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "peraturan",
+        "peraturan nasional - pusat"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 138,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-peraturan-jawa-tengah",
+      "title": "PERATURAN JAWA TENGAH",
+      "description": "Folder referensi PERATURAN periode JAWA TENGAH.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "PERATURAN",
+      "period": "JAWA TENGAH",
+      "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1cAuxLL_KNbIvSCpLvu2xZv64LT-oEXAv",
+      "keywords": [
+        "referensi",
+        "peraturan",
+        "jawa tengah",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "peraturan",
+        "peraturan jawa tengah"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 139,
+      "isActive": true,
+      "subfolders": []
+    },
+    {
+      "id": "document-center-peraturan-kudus",
+      "title": "PERATURAN KUDUS",
+      "description": "Folder referensi PERATURAN periode KUDUS.",
+      "type": "document",
+      "workspaceId": "document-center",
+      "workspaceTitle": "Referensi",
+      "category": "PERATURAN",
+      "period": "KUDUS",
+      "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "reference",
+      "url": "https://drive.google.com/drive/folders/1nI5bOl2uw1FrVHkBNEPmFtjyFRA7RP2F",
+      "keywords": [
+        "referensi",
+        "peraturan",
+        "kudus",
+        "google drive",
+        "folder"
+      ],
+      "aliases": [
+        "peraturan",
+        "peraturan kudus"
+      ],
+      "icon": "folder",
+      "openMode": "new_tab",
+      "sortOrder": 140,
       "isActive": true,
       "subfolders": []
     },
@@ -3168,8 +7482,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
-      "category": "Aplikasi Perencanaan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://sipd-ri.kemendagri.go.id/auth/login",
       "keywords": [
         "sipd",
@@ -3184,9 +7503,13 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-sipd-perencanaan.webp",
       "openMode": "new_tab",
-      "sortOrder": 85,
+      "sortOrder": 141,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "sipd",
+        "kemendagri",
+        "rencana pembangunan"
+      ]
     },
     {
       "id": "app-sipd-keuangan",
@@ -3195,8 +7518,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Keuangan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://sipd.kemendagri.go.id/penatausahaan/login",
       "keywords": [
         "sipd",
@@ -3211,9 +7539,13 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-sipd-keuangan.webp",
       "openMode": "new_tab",
-      "sortOrder": 86,
+      "sortOrder": 142,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "sipd",
+        "penatausahaan",
+        "kemendagri"
+      ]
     },
     {
       "id": "app-sipd-akuntansi",
@@ -3222,8 +7554,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Keuangan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://sipd.kemendagri.go.id/penatausahaan/login",
       "keywords": [
         "sipd",
@@ -3238,9 +7575,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-sipd-akuntansi.webp",
       "openMode": "new_tab",
-      "sortOrder": 87,
+      "sortOrder": 143,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "sipd",
+        "akuntansi",
+        "pelaporan keuangan",
+        "kemendagri"
+      ]
     },
     {
       "id": "app-e-renggar",
@@ -3249,8 +7591,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
-      "category": "Aplikasi Perencanaan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://e-renggar.kemkes.go.id/login",
       "keywords": [
         "e-renggar",
@@ -3266,9 +7613,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-e-renggar.webp",
       "openMode": "new_tab",
-      "sortOrder": 88,
+      "sortOrder": 144,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "e-renggar",
+        "renggar",
+        "kemenkes",
+        "penganggaran"
+      ]
     },
     {
       "id": "app-bni-dashboard-bok",
@@ -3277,8 +7629,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Keuangan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://bok-kemenkes.bni.co.id/?a=True",
       "keywords": [
         "bni",
@@ -3294,9 +7651,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-bni-dashboard-bok.webp",
       "openMode": "new_tab",
-      "sortOrder": 89,
+      "sortOrder": 145,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "bni",
+        "bok",
+        "puskesmas",
+        "transaksi"
+      ]
     },
     {
       "id": "app-krisna",
@@ -3305,8 +7667,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
-      "category": "Aplikasi Perencanaan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://transmigrasi.kl.krisna.systems/auth/login",
       "keywords": [
         "krisna",
@@ -3319,9 +7686,12 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-krisna.webp",
       "openMode": "new_tab",
-      "sortOrder": 90,
+      "sortOrder": 146,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "krisna",
+        "kinerja anggaran"
+      ]
     },
     {
       "id": "app-insentif-ukm",
@@ -3330,8 +7700,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Keuangan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://insentif-ukm.kemkes.go.id/login",
       "keywords": [
         "insentif ukm",
@@ -3345,9 +7720,13 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-insentif-ukm.webp",
       "openMode": "new_tab",
-      "sortOrder": 91,
+      "sortOrder": 147,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "insentif ukm",
+        "kemenkes",
+        "insentif"
+      ]
     },
     {
       "id": "app-e-planning",
@@ -3356,8 +7735,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
-      "category": "Aplikasi Evaluasi",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://e-planning.kuduskab.go.id/sakip/evaluation/login.php",
       "keywords": [
         "e-planning",
@@ -3372,9 +7756,13 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-e-planning.webp",
       "openMode": "new_tab",
-      "sortOrder": 92,
+      "sortOrder": 148,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "e-planning",
+        "sakip",
+        "kudus"
+      ]
     },
     {
       "id": "app-e-monev",
@@ -3383,8 +7771,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
-      "category": "Aplikasi Evaluasi",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://onedrive.live.com/:x:/g/personal/11414f6f799854ea/IQA5Qg4Lffj7TZ9X43jevlLlAXl7TV8hffY9OW9ay36YjY8?rtime=8kqyIPPk3kg&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy8xMTQxNGY2Zjc5OTg1NGVhL0lRQTVRZzRMZmZqN1RaOVg0M2pldmxMbEFYbDdUVjhoZmZZOU9XOWF5MzZZalk4P2U9SmpCMUd4",
       "keywords": [
         "e-monev",
@@ -3400,9 +7793,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-e-monev.webp",
       "openMode": "new_tab",
-      "sortOrder": 93,
+      "sortOrder": 149,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "e-monev",
+        "monev",
+        "monitoring",
+        "excel"
+      ]
     },
     {
       "id": "app-spik",
@@ -3411,8 +7809,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
-      "category": "Aplikasi Pelaporan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://spik.kuduskab.go.id/dashboard",
       "keywords": [
         "spik",
@@ -3427,9 +7830,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-spik.webp",
       "openMode": "new_tab",
-      "sortOrder": 94,
+      "sortOrder": 150,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "spik",
+        "kinerja",
+        "dashboard",
+        "kudus"
+      ]
     },
     {
       "id": "app-sififo",
@@ -3438,8 +7846,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "pelaporan",
       "workspaceTitle": "Pelaporan",
-      "category": "Aplikasi Pelaporan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://sififo.kuduskab.go.id/fifonew/views/v_login.php",
       "keywords": [
         "sififo",
@@ -3454,9 +7867,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-sififo.webp",
       "openMode": "new_tab",
-      "sortOrder": 95,
+      "sortOrder": 151,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "sififo",
+        "fifo",
+        "tahun anggaran",
+        "kudus"
+      ]
     },
     {
       "id": "app-pajak-daerah",
@@ -3465,8 +7883,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Keuangan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://esptpd.kuduskab.go.id/sign_in",
       "keywords": [
         "pajak daerah",
@@ -3482,9 +7905,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-pajak-daerah.webp",
       "openMode": "new_tab",
-      "sortOrder": 96,
+      "sortOrder": 152,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "pajak daerah",
+        "esptpd",
+        "pajak",
+        "kudus"
+      ]
     },
     {
       "id": "app-coretax",
@@ -3493,8 +7921,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Keuangan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://coretaxdjp.pajak.go.id/identityproviderportal/Account/Login",
       "keywords": [
         "coretax",
@@ -3509,9 +7942,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-coretax.webp",
       "openMode": "new_tab",
-      "sortOrder": 97,
+      "sortOrder": 153,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "coretax",
+        "djp",
+        "pajak",
+        "perpajakan"
+      ]
     },
     {
       "id": "app-gebyok",
@@ -3520,8 +7958,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Pengadaan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://gebyokkudus.kuduskab.go.id/",
       "keywords": [
         "gebyok",
@@ -3537,9 +7980,15 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-gebyok.webp",
       "openMode": "new_tab",
-      "sortOrder": 98,
+      "sortOrder": 154,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "gebyok",
+        "kudus",
+        "toko daring",
+        "pengadaan",
+        "umkm"
+      ]
     },
     {
       "id": "app-inaproc",
@@ -3548,8 +7997,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Pengadaan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://katalog.inaproc.id/",
       "keywords": [
         "inaproc",
@@ -3563,9 +8017,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-inaproc.webp",
       "openMode": "new_tab",
-      "sortOrder": 99,
+      "sortOrder": 155,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "inaproc",
+        "katalog elektronik",
+        "pengadaan",
+        "lkpp"
+      ]
     },
     {
       "id": "app-sirup",
@@ -3574,8 +8033,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "perencanaan",
       "workspaceTitle": "Perencanaan",
-      "category": "Aplikasi Pengadaan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://sirup.inaproc.id/sirup/loginctr/index",
       "keywords": [
         "sirup",
@@ -3591,9 +8055,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-sirup.webp",
       "openMode": "new_tab",
-      "sortOrder": 100,
+      "sortOrder": 156,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "sirup",
+        "rencana umum pengadaan",
+        "rup",
+        "pengadaan"
+      ]
     },
     {
       "id": "app-mbiz",
@@ -3602,8 +8071,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Pengadaan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://www.mbizmarket.co.id/",
       "keywords": [
         "mbiz",
@@ -3617,9 +8091,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-mbiz.webp",
       "openMode": "new_tab",
-      "sortOrder": 101,
+      "sortOrder": 157,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "mbiz",
+        "mbizmarket",
+        "marketplace",
+        "pengadaan"
+      ]
     },
     {
       "id": "app-tisera",
@@ -3628,8 +8107,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "keuangan",
       "workspaceTitle": "Keuangan",
-      "category": "Aplikasi Pengadaan",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://tisera.id/",
       "keywords": [
         "tisera",
@@ -3643,9 +8127,14 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-tisera.webp",
       "openMode": "new_tab",
-      "sortOrder": 102,
+      "sortOrder": 158,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "tisera",
+        "toko daring",
+        "pengadaan",
+        "marketplace"
+      ]
     },
     {
       "id": "app-penilaian-kinerja",
@@ -3654,8 +8143,13 @@ export const LOCAL_DATA = {
       "type": "application",
       "workspaceId": "evaluasi",
       "workspaceTitle": "Evaluasi",
-      "category": "Aplikasi Evaluasi",
+      "category": "Aplikasi",
+      "period": "",
       "year": null,
+      "yearStart": null,
+      "yearEnd": null,
+      "sortYear": 0,
+      "scope": "workspace",
       "url": "https://e-planning.kuduskab.go.id/sakip/evaluation/loginASN.php",
       "keywords": [
         "penilaian kinerja",
@@ -3670,14 +8164,19 @@ export const LOCAL_DATA = {
       ],
       "icon": "assets/apps/app-penilaian-kinerja.webp",
       "openMode": "new_tab",
-      "sortOrder": 103,
+      "sortOrder": 159,
       "isActive": true,
-      "subfolders": []
+      "subfolders": [
+        "penilaian kinerja",
+        "asn",
+        "sakip",
+        "kudus"
+      ]
     }
   ],
   "quickAccess": [
     "perencanaan-renja-2026",
-    "perencanaan-renstra-2026",
+    "perencanaan-renstra-2025-2029",
     "pelaporan-lkjip-2026",
     "keuangan-dpa-2026",
     "app-sipd-perencanaan",
@@ -3690,19 +8189,19 @@ export const LOCAL_DATA = {
       "id": "panduan-pencarian",
       "title": "Gunakan kata kunci yang spesifik",
       "summary": "Cari berdasarkan nama dokumen, tahun, ruang kerja, atau isi subfolder.",
-      "content": "Contoh pencarian: Renja Akhir 2026, DPA Perubahan 2025, atau LKJiP 2027. Hasil pencarian akan membuka folder tahun yang memuat seluruh dokumen terkait.",
+      "content": "Contoh pencarian: Renja Akhir 2026, RENSTRA 2025–2029, DPA Perubahan 2026, atau Peraturan Kudus. Hasil membuka folder periode yang memuat seluruh subfolder terkait.",
       "icon": "search",
-      "date": "2026-07-18",
+      "date": "2026-07-19",
       "sortOrder": 1,
       "isActive": true
     },
     {
       "id": "struktur-folder",
-      "title": "Tautan Drive berhenti pada tingkat tahun",
-      "summary": "Setiap tautan tahun membuka satu folder lengkap agar staf dapat memilih dokumen yang dibutuhkan.",
-      "content": "Subfolder seperti Awal, Akhir, Perubahan, Triwulan, dan Data Pendukung tetap dikelola di Google Drive. PEPK Workspace mengarahkan pengguna ke folder tahun yang tepat.",
+      "title": "Tautan Drive berhenti pada tingkat periode",
+      "summary": "Setiap tautan membuka folder tahun atau periode agar staf dapat memilih dokumen yang dibutuhkan.",
+      "content": "Subfolder kerja tetap dikelola di Google Drive. PEPK Workspace mengarahkan pengguna ke folder tahun atau periode yang tepat, termasuk periode multi-tahun seperti RENSTRA 2025–2029.",
       "icon": "folder",
-      "date": "2026-07-18",
+      "date": "2026-07-19",
       "sortOrder": 2,
       "isActive": true
     },
@@ -3712,7 +8211,7 @@ export const LOCAL_DATA = {
       "summary": "Pastikan akun yang digunakan memiliki izin untuk membuka folder tujuan.",
       "content": "Apabila folder tidak dapat dibuka, periksa akun Google yang aktif atau hubungi pengelola dokumen PEPK untuk penyesuaian izin.",
       "icon": "shield",
-      "date": "2026-07-18",
+      "date": "2026-07-19",
       "sortOrder": 3,
       "isActive": true
     },
@@ -3730,7 +8229,7 @@ export const LOCAL_DATA = {
       "id": "pemecahan-masalah",
       "title": "Langkah cepat saat tautan tidak dapat dibuka",
       "summary": "Periksa akun aktif, izin folder, dan ketersediaan portal tujuan.",
-      "content": "Jika folder Drive tidak terbuka, pastikan akun Google yang aktif memiliki izin. Jika aplikasi tidak terbuka, coba buka kembali pada tab baru atau periksa apakah portal sedang mengalami pemeliharaan. PEPK Workspace tetap dapat digunakan karena data lokal tersedia tanpa menunggu Google Sheets.",
+      "content": "Jika folder Drive tidak terbuka, pastikan akun Google yang aktif memiliki izin. Jika aplikasi tidak terbuka, coba buka kembali pada tab baru atau periksa apakah portal sedang mengalami pemeliharaan.",
       "icon": "alert",
       "date": "2026-07-19",
       "sortOrder": 5,
@@ -3752,62 +8251,72 @@ export const LOCAL_DATA = {
       "term": "renja",
       "synonyms": [
         "rencana kerja"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "renstra",
       "synonyms": [
         "rencana strategis"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "lkjip",
       "synonyms": [
         "laporan kinerja",
         "lakip"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "dpa",
       "synonyms": [
         "dokumen pelaksanaan anggaran"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "sakip",
       "synonyms": [
         "akuntabilitas kinerja"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "spip",
       "synonyms": [
         "pengendalian intern"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "dak",
       "synonyms": [
         "dana alokasi khusus"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "bku",
       "synonyms": [
         "buku kas umum"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "rpk",
       "synonyms": [
         "rencana penarikan kas"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "rok",
       "synonyms": [
         "rencana operasional kegiatan"
-      ]
+      ],
+      "isActive": true
     },
     {
       "term": "sipd",
@@ -3893,13 +8402,77 @@ export const LOCAL_DATA = {
         "lkjip"
       ],
       "isActive": true
+    },
+    {
+      "term": "rkpd",
+      "synonyms": [
+        "rencana kerja pemerintah daerah"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "ptp",
+      "synonyms": [
+        "perencanaan tingkat puskesmas"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "asersi",
+      "synonyms": [
+        "evaluasi perencanaan dan penganggaran"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "dbhcht",
+      "synonyms": [
+        "dana bagi hasil cukai hasil tembakau"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "walidata",
+      "synonyms": [
+        "data sektoral"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "document center",
+      "synonyms": [
+        "referensi",
+        "pusat dokumen"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "rpjmn",
+      "synonyms": [
+        "rencana pembangunan jangka menengah nasional"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "rpjmd",
+      "synonyms": [
+        "rencana pembangunan jangka menengah daerah"
+      ],
+      "isActive": true
+    },
+    {
+      "term": "klhs",
+      "synonyms": [
+        "kajian lingkungan hidup strategis"
+      ],
+      "isActive": true
     }
   ],
   "settings": {
     "appName": "PEPK Workspace",
-    "appVersion": "0.7.5",
-    "contentUpdatedAt": "19 Juli 2026",
-    "spreadsheetId": "1eEYRJmxYqqZuXABbQL2cCcKKeOt1ENk9mt_S7LgKfno",
+    "appVersion": "0.9.0",
+    "contentUpdatedAt": "20 Juli 2026",
+    "spreadsheetId": "1rSbyazj5MSdRYHgBYLBA7jeMjYKattvRPCG9SKHSxCM",
     "searchMinimum": 2,
     "homeResultLimit": 6,
     "quickFolderLimit": 4,
@@ -3909,12 +8482,46 @@ export const LOCAL_DATA = {
     "deviationBalancedThreshold": 2,
     "deviationAttentionThreshold": 5,
     "workflowEnabled": true,
-    "documentUploadFormUrl": "",
-    "agendaSubmitFormUrl": "",
-    "monevMaterialFormUrl": ""
+    "documentUploadFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLScLSE3dYd-T8f8bJWnuquORyWGgoGY-tWoRkEUCxGOyvaQBRA/viewform",
+    "agendaSubmitFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdFIA89pB1RiAc7gnSGsBz8SaBywVPQGnT21t26uEqT7FJBVA/viewform",
+    "monevMaterialFormUrl": "https://docs.google.com/forms/d/e/1FAIpQLSenh_RUcfVOlJ8LgMxl6Sa5yvE67cSU3ArW_0sLl6W9pUgCIA/viewform",
+    "dataModelVersion": "2.0.0",
+    "workflowVersion": "2.0.0",
+    "workspaceGeneration": "V2",
+    "folderRootUrl": "https://drive.google.com/drive/folders/1Sp4YwP76clexsW5uoyYGm6qczB53WHGB",
+    "documentCenterUrl": "https://drive.google.com/drive/folders/1VcWlqjCUUU-YbGATrMmZ4Sy9yOq6ehUW"
   },
   "monevMaterials": [],
-  "agenda": [],
+  "agenda": [
+    {
+      "id": "contoh-rapat-evaluasi",
+      "title": "[CONTOH] Rapat Evaluasi Realisasi Anggaran",
+      "date": "2026-07-22",
+      "startTime": "09:00",
+      "endTime": "11:00",
+      "category": "Internal",
+      "location": "Ruang Rapat Dinas Kesehatan",
+      "pic": "Nama PIC",
+      "description": "Ganti baris contoh ini dengan agenda yang sebenarnya, lalu ubah is_active menjadi TRUE.",
+      "url": "",
+      "sortOrder": 1,
+      "isActive": true
+    },
+    {
+      "id": "contoh-undangan-eksternal",
+      "title": "[CONTOH] Undangan Rapat Koordinasi",
+      "date": "2026-07-24",
+      "startTime": "08:30",
+      "endTime": "12:00",
+      "category": "Eksternal",
+      "location": "Lokasi/instansi penyelenggara",
+      "pic": "Nama PIC",
+      "description": "Kolom URL dapat diisi dengan tautan undangan, bahan rapat, atau lokasi daring.",
+      "url": "",
+      "sortOrder": 2,
+      "isActive": true
+    }
+  ],
   "realization": [
     {
       "id": "realisasi-2026-01",
@@ -3922,7 +8529,7 @@ export const LOCAL_DATA = {
       "month": 1,
       "financialValue": 7.8,
       "physicalValue": 7.2,
-      "updatedAt": "2026-01-28",
+      "updatedAt": "2026-01-31",
       "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
       "sortOrder": 1,
       "isActive": true
@@ -3944,7 +8551,7 @@ export const LOCAL_DATA = {
       "month": 3,
       "financialValue": 24.6,
       "physicalValue": 23.2,
-      "updatedAt": "2026-03-28",
+      "updatedAt": "2026-03-31",
       "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
       "sortOrder": 3,
       "isActive": true
@@ -3955,7 +8562,7 @@ export const LOCAL_DATA = {
       "month": 4,
       "financialValue": 35.1,
       "physicalValue": 33.8,
-      "updatedAt": "2026-04-28",
+      "updatedAt": "2026-04-30",
       "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
       "sortOrder": 4,
       "isActive": true
@@ -3966,7 +8573,7 @@ export const LOCAL_DATA = {
       "month": 5,
       "financialValue": 47.8,
       "physicalValue": 45.6,
-      "updatedAt": "2026-05-28",
+      "updatedAt": "2026-05-31",
       "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
       "sortOrder": 5,
       "isActive": true
@@ -3977,7 +8584,7 @@ export const LOCAL_DATA = {
       "month": 6,
       "financialValue": 60.9,
       "physicalValue": 58.7,
-      "updatedAt": "2026-06-28",
+      "updatedAt": "2026-06-30",
       "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
       "sortOrder": 6,
       "isActive": true
@@ -3992,6 +8599,61 @@ export const LOCAL_DATA = {
       "description": "Data contoh kumulatif. Ganti dengan capaian resmi Dinas Kesehatan.",
       "sortOrder": 7,
       "isActive": true
+    },
+    {
+      "id": "realisasi-2026-08",
+      "year": 2026,
+      "month": 8,
+      "financialValue": 0.0,
+      "physicalValue": 0.0,
+      "updatedAt": "",
+      "description": "Isi setelah data Agustus tersedia.",
+      "sortOrder": 8,
+      "isActive": false
+    },
+    {
+      "id": "realisasi-2026-09",
+      "year": 2026,
+      "month": 9,
+      "financialValue": 0.0,
+      "physicalValue": 0.0,
+      "updatedAt": "",
+      "description": "Isi setelah data September tersedia.",
+      "sortOrder": 9,
+      "isActive": false
+    },
+    {
+      "id": "realisasi-2026-10",
+      "year": 2026,
+      "month": 10,
+      "financialValue": 0.0,
+      "physicalValue": 0.0,
+      "updatedAt": "",
+      "description": "Isi setelah data Oktober tersedia.",
+      "sortOrder": 10,
+      "isActive": false
+    },
+    {
+      "id": "realisasi-2026-11",
+      "year": 2026,
+      "month": 11,
+      "financialValue": 0.0,
+      "physicalValue": 0.0,
+      "updatedAt": "",
+      "description": "Isi setelah data November tersedia.",
+      "sortOrder": 11,
+      "isActive": false
+    },
+    {
+      "id": "realisasi-2026-12",
+      "year": 2026,
+      "month": 12,
+      "financialValue": 0.0,
+      "physicalValue": 0.0,
+      "updatedAt": "",
+      "description": "Isi setelah data Desember tersedia.",
+      "sortOrder": 12,
+      "isActive": false
     }
   ]
 };

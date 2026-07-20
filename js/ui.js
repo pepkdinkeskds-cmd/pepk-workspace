@@ -15,7 +15,7 @@ import {
 function resourceMeta(resource) {
   const items = [resource.workspaceTitle || resource.workspaceId];
   if (resource.type === "application") items.push(resource.category || "Aplikasi");
-  else if (resource.year) items.push(String(resource.year));
+  else if (resource.period || resource.year) items.push(resource.period || String(resource.year));
   return items;
 }
 
@@ -299,30 +299,38 @@ export function emptyState(title, description, iconName = "search", action = nul
   return createElement("div", { className: "empty-state" }, children);
 }
 
-export function groupCard(group, resources) {
+export export function groupCard(group, resources) {
   const article = createElement("article", { className: "document-group" });
   const header = createElement("div", { className: "document-group__header" });
   header.append(
     createElement("span", { className: "document-group__icon", html: icon("folder") }),
     createElement("div", { className: "document-group__heading" }, [
       createElement("h3", { className: "document-group__title", text: group.title }),
-      createElement("p", { className: "document-group__meta", text: `${resources.length} tahun tersedia` })
+      createElement("p", { className: "document-group__meta", text: `${resources.length} periode tersedia` })
     ])
   );
 
   const yearList = createElement("div", { className: "year-list" });
-  resources.slice().sort((a, b) => b.year - a.year).forEach((resource) => {
-    const link = externalLink(resource.url, resource.title, "year-link");
-    link.append(
-      createElement("span", { className: "year-link__year", text: String(resource.year) }),
-      createElement("span", { className: "year-link__detail" }, [
-        createElement("strong", { text: `Buka ${group.title}` }),
-        createElement("span", { text: resource.subfolders?.length ? resource.subfolders.map((item) => item.replace(/\b\w/g, (char) => char.toUpperCase())).join(" • ") : "Folder dokumen tahun" })
-      ]),
-      createElement("span", { className: "year-link__icon", html: icon("external") })
-    );
-    yearList.append(link);
-  });
+  resources
+    .slice()
+    .sort((a, b) => (b.sortYear || b.yearEnd || b.year || 0) - (a.sortYear || a.yearEnd || a.year || 0) || a.title.localeCompare(b.title, "id"))
+    .forEach((resource) => {
+      const periodLabel = resource.period || (resource.year ? String(resource.year) : "Umum");
+      const link = externalLink(resource.url, resource.title, "year-link");
+      link.append(
+        createElement("span", { className: "year-link__year", text: periodLabel }),
+        createElement("span", { className: "year-link__detail" }, [
+          createElement("strong", { text: `Buka ${group.title}` }),
+          createElement("span", {
+            text: resource.subfolders?.length
+              ? resource.subfolders.map((item) => item.replace(/\b\w/g, (char) => char.toUpperCase())).join(" • ")
+              : "Folder dokumen periode"
+          })
+        ]),
+        createElement("span", { className: "year-link__icon", html: icon("external") })
+      );
+      yearList.append(link);
+    });
 
   article.append(header, yearList);
   return article;

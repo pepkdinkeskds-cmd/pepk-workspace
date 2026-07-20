@@ -8,7 +8,7 @@ import {
   minimumSearchLength,
   updateQueryString
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.5-home-spacing";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.0-rc-v2";
 import { searchResourcesWithScores } from "../search.js";
 import { emptyState, resourceCard } from "../ui.js";
 
@@ -48,20 +48,50 @@ function defaultSort(query) {
   return query ? "relevance" : "newest";
 }
 
+
+function resourceSortYear(resource) {
+  return Number(resource.sortYear || resource.yearEnd || resource.year || 0);
+}
+
+function workspaceOptions() {
+  const options = data.workspaces.map((workspace) => ({ id: workspace.id, title: workspace.title }));
+  if (data.resources.some((resource) => resource.scope === "reference" || resource.workspaceId === "document-center")) {
+    options.push({ id: "document-center", title: "Referensi" });
+  }
+  return options;
+}
+
+function resourceIncludesYear(resource, year) {
+  const selected = Number(year);
+  if (!selected || resource.type === "application") return false;
+  const start = Number(resource.yearStart || resource.year || 0);
+  const end = Number(resource.yearEnd || resource.year || start || 0);
+  return Boolean(start && end && selected >= start && selected <= end);
+}
+
+
 function populateFilters(preserve = true) {
   const currentWorkspace = preserve ? workspaceFilter.value : "";
   const currentYear = preserve ? yearFilter.value : "";
 
   workspaceFilter.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
-  data.workspaces.forEach((workspace) => {
+  workspaceOptions().forEach((workspace) => {
     const option = document.createElement("option");
     option.value = workspace.id;
     option.textContent = workspace.title;
     workspaceFilter.append(option);
   });
 
+  const years = new Set();
+  data.resources.filter((item) => item.type !== "application").forEach((resource) => {
+    const start = Number(resource.yearStart || resource.year || 0);
+    const end = Number(resource.yearEnd || resource.year || start || 0);
+    if (!start || !end || end < start || end - start > 100) return;
+    for (let year = start; year <= end; year += 1) years.add(year);
+  });
+
   yearFilter.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
-  [...new Set(data.resources.map((item) => item.year).filter(Boolean))].sort((a, b) => b - a).forEach((year) => {
+  [...years].sort((a, b) => b - a).forEach((year) => {
     const option = document.createElement("option");
     option.value = String(year);
     option.textContent = String(year);
@@ -77,10 +107,10 @@ function sortResults(items, sort, hasQuery) {
   return items.slice().sort((a, b) => {
     const left = a.resource;
     const right = b.resource;
-    if (sort === "title") return left.title.localeCompare(right.title, "id") || (right.year || 0) - (left.year || 0);
+    if (sort === "title") return left.title.localeCompare(right.title, "id") || resourceSortYear(right) - resourceSortYear(left);
     if (sort === "workspace") return left.workspaceTitle.localeCompare(right.workspaceTitle, "id") || left.title.localeCompare(right.title, "id");
     if (left.type !== right.type) return left.type === "application" ? 1 : -1;
-    return (right.year || 0) - (left.year || 0)
+    return resourceSortYear(right) - resourceSortYear(left)
       || (left.sortOrder || 999) - (right.sortOrder || 999)
       || left.title.localeCompare(right.title, "id");
   });
@@ -89,7 +119,7 @@ function sortResults(items, sort, hasQuery) {
 function updateSummary({ q, workspace, type, year, sort }, count) {
   const parts = [];
   if (q) parts.push(`pencarian “${q}”`);
-  if (workspace) parts.push(data.workspaces.find((item) => item.id === workspace)?.title || workspace);
+  if (workspace) parts.push(workspaceOptions().find((item) => item.id === workspace)?.title || workspace);
   if (type) parts.push(type === "application" ? "aplikasi" : "folder dokumen");
   if (year) parts.push(`tahun ${year}`);
   const sortLabel = sortFilter.options[sortFilter.selectedIndex]?.textContent || sort;
@@ -138,7 +168,7 @@ function render() {
     : data.resources.map((resource) => ({ resource, score: 0 }));
   if (workspace) scored = scored.filter((item) => item.resource.workspaceId === workspace);
   if (type) scored = scored.filter((item) => item.resource.type === type);
-  if (year) scored = scored.filter((item) => String(item.resource.year) === year);
+  if (year) scored = scored.filter((item) => resourceIncludesYear(item.resource, year));
 
   if (!q && sort === "relevance") {
     sort = "newest";

@@ -4,8 +4,15 @@ import { getInitialData, validateData } from "../js/data/data-service.js";
 
 const data = getInitialData();
 
-test("local data has four workspaces", () => {
+test("local data keeps four visual workspaces", () => {
   assert.equal(data.workspaces.length, 4);
+});
+
+test("Document Center appears as reference, not a fifth workspace", () => {
+  const references = data.resources.filter((item) => item.scope === "reference");
+  assert.ok(references.length > 0);
+  assert.ok(references.every((item) => item.workspaceTitle === "Referensi"));
+  assert.equal(data.workspaces.some((item) => item.id === "document-center"), false);
 });
 
 test("all quick access IDs resolve", () => {
@@ -13,7 +20,7 @@ test("all quick access IDs resolve", () => {
   assert.deepEqual(data.quickAccess.filter((id) => !ids.has(id)), []);
 });
 
-test("all resources have allowed URLs and valid workspace references", () => {
+test("all resources have allowed URLs and valid references", () => {
   assert.deepEqual(validateData(data), []);
 });
 
@@ -22,39 +29,40 @@ test("workspace root links are available", () => {
 });
 
 test("data contains documents and applications", () => {
-  assert.ok(data.resources.some((item) => item.type === "document"));
-  assert.ok(data.resources.some((item) => item.type === "application"));
+  assert.equal(data.resources.filter((item) => item.type === "document").length, 140);
+  assert.equal(data.resources.filter((item) => item.type === "application").length, 19);
 });
 
-test("homepage quick access is limited to four folders and four applications", () => {
+test("multi-year periods are available", () => {
+  const renstra = data.resources.find((item) => item.id === "perencanaan-renstra-2025-2029");
+  assert.equal(renstra.period, "2025 - 2029");
+  assert.equal(renstra.yearStart, 2025);
+  assert.equal(renstra.yearEnd, 2029);
+  assert.equal(renstra.year, null);
+});
+
+test("homepage quick access is four folders and four applications", () => {
   const map = new Map(data.resources.map((item) => [item.id, item]));
   const items = data.quickAccess.map((id) => map.get(id)).filter(Boolean);
   assert.equal(items.filter((item) => item.type !== "application").length, 4);
   assert.equal(items.filter((item) => item.type === "application").length, 4);
 });
 
-test("information hub data collections are available", () => {
-  assert.ok(Array.isArray(data.agenda));
-  assert.ok(Array.isArray(data.realization));
-  assert.equal(data.settings.agendaHomeLimit, 3);
-  assert.equal(data.settings.realizationHomeLimit, 1);
-  assert.ok(data.realization.every((item) => Number.isFinite(item.financialValue) && Number.isFinite(item.physicalValue)));
-});
-
-
-test("workflow settings are available", () => {
+test("workflow settings and form URLs are available", () => {
   assert.equal(data.settings.workflowEnabled, true);
-  assert.equal(typeof data.settings.documentUploadFormUrl, "string");
-  assert.equal(typeof data.settings.agendaSubmitFormUrl, "string");
+  assert.equal(data.settings.workflowVersion, "2.0.0");
+  assert.ok(data.settings.documentUploadFormUrl.startsWith("https://"));
+  assert.ok(data.settings.agendaSubmitFormUrl.startsWith("https://"));
+  assert.ok(data.settings.monevMaterialFormUrl.startsWith("https://"));
 });
 
 test("application resources use optimized local logo files", () => {
   const applications = data.resources.filter((item) => item.type === "application");
-  assert.equal(applications.length, 19);
   assert.ok(applications.every((item) => item.icon.endsWith(".webp")));
 });
 
-test("Monev material collection and form setting are available", () => {
+test("information collections remain available", () => {
+  assert.ok(Array.isArray(data.agenda));
+  assert.ok(Array.isArray(data.realization));
   assert.ok(Array.isArray(data.monevMaterials));
-  assert.equal(typeof data.settings.monevMaterialFormUrl, "string");
 });

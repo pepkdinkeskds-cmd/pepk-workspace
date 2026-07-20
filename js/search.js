@@ -50,12 +50,20 @@ function buildRequirements(query, synonyms = []) {
   return requirements;
 }
 
+function resourceRangeYears(resource) {
+  const start = Number(resource.yearStart || resource.year || 0);
+  const end = Number(resource.yearEnd || resource.year || start || 0);
+  if (!start || !end || end < start || end - start > 100) return [];
+  return Array.from({ length: end - start + 1 }, (_, index) => start + index);
+}
+
 function normalizedFields(resource) {
   return {
     title: normalize(resource.title),
     description: normalize(resource.description),
     workspace: normalize(resource.workspaceTitle || resource.workspaceId),
     category: normalize(resource.category),
+    period: normalize(resource.period),
     keywords: (resource.keywords || []).map(normalize),
     aliases: (resource.aliases || []).map(normalize),
     subfolders: (resource.subfolders || []).map(normalize)
@@ -68,7 +76,11 @@ function searchableText(resource, fields = normalizedFields(resource)) {
     fields.description,
     fields.workspace,
     fields.category,
+    resource.period,
     resource.year,
+    resource.yearStart,
+    resource.yearEnd,
+    ...resourceRangeYears(resource),
     ...fields.keywords,
     ...fields.aliases,
     ...fields.subfolders
@@ -109,8 +121,11 @@ function scoreResource(resource, normalizedQuery, requirements) {
     else if (requirement.variants.some((variant) => fields.keywords.some((keyword) => variantMatches(keyword, variant)))) score += 18;
   });
 
-  if (resource.year && queryTokens.includes(String(resource.year))) score += 60;
-  if (!hasYear && resource.year) score += Math.max(0, Math.min(12, resource.year - 2020));
+  const requestedYears = queryTokens.filter((token) => /^20\d{2}$/.test(token)).map(Number);
+  const availableYears = new Set(resourceRangeYears(resource));
+  if (requestedYears.some((year) => availableYears.has(year))) score += 60;
+  const sortYear = Number(resource.sortYear || resource.yearEnd || resource.year || 0);
+  if (!hasYear && sortYear) score += Math.max(0, Math.min(12, sortYear - 2020));
   if (asksForApplication && resource.type === "application") score += 80;
   if (asksForDocument && resource.type !== "application") score += 60;
 
@@ -126,7 +141,7 @@ export function searchResourcesWithScores(resources, query, synonyms = []) {
     .map((resource) => ({ resource, score: scoreResource(resource, normalizedQuery, requirements) }))
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score
-      || (b.resource.year || 0) - (a.resource.year || 0)
+      || (b.resource.sortYear || b.resource.yearEnd || b.resource.year || 0) - (a.resource.sortYear || a.resource.yearEnd || a.resource.year || 0)
       || (a.resource.sortOrder || 999) - (b.resource.sortOrder || 999)
       || a.resource.title.localeCompare(b.resource.title, "id"));
 }

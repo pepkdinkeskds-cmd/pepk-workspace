@@ -1,6 +1,6 @@
 import { CONFIG } from "../config.js";
 import { LOCAL_DATA } from "./local-data.js";
-import { loadSheet } from "./sheets.js?v=0.7.5-home-spacing";
+import { loadSheet } from "./sheets.js?v=0.9.0-rc-v2";
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -49,19 +49,41 @@ function isAllowedExternalUrl(value) {
 function deriveResource(row) {
   const title = row.title || "";
   const type = row.type === "application" ? "application" : "document";
-  const yearMatch = type === "application" ? null : title.match(/\b(20\d{2})\b/);
-  const year = yearMatch ? Number(yearMatch[1]) : null;
-  const category = type === "application" ? (row.category || "Aplikasi") : title.replace(/\s+20\d{2}\b/, "").trim();
+  const workspaceId = row.workspace_id || "";
+  const scope = row.scope === "reference" || workspaceId === "document-center" ? "reference" : "workspace";
+  const periodYears = String(row.period || title).match(/\b20\d{2}\b/g)?.map(Number) || [];
+  const yearStart = type === "application" ? null : (toNumber(row.year_start, periodYears[0] || 0) || null);
+  const yearEnd = type === "application" ? null : (toNumber(row.year_end, periodYears.at(-1) || yearStart || 0) || null);
+  const year = yearStart && yearEnd && yearStart === yearEnd ? yearStart : null;
+  const period = type === "application"
+    ? ""
+    : (row.period || (yearStart ? (yearStart === yearEnd ? String(yearStart) : `${yearStart} - ${yearEnd}`) : ""));
+  const category = type === "application"
+    ? (row.category || "Aplikasi")
+    : (row.category || title.replace(/\s+20\d{2}(?:\s*[-–]\s*20\d{2})?\b/, "").trim() || title);
   const keywords = splitList(row.keywords);
+  const exclusions = new Set([
+    workspaceId.toLowerCase(),
+    category.toLowerCase(),
+    period.toLowerCase(),
+    "google drive",
+    "folder",
+    "dokumen"
+  ]);
   return {
     id: row.id,
     title,
     description: row.description || (type === "application" ? `Aplikasi ${title}.` : `Folder ${title}.`),
     type,
-    workspaceId: row.workspace_id,
+    workspaceId,
     workspaceTitle: "",
     category,
+    period,
     year,
+    yearStart,
+    yearEnd,
+    sortYear: yearEnd || yearStart || 0,
+    scope,
     url: row.url,
     keywords,
     aliases: splitList(row.aliases),
@@ -69,7 +91,12 @@ function deriveResource(row) {
     openMode: row.open_mode === "same_tab" ? "same_tab" : "new_tab",
     sortOrder: Number(row.sort_order || 999),
     isActive: toBoolean(row.is_active),
-    subfolders: type === "application" ? [] : keywords.filter((item) => ![category.toLowerCase(), String(year)].includes(item.toLowerCase()))
+    subfolders: type === "application"
+      ? []
+      : keywords.filter((item) => {
+          const normalized = item.toLowerCase();
+          return !exclusions.has(normalized) && !/^20\d{2}(?:\s*[-–]\s*20\d{2})?$/.test(normalized);
+        })
   };
 }
 
@@ -77,28 +104,46 @@ function buildGroups(resources, fallbackGroups) {
   const fallbackByKey = new Map(fallbackGroups.map((group) => [`${group.workspaceId}|${group.title}`, group]));
   const grouped = new Map();
 
-  resources.filter((resource) => resource.type !== "application").forEach((resource) => {
-    const key = `${resource.workspaceId}|${resource.category}`;
-    if (!grouped.has(key)) {
-      const fallback = fallbackByKey.get(key);
-      grouped.set(key, {
-        id: fallback?.id || `${resource.workspaceId}-${resource.category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
-        workspaceId: resource.workspaceId,
-        title: resource.category,
-        url: fallback?.url || "",
-        icon: fallback?.icon || "folder",
-        years: []
+  resources
+    .filter((resource) => resource.type !== "application" && resource.scope !== "reference")
+    .forEach((resource) => {
+      const key = `${resource.workspaceId}|${resource.category}`;
+      if (!grouped.has(key)) {
+        const fallback = fallbackByKey.get(key);
+        grouped.set(key, {
+          id: fallback?.id || `${resource.workspaceId}-${resource.category.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`,
+          workspaceId: resource.workspaceId,
+          title: resource.category,
+          url: fallback?.url || "",
+          icon: fallback?.icon || "folder",
+          periods: []
+        });
+      }
+      grouped.get(key).periods.push({
+        period: resource.period || (resource.year ? String(resource.year) : "Umum"),
+        year: resource.year,
+        yearStart: resource.yearStart,
+        yearEnd: resource.yearEnd,
+        sortYear: resource.sortYear || 0,
+        resourceId: resource.id,
+        url: resource.url
       });
-    }
-    grouped.get(key).years.push({ year: resource.year, resourceId: resource.id, url: resource.url });
-  });
+    });
 
   return [...grouped.values()]
     .map((group) => ({
       ...group,
-      years: group.years.filter((item) => item.year).sort((a, b) => b.year - a.year)
+      periods: group.periods.sort((a, b) => b.sortYear - a.sortYear || a.period.localeCompare(b.period, "id")),
+      years: group.periods
     }))
     .sort((a, b) => a.title.localeCompare(b.title, "id"));
+}
+
+
+function workspaceTitleForResource(resource, workspaceTitles) {
+  if (workspaceTitles.has(resource.workspaceId)) return workspaceTitles.get(resource.workspaceId);
+  if (resource.scope === "reference" || resource.workspaceId === "document-center") return "Referensi";
+  return resource.workspaceId;
 }
 
 function normalizeWorkspaces(rows) {
@@ -307,7 +352,12 @@ function normalizeSettings(rows) {
     workflow_enabled: "workflowEnabled",
     document_upload_form_url: "documentUploadFormUrl",
     agenda_submit_form_url: "agendaSubmitFormUrl",
-    monev_material_form_url: "monevMaterialFormUrl"
+    monev_material_form_url: "monevMaterialFormUrl",
+    data_model_version: "dataModelVersion",
+    workflow_version: "workflowVersion",
+    workspace_generation: "workspaceGeneration",
+    folder_root_url: "folderRootUrl",
+    document_center_url: "documentCenterUrl"
   };
   const numericKeys = new Set(["searchMinimum", "homeResultLimit", "quickFolderLimit", "quickAppLimit", "agendaHomeLimit", "realizationHomeLimit", "deviationBalancedThreshold", "deviationAttentionThreshold"]);
   const booleanKeys = new Set(["workflowEnabled"]);
@@ -363,7 +413,9 @@ export function validateData(data) {
   data.resources.forEach((resource) => {
     if (resourceIds.has(resource.id)) warnings.push(`ID resource duplikat: ${resource.id}`);
     resourceIds.add(resource.id);
-    if (!workspaceIds.has(resource.workspaceId)) warnings.push(`Ruang kerja tidak ditemukan: ${resource.id}`);
+    if (!workspaceIds.has(resource.workspaceId) && resource.scope !== "reference") {
+      warnings.push(`Ruang kerja tidak ditemukan: ${resource.id}`);
+    }
     if (!isAllowedExternalUrl(resource.url)) warnings.push(`URL tidak valid: ${resource.id}`);
   });
 
@@ -391,7 +443,7 @@ export function validateData(data) {
 export function getInitialData() {
   const data = clone(LOCAL_DATA);
   const workspaceTitles = new Map(data.workspaces.map((item) => [item.id, item.title]));
-  data.resources.forEach((item) => { item.workspaceTitle = workspaceTitles.get(item.workspaceId) || item.workspaceId; });
+  data.resources.forEach((item) => { item.workspaceTitle = workspaceTitleForResource(item, workspaceTitles); });
   data.validationWarnings = validateData(data);
   return data;
 }
@@ -419,7 +471,7 @@ export async function refreshFromSheets() {
     if (normalized.length) {
       const merged = deduplicateById(mergeMigrationResources(normalized));
       const workspaceTitles = new Map(data.workspaces.map((item) => [item.id, item.title]));
-      merged.forEach((item) => { item.workspaceTitle = workspaceTitles.get(item.workspaceId) || item.workspaceId; });
+      merged.forEach((item) => { item.workspaceTitle = workspaceTitleForResource(item, workspaceTitles); });
       data.resources = merged.sort((a, b) => a.sortOrder - b.sortOrder);
       data.groups = buildGroups(data.resources, LOCAL_DATA.groups);
       changed = true;

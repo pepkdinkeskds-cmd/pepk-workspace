@@ -9,7 +9,7 @@ import {
   updateQueryString,
   safeUrl
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.7.5-home-spacing";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.0-rc-v2";
 import { searchResources } from "../search.js";
 import { applicationCard, emptyState, groupCard } from "../ui.js";
 import { icon } from "../icons.js";
@@ -78,7 +78,7 @@ function renderStats(groups, applications, documents) {
   statsNode.replaceChildren();
   [
     [String(groups.length), "Kelompok dokumen"],
-    [String(documents.length), "Folder tahun"],
+    [String(documents.length), "Folder periode"],
     [String(applications.length), "Aplikasi"]
   ].forEach(([value, label]) => {
     const item = document.createElement("span");

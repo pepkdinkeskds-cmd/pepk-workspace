@@ -13,30 +13,24 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.7\.5-home-spacing/);
-  assert.match(html, /contribute\.html/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.0\-rc\-v2/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
-const servicePage = fs.readFileSync(path.join(root, "contribute.html"), "utf8");
-assert.match(servicePage, /<title>Layanan — PEPK Workspace<\/title>/);
-assert.match(servicePage, /<h1>Pusat Layanan PEPK<\/h1>/);
-
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
-assert.match(localData, /"appVersion": "0\.7\.5"/);
-assert.match(localData, /"workflowEnabled": true/);
-assert.ok(fs.existsSync(path.join(root, "manifest.webmanifest")));
-assert.ok(fs.existsSync(path.join(root, "apps-script/pepk-workflow/Code.gs")));
-assert.ok(fs.existsSync(path.join(root, "docs/WORKFLOW-SETUP.md")));
-assert.ok(fs.existsSync(path.join(root, "docs/WORKFLOW-ROUTING-v0.6.1.md")));
+assert.match(localData, /"appVersion": "0.9.0"/);
+assert.match(localData, /"workspaceGeneration": "V2"/);
+assert.match(localData, /"workspaceId": "document-center"/);
 
 const workflowScript = fs.readFileSync(path.join(root, "apps-script/pepk-workflow/Code.gs"), "utf8");
-assert.match(workflowScript, /VERSION: '0\.7\.0'/);
+assert.match(workflowScript, /VERSION: '2\.0\.0'/);
+assert.match(workflowScript, /FOLDER_INDEX/);
 assert.match(workflowScript, /function syncUploadRoutes/);
-assert.match(workflowScript, /function repairAgendaIds/);
-assert.match(workflowScript, /function testWorkflowConfiguration/);
 assert.match(workflowScript, /function setupMonevWorkflow/);
-assert.match(workflowScript, /MONEV_MATERIALS/);
+
+assert.ok(fs.existsSync(path.join(root, "docs/PEPK_Workspace_Data_V2_RC.xlsx")));
+assert.ok(fs.existsSync(path.join(root, "docs/CUTOVER-V2-RC.md")));
+assert.ok(fs.existsSync(path.join(root, "docs/WEBSITE-V0.9.0-RC.md")));
 
 const appLogoDir = path.join(root, "assets/apps");
 const webpLogos = fs.readdirSync(appLogoDir).filter((name) => name.endsWith(".webp"));

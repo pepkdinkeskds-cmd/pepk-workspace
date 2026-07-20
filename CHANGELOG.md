@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.0 RC — Struktur Google Drive V2
+
+- Mengalihkan sumber data ke Spreadsheet V2.
+- Menambahkan dukungan periode multi-tahun.
+- Menampilkan Document Center sebagai Referensi di Pustaka.
+- Menyesuaikan pencarian, filter tahun, kartu resource, dan kelompok dokumen.
+- Memperbarui fallback lokal dengan 140 folder dan 19 aplikasi.
+- Menyertakan PEPK Workflow V2 dengan 656 rute tujuan aktif.
+- Mempertahankan desain dan struktur navigasi v0.7.5.
+
 
 ## 0.7.5 — Refined Homepage Spacing
 
