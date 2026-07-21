@@ -15,7 +15,10 @@ import {
 function resourceMeta(resource) {
   const items = [resource.workspaceTitle || resource.workspaceId];
   if (resource.type === "application") items.push(resource.category || "Aplikasi");
-  else if (resource.period || resource.year) items.push(resource.period || String(resource.year));
+  else {
+    if (resource.period || resource.year) items.push(resource.period || String(resource.year));
+    if (resource.kind === "deep-folder") items.push("Folder langsung");
+  }
   return items;
 }
 
@@ -53,7 +56,8 @@ export function applicationCard(resource, { compact = false } = {}) {
 
 export function resourceCard(resource, { compact = false } = {}) {
   if (resource.type === "application") return applicationCard(resource, { compact });
-  const link = externalLink(resource.url, resource.title, `resource-card${compact ? " resource-card--compact" : ""}`);
+  const deepClass = resource.kind === "deep-folder" ? " resource-card--deep" : "";
+  const link = externalLink(resource.url, resource.title, `resource-card${compact ? " resource-card--compact" : ""}${deepClass}`);
   const iconBox = createElement("span", { className: "resource-card__icon", html: icon(resource.icon || "folder") });
   const content = createElement("span", { className: "resource-card__content" });
   const meta = createElement("span", { className: "resource-card__meta" }, resourceMeta(resource).map((item) => createElement("span", { text: item })));

@@ -1,6 +1,6 @@
 export const CONFIG = Object.freeze({
   spreadsheetId: "1rSbyazj5MSdRYHgBYLBA7jeMjYKattvRPCG9SKHSxCM",
-  appVersion: "0.9.3",
+  appVersion: "0.9.4",
   contentUpdatedAt: "20 Juli 2026",
   fetchTimeoutMs: 4000,
   searchDebounceMs: 160,
@@ -16,6 +16,7 @@ export const CONFIG = Object.freeze({
     realization: "Realization",
     monevMaterials: "Monev_Materials",
     synonyms: "Synonyms",
-    settings: "Settings"
+    settings: "Settings",
+    searchIndex: "Search_Index"
   }
 });

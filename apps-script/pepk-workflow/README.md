@@ -1,12 +1,9 @@
-# PEPK Workflow V2 RC
+# PEPK Workflow V2.2.0
 
-Workflow ini membaca `Folder_Index` dari Spreadsheet V2.
+Tambahan utama:
 
-Fitur utama:
-- 656 rute tujuan unggah berdasarkan folder leaf.
-- Dukungan struktur tahun dan periode multi-tahun.
-- Document Center tidak dimasukkan ke Form unggah.
-- Materi Monev memakai struktur `MONEV KINERJA DAN ANGGARAN`.
-- Versi workflow `2.0.0`.
-
-Gunakan spreadsheet `PEPK Workspace Data V2` dan jalankan menu `PEPK Workflow`.
+- Membuat sheet `Search_Index` dari seluruh folder leaf aktif pada `Folder_Index`.
+- Folder yang sudah mempunyai kartu `Resources` tidak diduplikasi.
+- Folder teknis workflow dikecualikan.
+- Menu: `PEPK Workflow → Sinkronkan indeks pencarian mendalam`.
+- Tetap memuat perbaikan BAHAN RAKOR dan perbaikan jam agenda.

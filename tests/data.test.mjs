@@ -67,3 +67,16 @@ test("information collections remain available", () => {
   assert.ok(Array.isArray(data.realization));
   assert.ok(Array.isArray(data.monevMaterials));
 });
+
+
+test("local deep-search fallback contains active leaf folders", () => {
+  assert.ok(Array.isArray(data.searchIndex));
+  assert.ok(data.searchIndex.length > 600);
+  assert.ok(data.searchIndex.every((item) => item.kind === "deep-folder" && item.searchOnly === true));
+});
+
+test("BAHAN RAKOR is available as a direct folder in fallback index", () => {
+  const items = data.searchIndex.filter((item) => item.leafName === "BAHAN RAKOR");
+  assert.equal(items.length, 3);
+  assert.deepEqual(items.map((item) => item.period).sort(), ["2025", "2026", "2027"]);
+});

@@ -8,7 +8,7 @@ import {
   minimumSearchLength,
   updateQueryString
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.3-reference-workspace";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.4-deep-search";
 import { searchResourcesWithScores } from "../search.js";
 import { emptyState, resourceCard } from "../ui.js";
 
@@ -163,9 +163,12 @@ function render() {
     return;
   }
 
+  const searchableItems = q
+    ? [...data.resources, ...(data.searchIndex || [])]
+    : data.resources;
   let scored = q
-    ? searchResourcesWithScores(data.resources, q, data.synonyms)
-    : data.resources.map((resource) => ({ resource, score: 0 }));
+    ? searchResourcesWithScores(searchableItems, q, data.synonyms)
+    : searchableItems.map((resource) => ({ resource, score: 0 }));
   if (workspace) scored = scored.filter((item) => item.resource.workspaceId === workspace);
   if (type) scored = scored.filter((item) => item.resource.type === type);
   if (year) scored = scored.filter((item) => resourceIncludesYear(item.resource, year));
@@ -189,7 +192,8 @@ function render() {
   countNode.textContent = String(results.length);
   updateSummary({ q, workspace, type, year, sort }, results.length);
   setParams({ q, workspace, type, year, sort });
-  announce(`${results.length} resource ditemukan.`);
+  const directCount = results.filter((item) => item.kind === "deep-folder").length;
+  announce(`${results.length} hasil ditemukan, termasuk ${directCount} folder langsung.`);
 }
 
 const initial = getParams();

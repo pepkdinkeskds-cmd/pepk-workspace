@@ -64,6 +64,9 @@ function normalizedFields(resource) {
     workspace: normalize(resource.workspaceTitle || resource.workspaceId),
     category: normalize(resource.category),
     period: normalize(resource.period),
+    leafName: normalize(resource.leafName || ""),
+    path: normalize(resource.path || ""),
+    parentPath: normalize(resource.parentPath || ""),
     keywords: (resource.keywords || []).map(normalize),
     aliases: (resource.aliases || []).map(normalize),
     subfolders: (resource.subfolders || []).map(normalize)
@@ -76,6 +79,9 @@ function searchableText(resource, fields = normalizedFields(resource)) {
     fields.description,
     fields.workspace,
     fields.category,
+    fields.leafName,
+    fields.path,
+    fields.parentPath,
     resource.period,
     resource.year,
     resource.yearStart,
@@ -102,6 +108,15 @@ function scoreResource(resource, normalizedQuery, requirements) {
   const asksForApplication = queryTokens.some((token) => ["app", "aplikasi", "portal", "sistem"].includes(token));
   const asksForDocument = queryTokens.some((token) => ["folder", "dokumen", "berkas", "file"].includes(token));
 
+  if (resource.kind === "deep-folder") {
+    score += 70;
+    if (fields.leafName === normalizedQuery) score += 360;
+    if (fields.title === normalizedQuery) score += 320;
+    if (fields.leafName.startsWith(normalizedQuery)) score += 190;
+    if (containsPhrase(fields.leafName, normalizedQuery)) score += 170;
+    if (containsPhrase(fields.path, normalizedQuery)) score += 95;
+  }
+
   if (fields.title === normalizedQuery) score += 240;
   if (fields.aliases.includes(normalizedQuery)) score += 210;
   if (fields.title.startsWith(normalizedQuery)) score += 130;
@@ -116,7 +131,8 @@ function scoreResource(resource, normalizedQuery, requirements) {
   if (containsPhrase(haystack, normalizedQuery)) score += 45;
 
   requirements.forEach((requirement) => {
-    if (requirement.variants.some((variant) => variantMatches(fields.title, variant))) score += 32;
+    if (resource.kind === "deep-folder" && requirement.variants.some((variant) => variantMatches(fields.leafName, variant))) score += 48;
+    else if (requirement.variants.some((variant) => variantMatches(fields.title, variant))) score += 32;
     else if (requirement.variants.some((variant) => fields.aliases.some((alias) => variantMatches(alias, variant)))) score += 27;
     else if (requirement.variants.some((variant) => fields.keywords.some((keyword) => variantMatches(keyword, variant)))) score += 18;
   });

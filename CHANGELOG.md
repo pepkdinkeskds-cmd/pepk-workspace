@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.4 — Pencarian Folder Mendalam
+
+- Menambahkan indeks seluruh folder terdalam aktif.
+- Hasil bertanda Folder langsung membuka folder leaf tanpa melewati folder induk.
+- Memprioritaskan kecocokan nama folder terdalam dan jalur lengkap.
+- Folder terdalam hanya muncul saat pencarian; navigasi Pustaka tetap ringkas.
+- Document Center/Referensi ikut dapat dicari.
+- Menambahkan PEPK Workflow V2.2.0 untuk membangun sheet Search_Index.
+
 ## 0.9.3 — Referensi Workspace
 
 - Menambahkan Referensi sebagai tab kelima setelah Keuangan pada halaman Ruang Kerja.

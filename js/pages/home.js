@@ -9,9 +9,9 @@ import {
   createElement,
   externalLink
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.3-reference-workspace";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.4-deep-search";
 import { searchResources } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.3-reference-workspace";
+import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.4-deep-search";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
 
@@ -170,7 +170,8 @@ function renderSearch(query) {
     return;
   }
 
-  const results = searchResources(data.resources, currentQuery, data.synonyms);
+  const results = searchResources([...data.resources, ...(data.searchIndex || [])], currentQuery, data.synonyms);
+  const directFolderCount = results.filter((item) => item.kind === "deep-folder").length;
   const folderCount = results.filter((item) => item.type !== "application").length;
   const appCount = results.length - folderCount;
   resultsTitle.textContent = `${results.length} hasil untuk “${currentQuery}”`;
@@ -185,7 +186,7 @@ function renderSearch(query) {
     ));
   } else {
     results.slice(0, data.settings.homeResultLimit || 6).forEach((resource) => resultsGrid.append(resourceCard(resource)));
-    announce(`${results.length} hasil ditemukan: ${folderCount} folder dan ${appCount} aplikasi.`);
+    announce(`${results.length} hasil ditemukan: ${directFolderCount} folder langsung, ${folderCount - directFolderCount} folder induk, dan ${appCount} aplikasi.`);
   }
 }
 

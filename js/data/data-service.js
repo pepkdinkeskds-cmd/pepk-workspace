@@ -1,6 +1,6 @@
 import { CONFIG } from "../config.js";
 import { LOCAL_DATA } from "./local-data.js";
-import { loadSheet } from "./sheets.js?v=0.9.3-reference-workspace";
+import { loadSheet } from "./sheets.js?v=0.9.4-deep-search";
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -315,6 +315,50 @@ function normalizeMonevMaterials(rows) {
     .sort((a, b) => b.year - a.year || b.month - a.month || a.presentationOrder - b.presentationOrder || a.title.localeCompare(b.title, "id"));
 }
 
+
+function normalizeSearchIndex(rows) {
+  return rows
+    .filter((row) => row.id && row.title && row.folder_url && toBoolean(row.is_active))
+    .map((row) => {
+      const periodYears = String(row.period || "").match(/\b20\d{2}\b/g)?.map(Number) || [];
+      const yearStart = toNumber(row.year_start, periodYears[0] || 0) || null;
+      const yearEnd = toNumber(row.year_end, periodYears.at(-1) || yearStart || 0) || null;
+      const workspaceId = row.workspace_id || "";
+      const scope = row.scope === "reference" || workspaceId === "document-center" ? "reference" : "workspace";
+      return {
+        id: row.id,
+        title: row.title,
+        leafName: row.leaf_name || row.title,
+        description: row.description || `Jalur: ${row.path || ""}`,
+        type: "document",
+        kind: "deep-folder",
+        searchOnly: true,
+        workspaceId,
+        workspaceTitle: row.workspace_title || (scope === "reference" ? "Referensi" : workspaceId),
+        category: row.category || "",
+        period: row.period || "",
+        year: yearStart && yearEnd && yearStart === yearEnd ? yearStart : null,
+        yearStart,
+        yearEnd,
+        sortYear: yearEnd || yearStart || 0,
+        scope,
+        url: row.folder_url,
+        keywords: splitList(row.keywords),
+        aliases: splitList(row.aliases),
+        icon: "folder",
+        openMode: "new_tab",
+        sortOrder: Number(row.sort_order || 9999),
+        isActive: true,
+        subfolders: [],
+        path: row.path || "",
+        parentPath: row.parent_path || "",
+        depth: Number(row.depth || 0)
+      };
+    })
+    .filter((item) => isAllowedExternalUrl(item.url))
+    .sort((a, b) => b.sortYear - a.sortYear || a.path.localeCompare(b.path, "id"));
+}
+
 function normalizeSynonyms(rows) {
   return rows.filter((row) => row.term && toBoolean(row.is_active)).map((row) => ({
     term: row.term,
@@ -357,10 +401,14 @@ function normalizeSettings(rows) {
     workflow_version: "workflowVersion",
     workspace_generation: "workspaceGeneration",
     folder_root_url: "folderRootUrl",
-    document_center_url: "documentCenterUrl"
+    document_center_url: "documentCenterUrl",
+    deep_search_enabled: "deepSearchEnabled",
+    search_index_version: "searchIndexVersion",
+    search_index_updated_at: "searchIndexUpdatedAt",
+    search_index_count: "searchIndexCount"
   };
-  const numericKeys = new Set(["searchMinimum", "homeResultLimit", "quickFolderLimit", "quickAppLimit", "agendaHomeLimit", "realizationHomeLimit", "deviationBalancedThreshold", "deviationAttentionThreshold"]);
-  const booleanKeys = new Set(["workflowEnabled"]);
+  const numericKeys = new Set(["searchMinimum", "homeResultLimit", "quickFolderLimit", "quickAppLimit", "agendaHomeLimit", "realizationHomeLimit", "deviationBalancedThreshold", "deviationAttentionThreshold", "searchIndexCount"]);
+  const booleanKeys = new Set(["workflowEnabled", "deepSearchEnabled"]);
   const settings = {};
   rows.forEach((row) => {
     const rawKey = normalizeSettingKey(row.key);
@@ -423,6 +471,13 @@ export function validateData(data) {
     if (!resourceIds.has(id)) warnings.push(`Quick Access tidak menemukan resource: ${id}`);
   });
 
+  const searchIndexIds = new Set();
+  (data.searchIndex || []).forEach((item) => {
+    if (searchIndexIds.has(item.id)) warnings.push(`ID indeks pencarian duplikat: ${item.id}`);
+    searchIndexIds.add(item.id);
+    if (!isAllowedExternalUrl(item.url)) warnings.push(`URL folder langsung tidak valid: ${item.id}`);
+  });
+
   data.agenda.forEach((item) => {
     if (!item.date) warnings.push(`Tanggal agenda tidak valid: ${item.id}`);
     if (item.url && !isAllowedExternalUrl(item.url)) warnings.push(`URL agenda tidak valid: ${item.id}`);
@@ -442,6 +497,7 @@ export function validateData(data) {
 
 export function getInitialData() {
   const data = clone(LOCAL_DATA);
+  if (!Array.isArray(data.searchIndex)) data.searchIndex = [];
   const workspaceTitles = new Map(data.workspaces.map((item) => [item.id, item.title]));
   data.resources.forEach((item) => { item.workspaceTitle = workspaceTitleForResource(item, workspaceTitles); });
   data.validationWarnings = validateData(data);
@@ -486,6 +542,14 @@ export async function refreshFromSheets() {
       merged.forEach((item) => { item.workspaceTitle = workspaceTitleForResource(item, workspaceTitles); });
       data.resources = merged.sort((a, b) => a.sortOrder - b.sortOrder);
       data.groups = buildGroups(data.resources, LOCAL_DATA.groups);
+      changed = true;
+    }
+  }
+
+  if (loaded.searchIndex?.length) {
+    const normalized = normalizeSearchIndex(loaded.searchIndex);
+    if (normalized.length) {
+      data.searchIndex = normalized;
       changed = true;
     }
   }
@@ -535,8 +599,9 @@ export async function refreshFromSheets() {
   }
 
   data.validationWarnings = validateData(data);
+  const optionalSheets = new Set([CONFIG.sheets.searchIndex]);
   const failedSheets = results
-    .map((result, index) => result.status === "rejected" ? entries[index][1] : null)
+    .map((result, index) => result.status === "rejected" && !optionalSheets.has(entries[index][1]) ? entries[index][1] : null)
     .filter(Boolean);
 
   return {

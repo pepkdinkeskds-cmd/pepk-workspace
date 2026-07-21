@@ -1,5 +1,5 @@
 import { initApp, setDataStatus, applyMetadata, scheduleBackgroundTask } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.3-reference-workspace";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.4-deep-search";
 import { CONFIG } from "../config.js";
 
 const page = document.body.dataset.page || "";

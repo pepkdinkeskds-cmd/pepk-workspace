@@ -2478,3 +2478,28 @@
     background: #0a8176;
   }
 }
+
+
+/* v0.9.4 — Direct access to deepest folders from search. */
+@layer components {
+  .resource-card--deep {
+    border-color: #b9ddd7;
+    background:
+      linear-gradient(90deg, rgba(10, 129, 118, .08), rgba(10, 129, 118, 0) 36%),
+      var(--white);
+  }
+
+  .resource-card--deep .resource-card__icon {
+    color: #08766d;
+    background: #e5f7f3;
+  }
+
+  .resource-card--deep .resource-card__meta span:last-child {
+    color: #08685f;
+    background: #dcf5ef;
+  }
+
+  .resource-card--deep .resource-card__description {
+    overflow-wrap: anywhere;
+  }
+}
