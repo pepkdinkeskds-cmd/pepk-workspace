@@ -9,9 +9,9 @@ import {
   createElement,
   externalLink
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.4-deep-search";
-import { searchResources } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.4-deep-search";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
+import { searchResourcesDetailed } from "../search.js";
+import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-intent-search";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
 
@@ -170,11 +170,23 @@ function renderSearch(query) {
     return;
   }
 
-  const results = searchResources([...data.resources, ...(data.searchIndex || [])], currentQuery, data.synonyms);
+  const searchResult = searchResourcesDetailed(
+    [...data.resources, ...(data.searchIndex || [])],
+    currentQuery,
+    data.synonyms
+  );
+  const results = searchResult.items.map((item) => item.resource);
   const directFolderCount = results.filter((item) => item.kind === "deep-folder").length;
   const folderCount = results.filter((item) => item.type !== "application").length;
   const appCount = results.length - folderCount;
-  resultsTitle.textContent = `${results.length} hasil untuk “${currentQuery}”`;
+
+  if (["specific-folder", "path-specific", "fuzzy-folder"].includes(searchResult.intent.key)) {
+    resultsTitle.textContent = `${results.length} folder langsung untuk “${currentQuery}”`;
+  } else if (searchResult.intent.key === "application-exact") {
+    resultsTitle.textContent = `${results.length} aplikasi untuk “${currentQuery}”`;
+  } else {
+    resultsTitle.textContent = `${results.length} hasil untuk “${currentQuery}”`;
+  }
 
   if (!results.length) {
     viewAllLink.hidden = true;
@@ -186,7 +198,7 @@ function renderSearch(query) {
     ));
   } else {
     results.slice(0, data.settings.homeResultLimit || 6).forEach((resource) => resultsGrid.append(resourceCard(resource)));
-    announce(`${results.length} hasil ditemukan: ${directFolderCount} folder langsung, ${folderCount - directFolderCount} folder induk, dan ${appCount} aplikasi.`);
+    announce(`${searchResult.intent.guidance} ${directFolderCount} folder langsung, ${folderCount - directFolderCount} folder induk, dan ${appCount} aplikasi.`);
   }
 }
 

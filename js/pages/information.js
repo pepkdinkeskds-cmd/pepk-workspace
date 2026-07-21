@@ -1,5 +1,5 @@
 import { initApp, setDataStatus, applyMetadata, scheduleBackgroundTask } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.4-deep-search";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { agendaCard, informationCard, realizationCard, realizationChart, realizationTable, emptyState } from "../ui.js";
 import { latestRealization, realizationForYear, realizationYears, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";

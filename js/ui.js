@@ -17,7 +17,8 @@ function resourceMeta(resource) {
   if (resource.type === "application") items.push(resource.category || "Aplikasi");
   else {
     if (resource.period || resource.year) items.push(resource.period || String(resource.year));
-    if (resource.kind === "deep-folder") items.push("Folder langsung");
+    if (resource.searchRole === "parent") items.push("Folder induk");
+    else if (resource.kind === "deep-folder" || resource.searchRole === "direct") items.push("Folder langsung");
   }
   return items;
 }
@@ -57,7 +58,8 @@ export function applicationCard(resource, { compact = false } = {}) {
 export function resourceCard(resource, { compact = false } = {}) {
   if (resource.type === "application") return applicationCard(resource, { compact });
   const deepClass = resource.kind === "deep-folder" ? " resource-card--deep" : "";
-  const link = externalLink(resource.url, resource.title, `resource-card${compact ? " resource-card--compact" : ""}${deepClass}`);
+  const parentClass = resource.searchRole === "parent" ? " resource-card--parent" : "";
+  const link = externalLink(resource.url, resource.title, `resource-card${compact ? " resource-card--compact" : ""}${deepClass}${parentClass}`);
   const iconBox = createElement("span", { className: "resource-card__icon", html: icon(resource.icon || "folder") });
   const content = createElement("span", { className: "resource-card__content" });
   const meta = createElement("span", { className: "resource-card__meta" }, resourceMeta(resource).map((item) => createElement("span", { text: item })));

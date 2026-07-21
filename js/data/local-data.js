@@ -8470,7 +8470,7 @@ export const LOCAL_DATA = {
   ],
   "settings": {
     "appName": "PEPK Workspace",
-    "appVersion": "0.9.4",
+    "appVersion": "0.9.5",
     "contentUpdatedAt": "20 Juli 2026",
     "spreadsheetId": "1rSbyazj5MSdRYHgBYLBA7jeMjYKattvRPCG9SKHSxCM",
     "searchMinimum": 2,

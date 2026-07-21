@@ -1,9 +1,11 @@
-# PEPK Workflow V2.2.0
+# PEPK Workflow V2.3.1
 
-Tambahan utama:
+Versi workflow ini tetap menjadi workflow operasional terbaru:
 
-- Membuat sheet `Search_Index` dari seluruh folder leaf aktif pada `Folder_Index`.
-- Folder yang sudah mempunyai kartu `Resources` tidak diduplikasi.
-- Folder teknis workflow dikecualikan.
-- Menu: `PEPK Workflow → Sinkronkan indeks pencarian mendalam`.
-- Tetap memuat perbaikan BAHAN RAKOR dan perbaikan jam agenda.
+- BAHAN RAKOR bulanan 2025–2027.
+- Unggahan Materi Monev diarahkan berdasarkan tahun dan bulan.
+- BAHAN RAKOR tetap menjadi kartu pencarian induk.
+- Perbaikan jam Agenda.
+- Search_Index folder mendalam.
+
+Pembaruan website v0.9.5 tidak memerlukan instalasi ulang Apps Script.

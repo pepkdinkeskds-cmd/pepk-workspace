@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.9.5 — Intent-Aware Search
+
+- Membedakan pencarian folder spesifik, folder induk, jalur menengah, aplikasi,
+  referensi, dan periode multi-tahun.
+- Menyembunyikan kartu induk apabila folder langsung sudah menjawab query.
+- Query induk dan tahun menampilkan folder induk diikuti folder terdalamnya.
+- Query induk tanpa tahun tetap ringkas pada tingkat periode.
+- Menambahkan penanda Folder Induk dan Folder Langsung.
+- Mengabaikan kata umum dalam kalimat alami.
+- Menambahkan koreksi salah ketik sederhana sebagai fallback.
+- Menambahkan ringkasan alasan hasil pencarian pada halaman Pustaka.
+
 ## 0.9.4 — Pencarian Folder Mendalam
 
 - Menambahkan indeks seluruh folder terdalam aktif.

@@ -8,8 +8,8 @@ import {
   minimumSearchLength,
   updateQueryString
 } from "../app.js";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.4-deep-search";
-import { searchResourcesWithScores } from "../search.js";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
+import { searchResourcesDetailed } from "../search.js";
 import { emptyState, resourceCard } from "../ui.js";
 
 initApp("resources");
@@ -116,16 +116,19 @@ function sortResults(items, sort, hasQuery) {
   });
 }
 
-function updateSummary({ q, workspace, type, year, sort }, count) {
+function updateSummary({ q, workspace, type, year, sort }, count, intent = null) {
   const parts = [];
   if (q) parts.push(`pencarian “${q}”`);
   if (workspace) parts.push(workspaceOptions().find((item) => item.id === workspace)?.title || workspace);
   if (type) parts.push(type === "application" ? "aplikasi" : "folder dokumen");
   if (year) parts.push(`tahun ${year}`);
   const sortLabel = sortFilter.options[sortFilter.selectedIndex]?.textContent || sort;
-  filterSummary.textContent = parts.length
+  const base = parts.length
     ? `${count} hasil untuk ${parts.join(" • ")} — urutkan: ${sortLabel}`
     : `${count} resource tersedia — urutkan: ${sortLabel}`;
+  filterSummary.textContent = q && intent?.guidance
+    ? `${base}. ${intent.guidance}`
+    : base;
 }
 
 function resetFilters() {
@@ -166,9 +169,10 @@ function render() {
   const searchableItems = q
     ? [...data.resources, ...(data.searchIndex || [])]
     : data.resources;
-  let scored = q
-    ? searchResourcesWithScores(searchableItems, q, data.synonyms)
-    : searchableItems.map((resource) => ({ resource, score: 0 }));
+  const searchResult = q
+    ? searchResourcesDetailed(searchableItems, q, data.synonyms)
+    : { items: searchableItems.map((resource) => ({ resource, score: 0 })), intent: null };
+  let scored = searchResult.items;
   if (workspace) scored = scored.filter((item) => item.resource.workspaceId === workspace);
   if (type) scored = scored.filter((item) => item.resource.type === type);
   if (year) scored = scored.filter((item) => resourceIncludesYear(item.resource, year));
@@ -190,10 +194,10 @@ function render() {
   }
 
   countNode.textContent = String(results.length);
-  updateSummary({ q, workspace, type, year, sort }, results.length);
+  updateSummary({ q, workspace, type, year, sort }, results.length, searchResult.intent);
   setParams({ q, workspace, type, year, sort });
   const directCount = results.filter((item) => item.kind === "deep-folder").length;
-  announce(`${results.length} hasil ditemukan, termasuk ${directCount} folder langsung.`);
+  announce(`${searchResult.intent?.guidance || `${results.length} hasil ditemukan.`} Termasuk ${directCount} folder langsung.`);
 }
 
 const initial = getParams();

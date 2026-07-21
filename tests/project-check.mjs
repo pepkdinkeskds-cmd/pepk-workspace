@@ -13,17 +13,17 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.4\-deep\-search/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-intent\-search/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
-assert.match(localData, /"appVersion": "0.9.4"/);
+assert.match(localData, /"appVersion": "0.9.5"/);
 assert.match(localData, /"workspaceGeneration": "V2"/);
 assert.match(localData, /"workspaceId": "document-center"/);
 
 const workflowScript = fs.readFileSync(path.join(root, "apps-script/pepk-workflow/Code.gs"), "utf8");
-assert.match(workflowScript, /VERSION: '2\.2\.0'/);
+assert.match(workflowScript, /VERSION: '2\.3\.1'/);
 assert.match(workflowScript, /FOLDER_INDEX/);
 assert.match(workflowScript, /function syncUploadRoutes/);
 assert.match(workflowScript, /function setupMonevWorkflow/);
@@ -50,3 +50,9 @@ assert.match(workflowScript, /SEARCH_INDEX/);
 assert.match(workflowScript, /function syncDeepSearchIndex/);
 assert.match(workflowScript, /function rebuildDeepSearchIndex_/);
 assert.ok(fs.existsSync(path.join(root, "docs/DEEP-SEARCH-v0.9.4.md")));
+assert.ok(fs.existsSync(path.join(root, "docs/INTENT-AWARE-SEARCH-v0.9.5.md")));
+const searchScript = fs.readFileSync(path.join(root, "js/search.js"), "utf8");
+assert.match(searchScript, /function deriveStructuralIntent/);
+assert.match(searchScript, /export function searchResourcesDetailed/);
+assert.match(searchScript, /export function analyzeSearchIntent/);
+assert.match(searchScript, /function fuzzyDirectResults/);

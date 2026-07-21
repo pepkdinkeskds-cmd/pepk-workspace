@@ -1,6 +1,6 @@
 import { CONFIG } from "../config.js";
 import { LOCAL_DATA } from "./local-data.js";
-import { loadSheet } from "./sheets.js?v=0.9.4-deep-search";
+import { loadSheet } from "./sheets.js?v=0.9.5-intent-search";
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));

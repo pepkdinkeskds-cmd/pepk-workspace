@@ -2503,3 +2503,19 @@
     overflow-wrap: anywhere;
   }
 }
+
+
+/* v0.9.5 — Intent-aware search distinguishes parent and direct folders. */
+@layer components {
+  .resource-card--parent {
+    border-color: #bfd7f2;
+    background:
+      linear-gradient(90deg, rgba(15, 92, 192, .06), rgba(15, 92, 192, 0) 36%),
+      var(--white);
+  }
+
+  .resource-card--parent .resource-card__meta span:last-child {
+    color: #0a4f9e;
+    background: #e7f1fd;
+  }
+}
