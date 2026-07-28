@@ -13,9 +13,26 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-intent\-search/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-(?:intent-search|service-hub-02)/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
+
+const homeHtml = fs.readFileSync(path.join(root, "index.html"), "utf8");
+const homeScript = fs.readFileSync(path.join(root, "js/pages/home.js"), "utf8");
+assert.match(homeHtml, /Satu pintu pengajuan PEPK/);
+assert.match(homeHtml, /tautan unik yang dikirim ke email pengirim/);
+assert.match(homeScript, /Mulai Pengajuan/);
+assert.match(homeScript, /script\.google\.com\/macros\/s\//);
+assert.doesNotMatch(homeScript, /Buka formulir/);
+assert.doesNotMatch(homeScript, /title:\s*"Tambah Agenda"/);
+
+const contributeHtml = fs.readFileSync(path.join(root, "contribute.html"), "utf8");
+const contributeScript = fs.readFileSync(path.join(root, "js/pages/contribute.js"), "utf8");
+assert.match(contributeHtml, /Satu pintu untuk pengajuan Dokumen, Agenda, dan Materi Monev/);
+assert.match(contributeScript, /title:\s*"Mulai Pengajuan PEPK"/);
+assert.match(contributeScript, /title:\s*"Pantau melalui email"/);
+assert.match(contributeScript, /SUBMISSION_PORTAL_URL/);
+assert.doesNotMatch(contributeScript, /documentUploadFormUrl|agendaSubmitFormUrl|monevMaterialFormUrl/);
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
 assert.match(localData, /"appVersion": "0.9.5"/);

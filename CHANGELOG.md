@@ -237,3 +237,10 @@
 - Menghapus pintu masuk Google Form Dokumen dan Agenda dari Beranda.
 - Menjelaskan bahwa status dan revisi dibuka melalui tautan unik pada email pengirim.
 - Tidak menyimpan token pengajuan dalam source publik.
+# v0.9.5 — SERVICE_HUB_02
+
+- Merampingkan panel Layanan Cepat di Beranda agar tidak menyisakan ruang kosong.
+- Mengubah Pusat Layanan menjadi satu pintu Submission Portal.
+- Menambahkan panel informasi status dan perbaikan melalui email.
+- Menghapus ketergantungan tampilan Pusat Layanan pada tiga URL Google Form lama.
+- Tidak menampilkan tautan Operator Console pada website publik.

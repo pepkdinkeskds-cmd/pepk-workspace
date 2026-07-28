@@ -7,7 +7,7 @@
  * ketiga layanan menggunakan URL deployment yang sama.
  */
 
-const SUBMISSION_PORTAL_URL =
+export const SUBMISSION_PORTAL_URL =
   'https://script.google.com/macros/s/AKfycbyjW1UYM2-k0AcXMrYmV36qDIL6PtJrOmOxUs4P1bhMkbpiyIEqR5_VgmMX3cdT2sM/exec';
 
 const MODULE_LABELS = Object.freeze({

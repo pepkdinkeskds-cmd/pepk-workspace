@@ -1,15 +1,13 @@
-import { initApp, applyMetadata, setDataStatus, scheduleBackgroundTask, createElement, externalLink } from "../app.js";
-import { getInitialData, refreshSettingsFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
+import { initApp, setDataStatus, createElement, externalLink } from "../app.js";
 import { icon } from "../icons.js";
+import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js";
 
 initApp("contribute");
-let data = getInitialData();
-applyMetadata(data.settings);
 
 const container = document.querySelector("[data-contribution-page-actions]");
 
-function actionCard({ iconName, eyebrow, title, description, url, buttonLabel, unavailableText, secondaryLink }) {
-  const card = createElement("article", { className: "contribution-action-card" });
+function actionCard({ iconName, eyebrow, title, description, url, buttonLabel, variant = "primary", details = [] }) {
+  const card = createElement("article", { className: `contribution-action-card contribution-action-card--${variant}` });
   const heading = createElement("div", { className: "contribution-action-card__heading" }, [
     createElement("span", { className: "contribution-action-card__icon", html: icon(iconName) }),
     createElement("span", { className: "contribution-action-card__eyebrow", text: eyebrow })
@@ -19,18 +17,16 @@ function actionCard({ iconName, eyebrow, title, description, url, buttonLabel, u
     createElement("h2", { text: title }),
     createElement("p", { text: description })
   );
+  if (details.length) {
+    card.append(createElement("ul", { className: "contribution-action-card__details" },
+      details.map((detail) => createElement("li", { html: `${icon("check")}<span>${detail}</span>` }))
+    ));
+  }
   if (url) {
     const link = externalLink(url, title, "button button--primary contribution-action-card__button");
     link.innerHTML = `${icon(iconName)} ${buttonLabel}`;
+    link.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal");
     card.append(link);
-  } else {
-    card.append(
-      createElement("span", { className: "contribution-action-card__status", text: unavailableText }),
-      createElement("p", { className: "contribution-action-card__hint", text: "Tautan formulir diambil langsung dari sheet Settings V2. Pastikan spreadsheet dapat dibaca sebagai Viewer." })
-    );
-  }
-  if (secondaryLink) {
-    card.append(createElement("a", { className: "text-link contribution-action-card__secondary", href: secondaryLink.href, html: `${secondaryLink.label} ${icon("arrow")}` }));
   }
   return card;
 }
@@ -39,46 +35,31 @@ function render() {
   container.replaceChildren(
     actionCard({
       iconName: "upload",
-      eyebrow: "Dokumen",
-      title: "Unggah Dokumen",
-      description: "Kirim file ke antrean pemeriksaan dengan memilih ruang kerja dan tujuan folder yang telah disinkronkan dari Google Drive.",
-      url: data.settings.workflowEnabled !== false ? data.settings.documentUploadFormUrl : "",
-      buttonLabel: "Buka formulir unggah",
-      unavailableText: "Formulir unggah belum dikonfigurasi"
+      eyebrow: "Satu pintu layanan",
+      title: "Mulai Pengajuan PEPK",
+      description: "Gunakan satu Submission Portal untuk mengajukan dokumen, agenda, atau materi Monev.",
+      url: SUBMISSION_PORTAL_URL,
+      buttonLabel: "Mulai Pengajuan",
+      details: [
+        "Pilih jenis pengajuan setelah portal terbuka.",
+        "Data masuk ke antrean pemeriksaan Operator.",
+        "Tidak memerlukan akses Editor ke folder utama."
+      ]
     }),
     actionCard({
-      iconName: "send",
-      eyebrow: "Agenda",
-      title: "Tambah Agenda",
-      description: "Kirim jadwal rapat atau kegiatan beserta tanggal, waktu, lokasi, PIC, dan tautan bahan pendukung.",
-      url: data.settings.workflowEnabled !== false ? data.settings.agendaSubmitFormUrl : "",
-      buttonLabel: "Buka formulir agenda",
-      unavailableText: "Formulir agenda belum dikonfigurasi"
-    }),
-    actionCard({
-      iconName: "presentation",
-      eyebrow: "Materi Monev",
-      title: "Unggah Materi Monev",
-      description: "Kirim PowerPoint, PDF, Word, atau Excel untuk rapat monitoring dan evaluasi capaian anggaran bulanan.",
-      url: data.settings.workflowEnabled !== false ? data.settings.monevMaterialFormUrl : "",
-      buttonLabel: "Buka formulir Monev",
-      unavailableText: "Formulir Materi Monev belum dikonfigurasi",
-      secondaryLink: { href: "monev.html", label: "Buka pustaka materi" }
+      iconName: "inbox",
+      eyebrow: "Status dan perbaikan",
+      title: "Pantau melalui email",
+      description: "Nomor pengajuan dan tautan status unik dikirim ke email pengirim. Gunakan tautan tersebut untuk melihat progres atau mengirim perbaikan.",
+      variant: "status",
+      details: [
+        "Setiap pengajuan memiliki tautan yang berbeda.",
+        "Email pengirim digunakan sebagai verifikasi.",
+        "Tidak perlu mencari atau memasukkan token secara manual."
+      ]
     })
   );
 }
 
 render();
-setDataStatus("Memuat tautan layanan…", "loading");
-
-scheduleBackgroundTask(async () => {
-  try {
-    data.settings = await refreshSettingsFromSheets();
-    applyMetadata(data.settings);
-    render();
-    setDataStatus("Tautan layanan tersinkron", "connected", "URL formulir dibaca langsung dari sheet Settings V2.");
-  } catch {
-    render();
-    setDataStatus("Tautan layanan belum termuat", "warning", "Pastikan Spreadsheet V2 dibagikan sebagai Viewer kepada siapa saja yang memiliki link.");
-  }
-});
+setDataStatus("Layanan siap digunakan", "connected", "Pengajuan dilakukan melalui PEPK Submission Portal.");

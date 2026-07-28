@@ -1652,16 +1652,52 @@
 
   .contribution-page-section { background: var(--ink-050); }
   .contribution-action-card {
-    min-height: 18rem;
+    min-height: 20rem;
     grid-template-columns: 1fr;
     align-content: start;
     padding: clamp(1.3rem, 3vw, 2rem);
+  }
+  .contribution-action-card--primary {
+    border-color: rgba(15, 92, 192, .22);
+    background:
+      radial-gradient(circle at 100% 0, rgba(11, 179, 149, .1), transparent 36%),
+      linear-gradient(180deg, var(--blue-050), var(--white));
+  }
+  .contribution-action-card--status {
+    border-color: #c8e9e1;
+    background: linear-gradient(145deg, #f1fcf8, var(--white));
+  }
+  .contribution-action-card--status .contribution-action-card__icon {
+    color: var(--teal-700);
+    background: #dcf7f0;
   }
   .contribution-action-card__heading { display: flex; align-items: center; gap: .75rem; }
   .contribution-action-card__eyebrow { color: var(--blue-700); font-size: .72rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
   .contribution-action-card h2 { margin-block-start: .45rem; font-size: clamp(1.35rem, 2.4vw, 1.8rem); }
   .contribution-action-card > p { color: var(--ink-600); }
   .contribution-action-card__button { justify-self: start; margin-block-start: auto; }
+  .contribution-action-card__details {
+    display: grid;
+    gap: .65rem;
+    margin: .85rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .contribution-action-card__details li {
+    display: flex;
+    align-items: flex-start;
+    gap: .55rem;
+    color: var(--ink-700);
+    font-size: .8rem;
+    line-height: 1.5;
+  }
+  .contribution-action-card__details .icon {
+    width: 1rem;
+    height: 1rem;
+    flex: 0 0 auto;
+    margin-block-start: .12rem;
+    color: var(--teal-700);
+  }
   .contribution-action-card__status {
     justify-self: start;
     margin-block-start: auto;
@@ -1767,7 +1803,7 @@
     display: grid;
     grid-template-columns: minmax(0, 3fr) minmax(17.5rem, 1fr);
     gap: 1rem;
-    align-items: stretch;
+    align-items: start;
   }
 
   .home-quick-panels {
@@ -1872,6 +1908,7 @@
     background:
       radial-gradient(circle at 100% 0, rgba(11, 179, 149, .1), transparent 34%),
       linear-gradient(180deg, var(--blue-050), var(--white));
+    align-self: start;
   }
 
   .home-contribution-heading h2 {
@@ -1922,8 +1959,9 @@
   }
 
   .home-contribution-note {
-    margin: auto 0 0;
-    padding-block-start: 1rem;
+    margin: .85rem 0 0;
+    padding-block-start: .85rem;
+    border-block-start: 1px solid rgba(15, 92, 192, .12);
     color: var(--ink-600);
     font-size: .78rem;
     line-height: 1.55;
