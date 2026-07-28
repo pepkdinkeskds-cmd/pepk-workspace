@@ -230,3 +230,10 @@
 - Identitas visual dominan biru berdasarkan logo PEPK.
 - Struktur empat Ruang Kerja dan folder dokumen berdasarkan tahun.
 - Integrasi Google Sheets dan data lokal.
+# PEPK Workspace v0.9.5 — Submission Home 01
+
+- Menyatukan Layanan Cepat Beranda menjadi satu kartu **Pengajuan PEPK**.
+- Mengarahkan tombol **Mulai Pengajuan** ke Submission Portal aktif.
+- Menghapus pintu masuk Google Form Dokumen dan Agenda dari Beranda.
+- Menjelaskan bahwa status dan revisi dibuka melalui tautan unik pada email pengirim.
+- Tidak menyimpan token pengajuan dalam source publik.

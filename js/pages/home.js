@@ -21,6 +21,9 @@ let data = getInitialData();
 applyMetadata(data.settings);
 let currentQuery = "";
 
+const SUBMISSION_PORTAL_URL =
+  "https://script.google.com/macros/s/AKfycbyjW1UYM2-k0AcXMrYmV36qDIL6PtJrOmOxUs4P1bhMkbpiyIEqR5_VgmMX3cdT2sM/exec";
+
 const searchInput = document.querySelector("[data-home-search]");
 const searchForm = document.querySelector("[data-home-search-form]");
 const resultsSection = document.querySelector("[data-home-results-section]");
@@ -52,7 +55,7 @@ function renderQuickAccess() {
 }
 
 
-function contributionAction({ title, description, iconName, url, fallbackHref }) {
+function contributionAction({ title, description, iconName, url }) {
   const article = createElement("article", { className: "contribution-quick-card" });
   article.append(
     createElement("span", { className: "contribution-quick-card__icon", html: icon(iconName) }),
@@ -61,13 +64,10 @@ function contributionAction({ title, description, iconName, url, fallbackHref })
       createElement("p", { text: description })
     ])
   );
-  if (url) {
-    const link = externalLink(url, title, "button button--secondary contribution-quick-card__action");
-    link.innerHTML = `${icon(iconName)} Buka formulir`;
-    article.append(link);
-  } else {
-    article.append(createElement("a", { className: "button button--secondary contribution-quick-card__action", href: fallbackHref, html: `${icon("arrow")} Lihat cara penggunaan` }));
-  }
+  const link = externalLink(url, title, "button button--secondary contribution-quick-card__action");
+  link.innerHTML = `${icon("arrow")} Mulai Pengajuan`;
+  link.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal");
+  article.append(link);
   return article;
 }
 
@@ -76,18 +76,10 @@ function renderContributionActions() {
   if (!container) return;
   container.replaceChildren(
     contributionAction({
-      title: "Unggah Dokumen",
-      description: "Kirim file tanpa akses Editor. Dokumen masuk ke antrean pemeriksaan administrator.",
+      title: "Pengajuan PEPK",
+      description: "Unggah dokumen, ajukan agenda, atau kirim materi monev melalui satu layanan.",
       iconName: "upload",
-      url: data.settings.workflowEnabled !== false ? data.settings.documentUploadFormUrl : "",
-      fallbackHref: "contribute.html"
-    }),
-    contributionAction({
-      title: "Tambah Agenda",
-      description: "Kirim jadwal rapat atau kegiatan untuk diperiksa sebelum tampil di Pusat Informasi.",
-      iconName: "send",
-      url: data.settings.workflowEnabled !== false ? data.settings.agendaSubmitFormUrl : "",
-      fallbackHref: "contribute.html"
+      url: SUBMISSION_PORTAL_URL
     })
   );
 }

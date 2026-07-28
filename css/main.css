@@ -1920,6 +1920,14 @@
     padding-block-start: 1rem;
     font-size: .8rem;
   }
+
+  .home-contribution-note {
+    margin: auto 0 0;
+    padding-block-start: 1rem;
+    color: var(--ink-600);
+    font-size: .78rem;
+    line-height: 1.55;
+  }
 }
 
 @layer utilities {
