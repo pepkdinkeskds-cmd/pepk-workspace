@@ -7,26 +7,34 @@ initApp("contribute");
 const container = document.querySelector("[data-contribution-page-actions]");
 
 function actionCard({ iconName, eyebrow, title, description, url, buttonLabel, variant = "primary", details = [] }) {
-  const card = createElement("article", { className: `contribution-action-card contribution-action-card--${variant}` });
+  const card = url
+    ? externalLink(url, title, `contribution-action-card contribution-action-card--${variant} contribution-action-card--clickable`)
+    : createElement("article", { className: `contribution-action-card contribution-action-card--${variant}` });
   const heading = createElement("div", { className: "contribution-action-card__heading" }, [
     createElement("span", { className: "contribution-action-card__icon", html: icon(iconName) }),
     createElement("span", { className: "contribution-action-card__eyebrow", text: eyebrow })
   ]);
-  card.append(
+  const content = createElement("div", { className: "contribution-action-card__content" }, [
     heading,
     createElement("h2", { text: title }),
     createElement("p", { text: description })
-  );
+  ]);
   if (details.length) {
-    card.append(createElement("ul", { className: "contribution-action-card__details" },
+    content.append(createElement("ul", { className: "contribution-action-card__details" },
       details.map((detail) => createElement("li", { html: `${icon("check")}<span>${detail}</span>` }))
     ));
   }
+  card.append(
+    content,
+    createElement("span", {
+      className: `contribution-action-card__end contribution-action-card__end--${url ? "action" : "info"}`,
+      html: url
+        ? `<strong>${buttonLabel}</strong>${icon("arrow")}`
+        : icon("inbox")
+    })
+  );
   if (url) {
-    const link = externalLink(url, title, "button button--primary contribution-action-card__button");
-    link.innerHTML = `${icon(iconName)} ${buttonLabel}`;
-    link.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal");
-    card.append(link);
+    card.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal");
   }
   return card;
 }
