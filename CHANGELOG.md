@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.5 — Quality 03A
+
+- Menetapkan satu skala tipografi lintas halaman untuk judul, isi, kontrol, metadata, dan badge.
+- Menormalkan judul kartu dengan fungsi setara pada Pustaka, Informasi, Layanan, dan Materi Monev.
+- Menaikkan detail tahun, kategori aplikasi, status Agenda, label Realisasi, serta badge Materi Monev ke batas minimum yang nyaman dibaca.
+- Mempertahankan hierarki khusus judul Beranda dan judul halaman internal pada desktop maupun ponsel.
+- Menambahkan pengujian regresi tipografi dan menaikkan versi cache CSS ke `quality-03a`.
+
 ## 0.9.5 — Quality 01A
 
 - Menetapkan URL Submission Portal secara langsung pada tombol **Ajukan Materi Monev**.

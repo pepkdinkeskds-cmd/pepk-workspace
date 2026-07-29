@@ -1,4 +1,4 @@
-@layer reset, tokens, base, layout, components, pages, utilities;
+@layer reset, tokens, base, layout, components, pages, utilities, quality;
 
 @layer reset {
   *, *::before, *::after { box-sizing: border-box; }
@@ -1512,6 +1512,183 @@
     .agenda-card { grid-template-columns: auto minmax(0, 1fr); }
     .agenda-card__action { position: absolute; inset-block-start: 1rem; inset-inline-end: 1rem; }
     .information-dashboard { gap: 3rem; }
+  }
+}
+
+/* QUALITY 03A — cross-page typography scale and minimum readable sizes. */
+@layer tokens {
+  :root {
+    --type-home-title: clamp(2.25rem, 5vw, 4.25rem);
+    --type-page-title: clamp(2rem, 4vw, 3.5rem);
+    --type-section-title: clamp(1.625rem, 3vw, 2.45rem);
+    --type-subsection-title: clamp(1.3rem, 2vw, 1.75rem);
+    --type-card-feature: 1.25rem;
+    --type-card: 1.0625rem;
+    --type-card-compact: 1rem;
+    --type-body: 1rem;
+    --type-body-compact: .9375rem;
+    --type-control: .875rem;
+    --type-meta: .8125rem;
+    --type-badge: .75rem;
+  }
+}
+
+@layer quality {
+  /* Display and section hierarchy. */
+  body[data-page="home"] .hero h1 {
+    font-size: var(--type-home-title);
+  }
+
+  .page-hero h1 {
+    font-size: var(--type-page-title);
+  }
+
+  .section-heading h2 {
+    font-size: var(--type-section-title);
+  }
+
+  .workspace-section-heading h2,
+  .home-contribution-heading h2 {
+    font-size: var(--type-subsection-title);
+  }
+
+  /* Navigation and controls. */
+  .desktop-nav a,
+  .mobile-nav a,
+  .button,
+  .text-link,
+  .back-link,
+  .workspace-tabs a,
+  .filter-panel input,
+  .filter-panel select,
+  .workspace-search input,
+  .realization-toolbar select,
+  .filter-reset,
+  .results-toolbar button {
+    font-size: var(--type-control);
+  }
+
+  /* Card titles: equal roles share one scale across menus. */
+  .workspace-card__title {
+    font-size: var(--type-card-feature);
+  }
+
+  .resource-card__title,
+  .information-card__title,
+  .application-card__title,
+  .agenda-card__title,
+  .contribution-quick-card__content h3,
+  .monev-material-card__title {
+    font-size: var(--type-card);
+  }
+
+  .resource-card--compact .resource-card__title,
+  .application-card--compact .application-card__title,
+  body[data-page="home"] .home-tools-card .resource-card--compact .resource-card__title,
+  body[data-page="home"] .home-tools-card .application-card--compact .application-card__title,
+  body[data-page="workspace"] .app-launchpad--workspace .application-card--compact .application-card__title {
+    font-size: var(--type-card-compact);
+  }
+
+  .document-group__title,
+  .about-card h2,
+  .monev-workspace-callout__content h2 {
+    font-size: 1.125rem;
+  }
+
+  /* Primary descriptions and explanatory text. */
+  .section-heading p,
+  .workspace-card__description,
+  .resource-card__description,
+  .information-card__summary,
+  .information-detail__content,
+  .definition-list dd,
+  .empty-state__description,
+  .contribution-action-card__content > p,
+  .monev-workspace-callout__content p,
+  .monev-library-access__content > span:last-child {
+    font-size: var(--type-body-compact);
+  }
+
+  /* Dense supporting copy remains compact, but never drops below 14 px. */
+  .quick-panel__heading p,
+  .application-card__description,
+  .agenda-card__description,
+  .realization-card__description,
+  .realization-deviation__description,
+  .contribution-quick-card__content p,
+  .workflow-steps p,
+  .workflow-note p,
+  .home-contribution-note,
+  .home-contribution-actions .contribution-quick-card__content p,
+  .monev-material-card__presenter,
+  .monev-material-card__description {
+    font-size: var(--type-control);
+  }
+
+  /* Metadata and auxiliary information use one 13 px minimum. */
+  .brand__text span,
+  .eyebrow,
+  .breadcrumbs,
+  .workspace-card__meta,
+  .data-status,
+  .site-footer__meta,
+  .site-footer__bottom,
+  .filter-panel label,
+  .results-toolbar,
+  .results-toolbar__visible,
+  .document-group__meta,
+  .year-link__detail span,
+  .workspace-stat span,
+  .system-summary small,
+  .quick-panel__all,
+  .agenda-card__full-date,
+  .agenda-card__details,
+  .realization-card__period,
+  .realization-card__target,
+  .realization-card__attainment,
+  .realization-card__updated,
+  .realization-metric__heading,
+  .realization-deviation__label,
+  .realization-toolbar label,
+  .realization-chart__legend,
+  .realization-table,
+  .contribution-action-card__eyebrow,
+  .contribution-action-card__details,
+  .contribution-action-card__hint,
+  .workflow-steps strong,
+  .monev-summary-card > span:last-child > span,
+  .monev-results-heading span,
+  .monev-material-card__file {
+    font-size: var(--type-meta);
+  }
+
+  /* Compact uppercase badges stay legible without dominating their cards. */
+  .resource-card__meta span,
+  .application-card__meta,
+  .workspace-section-count,
+  .agenda-card__date span,
+  .agenda-card__status,
+  .realization-table thead th,
+  .deviation-badge,
+  .contribution-action-card__status,
+  .monev-material-card__badges span {
+    font-size: var(--type-badge);
+  }
+
+  .realization-chart__axis-label,
+  .realization-chart__month {
+    font-size: 12px;
+  }
+
+  @media (max-width: 40rem) {
+    body[data-page="home"] .hero h1 {
+      font-size: clamp(2.2rem, 11vw, 3rem);
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
   }
 }
 
@@ -3122,4 +3299,9 @@ body[data-page="contribute"] .contribution-action-card--clickable:hover .contrib
       gap: .75rem;
     }
   }
+}
+
+/* QUALITY 03A — final safeguard for legacy unlayered Service Hub rules. */
+.monev-library-access__content > span:last-child {
+  font-size: var(--type-body-compact);
 }

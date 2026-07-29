@@ -14,7 +14,7 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-03/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-03a/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -27,6 +27,9 @@ assert.match(homeScript, /button button--primary contribution-quick-card__action
 assert.match(read("resources.html"), /class="monev-library-access" href="monev\.html"/);
 const mainCss = read("css/main.css");
 assert.match(mainCss, /QUALITY 03 — responsive comfort/);
+assert.match(mainCss, /QUALITY 03A — cross-page typography scale/);
+assert.match(mainCss, /--type-meta:\s*\.8125rem/);
+assert.match(mainCss, /--type-badge:\s*\.75rem/);
 assert.match(mainCss, /min-height:\s*2\.75rem/);
 assert.match(mainCss, /@media \(max-width:\s*52rem\)/);
 assert.match(mainCss, /@media \(max-width:\s*40rem\)/);
