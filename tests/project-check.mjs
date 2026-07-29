@@ -13,7 +13,7 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-(?:intent-search|service-hub-02)/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-(?:intent-search|service-hub-02|service-hub-03|service-hub-04)/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -22,6 +22,9 @@ const homeScript = fs.readFileSync(path.join(root, "js/pages/home.js"), "utf8");
 assert.match(homeHtml, /Satu pintu pengajuan PEPK/);
 assert.match(homeHtml, /tautan unik yang dikirim ke email pengirim/);
 assert.match(homeScript, /Mulai Pengajuan/);
+assert.match(homeScript, /button button--primary contribution-quick-card__action/);
+assert.match(read("resources.html"), /class="monev-library-access" href="monev\.html"/);
+assert.match(read("resources.html"), /Buka daftar Materi Monev/);
 assert.match(homeScript, /script\.google\.com\/macros\/s\//);
 assert.doesNotMatch(homeScript, /Buka formulir/);
 assert.doesNotMatch(homeScript, /title:\s*"Tambah Agenda"/);
