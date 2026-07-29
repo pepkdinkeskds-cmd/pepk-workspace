@@ -2105,7 +2105,7 @@
     display: grid;
     grid-template-columns: minmax(0, 3fr) minmax(17.5rem, 1fr);
     gap: 1rem;
-    align-items: start;
+    align-items: stretch;
   }
 
   .home-quick-panels {
@@ -2117,6 +2117,8 @@
 
   .home-contribution-actions {
     display: grid;
+    flex: 1 1 auto;
+    align-content: center;
     gap: .7rem;
     margin-block-start: 1rem;
   }
@@ -2210,7 +2212,7 @@
     background:
       radial-gradient(circle at 100% 0, rgba(11, 179, 149, .1), transparent 34%),
       linear-gradient(180deg, var(--blue-050), var(--white));
-    align-self: start;
+    align-self: stretch;
   }
 
   .home-contribution-heading h2 {
@@ -2284,7 +2286,7 @@
     }
 
     .home-contribution-actions {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       margin-block-start: 0;
     }
 
@@ -2302,7 +2304,7 @@
     }
 
     .home-contribution-actions {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       margin-block-start: 1rem;
     }
   }

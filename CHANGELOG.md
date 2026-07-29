@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.5 — Quality 03B
+
+- Menyamakan batas atas dan bawah kartu **Layanan Cepat** dengan kartu **Akses Cepat** pada desktop.
+- Mendistribusikan isi Layanan Cepat secara vertikal agar kartu tetap proporsional setelah tingginya disamakan.
+- Mempertahankan tinggi alami ketika kedua kartu ditumpuk pada tablet dan ponsel.
+- Menjadikan satu kartu Pengajuan PEPK memenuhi area layanan pada susunan responsif.
+- Menaikkan versi cache CSS ke `quality-03b` dan menambahkan pengujian regresi tata letak.
+
 ## 0.9.5 — Quality 03A
 
 - Menetapkan satu skala tipografi lintas halaman untuk judul, isi, kontrol, metadata, dan badge.

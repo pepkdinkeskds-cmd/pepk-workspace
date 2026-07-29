@@ -14,7 +14,7 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-03a/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-03b/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -28,6 +28,21 @@ assert.match(read("resources.html"), /class="monev-library-access" href="monev\.
 const mainCss = read("css/main.css");
 assert.match(mainCss, /QUALITY 03 — responsive comfort/);
 assert.match(mainCss, /QUALITY 03A — cross-page typography scale/);
+assert.match(
+  mainCss,
+  /\.home-tools-layout\s*\{[\s\S]*?grid-template-columns:[\s\S]*?align-items:\s*stretch/,
+  "Akses Cepat dan Layanan Cepat harus memiliki tinggi desktop yang sejajar"
+);
+assert.match(
+  mainCss,
+  /\.home-tools-card--contribution\s*\{[\s\S]*?align-self:\s*stretch/,
+  "Kartu Layanan Cepat harus mengikuti tinggi baris Akses Cepat"
+);
+assert.match(
+  mainCss,
+  /\.home-contribution-actions\s*\{[\s\S]*?flex:\s*1 1 auto[\s\S]*?align-content:\s*center/,
+  "Aksi Layanan Cepat harus tetap terdistribusi proporsional di dalam kartu"
+);
 assert.match(mainCss, /--type-meta:\s*\.8125rem/);
 assert.match(mainCss, /--type-badge:\s*\.75rem/);
 assert.match(mainCss, /min-height:\s*2\.75rem/);
