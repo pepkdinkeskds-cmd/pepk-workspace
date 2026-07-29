@@ -40,6 +40,16 @@ const informationHtml = read("information.html");
 const informationScript = read("js/pages/information.js");
 assert.match(monevScript, /initApp\("resources"\)/);
 assert.match(monevScript, /SUBMISSION_PORTAL_URL/);
+assert.doesNotMatch(
+  monevScript,
+  /data\.settings\.monevMaterialFormUrl/,
+  "JavaScript Materi Monev tidak boleh menimpa Submission Portal dengan URL formulir dari spreadsheet"
+);
+assert.doesNotMatch(
+  monevScript,
+  /uploadLink\.href\s*=\s*[^;\n]*(?:monevMaterialFormUrl|contribute\.html)/,
+  "Tautan Ajukan Materi Monev tidak boleh diarahkan kembali ke Google Form atau halaman Layanan saat render"
+);
 assert.match(monevHtml, /Ajukan Materi Monev/);
 assert.match(
   monevHtml,

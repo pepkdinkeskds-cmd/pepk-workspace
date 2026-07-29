@@ -148,11 +148,9 @@ function render() {
   countNode.textContent = `${items.length} materi`;
   const active = [state.year && `Tahun ${state.year}`, state.month && MONTHS[Number(state.month) - 1], state.sender, state.type, state.q && `“${state.q}”`].filter(Boolean);
   detailNode.textContent = active.length ? `Filter: ${active.join(" • ")}` : "Seluruh materi yang telah disetujui administrator";
-  uploadLink.href = data.settings.monevMaterialFormUrl || "contribute.html";
-  if (data.settings.monevMaterialFormUrl) {
-    uploadLink.target = "_blank";
-    uploadLink.rel = "noopener noreferrer";
-  }
+  // Submission Portal adalah satu-satunya pintu pengajuan. Jangan mengambil
+  // kembali URL Google Form lama dari pengaturan spreadsheet saat render.
+  uploadLink.href = SUBMISSION_PORTAL_URL;
   if (!items.length) empty.append(emptyState("Materi belum ditemukan", "Ubah filter atau unggah materi Monev melalui Pusat Layanan.", "presentation", { label: "Buka Pusat Layanan", href: "contribute.html" }));
   announce(`${items.length} materi Monev ditampilkan.`);
 }
