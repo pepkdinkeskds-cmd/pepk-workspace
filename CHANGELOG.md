@@ -249,3 +249,9 @@
 - Menambahkan panel informasi status dan perbaikan melalui email.
 - Menghapus ketergantungan tampilan Pusat Layanan pada tiga URL Google Form lama.
 - Tidak menampilkan tautan Operator Console pada website publik.
+## v0.9.5 — Service Hub 06
+
+- Menghapus latar biru solid pada aksi `Mulai Pengajuan` di Pusat Layanan.
+- Menghapus latar biru solid pada aksi `Buka Materi` di Pustaka.
+- Mempertahankan seluruh kartu sebagai area klik dengan umpan balik hover dan focus.
+- Menaikkan versi aset untuk memutus cache tampilan lama.

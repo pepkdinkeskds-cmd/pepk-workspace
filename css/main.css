@@ -2807,6 +2807,25 @@ body[data-page="contribute"] .contribution-action-card__end {
   height: 1.05rem;
 }
 
+/* Service Hub 06 — quiet text actions for the public service and library cards. */
+body[data-page="contribute"] .contribution-action-card__end--action,
+.monev-library-access__action {
+  min-height: 0;
+  padding: .4rem .15rem;
+  border-radius: 0;
+  color: var(--blue-700);
+  background: transparent;
+  box-shadow: none;
+  font-size: .88rem;
+  transition: color .18s ease, transform .18s ease;
+}
+
+body[data-page="contribute"] .contribution-action-card--clickable:hover .contribution-action-card__end--action,
+.monev-library-access:hover .monev-library-access__action {
+  color: var(--blue-800);
+  transform: translateX(.2rem);
+}
+
 @media (max-width: 64rem) {
   body[data-page="contribute"] .contribution-action-card__details {
     grid-template-columns: 1fr;
@@ -2819,8 +2838,8 @@ body[data-page="contribute"] .contribution-action-card__end {
   }
 
   body[data-page="contribute"] .contribution-action-card__end--action {
-    width: 100%;
-    justify-self: stretch;
+    width: auto;
+    justify-self: start;
   }
 
   body[data-page="contribute"] .contribution-action-card__end--info {
@@ -2833,6 +2852,7 @@ body[data-page="contribute"] .contribution-action-card__end {
 
   .monev-library-access__action {
     grid-column: 1 / -1;
-    width: 100%;
+    width: auto;
+    justify-self: start;
   }
 }
