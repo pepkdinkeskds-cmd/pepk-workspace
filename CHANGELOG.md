@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.5 — Quality 03C
+
+- Memperbesar kartu **Pengajuan PEPK** secara terukur agar deskripsi lengkap, termasuk Materi Monev, tidak terpotong.
+- Menghapus pembatas dua baris pada deskripsi kartu pengajuan.
+- Menambah jarak antara judul **Satu pintu pengajuan PEPK** dan deskripsi untuk memanfaatkan ruang panel secara lebih seimbang.
+- Menyesuaikan kembali jarak serta tinggi kartu pada tablet dan ponsel agar tetap proporsional.
+- Menaikkan versi cache CSS ke `quality-03c` dan menambahkan pengujian regresi kartu pengajuan.
+
 ## 0.9.5 — Quality 03B
 
 - Menyamakan batas atas dan bawah kartu **Layanan Cepat** dengan kartu **Akses Cepat** pada desktop.

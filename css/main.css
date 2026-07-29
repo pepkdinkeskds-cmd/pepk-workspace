@@ -3307,3 +3307,64 @@ body[data-page="contribute"] .contribution-action-card--clickable:hover .contrib
 .monev-library-access__content > span:last-child {
   font-size: var(--type-body-compact);
 }
+
+/* QUALITY 03C — roomier quick-submission card and balanced heading rhythm. */
+@layer quality {
+  .home-contribution-heading p {
+    margin-block-start: clamp(.85rem, 1.4vw, 1.1rem);
+  }
+
+  .home-contribution-actions {
+    margin-block-start: clamp(1.4rem, 2.5vw, 2rem);
+  }
+
+  .home-contribution-actions .contribution-quick-card {
+    min-height: 10.5rem;
+    grid-template-columns: 2.85rem minmax(0, 1fr);
+    align-content: center;
+    gap: .85rem;
+    padding: 1rem;
+  }
+
+  .home-contribution-actions .contribution-quick-card__icon {
+    width: 2.85rem;
+    height: 2.85rem;
+  }
+
+  .home-contribution-actions .contribution-quick-card__content p {
+    display: block;
+    overflow: visible;
+    margin-block-start: .35rem;
+    line-height: 1.55;
+    -webkit-box-orient: initial;
+    -webkit-line-clamp: unset;
+  }
+
+  .home-contribution-actions .contribution-quick-card__action {
+    min-height: 2.8rem;
+    padding: .65rem .85rem;
+  }
+
+  @media (max-width: 68rem) {
+    .home-contribution-actions {
+      margin-block-start: 0;
+    }
+  }
+
+  @media (max-width: 52rem) {
+    .home-contribution-actions {
+      margin-block-start: 1.5rem;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .home-contribution-heading p {
+      margin-block-start: .8rem;
+    }
+
+    .home-contribution-actions .contribution-quick-card {
+      min-height: 10rem;
+      padding: .95rem;
+    }
+  }
+}

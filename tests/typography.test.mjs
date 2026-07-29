@@ -17,10 +17,10 @@ const pages = [
   "404.html"
 ];
 
-test("all pages use the Quality 03B stylesheet cache key", () => {
+test("all pages use the Quality 03C stylesheet cache key", () => {
   for (const page of pages) {
     const html = fs.readFileSync(path.join(root, page), "utf8");
-    assert.match(html, /css\/main\.css\?v=0\.9\.5-quality-03b/);
+    assert.match(html, /css\/main\.css\?v=0\.9\.5-quality-03c/);
   }
 });
 
