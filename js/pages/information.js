@@ -3,6 +3,7 @@ import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9
 import { agendaCard, informationCard, realizationCard, realizationChart, realizationTable, emptyState } from "../ui.js";
 import { latestRealization, realizationForYear, realizationYears, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
+import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js";
 
 initApp("information");
 
@@ -23,18 +24,12 @@ let selectedRealizationYear = Number(params.get("year")) || null;
 function renderAgendaSubmitLink() {
   const link = document.querySelector("[data-agenda-submit-link]");
   if (!link) return;
-  const url = data.settings.workflowEnabled !== false ? data.settings.agendaSubmitFormUrl : "";
-  if (url) {
-    link.href = url;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.hidden = false;
-  } else {
-    link.href = "contribute.html";
-    link.removeAttribute("target");
-    link.removeAttribute("rel");
-    link.hidden = false;
-  }
+  link.href = SUBMISSION_PORTAL_URL;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.referrerPolicy = "no-referrer";
+  link.setAttribute("aria-label", "Ajukan Agenda melalui Portal Pengajuan PEPK di tab baru");
+  link.hidden = false;
 }
 
 function renderOverview() {
@@ -49,7 +44,7 @@ function renderOverview() {
   if (!agendas.length) {
     agendaNode.append(emptyState(
       "Belum ada agenda aktif",
-      "Rapat internal, undangan eksternal, lokasi, dan PIC akan tampil di bagian ini setelah sheet Agenda diisi.",
+      "Belum ada agenda aktif yang dipublikasikan.",
       "calendar"
     ));
   }
@@ -79,7 +74,7 @@ function renderOverview() {
   } else {
     realizationNode.append(emptyState(
       "Data capaian belum tersedia",
-      "Tambahkan satu baris untuk setiap bulan pada sheet Realization. Deviasi akan dihitung otomatis dari capaian fisik dikurangi realisasi keuangan.",
+      "Data realisasi keuangan dan fisik belum dipublikasikan untuk periode ini.",
       "trend"
     ));
   }

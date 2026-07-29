@@ -12,8 +12,9 @@ import {
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { emptyState } from "../ui.js";
 import { icon } from "../icons.js";
+import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js";
 
-initApp("contribute");
+initApp("resources");
 let data = getInitialData();
 applyMetadata(data.settings);
 
@@ -35,6 +36,14 @@ const state = {
   type: params.get("type") || "",
   sort: params.get("sort") || "presentation"
 };
+
+if (uploadLink) {
+  uploadLink.href = SUBMISSION_PORTAL_URL;
+  uploadLink.target = "_blank";
+  uploadLink.rel = "noopener noreferrer";
+  uploadLink.referrerPolicy = "no-referrer";
+  uploadLink.setAttribute("aria-label", "Ajukan Materi Monev melalui Portal Pengajuan PEPK di tab baru");
+}
 
 function normalized(value) {
   return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();

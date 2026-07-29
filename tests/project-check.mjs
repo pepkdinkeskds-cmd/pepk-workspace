@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const read = (relativePath) => fs.readFileSync(path.join(root, relativePath), "utf8");
 const pages = ["index.html", "resources.html", "workspace.html", "information.html", "contribute.html",
   "monev.html", "about.html", "404.html"];
 
@@ -13,7 +14,7 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-(?:intent-search|service-hub-02|service-hub-03|service-hub-04)/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-(?:intent-search|service-hub-02|service-hub-03|service-hub-04|service-hub-06|quality-01)/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -24,10 +25,30 @@ assert.match(homeHtml, /tautan unik yang dikirim ke email pengirim/);
 assert.match(homeScript, /Mulai Pengajuan/);
 assert.match(homeScript, /button button--primary contribution-quick-card__action/);
 assert.match(read("resources.html"), /class="monev-library-access" href="monev\.html"/);
+const mainCss = read("css/main.css");
+assert.match(mainCss, /Service Hub 06 — quiet text actions/);
+assert.match(mainCss, /\.monev-library-access__action\s*\{[\s\S]*?background:\s*transparent/);
+assert.match(mainCss, /contribution-action-card__end--action,[\s\S]*?background:\s*transparent/);
 assert.match(read("resources.html"), /Buka daftar Materi Monev/);
 assert.match(homeScript, /script\.google\.com\/macros\/s\//);
 assert.doesNotMatch(homeScript, /Buka formulir/);
 assert.doesNotMatch(homeScript, /title:\s*"Tambah Agenda"/);
+
+const monevHtml = read("monev.html");
+const monevScript = read("js/pages/monev.js");
+const informationHtml = read("information.html");
+const informationScript = read("js/pages/information.js");
+assert.match(monevScript, /initApp\("resources"\)/);
+assert.match(monevScript, /SUBMISSION_PORTAL_URL/);
+assert.match(monevHtml, /Ajukan Materi Monev/);
+assert.match(informationHtml, /Ajukan Agenda/);
+assert.match(informationScript, /SUBMISSION_PORTAL_URL/);
+assert.doesNotMatch(monevHtml, /Unggah Materi/);
+assert.doesNotMatch(informationHtml, /Tambah agenda/i);
+assert.doesNotMatch(`${monevHtml}\n${monevScript}\n${informationHtml}\n${informationScript}`, /docs\.google\.com\/forms|forms\.gle/);
+for (const page of pages) {
+  assert.doesNotMatch(read(page), /<h[1-6][^>]*>\s*<\/h[1-6]>/i, `${page} tidak boleh memiliki heading kosong`);
+}
 
 const contributeHtml = fs.readFileSync(path.join(root, "contribute.html"), "utf8");
 const contributeScript = fs.readFileSync(path.join(root, "js/pages/contribute.js"), "utf8");

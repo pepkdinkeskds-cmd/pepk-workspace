@@ -255,3 +255,10 @@
 - Menghapus latar biru solid pada aksi `Buka Materi` di Pustaka.
 - Mempertahankan seluruh kartu sebagai area klik dengan umpan balik hover dan focus.
 - Menaikkan versi aset untuk memutus cache tampilan lama.
+# PEPK Workspace v0.9.5 QUALITY 01
+
+- Mengarahkan pengajuan Materi Monev dan Agenda ke satu Submission Portal.
+- Menempatkan Materi Monev sebagai bagian dari navigasi Pustaka.
+- Mengganti label tindakan menjadi “Ajukan Materi Monev” dan “Ajukan Agenda”.
+- Menghapus teks empty state yang mengekspos istilah teknis spreadsheet.
+- Menambahkan pemeriksaan regresi untuk Google Form lama, menu aktif, label tindakan, dan heading kosong.
