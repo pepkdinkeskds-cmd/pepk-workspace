@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.5 — Service Hub 05
+
+- Mengembalikan akses Materi Monev pada halaman Pustaka melalui `monev.html`.
+- Mengubah teks dan ikon tombol Mulai Pengajuan di Beranda menjadi putih.
+
 ## 0.9.5 — Intent-Aware Search
 
 - Membedakan pencarian folder spesifik, folder induk, jalur menengah, aplikasi,

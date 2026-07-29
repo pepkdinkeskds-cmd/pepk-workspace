@@ -64,7 +64,7 @@ function contributionAction({ title, description, iconName, url }) {
       createElement("p", { text: description })
     ])
   );
-  const link = externalLink(url, title, "button button--secondary contribution-quick-card__action");
+  const link = externalLink(url, title, "button button--primary contribution-quick-card__action");
   link.innerHTML = `${icon("arrow")} Mulai Pengajuan`;
   link.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal");
   article.append(link);
