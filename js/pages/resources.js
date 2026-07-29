@@ -27,6 +27,11 @@ const countNode = document.querySelector("[data-resource-count]");
 const filterSummary = document.querySelector("[data-filter-summary]");
 const resetButton = document.querySelector("[data-filter-reset]");
 const filterForm = document.querySelector("[data-resource-filters]");
+const loadMoreButton = document.querySelector("[data-resource-load-more]");
+const visibleCountNode = document.querySelector("[data-resource-visible-count]");
+const pageSize = 24;
+let visibleLimit = pageSize;
+let currentResults = [];
 
 function getParams() {
   const params = new URLSearchParams(window.location.search);
@@ -125,7 +130,7 @@ function updateSummary({ q, workspace, type, year, sort }, count, intent = null)
   const sortLabel = sortFilter.options[sortFilter.selectedIndex]?.textContent || sort;
   const base = parts.length
     ? `${count} hasil untuk ${parts.join(" • ")} — urutkan: ${sortLabel}`
-    : `${count} resource tersedia — urutkan: ${sortLabel}`;
+    : `${count} sumber daya tersedia — urutkan: ${sortLabel}`;
   filterSummary.textContent = q && intent?.guidance
     ? `${base}. ${intent.guidance}`
     : base;
@@ -142,7 +147,9 @@ function resetFilters() {
   searchInput.focus();
 }
 
-function render() {
+function render(options = {}) {
+  const { preserveVisibleLimit = false } = options;
+  if (!preserveVisibleLimit) visibleLimit = pageSize;
   const q = searchInput.value.trim();
   const workspace = workspaceFilter.value;
   const type = typeFilter.value;
@@ -154,7 +161,10 @@ function render() {
   emptyContainer.replaceChildren();
 
   if (q && q.length < minimum) {
+    currentResults = [];
     countNode.textContent = "0";
+    visibleCountNode.textContent = "0";
+    loadMoreButton.hidden = true;
     filterSummary.textContent = `Ketik minimal ${minimum} karakter untuk mencari.`;
     emptyContainer.append(emptyState(
       `Ketik minimal ${minimum} karakter`,
@@ -182,9 +192,10 @@ function render() {
     sortFilter.value = sort;
   }
 
-  const results = sortResults(scored, sort, Boolean(q)).map((item) => item.resource);
-  results.forEach((resource) => list.append(resourceCard(resource)));
-  if (!results.length) {
+  currentResults = sortResults(scored, sort, Boolean(q)).map((item) => item.resource);
+  const visibleResults = currentResults.slice(0, visibleLimit);
+  visibleResults.forEach((resource) => list.append(resourceCard(resource)));
+  if (!currentResults.length) {
     emptyContainer.append(emptyState(
       "Tidak ada resource yang sesuai",
       "Ubah kata pencarian atau hapus salah satu filter.",
@@ -193,11 +204,14 @@ function render() {
     ));
   }
 
-  countNode.textContent = String(results.length);
-  updateSummary({ q, workspace, type, year, sort }, results.length, searchResult.intent);
+  countNode.textContent = String(currentResults.length);
+  visibleCountNode.textContent = String(visibleResults.length);
+  updateSummary({ q, workspace, type, year, sort }, currentResults.length, searchResult.intent);
+  loadMoreButton.hidden = visibleResults.length >= currentResults.length;
+  loadMoreButton.setAttribute("aria-label", `Muat lebih banyak. Menampilkan ${visibleResults.length} dari ${currentResults.length} hasil.`);
   setParams({ q, workspace, type, year, sort });
-  const directCount = results.filter((item) => item.kind === "deep-folder").length;
-  announce(`${searchResult.intent?.guidance || `${results.length} hasil ditemukan.`} Termasuk ${directCount} folder langsung.`);
+  const directCount = currentResults.filter((item) => item.kind === "deep-folder").length;
+  announce(`${searchResult.intent?.guidance || `${currentResults.length} hasil ditemukan.`} Menampilkan ${visibleResults.length}. Termasuk ${directCount} folder langsung.`);
 }
 
 const initial = getParams();
@@ -224,6 +238,17 @@ yearFilter.addEventListener("change", render);
 sortFilter.addEventListener("change", render);
 resetButton.addEventListener("click", resetFilters);
 filterForm.addEventListener("submit", (event) => { event.preventDefault(); render(); });
+loadMoreButton.addEventListener("click", () => {
+  const previousCount = Math.min(visibleLimit, currentResults.length);
+  visibleLimit += pageSize;
+  render({ preserveVisibleLimit: true });
+  const firstNewCard = list.children[previousCount];
+  if (firstNewCard) {
+    firstNewCard.setAttribute("tabindex", "-1");
+    firstNewCard.focus({ preventScroll: true });
+    firstNewCard.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+});
 
 window.addEventListener("popstate", () => {
   const state = getParams();

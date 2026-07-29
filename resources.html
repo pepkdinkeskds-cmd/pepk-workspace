@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.9.5-service-hub-06">
-  <script type="module" src="js/pages/resources.js?v=0.9.5-service-hub-06"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.5-quality-02">
+  <script type="module" src="js/pages/resources.js?v=0.9.5-quality-02"></script>
 </head>
 <body data-page="resources">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -115,11 +115,15 @@
       <div class="results-toolbar">
         <div>
           <p><strong data-resource-count aria-live="polite">0</strong> hasil ditemukan</p>
-          <p class="results-toolbar__summary" data-filter-summary>Menampilkan seluruh resource.</p>
+          <p class="results-toolbar__summary" data-filter-summary>Menampilkan seluruh sumber daya.</p>
+          <p class="results-toolbar__visible">Menampilkan <strong data-resource-visible-count>0</strong> item pada halaman ini.</p>
         </div>
         <span class="results-toolbar__hint"><span data-icon="external"></span> Tautan terbuka di tab baru</span>
       </div>
       <div class="resource-grid" data-resource-list></div>
+      <div class="resource-load-more">
+        <button class="button button--secondary" type="button" data-resource-load-more hidden>Muat lebih banyak</button>
+      </div>
       <div data-resource-empty></div>
     </div>
   </section>

@@ -269,3 +269,13 @@
 - Mengganti label tindakan menjadi “Ajukan Materi Monev” dan “Ajukan Agenda”.
 - Menghapus teks empty state yang mengekspos istilah teknis spreadsheet.
 - Menambahkan pemeriksaan regresi untuk Google Form lama, menu aktif, label tindakan, dan heading kosong.
+# PEPK Workspace v0.9.5 QUALITY 02
+
+## Optimasi Pustaka dan keterbacaan
+
+- Pustaka menampilkan 24 hasil pertama dan menambahkan 24 hasil per klik melalui aksi **Muat lebih banyak**.
+- Pencarian, filter, pengurutan, navigasi riwayat, dan pembaruan data otomatis mengatur ulang jumlah hasil yang tampil.
+- Ringkasan membedakan total hasil dan jumlah item yang sedang ditampilkan.
+- Ukuran teks deskripsi, metadata, label filter, status data, dan footer ditingkatkan agar lebih nyaman dibaca.
+- Fokus keyboard dipindahkan ke hasil baru setelah pengguna memuat item tambahan.
+- Versi aset diseragamkan ke `quality-02` untuk mencegah cache lama.

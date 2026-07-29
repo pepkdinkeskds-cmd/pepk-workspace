@@ -14,7 +14,7 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-(?:intent-search|service-hub-02|service-hub-03|service-hub-04|service-hub-06|quality-01)/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-02/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -30,6 +30,13 @@ assert.match(mainCss, /Service Hub 06 — quiet text actions/);
 assert.match(mainCss, /\.monev-library-access__action\s*\{[\s\S]*?background:\s*transparent/);
 assert.match(mainCss, /contribution-action-card__end--action,[\s\S]*?background:\s*transparent/);
 assert.match(read("resources.html"), /Buka daftar Materi Monev/);
+assert.match(read("resources.html"), /data-resource-load-more/);
+assert.match(read("resources.html"), /data-resource-visible-count/);
+const resourcesScript = read("js/pages/resources.js");
+assert.match(resourcesScript, /const pageSize = 24/);
+assert.match(resourcesScript, /currentResults\.slice\(0, visibleLimit\)/);
+assert.match(resourcesScript, /visibleLimit \+= pageSize/);
+assert.match(resourcesScript, /render\(\{ preserveVisibleLimit: true \}\)/);
 assert.match(homeScript, /script\.google\.com\/macros\/s\//);
 assert.doesNotMatch(homeScript, /Buka formulir/);
 assert.doesNotMatch(homeScript, /title:\s*"Tambah Agenda"/);
