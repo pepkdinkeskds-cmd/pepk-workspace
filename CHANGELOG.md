@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.5 — Quality 01A
+
+- Menetapkan URL Submission Portal secara langsung pada tombol **Ajukan Materi Monev**.
+- Menghapus ketergantungan tombol tersebut pada pengalihan JavaScript dan fallback halaman Layanan.
+- Menambahkan pengujian tujuan URL aktual untuk mencegah tombol kembali ke Google Form lama.
+- Menaikkan versi aset halaman Materi Monev untuk memutus cache produksi.
+
 ## 0.9.5 — Service Hub 05
 
 - Mengembalikan akses Materi Monev pada halaman Pustaka melalui `monev.html`.

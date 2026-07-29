@@ -41,6 +41,16 @@ const informationScript = read("js/pages/information.js");
 assert.match(monevScript, /initApp\("resources"\)/);
 assert.match(monevScript, /SUBMISSION_PORTAL_URL/);
 assert.match(monevHtml, /Ajukan Materi Monev/);
+assert.match(
+  monevHtml,
+  /data-monev-upload-link[\s\S]*?href="https:\/\/script\.google\.com\/macros\/s\/AKfycbyjW1UYM2-k0AcXMrYmV36qDIL6PtJrOmOxUs4P1bhMkbpiyIEqR5_VgmMX3cdT2sM\/exec"/,
+  "Ajukan Materi Monev harus memiliki URL Submission Portal langsung pada HTML"
+);
+assert.doesNotMatch(
+  monevHtml,
+  /data-monev-upload-link[\s\S]*?href="(?:https:\/\/docs\.google\.com\/forms|https:\/\/forms\.gle|contribute\.html)"/,
+  "Ajukan Materi Monev tidak boleh kembali ke Google Form atau fallback halaman Layanan"
+);
 assert.match(informationHtml, /Ajukan Agenda/);
 assert.match(informationScript, /SUBMISSION_PORTAL_URL/);
 assert.doesNotMatch(monevHtml, /Unggah Materi/);
