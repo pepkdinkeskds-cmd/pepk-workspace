@@ -14,7 +14,7 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-02/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-03/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -26,6 +26,14 @@ assert.match(homeScript, /Mulai Pengajuan/);
 assert.match(homeScript, /button button--primary contribution-quick-card__action/);
 assert.match(read("resources.html"), /class="monev-library-access" href="monev\.html"/);
 const mainCss = read("css/main.css");
+assert.match(mainCss, /QUALITY 03 — responsive comfort/);
+assert.match(mainCss, /min-height:\s*2\.75rem/);
+assert.match(mainCss, /@media \(max-width:\s*52rem\)/);
+assert.match(mainCss, /@media \(max-width:\s*40rem\)/);
+assert.match(mainCss, /@media \(max-width:\s*24rem\)/);
+assert.match(mainCss, /\.workspace-tabs\s*\{[\s\S]*?overflow-x:\s*auto/);
+assert.match(mainCss, /\.mobile-nav a\s*\{[\s\S]*?display:\s*flex/);
+assert.match(mainCss, /\.filter-reset\s*\{[\s\S]*?width:\s*100%/);
 assert.match(mainCss, /Service Hub 06 — quiet text actions/);
 assert.match(mainCss, /\.monev-library-access__action\s*\{[\s\S]*?background:\s*transparent/);
 assert.match(mainCss, /contribution-action-card__end--action,[\s\S]*?background:\s*transparent/);

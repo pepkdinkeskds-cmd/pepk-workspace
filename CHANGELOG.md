@@ -279,3 +279,16 @@
 - Ukuran teks deskripsi, metadata, label filter, status data, dan footer ditingkatkan agar lebih nyaman dibaca.
 - Fokus keyboard dipindahkan ke hasil baru setelah pengguna memuat item tambahan.
 - Versi aset diseragamkan ke `quality-02` untuk mencegah cache lama.
+
+# PEPK Workspace v0.9.5 QUALITY 03
+
+## Responsivitas dan kenyamanan antarmuka
+
+- Memperbesar metadata penting dan teks pendukung yang masih terlalu kecil.
+- Menetapkan target sentuh minimum untuk tautan, filter, navigasi, dan kontrol utama.
+- Mengurangi tinggi hero agar konten utama lebih cepat terlihat tanpa menghilangkan identitas visual.
+- Menstabilkan header, filter, tab Ruang Kerja, kartu, dan footer pada tablet serta ponsel.
+- Membuat tab Ruang Kerja dapat digeser secara horizontal pada layar sempit tanpa merusak tata letak.
+- Memperbaiki susunan kartu Materi Monev, panel layanan, dan tombol reset pada ponsel.
+- Menambahkan perlindungan tata letak untuk layar sangat sempit hingga 320 px.
+- Menyeragamkan versi aset ke `quality-03` untuk mencegah cache lama.

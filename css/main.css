@@ -2868,3 +2868,258 @@ body[data-page="contribute"] .contribution-action-card--clickable:hover .contrib
     justify-self: start;
   }
 }
+
+/* QUALITY 03 — responsive comfort, readable metadata, and reliable touch targets. */
+@layer components {
+  .brand__text span,
+  .eyebrow,
+  .breadcrumbs,
+  .workspace-card__meta,
+  .quick-panel__heading p,
+  .application-card__description,
+  .agenda-card__full-date,
+  .agenda-card__details,
+  .agenda-card__description,
+  .realization-card__period,
+  .realization-card__target,
+  .realization-card__attainment,
+  .realization-card__description,
+  .realization-card__updated,
+  .realization-deviation__label,
+  .realization-deviation__description,
+  .workflow-steps p,
+  .workflow-note p,
+  .monev-summary-card > span:last-child > span,
+  .monev-results-heading span,
+  .monev-material-card__file {
+    font-size: max(.82rem, 13px);
+  }
+
+  .home-contribution-note,
+  .contribution-action-card__content > p,
+  .monev-library-access__content > span:last-child {
+    font-size: max(.9rem, 14px);
+  }
+
+  .text-link,
+  .filter-reset,
+  .results-toolbar button,
+  .workspace-tabs a,
+  .mobile-nav a {
+    min-height: 2.75rem;
+  }
+
+  .text-link {
+    padding-block: .55rem;
+  }
+
+  .search-hints button {
+    min-height: 2.5rem;
+    padding: .48rem .72rem;
+    font-size: max(.8rem, 13px);
+  }
+
+  .filter-panel input,
+  .filter-panel select,
+  .workspace-search input,
+  .realization-toolbar select {
+    min-height: 2.75rem;
+  }
+
+  .site-footer__grid {
+    row-gap: 1.5rem;
+  }
+}
+
+@layer pages {
+  body[data-page="home"] .hero__grid {
+    min-height: clamp(32rem, 62vh, 41rem);
+  }
+
+  body:not([data-page="home"]) .page-hero__inner {
+    min-height: 16rem;
+  }
+}
+
+@layer utilities {
+  @media (max-width: 68rem) {
+    .site-header__inner {
+      gap: 1rem;
+    }
+
+    .section {
+      padding-block: clamp(3rem, 6vw, 5rem);
+    }
+
+    .filter-panel,
+    .monev-filter-panel {
+      gap: .85rem;
+    }
+
+    .workspace-tabs {
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scrollbar-width: thin;
+    }
+
+    .workspace-tabs a {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+  }
+
+  @media (max-width: 52rem) {
+    :root {
+      --header-height: 4.25rem;
+    }
+
+    .site-header__inner {
+      min-height: var(--header-height);
+    }
+
+    .brand__logo {
+      width: 1.85rem;
+      height: 2.65rem;
+    }
+
+    .menu-button {
+      width: 2.75rem;
+      height: 2.75rem;
+    }
+
+    .page-hero__inner {
+      min-height: 13.5rem !important;
+      padding-block: 2.5rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .section-heading {
+      gap: .8rem;
+    }
+
+    .section-heading .text-link {
+      align-self: flex-start;
+    }
+
+    .site-footer {
+      padding-block: 2.5rem;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .container {
+      width: min(100% - 1.5rem, var(--container));
+    }
+
+    .section {
+      padding-block: 2.65rem;
+    }
+
+    body[data-page="home"] .hero__grid {
+      padding-block: 2.8rem 3.25rem;
+    }
+
+    body[data-page="home"] .hero h1 {
+      font-size: clamp(2.2rem, 11vw, 3rem);
+    }
+
+    .hero__content > p,
+    .page-hero p {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .hero-search {
+      gap: .35rem;
+    }
+
+    .hero-search input {
+      min-width: 0;
+    }
+
+    .hero-search button {
+      min-height: 3rem;
+    }
+
+    .mobile-nav__inner {
+      gap: .15rem;
+      padding-block: .6rem .9rem;
+    }
+
+    .mobile-nav a {
+      display: flex;
+      align-items: center;
+      padding-inline: .8rem;
+    }
+
+    .workspace-card {
+      min-height: 13.5rem;
+      padding: 1.2rem;
+    }
+
+    .resource-card,
+    .agenda-card,
+    .monev-material-card {
+      gap: .75rem;
+      padding: 1rem;
+    }
+
+    .results-toolbar,
+    .workspace-toolbar,
+    .realization-toolbar {
+      width: 100%;
+    }
+
+    .results-toolbar > *,
+    .workspace-toolbar > *,
+    .realization-toolbar > * {
+      max-width: 100%;
+    }
+
+    .filter-reset {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .page-hero__actions {
+      gap: .65rem;
+    }
+
+    .monev-library-access {
+      grid-template-columns: 1fr;
+    }
+
+    .monev-library-access__icon {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .monev-library-access__action {
+      grid-column: auto;
+    }
+
+    body[data-page="contribute"] .contribution-action-card,
+    .about-card {
+      padding: 1.15rem;
+    }
+  }
+
+  @media (max-width: 24rem) {
+    .brand__text strong {
+      font-size: .92rem;
+    }
+
+    .hero h1,
+    .page-hero h1 {
+      overflow-wrap: anywhere;
+    }
+
+    .workspace-card__top,
+    .quick-panel__heading {
+      gap: .75rem;
+    }
+  }
+}
