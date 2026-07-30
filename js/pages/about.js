@@ -1,4 +1,4 @@
-import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js";
+import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js?v=0.9.5-mobile-access-01";
 import {
   setContentReady,
   setContentRefreshing,

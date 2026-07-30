@@ -11,11 +11,11 @@ async function source(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
 }
 
-test("every public page loads the isolated Feedback Pilot module", async () => {
+test("every public page loads the isolated Feedback module with the mobile cache key", async () => {
   for (const page of pages) {
     const html = await source(`${page}.html`);
-    assert.match(html, /js\/feedback\.js\?v=0\.9\.5-feedback-pilot-01/);
-    assert.match(html, /css\/main\.css\?v=0\.9\.5-feedback-pilot-01/);
+    assert.match(html, /js\/feedback\.js\?v=0\.9\.5-mobile-access-01/);
+    assert.match(html, /css\/main\.css\?v=0\.9\.5-mobile-access-01/);
   }
 });
 

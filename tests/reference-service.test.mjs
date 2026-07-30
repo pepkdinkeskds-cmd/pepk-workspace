@@ -36,17 +36,18 @@ test("Submission Portal bridge recognizes Reference context without changing its
 test("every portal entry point uses the same versioned bridge", async () => {
   for (const page of ["home", "contribute", "information", "monev"]) {
     const script = await source(`js/pages/${page}.js`);
-    assert.match(script, /SUBMISSION_PORTAL_URL/);
-    assert.match(script, /submission-portal-bridge\.js\?v=0\.9\.5-quality-07/);
+    assert.match(script, /configureSubmissionLink|SUBMISSION_PORTAL_URL/);
+    assert.match(script, /submission-portal-bridge\.js\?v=0\.9\.5-mobile-access-01/);
   }
 });
 
-test("all public pages retain Quality 07 modules and load Feedback Pilot assets", async () => {
+test("all public pages load the mobile access cache key", async () => {
   const pages = ["index", "resources", "workspace", "information", "contribute", "monev", "about", "404"];
   for (const page of pages) {
     const html = await source(`${page}.html`);
-    assert.match(html, /css\/main\.css\?v=0\.9\.5-feedback-pilot-01/);
-    assert.match(html, /js\/pages\/[^"]+\.js\?v=0\.9\.5-quality-07/);
-    assert.match(html, /js\/feedback\.js\?v=0\.9\.5-feedback-pilot-01/);
+    assert.match(html, /css\/main\.css\?v=0\.9\.5-mobile-access-01/);
+    assert.match(html, /js\/mobile-nav\.js\?v=0\.9\.5-mobile-access-01/);
+    assert.match(html, /js\/pages\/[^"]+\.js\?v=0\.9\.5-mobile-access-01/);
+    assert.match(html, /js\/feedback\.js\?v=0\.9\.5-mobile-access-01/);
   }
 });

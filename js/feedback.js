@@ -1,5 +1,5 @@
 import { icon } from "./icons.js?v=0.9.5-feedback-pilot-01";
-import { SUBMISSION_PORTAL_URL } from "./pages/submission-portal-bridge.js?v=0.9.5-quality-07";
+import { SUBMISSION_PORTAL_URL } from "./pages/submission-portal-bridge.js?v=0.9.5-mobile-access-01";
 
 const FEEDBACK = Object.freeze({
   action: "submit_feedback",

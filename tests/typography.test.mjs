@@ -17,10 +17,10 @@ const pages = [
   "404.html"
 ];
 
-test("all pages use the Feedback Pilot stylesheet cache key", () => {
+test("all pages use the Mobile Access stylesheet cache key", () => {
   for (const page of pages) {
     const html = fs.readFileSync(path.join(root, page), "utf8");
-    assert.match(html, /css\/main\.css\?v=0\.9\.5-feedback-pilot-01/);
+    assert.match(html, /css\/main\.css\?v=0\.9\.5-mobile-access-01/);
   }
 });
 

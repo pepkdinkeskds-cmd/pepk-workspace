@@ -1,4 +1,4 @@
-import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js";
+import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js?v=0.9.5-mobile-access-01";
 import {
   setContentReady,
   setContentRefreshing,
@@ -9,7 +9,7 @@ import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9
 import { agendaCard, informationCard, realizationCard, realizationChart, realizationTable, emptyState } from "../ui.js";
 import { latestRealization, realizationForYear, realizationYears, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-07";
+import { configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.5-mobile-access-01";
 
 initApp("information");
 
@@ -30,11 +30,7 @@ let selectedRealizationYear = Number(params.get("year")) || null;
 function renderAgendaSubmitLink() {
   const link = document.querySelector("[data-agenda-submit-link]");
   if (!link) return;
-  link.href = SUBMISSION_PORTAL_URL;
-  link.target = "_blank";
-  link.rel = "noopener noreferrer";
-  link.referrerPolicy = "no-referrer";
-  link.setAttribute("aria-label", "Ajukan Agenda melalui Portal Pengajuan PEPK di tab baru");
+  configureSubmissionLink(link, "Ajukan Agenda melalui Portal Pengajuan PEPK");
   link.hidden = false;
 }
 

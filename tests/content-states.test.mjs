@@ -40,10 +40,10 @@ test("user-facing states do not expose internal data implementation", async () =
   assert.doesNotMatch(combined, />Search-first<|Metadata resource|source code aplikasi|disetujui administrator/);
 });
 
-test("changed pages load the Quality 07 module cache key", async () => {
+test("changed pages load the Mobile Access module cache key", async () => {
   for (const page of htmlPages) {
     const content = await source(`${page}.html`);
-    assert.match(content, /js\/pages\/[^"]+\.js\?v=0\.9\.5-quality-07/, `${page}.html must use the Quality 07 page-module cache key`);
+    assert.match(content, /js\/pages\/[^"]+\.js\?v=0\.9\.5-mobile-access-01/, `${page}.html must use the Mobile Access page-module cache key`);
   }
 });
 

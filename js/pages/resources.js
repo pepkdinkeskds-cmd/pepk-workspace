@@ -6,7 +6,7 @@ import {
   scheduleBackgroundTask,
   minimumSearchLength,
   updateQueryString
-} from "../app.js";
+} from "../app.js?v=0.9.5-mobile-access-01";
 import {
   setContentReady,
   setContentRefreshing,

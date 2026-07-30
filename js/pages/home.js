@@ -7,7 +7,7 @@ import {
   minimumSearchLength,
   createElement,
   externalLink
-} from "../app.js";
+} from "../app.js?v=0.9.5-mobile-access-01";
 import {
   setContentReady,
   setContentRefreshing,
@@ -19,7 +19,7 @@ import { searchResourcesDetailed } from "../search.js";
 import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-07";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-07";
+import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.5-mobile-access-01";
 
 initApp("home");
 
@@ -69,7 +69,7 @@ function contributionAction({ title, description, iconName, url }) {
   );
   const link = externalLink(url, title, "button button--primary contribution-quick-card__action");
   link.innerHTML = `${icon("arrow")} Mulai Pengajuan`;
-  link.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal — terbuka di tab baru");
+  configureSubmissionLink(link, "Mulai Pengajuan PEPK di Submission Portal");
   article.append(link);
   return article;
 }

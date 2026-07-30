@@ -1,5 +1,5 @@
 /**
- * PEPK Workspace v0.9.5 — QUALITY_05 Reference Service Alignment
+ * PEPK Workspace v0.9.5 — MOBILE ACCESS HOTFIX 01
  *
  * Mengalihkan tombol layanan Dokumen, Agenda, Materi Monev, dan Referensi dari
  * Google Forms lama ke deployment aktif PEPK Submission Portal.
@@ -62,7 +62,17 @@ function setAccessibleLabel(anchor, label) {
     anchor.textContent = label;
   }
 
-  anchor.setAttribute('aria-label', `${label} di tab baru`);
+  anchor.setAttribute('aria-label', `${label} di halaman ini`);
+}
+
+export function configureSubmissionLink(anchor, label) {
+  if (!anchor) return anchor;
+  anchor.href = SUBMISSION_PORTAL_URL;
+  anchor.removeAttribute('target');
+  anchor.removeAttribute('rel');
+  anchor.referrerPolicy = 'no-referrer';
+  if (label) anchor.setAttribute('aria-label', `${label} di halaman ini`);
+  return anchor;
 }
 
 function bridgeSubmissionLinks() {
@@ -79,10 +89,7 @@ function bridgeSubmissionLinks() {
 
     anchor.dataset.pepkSubmissionBridged = 'true';
     anchor.dataset.submissionModule = module;
-    anchor.href = SUBMISSION_PORTAL_URL;
-    anchor.target = '_blank';
-    anchor.rel = 'noopener noreferrer';
-    anchor.referrerPolicy = 'no-referrer';
+    configureSubmissionLink(anchor);
     setAccessibleLabel(anchor, MODULE_LABELS[module]);
     updated += 1;
   });

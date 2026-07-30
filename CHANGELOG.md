@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.5 — Mobile Access Hotfix 01
+
+- Membuka Submission Portal pada tab yang sama agar mengikuti jalur tautan langsung yang stabil di Chrome Android.
+- Mempertahankan satu URL deployment `/exec`; tidak mengubah Apps Script atau izin akses.
+- Memisahkan kontrol hamburger ke bootstrap mandiri tanpa import agar aktif sebelum modul data halaman selesai dimuat.
+- Memperbesar target sentuh hamburger menjadi 52 × 52 piksel dan menambahkan optimasi interaksi sentuh.
+- Mencegah pemasangan event handler menu ganda.
+- Menaikkan cache key CSS, modul halaman, Feedback, dan Submission bridge ke `mobile-access-01`.
+- Mempertahankan Feedback Pilot 01, data, Referensi, Pustaka, grafik, dan backend.
+
 ## 0.9.5 — Feedback Pilot 01
 
 - Menambahkan tombol mengambang **Kirim Masukan** pada delapan halaman PEPK Workspace.

@@ -7,7 +7,7 @@ import {
   debounce,
   updateQueryString,
   announce
-} from "../app.js";
+} from "../app.js?v=0.9.5-mobile-access-01";
 import {
   setContentReady,
   setContentRefreshing,
@@ -17,7 +17,7 @@ import {
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { emptyState } from "../ui.js";
 import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-07";
+import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.5-mobile-access-01";
 
 initApp("resources");
 let data = getInitialData();
@@ -43,11 +43,7 @@ const state = {
 };
 
 if (uploadLink) {
-  uploadLink.href = SUBMISSION_PORTAL_URL;
-  uploadLink.target = "_blank";
-  uploadLink.rel = "noopener noreferrer";
-  uploadLink.referrerPolicy = "no-referrer";
-  uploadLink.setAttribute("aria-label", "Ajukan Materi Monev melalui Portal Pengajuan PEPK di tab baru");
+  configureSubmissionLink(uploadLink, "Ajukan Materi Monev melalui Portal Pengajuan PEPK");
 }
 
 function normalized(value) {

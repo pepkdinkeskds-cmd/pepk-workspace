@@ -63,6 +63,8 @@ function initMobileMenu() {
   const menuButton = document.querySelector("[data-menu-button]");
   const menu = document.querySelector("[data-mobile-nav]");
   if (!menuButton || !menu) return;
+  if (menuButton.dataset.mobileMenuReady === "true") return;
+  menuButton.dataset.mobileMenuReady = "true";
   const mobileViewport = typeof window.matchMedia === "function"
     ? window.matchMedia("(max-width: 52rem)")
     : null;

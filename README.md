@@ -31,3 +31,16 @@ PEPK Submission Portal yang sama. Backend `v0.2.2-beta` menyimpan masukan pada
 lebih dahulu sebelum mengunggah paket website.
 
 Lihat `PANDUAN_FEEDBACK_PILOT_01.md` untuk urutan pemasangan dan uji produksi.
+
+## Mobile Access Hotfix 01
+
+Hotfix ini menstabilkan akses Submission Portal dan hamburger pada ponsel:
+
+- Submission dibuka pada tab yang sama;
+- menu seluler aktif melalui bootstrap ringan tanpa menunggu data halaman;
+- target sentuh hamburger diperbesar;
+- cache key website dinaikkan agar Chrome mengambil aset baru.
+
+Tidak ada perubahan pada URL deployment, Apps Script, Feedback Inbox, data,
+Referensi, atau Operator Console. Lihat
+`PANDUAN_MOBILE_ACCESS_HOTFIX_01.md` untuk pemasangan dan uji produksi.

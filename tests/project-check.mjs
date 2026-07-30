@@ -14,8 +14,9 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-feedback-pilot-01/);
-  assert.match(html, /js\/feedback\.js\?v=0\.9\.5\-feedback-pilot-01/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-mobile-access-01/);
+  assert.match(html, /js\/mobile-nav\.js\?v=0\.9\.5\-mobile-access-01/);
+  assert.match(html, /js\/feedback\.js\?v=0\.9\.5\-mobile-access-01/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -68,7 +69,7 @@ assert.match(resourcesScript, /currentResults\.slice\(0, visibleLimit\)/);
 assert.match(resourcesScript, /visibleLimit \+= pageSize/);
 assert.match(resourcesScript, /render\(\{ preserveVisibleLimit: true \}\)/);
 assert.match(homeScript, /SUBMISSION_PORTAL_URL/);
-assert.match(homeScript, /submission-portal-bridge\.js\?v=0\.9\.5-quality-07/);
+assert.match(homeScript, /submission-portal-bridge\.js\?v=0\.9\.5-mobile-access-01/);
 assert.doesNotMatch(homeScript, /Buka formulir/);
 assert.doesNotMatch(homeScript, /title:\s*"Tambah Agenda"/);
 
@@ -100,7 +101,7 @@ assert.doesNotMatch(
   "Ajukan Materi Monev tidak boleh kembali ke Google Form atau fallback halaman Layanan"
 );
 assert.match(informationHtml, /Ajukan Agenda/);
-assert.match(informationScript, /SUBMISSION_PORTAL_URL/);
+assert.match(informationScript, /configureSubmissionLink/);
 assert.doesNotMatch(monevHtml, /Unggah Materi/);
 assert.doesNotMatch(informationHtml, /Tambah agenda/i);
 assert.doesNotMatch(`${monevHtml}\n${monevScript}\n${informationHtml}\n${informationScript}`, /docs\.google\.com\/forms|forms\.gle/);

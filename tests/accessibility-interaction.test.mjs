@@ -66,10 +66,11 @@ test("status details are included in the accessible name", async () => {
   assert.match(app, /node\.setAttribute\("aria-label", detail \? `\$\{message\}\. \$\{detail\}` : message\)/);
 });
 
-test("portal links retain a clear new-tab announcement", async () => {
+test("portal links clearly announce same-tab mobile-safe navigation", async () => {
   for (const page of ["home", "contribute"]) {
     const script = await source(`js/pages/${page}.js`);
-    assert.match(script, /Submission Portal — terbuka di tab baru/);
+    assert.match(script, /configureSubmissionLink/);
+    assert.doesNotMatch(script, /Submission Portal — terbuka di tab baru/);
   }
 });
 
