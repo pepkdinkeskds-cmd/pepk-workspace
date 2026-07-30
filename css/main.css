@@ -628,12 +628,24 @@
   .desktop-nav a[aria-current="page"] { color: var(--blue-800); background: var(--blue-100); }
   .menu-button {
     display: none;
+    position: relative;
+    z-index: 2;
     place-items: center;
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 3.25rem;
+    height: 3.25rem;
+    flex: 0 0 3.25rem;
+    padding: 0;
     border: 1px solid var(--ink-200);
     border-radius: .75rem;
+    color: var(--ink-800);
     background: var(--white);
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .menu-button .icon,
+  .menu-button svg {
+    pointer-events: none;
   }
   .mobile-nav {
     border-block-start: 1px solid var(--ink-100);
@@ -3503,8 +3515,8 @@ body[data-page="contribute"] .contribution-action-card--clickable:hover .contrib
     }
 
     .menu-button {
-      width: 2.75rem;
-      height: 2.75rem;
+      width: 3.25rem;
+      height: 3.25rem;
     }
 
     .page-hero__inner {
