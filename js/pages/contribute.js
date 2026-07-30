@@ -1,7 +1,7 @@
 import { initApp, createElement, externalLink } from "../app.js";
-import { setContentStatus } from "../status.js?v=0.9.5-quality-04";
+import { setContentStatus } from "../status.js?v=0.9.5-quality-05";
 import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js";
+import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-05";
 
 initApp("contribute");
 
@@ -46,11 +46,11 @@ function render() {
       iconName: "upload",
       eyebrow: "Satu pintu layanan",
       title: "Mulai Pengajuan PEPK",
-      description: "Gunakan satu Submission Portal untuk mengajukan dokumen, agenda, atau materi Monev.",
+      description: "Gunakan satu Submission Portal untuk mengajukan Dokumen, Agenda, Materi Monev, atau Referensi.",
       url: SUBMISSION_PORTAL_URL,
       buttonLabel: "Mulai Pengajuan",
       details: [
-        "Pilih jenis pengajuan setelah portal terbuka.",
+        "Pilih satu dari empat jenis pengajuan setelah portal terbuka.",
         "Data masuk ke antrean pemeriksaan Operator.",
         "Tidak memerlukan akses Editor ke folder utama."
       ]
@@ -71,4 +71,4 @@ function render() {
 }
 
 render();
-setContentStatus("Layanan siap digunakan", "connected", "Pengajuan dilakukan melalui PEPK Submission Portal.");
+setContentStatus("Layanan siap digunakan", "connected", "Empat jenis pengajuan tersedia melalui PEPK Submission Portal.");

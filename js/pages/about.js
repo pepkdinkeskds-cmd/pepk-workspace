@@ -4,7 +4,7 @@ import {
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.5-quality-04";
+} from "../status.js?v=0.9.5-quality-05";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { CONFIG } from "../config.js";
 

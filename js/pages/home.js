@@ -13,21 +13,19 @@ import {
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.5-quality-04";
+} from "../status.js?v=0.9.5-quality-05";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { searchResourcesDetailed } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-03d";
+import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-05";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
+import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-05";
 
 initApp("home");
 
 let data = getInitialData();
 applyMetadata(data.settings);
 let currentQuery = "";
-
-const SUBMISSION_PORTAL_URL =
-  "https://script.google.com/macros/s/AKfycbyjW1UYM2-k0AcXMrYmV36qDIL6PtJrOmOxUs4P1bhMkbpiyIEqR5_VgmMX3cdT2sM/exec";
 
 const searchInput = document.querySelector("[data-home-search]");
 const searchForm = document.querySelector("[data-home-search-form]");
@@ -82,7 +80,7 @@ function renderContributionActions() {
   container.replaceChildren(
     contributionAction({
       title: "Pengajuan PEPK",
-      description: "Unggah dokumen, ajukan agenda, atau kirim materi monev melalui satu layanan.",
+      description: "Unggah dokumen, ajukan agenda, kirim materi monev, atau tambahkan referensi melalui satu layanan.",
       iconName: "upload",
       url: SUBMISSION_PORTAL_URL
     })

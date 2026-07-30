@@ -12,10 +12,10 @@ async function source(relativePath) {
   return readFile(path.join(root, relativePath), "utf8");
 }
 
-test("all active page modules use the shared Quality 04 status language", async () => {
+test("all active page modules retain the shared status language", async () => {
   for (const page of pageModules) {
     const content = await source(`js/pages/${page}.js`);
-    assert.match(content, /status\.js\?v=0\.9\.5-quality-04/, `${page}.js must load the shared status module`);
+    assert.match(content, /status\.js\?v=0\.9\.5-quality-05/, `${page}.js must load the shared status module`);
     assert.doesNotMatch(content, /setDataStatus\(/, `${page}.js must not define its own status wording`);
   }
 });
@@ -40,10 +40,10 @@ test("user-facing states do not expose internal data implementation", async () =
   assert.doesNotMatch(combined, />Search-first<|Metadata resource|source code aplikasi|disetujui administrator/);
 });
 
-test("changed pages load the Quality 04 module cache key", async () => {
+test("changed pages load the Quality 05 module cache key", async () => {
   for (const page of htmlPages) {
     const content = await source(`${page}.html`);
-    assert.match(content, /js\/pages\/[^"]+\.js\?v=0\.9\.5-quality-04/, `${page}.html must use the Quality 04 page-module cache key`);
+    assert.match(content, /js\/pages\/[^"]+\.js\?v=0\.9\.5-quality-05/, `${page}.html must use the Quality 05 page-module cache key`);
   }
 });
 

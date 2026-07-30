@@ -1,10 +1,10 @@
 /**
- * PEPK Workspace v0.9.5 — Submission Portal Bridge 01
+ * PEPK Workspace v0.9.5 — QUALITY_05 Reference Service Alignment
  *
- * Mengalihkan tombol layanan Dokumen, Agenda, dan Materi Monev dari
+ * Mengalihkan tombol layanan Dokumen, Agenda, Materi Monev, dan Referensi dari
  * Google Forms lama ke deployment aktif PEPK Submission Portal.
  * Portal saat ini membuka pemilih modul pada halaman utama, sehingga
- * ketiga layanan menggunakan URL deployment yang sama.
+ * keempat layanan menggunakan URL deployment yang sama.
  */
 
 export const SUBMISSION_PORTAL_URL =
@@ -13,7 +13,8 @@ export const SUBMISSION_PORTAL_URL =
 const MODULE_LABELS = Object.freeze({
   document: 'Buka pengajuan Dokumen',
   agenda: 'Buka pengajuan Agenda',
-  monev: 'Buka pengajuan Materi Monev'
+  monev: 'Buka pengajuan Materi Monev',
+  reference: 'Buka pengajuan Referensi'
 });
 
 function normalizeText(value) {
@@ -32,6 +33,7 @@ function moduleFromContext(anchor) {
   const combined = `${anchorText} ${contextText}`;
 
   if (/materi\s*monev|monev/.test(combined)) return 'monev';
+  if (/referensi|reference|\brba\b|\brsb\b|peraturan/.test(combined)) return 'reference';
   if (/tambah\s*agenda|formulir\s*agenda|pengajuan\s*agenda|\bagenda\b/.test(combined)) return 'agenda';
   if (/unggah\s*dokumen|formulir\s*unggah|pengajuan\s*dokumen|\bdokumen\b/.test(combined)) return 'document';
   return '';

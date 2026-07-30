@@ -14,7 +14,7 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-03d/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-05/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -66,7 +66,8 @@ assert.match(resourcesScript, /const pageSize = 24/);
 assert.match(resourcesScript, /currentResults\.slice\(0, visibleLimit\)/);
 assert.match(resourcesScript, /visibleLimit \+= pageSize/);
 assert.match(resourcesScript, /render\(\{ preserveVisibleLimit: true \}\)/);
-assert.match(homeScript, /script\.google\.com\/macros\/s\//);
+assert.match(homeScript, /SUBMISSION_PORTAL_URL/);
+assert.match(homeScript, /submission-portal-bridge\.js\?v=0\.9\.5-quality-05/);
 assert.doesNotMatch(homeScript, /Buka formulir/);
 assert.doesNotMatch(homeScript, /title:\s*"Tambah Agenda"/);
 
@@ -108,10 +109,12 @@ for (const page of pages) {
 
 const contributeHtml = fs.readFileSync(path.join(root, "contribute.html"), "utf8");
 const contributeScript = fs.readFileSync(path.join(root, "js/pages/contribute.js"), "utf8");
-assert.match(contributeHtml, /Satu pintu untuk pengajuan Dokumen, Agenda, dan Materi Monev/);
+assert.match(contributeHtml, /Satu pintu untuk pengajuan Dokumen, Agenda, Materi Monev, dan Referensi/);
+assert.match(contributeHtml, /Dokumen dan referensi dipindahkan ke folder tujuan/);
 assert.match(contributeScript, /title:\s*"Mulai Pengajuan PEPK"/);
 assert.match(contributeScript, /title:\s*"Pantau melalui email"/);
 assert.match(contributeScript, /SUBMISSION_PORTAL_URL/);
+assert.match(contributeScript, /empat jenis pengajuan/);
 assert.doesNotMatch(contributeScript, /documentUploadFormUrl|agendaSubmitFormUrl|monevMaterialFormUrl/);
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");

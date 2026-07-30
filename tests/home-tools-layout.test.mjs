@@ -45,7 +45,7 @@ test("submission description is no longer truncated", () => {
   );
   assert.match(
     homeScript,
-    /Unggah dokumen, ajukan agenda, atau kirim materi monev melalui satu layanan\./
+    /Unggah dokumen, ajukan agenda, kirim materi monev, atau tambahkan referensi melalui satu layanan\./
   );
 });
 

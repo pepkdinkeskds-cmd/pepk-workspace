@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.5 — Quality 05
+
+- Menyelaraskan Beranda dan halaman Layanan dengan rute Referensi yang sudah lulus uji produksi.
+- Menjelaskan empat jenis pengajuan: Dokumen, Agenda, Materi Monev, dan Referensi.
+- Memperbarui alur layanan agar penempatan Referensi ke folder tujuan terbaca jelas.
+- Menambahkan deteksi konteks Referensi pada pengaman Submission Portal.
+- Menyatukan seluruh pintu masuk portal pada satu sumber URL berversi.
+- Tidak mengubah URL portal, sumber data, Pustaka, ataupun backend.
+
 ## 0.9.5 — Quality 04
 
 - Menyatukan status pembaruan konten pada seluruh menu dengan bahasa yang lebih mudah dipahami staf.
