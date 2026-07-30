@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.5 — Feedback Pilot 01
+
+- Menambahkan tombol mengambang **Kirim Masukan** pada delapan halaman PEPK Workspace.
+- Menyediakan formulir ringkas berisi Nama, Email, dan Masukan.
+- Mengirim data melalui deployment Submission Portal yang sama tanpa menambahkan URL layanan baru.
+- Menampilkan ID tanda terima `FB-...` setelah pengiriman berhasil.
+- Mencatat halaman asal dan versi aplikasi tanpa menyimpan nama atau email di peramban.
+- Menambahkan batas 1.500 karakter, honeypot, timeout, idempotensi, channel nonce, dan pemeriksaan origin respons.
+- Menampilkan panel desktop dan bottom sheet ringkas pada ponsel.
+- Mempertahankan seluruh fungsi dan pengujian baseline Quality 07.
+
 ## 0.9.5 — Quality 07
 
 - Menutup temuan validasi semantik HTML dan aksesibilitas pada delapan halaman publik.

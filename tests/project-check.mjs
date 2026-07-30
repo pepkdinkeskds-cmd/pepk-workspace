@@ -14,7 +14,8 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-07/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-feedback-pilot-01/);
+  assert.match(html, /js\/feedback\.js\?v=0\.9\.5\-feedback-pilot-01/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 

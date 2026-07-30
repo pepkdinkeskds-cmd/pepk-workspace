@@ -41,11 +41,12 @@ test("every portal entry point uses the same versioned bridge", async () => {
   }
 });
 
-test("all public pages load the Quality 07 cache keys", async () => {
+test("all public pages retain Quality 07 modules and load Feedback Pilot assets", async () => {
   const pages = ["index", "resources", "workspace", "information", "contribute", "monev", "about", "404"];
   for (const page of pages) {
     const html = await source(`${page}.html`);
-    assert.match(html, /css\/main\.css\?v=0\.9\.5-quality-07/);
+    assert.match(html, /css\/main\.css\?v=0\.9\.5-feedback-pilot-01/);
     assert.match(html, /js\/pages\/[^"]+\.js\?v=0\.9\.5-quality-07/);
+    assert.match(html, /js\/feedback\.js\?v=0\.9\.5-feedback-pilot-01/);
   }
 });

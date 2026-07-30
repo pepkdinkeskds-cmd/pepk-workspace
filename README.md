@@ -22,3 +22,12 @@ Pencarian sekarang memahami tingkat spesifik query:
 - Spreadsheet ID: `1rSbyazj5MSdRYHgBYLBA7jeMjYKattvRPCG9SKHSxCM`
 - Website: `0.9.5`
 - Apps Script Workflow: `2.3.1`
+
+## Feedback Pilot 01
+
+Widget **Kirim Masukan** tersedia pada seluruh halaman dan memakai deployment
+PEPK Submission Portal yang sama. Backend `v0.2.2-beta` menyimpan masukan pada
+`Feedback_Inbox` di PEPK Operations Database V2. Pasang serta aktifkan backend
+lebih dahulu sebelum mengunggah paket website.
+
+Lihat `PANDUAN_FEEDBACK_PILOT_01.md` untuk urutan pemasangan dan uji produksi.

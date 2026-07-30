@@ -30,6 +30,7 @@ const ICONS = {
   alert: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 2.8 20h18.4L12 4Z"/><path d="M12 9v5M12 17.3h.01"/></svg>',
   upload: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7.5 8.5 12 4l4.5 4.5"/><path d="M5 13.5v5A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5v-5"/></svg>',
   send: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 4.5 17 7.5-17 7.5 3-7.5-3-7.5Z"/><path d="M6.5 12h14"/></svg>',
+  message: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h14A1.5 1.5 0 0 1 20.5 6v9A1.5 1.5 0 0 1 19 16.5H10l-5.5 4v-14A2 2 0 0 1 6.5 4.5Z"/><path d="M8 9h8M8 12.5h5"/></svg>',
   inbox: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="M4 14h4l2 2h4l2-2h4"/></svg>',
   review: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h9l3 3V20.5H6z"/><path d="M15 3.5v4h4M9 12h6M9 16h4"/><path d="m15.5 15.5 1.2 1.2 2.3-2.7"/></svg>',
   presentation: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="12" rx="2"/><path d="M8 20h8M12 16v4M8 12l2.5-2.5 2 2L16 8"/></svg>',
