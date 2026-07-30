@@ -2,12 +2,17 @@ import {
   initApp,
   debounce,
   announce,
-  setDataStatus,
   applyMetadata,
   scheduleBackgroundTask,
   minimumSearchLength,
   updateQueryString
 } from "../app.js";
+import {
+  setContentReady,
+  setContentRefreshing,
+  setContentRefreshResult,
+  setContentRefreshUnavailable
+} from "../status.js?v=0.9.5-quality-04";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { searchResourcesDetailed } from "../search.js";
 import { emptyState, resourceCard } from "../ui.js";
@@ -197,8 +202,8 @@ function render(options = {}) {
   visibleResults.forEach((resource) => list.append(resourceCard(resource)));
   if (!currentResults.length) {
     emptyContainer.append(emptyState(
-      "Tidak ada resource yang sesuai",
-      "Ubah kata pencarian atau hapus salah satu filter.",
+      "Dokumen atau aplikasi belum ditemukan",
+      "Ubah kata pencarian atau hapus salah satu penyaring.",
       "search",
       { label: "Reset pencarian dan filter", onClick: resetFilters }
     ));
@@ -261,9 +266,9 @@ window.addEventListener("popstate", () => {
   render();
 });
 
-setDataStatus("Siap digunakan", "ready");
+setContentReady();
 scheduleBackgroundTask(async () => {
-  setDataStatus("Memeriksa pembaruan…", "loading");
+  setContentRefreshing();
   try {
     const result = await refreshFromSheets();
     if (result.changed) {
@@ -272,10 +277,8 @@ scheduleBackgroundTask(async () => {
       populateFilters(true);
       render();
     }
-    if (result.partialFailure) setDataStatus("Data lokal aktif", "warning", `Sebagian sumber belum dapat dibaca: ${result.failedSheets.join(", ")}.`);
-    else if (result.warnings.length) setDataStatus("Data tersedia", "warning", `${result.warnings.length} peringatan data terdeteksi.`);
-    else setDataStatus(result.changed ? "Data tersinkron" : "Siap digunakan", result.changed ? "connected" : "ready");
+    setContentRefreshResult(result);
   } catch {
-    setDataStatus("Data lokal aktif", "warning", "Google Sheets belum dapat dihubungi.");
+    setContentRefreshUnavailable();
   }
 });

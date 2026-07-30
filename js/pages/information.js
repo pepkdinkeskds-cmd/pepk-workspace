@@ -1,4 +1,10 @@
-import { initApp, setDataStatus, applyMetadata, scheduleBackgroundTask } from "../app.js";
+import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js";
+import {
+  setContentReady,
+  setContentRefreshing,
+  setContentRefreshResult,
+  setContentRefreshUnavailable
+} from "../status.js?v=0.9.5-quality-04";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { agendaCard, informationCard, realizationCard, realizationChart, realizationTable, emptyState } from "../ui.js";
 import { latestRealization, realizationForYear, realizationYears, upcomingAgenda } from "../information-utils.js";
@@ -124,10 +130,10 @@ realizationYearSelect?.addEventListener("change", () => {
 });
 
 render();
-setDataStatus("Siap digunakan", "ready");
+setContentReady();
 
 scheduleBackgroundTask(async () => {
-  setDataStatus("Memeriksa pembaruan…", "loading");
+  setContentRefreshing();
   try {
     const result = await refreshFromSheets();
     if (result.changed) {
@@ -135,10 +141,8 @@ scheduleBackgroundTask(async () => {
       applyMetadata(data.settings);
       render();
     }
-    if (result.partialFailure) setDataStatus("Data lokal aktif", "warning", `Sebagian sumber belum dapat dibaca: ${result.failedSheets.join(", ")}.`);
-    else if (result.warnings.length) setDataStatus("Data tersedia", "warning", `${result.warnings.length} peringatan data terdeteksi.`);
-    else setDataStatus(result.changed ? "Data tersinkron" : "Siap digunakan", result.changed ? "connected" : "ready");
+    setContentRefreshResult(result);
   } catch {
-    setDataStatus("Data lokal aktif", "warning", "Google Sheets belum dapat dihubungi.");
+    setContentRefreshUnavailable();
   }
 });

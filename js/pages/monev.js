@@ -1,7 +1,6 @@
 import {
   initApp,
   applyMetadata,
-  setDataStatus,
   scheduleBackgroundTask,
   createElement,
   externalLink,
@@ -9,6 +8,12 @@ import {
   updateQueryString,
   announce
 } from "../app.js";
+import {
+  setContentReady,
+  setContentRefreshing,
+  setContentRefreshResult,
+  setContentRefreshUnavailable
+} from "../status.js?v=0.9.5-quality-04";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { emptyState } from "../ui.js";
 import { icon } from "../icons.js";
@@ -147,11 +152,11 @@ function render() {
   empty.replaceChildren();
   countNode.textContent = `${items.length} materi`;
   const active = [state.year && `Tahun ${state.year}`, state.month && MONTHS[Number(state.month) - 1], state.sender, state.type, state.q && `“${state.q}”`].filter(Boolean);
-  detailNode.textContent = active.length ? `Filter: ${active.join(" • ")}` : "Seluruh materi yang telah disetujui administrator";
+  detailNode.textContent = active.length ? `Filter: ${active.join(" • ")}` : "Seluruh materi yang telah disetujui operator";
   // Submission Portal adalah satu-satunya pintu pengajuan. Jangan mengambil
   // kembali URL Google Form lama dari pengaturan spreadsheet saat render.
   uploadLink.href = SUBMISSION_PORTAL_URL;
-  if (!items.length) empty.append(emptyState("Materi belum ditemukan", "Ubah filter atau unggah materi Monev melalui Pusat Layanan.", "presentation", { label: "Buka Pusat Layanan", href: "contribute.html" }));
+  if (!items.length) empty.append(emptyState("Materi belum ditemukan", "Ubah filter atau ajukan Materi Monev melalui Layanan.", "presentation", { label: "Buka Layanan", href: "contribute.html" }));
   announce(`${items.length} materi Monev ditampilkan.`);
 }
 
@@ -173,10 +178,10 @@ form.addEventListener("reset", () => {
 });
 
 render();
-setDataStatus("Siap digunakan", "ready");
+setContentReady();
 
 scheduleBackgroundTask(async () => {
-  setDataStatus("Memeriksa pembaruan…", "loading");
+  setContentRefreshing();
   try {
     const result = await refreshFromSheets();
     if (result.changed) {
@@ -184,9 +189,8 @@ scheduleBackgroundTask(async () => {
       applyMetadata(data.settings);
       render();
     }
-    if (result.partialFailure) setDataStatus("Data lokal aktif", "warning", `Sebagian sumber belum dapat dibaca: ${result.failedSheets.join(", ")}.`);
-    else setDataStatus(result.changed ? "Data tersinkron" : "Siap digunakan", result.changed ? "connected" : "ready");
+    setContentRefreshResult(result);
   } catch {
-    setDataStatus("Data lokal aktif", "warning", "Google Sheets belum dapat dihubungi.");
+    setContentRefreshUnavailable();
   }
 });

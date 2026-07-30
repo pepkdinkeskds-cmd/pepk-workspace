@@ -2,13 +2,18 @@ import {
   initApp,
   debounce,
   announce,
-  setDataStatus,
   applyMetadata,
   scheduleBackgroundTask,
   minimumSearchLength,
   createElement,
   externalLink
 } from "../app.js";
+import {
+  setContentReady,
+  setContentRefreshing,
+  setContentRefreshResult,
+  setContentRefreshUnavailable
+} from "../status.js?v=0.9.5-quality-04";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { searchResourcesDetailed } from "../search.js";
 import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-03d";
@@ -105,7 +110,7 @@ function renderAgenda() {
   const items = upcomingAgenda(data.agenda).slice(0, data.settings.agendaHomeLimit || 3);
   items.forEach((item) => container.append(agendaCard(item, { compact: true })));
   if (!items.length) {
-    container.append(emptyState("Belum ada agenda aktif", "Agenda rapat dan kegiatan akan tampil setelah diisi melalui sheet Agenda.", "calendar", { label: "Buka Pusat Informasi", href: "information.html#agenda" }));
+    container.append(emptyState("Belum ada agenda aktif", "Agenda rapat dan kegiatan akan tampil setelah dipublikasikan oleh operator.", "calendar", { label: "Buka Pusat Informasi", href: "information.html#agenda" }));
   }
 }
 
@@ -122,7 +127,7 @@ function renderRealization() {
     if (overview) container.append(overview);
   }
   if (!item) {
-    container.append(emptyState("Data capaian belum tersedia", "Capaian realisasi akan tampil setelah indikator diisi melalui sheet Realization.", "trend", { label: "Buka Pusat Informasi", href: "information.html#realisasi" }));
+    container.append(emptyState("Data capaian belum tersedia", "Capaian realisasi akan tampil setelah periode terbaru dipublikasikan.", "trend", { label: "Buka Pusat Informasi", href: "information.html#realisasi" }));
   }
 }
 
@@ -185,7 +190,7 @@ function renderSearch(query) {
   if (!results.length) {
     viewAllLink.hidden = true;
     emptyContainer.append(emptyState(
-      "Resource belum ditemukan",
+      "Dokumen atau aplikasi belum ditemukan",
       "Coba nama dokumen, aplikasi, tahun, atau istilah lain yang lebih umum.",
       "search",
       { label: "Hapus pencarian", onClick: clearHomeSearch }
@@ -224,10 +229,10 @@ function renderAll() {
 }
 
 renderAll();
-setDataStatus("Siap digunakan", "ready", "Data lokal tersedia tanpa menunggu koneksi Google Sheets.");
+setContentReady();
 
 scheduleBackgroundTask(async () => {
-  setDataStatus("Memeriksa pembaruan…", "loading");
+  setContentRefreshing();
   try {
     const result = await refreshFromSheets();
     if (result.changed) {
@@ -235,14 +240,8 @@ scheduleBackgroundTask(async () => {
       applyMetadata(data.settings);
       renderAll();
     }
-    if (result.partialFailure) {
-      setDataStatus("Data lokal aktif", "warning", `Sebagian sumber belum dapat dibaca: ${result.failedSheets.join(", ")}.`);
-    } else if (result.warnings.length) {
-      setDataStatus("Data tersedia", "warning", `${result.warnings.length} peringatan data terdeteksi.`);
-    } else {
-      setDataStatus(result.changed ? "Data tersinkron" : "Siap digunakan", result.changed ? "connected" : "ready");
-    }
+    setContentRefreshResult(result);
   } catch {
-    setDataStatus("Data lokal aktif", "warning", "Google Sheets belum dapat dihubungi. Workspace tetap menggunakan data bawaan.");
+    setContentRefreshUnavailable();
   }
 });

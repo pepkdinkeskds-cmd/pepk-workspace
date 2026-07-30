@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.5 — Quality 04
+
+- Menyatukan status pembaruan konten pada seluruh menu dengan bahasa yang lebih mudah dipahami staf.
+- Menghapus istilah teknis Google Sheets, sheet internal, data lokal, dan source code dari antarmuka pengguna.
+- Mengganti istilah `administrator` menjadi `operator` serta menormalkan istilah dokumen, aplikasi, dan konten.
+- Memperjelas keadaan kosong Agenda, Realisasi, Pustaka, Ruang Kerja, dan Materi Monev.
+- Menambahkan semantik status aksesibel melalui `role="status"` dan live region yang sopan.
+- Menaikkan cache key seluruh modul halaman yang berubah ke `quality-04`.
+
 ## 0.9.5 — Quality 03C
 
 - Memperbesar kartu **Pengajuan PEPK** secara terukur agar deskripsi lengkap, termasuk Materi Monev, tidak terpotong.
