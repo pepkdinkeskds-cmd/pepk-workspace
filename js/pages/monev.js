@@ -13,11 +13,11 @@ import {
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.5-quality-06";
+} from "../status.js?v=0.9.5-quality-07";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { emptyState } from "../ui.js";
 import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-06";
+import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-07";
 
 initApp("resources");
 let data = getInitialData();
@@ -140,7 +140,10 @@ function materialRow(item) {
     folderLink.innerHTML = `${icon("folderOpen")} Buka Folder`;
     actions.append(folderLink);
   }
-  article.append(createElement("span", { className: "monev-material-card__order", text: order, "aria-label": `Urutan presentasi ${order}` }), content, actions);
+  article.append(createElement("span", { className: "monev-material-card__order" }, [
+    createElement("span", { className: "sr-only", text: "Urutan presentasi " }),
+    order
+  ]), content, actions);
   return article;
 }
 
@@ -167,6 +170,10 @@ function syncState() {
 }
 
 form.elements.q.value = state.q;
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  syncState();
+});
 form.addEventListener("input", debounce((event) => { if (event.target.name === "q") syncState(); }, 180));
 form.addEventListener("change", syncState);
 form.addEventListener("reset", () => {

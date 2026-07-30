@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="utf-8">
@@ -12,8 +12,8 @@
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="css/main.css?v=0.9.5-quality-06">
-  <script type="module" src="js/pages/monev.js?v=0.9.5-quality-06"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.5-quality-07">
+  <script type="module" src="js/pages/monev.js?v=0.9.5-quality-07"></script>
 </head>
 <body data-page="monev">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -58,14 +58,14 @@
 
   <section class="section monev-page-section">
     <div class="container">
-      <div class="monev-summary" data-monev-summary aria-label="Ringkasan materi Monev"></div>
+      <div class="monev-summary" data-monev-summary role="group" aria-label="Ringkasan materi Monev"></div>
 
       <form class="filter-panel monev-filter-panel" data-monev-filter-form role="search">
         <div class="filter-panel__search">
           <label for="monev-search">Cari materi</label>
           <div class="input-with-icon">
             <span data-icon="search"></span>
-            <input id="monev-search" type="search" name="q" autocomplete="off" placeholder="Judul, unit, penyaji, atau nama file" aria-controls="monev-results">
+            <input id="monev-search" type="search" name="q" autocomplete="off" placeholder="Judul, unit, penyaji, atau nama file" aria-controls="monev-results" aria-describedby="monev-results-summary">
           </div>
         </div>
         <div>
@@ -97,11 +97,14 @@
             <option value="title">Judul A–Z</option>
           </select>
         </div>
-        <button class="button button--secondary filter-reset" type="reset">Reset</button>
+        <div class="filter-actions">
+          <button class="button button--primary filter-apply" type="submit">Terapkan</button>
+          <button class="button button--secondary filter-reset" type="reset">Reset</button>
+        </div>
       </form>
 
       <div class="monev-results-heading">
-        <div><strong data-monev-result-count aria-live="polite">0 materi</strong><span data-monev-result-detail></span></div>
+        <div id="monev-results-summary"><strong data-monev-result-count aria-live="polite">0 materi</strong><span data-monev-result-detail></span></div>
         <a class="button button--primary button--small" data-monev-upload-link
           href="https://script.google.com/macros/s/AKfycbyjW1UYM2-k0AcXMrYmV36qDIL6PtJrOmOxUs4P1bhMkbpiyIEqR5_VgmMX3cdT2sM/exec"
           target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"

@@ -12,7 +12,7 @@ import {
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.5-quality-06";
+} from "../status.js?v=0.9.5-quality-07";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { searchResourcesDetailed } from "../search.js";
 import { emptyState, resourceCard } from "../ui.js";

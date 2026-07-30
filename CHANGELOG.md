@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.5 — Quality 07
+
+- Menutup temuan validasi semantik HTML dan aksesibilitas pada delapan halaman publik.
+- Menambahkan peran grup pada ringkasan dan kumpulan kontrol yang memiliki nama aksesibel.
+- Menambahkan tombol **Terapkan** pada filter Pustaka dan Materi Monev.
+- Menghubungkan pencarian Materi Monev dengan ringkasan hasil yang diperbarui.
+- Membuat urutan presentasi Materi Monev terbaca jelas tanpa atribut ARIA pada elemen generik.
+- Menormalkan doctype HTML dan menaikkan cache key aset ke `quality-07`.
+- Tidak mengubah sumber data, URL Submission Portal, rute Referensi, Pustaka, grafik, ataupun backend.
+
 ## 0.9.5 — Quality 06
 
 - Menstabilkan menu seluler ketika breakpoint berubah serta mempertahankan penutupan melalui `Escape`.

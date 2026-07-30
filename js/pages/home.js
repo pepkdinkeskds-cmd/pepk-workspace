@@ -13,13 +13,13 @@ import {
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.5-quality-06";
+} from "../status.js?v=0.9.5-quality-07";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { searchResourcesDetailed } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-06";
+import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-07";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-06";
+import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-07";
 
 initApp("home");
 
