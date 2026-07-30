@@ -598,6 +598,13 @@
   .filter-panel input:hover,
   .filter-panel select:hover,
   .workspace-search input:hover { border-color: var(--blue-300); }
+  /* QUALITY 07 — explicit, responsive form actions. */
+  .filter-actions {
+    display: flex;
+    align-items: center;
+    justify-self: start;
+    gap: .5rem;
+  }
   .input-with-icon,
   .workspace-search { position: relative; }
   .input-with-icon > span,
@@ -1106,7 +1113,7 @@
     .about-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .filter-panel { grid-template-columns: 1fr 1fr; }
     .filter-panel__search { grid-column: 1 / -1; }
-    .filter-reset { justify-self: start; }
+    .filter-actions { justify-self: start; }
     .document-group { grid-template-columns: 1fr; }
   }
 
@@ -1304,7 +1311,7 @@
   @media (max-width: 68rem) {
     .filter-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .filter-panel__search { grid-column: 1 / -1; }
-    .filter-reset { justify-self: start; }
+    .filter-actions { justify-self: start; }
     .about-card--summary { grid-template-columns: 1fr; }
   }
 
@@ -1585,6 +1592,7 @@
   .filter-panel select,
   .workspace-search input,
   .realization-toolbar select,
+  .filter-apply,
   .filter-reset,
   .results-toolbar button {
     font-size: var(--type-control);
@@ -2689,7 +2697,7 @@
       grid-column: 1 / -1;
     }
 
-    .monev-filter-panel .filter-reset {
+    .monev-filter-panel .filter-actions {
       justify-self: start;
     }
   }
@@ -2713,8 +2721,12 @@
       grid-column: auto;
     }
 
-    .monev-filter-panel .filter-reset {
+    .monev-filter-panel .filter-actions {
       width: 100%;
+    }
+
+    .monev-filter-panel .filter-actions .button {
+      flex: 1 1 0;
       justify-content: center;
     }
 
@@ -3103,6 +3115,7 @@ body[data-page="contribute"] .contribution-action-card--clickable:hover .contrib
   }
 
   .text-link,
+  .filter-apply,
   .filter-reset,
   .results-toolbar button,
   .workspace-tabs a,
@@ -3280,8 +3293,12 @@ body[data-page="contribute"] .contribution-action-card--clickable:hover .contrib
       max-width: 100%;
     }
 
-    .filter-reset {
+    .filter-actions {
       width: 100%;
+    }
+
+    .filter-actions .button {
+      flex: 1 1 0;
       justify-content: center;
     }
 
