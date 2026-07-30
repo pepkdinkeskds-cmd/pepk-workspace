@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.9.6 RC1 — Release Consolidation
+
+- Menggabungkan `QUALITY_07`, Feedback end-to-end, dan
+  `MOBILE_ACCESS_HOTFIX_01` sebagai satu baseline rilis.
+- Menaikkan identitas website menjadi `0.9.6 RC1`.
+- Menyatukan cache key aset website menjadi `0.9.6-rc1`.
+- Menambahkan matriks versi aktif, panduan rilis, laporan pengujian, dan
+  panduan pilot staf.
+- Mempertahankan URL Submission Portal, sumber data, alur Feedback, akses
+  seluler, Referensi, Pustaka, Agenda, Realisasi, dan Materi Monev.
+- Tidak mengubah Apps Script, Operator Console, Workflow, Notification
+  Delivery, Spreadsheet, atau data produksi.
+
 ## 0.9.5 — Mobile Access Hotfix 01
 
 - Membuka Submission Portal pada tab yang sama agar mengikuti jalur tautan langsung yang stabil di Chrome Android.

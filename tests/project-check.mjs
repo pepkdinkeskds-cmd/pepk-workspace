@@ -14,9 +14,9 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-mobile-access-01/);
-  assert.match(html, /js\/mobile-nav\.js\?v=0\.9\.5\-mobile-access-01/);
-  assert.match(html, /js\/feedback\.js\?v=0\.9\.5\-mobile-access-01/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.6\-rc1/);
+  assert.match(html, /js\/mobile-nav\.js\?v=0\.9\.6\-rc1/);
+  assert.match(html, /js\/feedback\.js\?v=0\.9\.6\-rc1/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -69,7 +69,7 @@ assert.match(resourcesScript, /currentResults\.slice\(0, visibleLimit\)/);
 assert.match(resourcesScript, /visibleLimit \+= pageSize/);
 assert.match(resourcesScript, /render\(\{ preserveVisibleLimit: true \}\)/);
 assert.match(homeScript, /SUBMISSION_PORTAL_URL/);
-assert.match(homeScript, /submission-portal-bridge\.js\?v=0\.9\.5-mobile-access-01/);
+assert.match(homeScript, /submission-portal-bridge\.js\?v=0\.9\.6-rc1/);
 assert.doesNotMatch(homeScript, /Buka formulir/);
 assert.doesNotMatch(homeScript, /title:\s*"Tambah Agenda"/);
 
@@ -120,7 +120,7 @@ assert.match(contributeScript, /empat jenis pengajuan/);
 assert.doesNotMatch(contributeScript, /documentUploadFormUrl|agendaSubmitFormUrl|monevMaterialFormUrl/);
 
 const localData = fs.readFileSync(path.join(root, "js/data/local-data.js"), "utf8");
-assert.match(localData, /"appVersion": "0.9.5"/);
+assert.match(localData, /"appVersion": "0.9.6 RC1"/);
 assert.match(localData, /"workspaceGeneration": "V2"/);
 assert.match(localData, /"workspaceId": "document-center"/);
 

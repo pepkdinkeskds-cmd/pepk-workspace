@@ -7,19 +7,19 @@ import {
   minimumSearchLength,
   createElement,
   externalLink
-} from "../app.js?v=0.9.5-mobile-access-01";
+} from "../app.js?v=0.9.6-rc1";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.5-quality-07";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
+} from "../status.js?v=0.9.6-rc1";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.6-rc1";
 import { searchResourcesDetailed } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-07";
+import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.6-rc1";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.5-mobile-access-01";
+import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.6-rc1";
 
 initApp("home");
 

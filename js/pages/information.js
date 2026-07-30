@@ -1,15 +1,15 @@
-import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js?v=0.9.5-mobile-access-01";
+import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js?v=0.9.6-rc1";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.5-quality-07";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
+} from "../status.js?v=0.9.6-rc1";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.6-rc1";
 import { agendaCard, informationCard, realizationCard, realizationChart, realizationTable, emptyState } from "../ui.js";
 import { latestRealization, realizationForYear, realizationYears, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
-import { configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.5-mobile-access-01";
+import { configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.6-rc1";
 
 initApp("information");
 

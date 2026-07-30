@@ -1,6 +1,6 @@
 export const APP = {
   name: 'PEPK Workspace',
-  version: '0.1.0',
+  version: '0.9.6 RC1',
   sheetId: '1X3xW2pxmaoPiLX4nHVYVG8sinsUNpXlT8rk6HTtwSrk',
   fetchTimeoutMs: 8000,
   sheets: ['Resources','Workspaces','Quick_Access','Information','Synonyms','Settings']

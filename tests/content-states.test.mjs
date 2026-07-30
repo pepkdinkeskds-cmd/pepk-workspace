@@ -15,7 +15,7 @@ async function source(relativePath) {
 test("all active page modules retain the shared status language", async () => {
   for (const page of pageModules) {
     const content = await source(`js/pages/${page}.js`);
-    assert.match(content, /status\.js\?v=0\.9\.5-quality-07/, `${page}.js must load the shared status module`);
+    assert.match(content, /status\.js\?v=0\.9\.6-rc1/, `${page}.js must load the shared status module`);
     assert.doesNotMatch(content, /setDataStatus\(/, `${page}.js must not define its own status wording`);
   }
 });
@@ -43,7 +43,7 @@ test("user-facing states do not expose internal data implementation", async () =
 test("changed pages load the Mobile Access module cache key", async () => {
   for (const page of htmlPages) {
     const content = await source(`${page}.html`);
-    assert.match(content, /js\/pages\/[^"]+\.js\?v=0\.9\.5-mobile-access-01/, `${page}.html must use the Mobile Access page-module cache key`);
+    assert.match(content, /js\/pages\/[^"]+\.js\?v=0\.9\.6-rc1/, `${page}.html must use the RC1 page-module cache key`);
   }
 });
 

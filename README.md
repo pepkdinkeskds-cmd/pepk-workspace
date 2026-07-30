@@ -1,46 +1,44 @@
-# PEPK Workspace v0.9.5
+# PEPK Workspace v0.9.6 RC1
 
 Workspace internal Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan
 Dinas Kesehatan Kabupaten Kudus.
 
-## Fokus v0.9.5
+## Tujuan RC1
 
-**Temukan dokumen kerja dengan lebih cepat.**
+RC1 adalah konsolidasi baseline produksi yang sudah lulus. Rilis ini tidak
+menambahkan fitur baru dan tidak mengubah kontrak backend.
 
-Pencarian sekarang memahami tingkat spesifik query:
+Baseline yang digabungkan:
 
-- query spesifik → hanya folder langsung;
-- folder induk + tahun → induk dan isi terdalam;
-- folder induk tanpa tahun → daftar periode;
-- periode multi-tahun tetap dikenali;
-- kalimat alami dan salah ketik sederhana didukung;
-- hasil induk yang redundan disembunyikan.
+- `QUALITY_07`;
+- Feedback end-to-end;
+- `MOBILE_ACCESS_HOTFIX_01`;
+- pencarian folder mendalam dan intent-aware;
+- akses Referensi, Pustaka, Agenda, Realisasi, dan Materi Monev yang telah
+  dikunci.
 
-## Sumber aktif
+## Matriks versi aktif
 
 - Google Drive: PEPK WORKSPACE V2
 - Spreadsheet ID: `1rSbyazj5MSdRYHgBYLBA7jeMjYKattvRPCG9SKHSxCM`
-- Website: `0.9.5`
-- Apps Script Workflow: `2.3.1`
+- PEPK Workspace: `0.9.6 RC1`
+- Operator Console: `1.0.0.2 + FEEDBACK_OPERATOR_PILOT_01`
+- Submission Portal: `0.2.2.1-beta`
+- Workflow: `2.4.0.1`
+- Notification Delivery: `0.9.9.1.2-beta`
 
-## Feedback Pilot 01
+Nomor versi setiap produk tetap terpisah.
 
-Widget **Kirim Masukan** tersedia pada seluruh halaman dan memakai deployment
-PEPK Submission Portal yang sama. Backend `v0.2.2-beta` menyimpan masukan pada
-`Feedback_Inbox` di PEPK Operations Database V2. Pasang serta aktifkan backend
-lebih dahulu sebelum mengunggah paket website.
+## Batas perubahan
 
-Lihat `PANDUAN_FEEDBACK_PILOT_01.md` untuk urutan pemasangan dan uji produksi.
+- Tidak ada perubahan Apps Script.
+- Tidak ada perubahan Spreadsheet atau data publik.
+- Tidak ada perubahan URL Submission Portal.
+- Tidak ada perubahan Operator Console, Workflow, atau Notification Delivery.
+- Tidak ada perubahan pada kebijakan akses dan publikasi Materi Monev.
 
-## Mobile Access Hotfix 01
+## Dokumen RC1
 
-Hotfix ini menstabilkan akses Submission Portal dan hamburger pada ponsel:
-
-- Submission dibuka pada tab yang sama;
-- menu seluler aktif melalui bootstrap ringan tanpa menunggu data halaman;
-- target sentuh hamburger diperbesar;
-- cache key website dinaikkan agar Chrome mengambil aset baru.
-
-Tidak ada perubahan pada URL deployment, Apps Script, Feedback Inbox, data,
-Referensi, atau Operator Console. Lihat
-`PANDUAN_MOBILE_ACCESS_HOTFIX_01.md` untuk pemasangan dan uji produksi.
+- `PANDUAN_RILIS_v0.9.6_RC1.md`
+- `PANDUAN_PILOT_STAF_v0.9.6_RC1.md`
+- `LAPORAN_PENGUJIAN_v0.9.6_RC1.md`

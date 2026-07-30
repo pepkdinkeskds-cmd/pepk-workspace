@@ -66,8 +66,8 @@ test("one tap opens the mobile menu", async () => {
 test("every page starts the mobile menu before its page module", async () => {
   for (const page of pages) {
     const html = await source(`${page}.html`);
-    const shellIndex = html.indexOf('js/mobile-nav.js?v=0.9.5-mobile-access-01');
-    const pageIndex = html.search(/js\/pages\/[^"]+\.js\?v=0\.9\.5-mobile-access-01/);
+    const shellIndex = html.indexOf('js/mobile-nav.js?v=0.9.6-rc1');
+    const pageIndex = html.search(/js\/pages\/[^"]+\.js\?v=0\.9\.6-rc1/);
     assert.ok(shellIndex >= 0, `${page}.html harus memuat bootstrap navigasi`);
     assert.ok(pageIndex > shellIndex, `${page}.html harus memuat bootstrap sebelum modul halaman`);
   }
