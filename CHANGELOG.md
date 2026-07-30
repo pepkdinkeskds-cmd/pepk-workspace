@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.5 — Quality 06
+
+- Menstabilkan menu seluler ketika breakpoint berubah serta mempertahankan penutupan melalui `Escape`.
+- Membuat target **Lewati ke konten utama** dapat menerima fokus pada seluruh halaman.
+- Menghubungkan kolom pencarian dengan wilayah hasil yang diperbarui.
+- Menyediakan detail status pembaruan sebagai nama aksesibel, bukan hanya tooltip.
+- Menormalkan pengumuman tab baru pada pintu masuk Submission Portal.
+- Menghormati preferensi gerak minimum pengguna.
+- Memperkuat kontras teks metadata pada permukaan terang.
+- Tidak mengubah sumber data, rute Referensi, Pustaka, grafik, ataupun backend.
+
 ## 0.9.5 — Quality 05
 
 - Menyelaraskan Beranda dan halaman Layanan dengan rute Referensi yang sudah lulus uji produksi.

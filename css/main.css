@@ -19,6 +19,28 @@
   }
 }
 
+/* QUALITY 06 — accessible focus, contrast, and motion preferences. */
+@layer quality {
+  main[tabindex="-1"]:focus {
+    outline: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+  }
+}
+
 @layer components {
   body[data-page="contribute"] .contribution-action-card {
     min-height: 0;
@@ -141,7 +163,7 @@
     --ink-800: #26364d;
     --ink-700: #3d4d63;
     --ink-600: #5d6c80;
-    --ink-500: #748297;
+    --ink-500: #5f6f83;
     --ink-300: #bac4d0;
     --ink-200: #d7dee7;
     --ink-100: #e9edf2;

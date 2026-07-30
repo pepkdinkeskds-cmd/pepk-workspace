@@ -1,7 +1,7 @@
 import { initApp, createElement, externalLink } from "../app.js";
-import { setContentStatus } from "../status.js?v=0.9.5-quality-05";
+import { setContentStatus } from "../status.js?v=0.9.5-quality-06";
 import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-05";
+import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-06";
 
 initApp("contribute");
 
@@ -35,7 +35,7 @@ function actionCard({ iconName, eyebrow, title, description, url, buttonLabel, v
     })
   );
   if (url) {
-    card.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal");
+    card.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal — terbuka di tab baru");
   }
   return card;
 }

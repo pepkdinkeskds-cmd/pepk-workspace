@@ -13,13 +13,13 @@ import {
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.5-quality-05";
+} from "../status.js?v=0.9.5-quality-06";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { searchResourcesDetailed } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-05";
+import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-06";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-05";
+import { SUBMISSION_PORTAL_URL } from "./submission-portal-bridge.js?v=0.9.5-quality-06";
 
 initApp("home");
 
@@ -69,7 +69,7 @@ function contributionAction({ title, description, iconName, url }) {
   );
   const link = externalLink(url, title, "button button--primary contribution-quick-card__action");
   link.innerHTML = `${icon("arrow")} Mulai Pengajuan`;
-  link.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal");
+  link.setAttribute("aria-label", "Mulai Pengajuan PEPK di Submission Portal — terbuka di tab baru");
   article.append(link);
   return article;
 }

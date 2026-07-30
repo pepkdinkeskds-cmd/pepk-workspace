@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.9.5-quality-05">
-  <script type="module" src="js/pages/workspace.js?v=0.9.5-quality-05"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.5-quality-06">
+  <script type="module" src="js/pages/workspace.js?v=0.9.5-quality-06"></script>
 </head>
 <body data-page="workspace">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -48,7 +48,7 @@
     </div>
   </nav>
 </header>
-<main id="main-content">
+<main id="main-content" tabindex="-1">
   <section class="page-hero page-hero--workspace">
     <div class="container page-hero__inner">
       <span class="page-hero__icon" data-workspace-icon data-icon="folder"></span>
@@ -76,12 +76,12 @@
       <div class="workspace-toolbar">
         <div>
           <span class="eyebrow eyebrow--dark">Isi Ruang Kerja</span>
-          <h2 data-workspace-subtitle>Dokumen tersedia</h2>
+          <h2 id="workspace-content-title" data-workspace-subtitle>Dokumen tersedia</h2>
         </div>
         <label class="workspace-search">
           <span class="sr-only">Cari dalam ruang kerja</span>
           <span data-icon="search"></span>
-          <input type="search" placeholder="Cari dalam ruang kerja" data-workspace-search>
+          <input type="search" placeholder="Cari dalam ruang kerja" data-workspace-search aria-controls="workspace-app-results workspace-document-groups" aria-describedby="workspace-content-title">
         </label>
       </div>
       <section class="monev-workspace-callout" data-monev-workspace-callout hidden aria-labelledby="monev-workspace-title">
@@ -101,7 +101,7 @@
           </div>
           <span class="workspace-section-count" data-workspace-app-count></span>
         </div>
-        <div class="app-launchpad app-launchpad--workspace" data-workspace-apps></div>
+        <div class="app-launchpad app-launchpad--workspace" id="workspace-app-results" data-workspace-apps></div>
       </section>
       <section class="workspace-documents">
         <div class="workspace-section-heading workspace-section-heading--documents">
@@ -110,7 +110,7 @@
             <h2 data-workspace-documents-heading>Kelompok dokumen berdasarkan periode</h2>
           </div>
         </div>
-        <div class="document-groups" data-document-groups></div>
+        <div class="document-groups" id="workspace-document-groups" data-document-groups></div>
       </section>
       <div data-workspace-empty></div>
     </div>

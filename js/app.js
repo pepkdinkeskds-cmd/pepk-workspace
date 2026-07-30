@@ -63,6 +63,9 @@ function initMobileMenu() {
   const menuButton = document.querySelector("[data-menu-button]");
   const menu = document.querySelector("[data-mobile-nav]");
   if (!menuButton || !menu) return;
+  const mobileViewport = typeof window.matchMedia === "function"
+    ? window.matchMedia("(max-width: 52rem)")
+    : null;
 
   const setOpen = (open) => {
     menuButton.setAttribute("aria-expanded", String(open));
@@ -83,6 +86,22 @@ function initMobileMenu() {
     if (menuButton.getAttribute("aria-expanded") !== "true") return;
     if (!menu.contains(event.target) && !menuButton.contains(event.target)) setOpen(false);
   });
+  const handleViewportChange = (event) => {
+    if (!event.matches) setOpen(false);
+  };
+  if (mobileViewport?.addEventListener) mobileViewport.addEventListener("change", handleViewportChange);
+  else if (mobileViewport?.addListener) mobileViewport.addListener(handleViewportChange);
+}
+
+function initSkipLink() {
+  const skipLink = document.querySelector(".skip-link");
+  if (!skipLink) return;
+  const target = document.querySelector(skipLink.getAttribute("href"));
+  if (!target) return;
+  if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+  skipLink.addEventListener("click", () => {
+    window.requestAnimationFrame(() => target.focus({ preventScroll: true }));
+  });
 }
 
 export function initApp(activePage) {
@@ -93,6 +112,7 @@ export function initApp(activePage) {
     if (link.dataset.nav === activePage) link.setAttribute("aria-current", "page");
   });
 
+  initSkipLink();
   initMobileMenu();
   initEmbedMode();
 
@@ -110,6 +130,7 @@ export function setDataStatus(message, state = "ready", detail = "") {
   document.querySelectorAll("[data-data-status]").forEach((node) => {
     node.dataset.state = state;
     node.textContent = message;
+    node.setAttribute("aria-label", detail ? `${message}. ${detail}` : message);
     if (detail) node.title = detail;
     else node.removeAttribute("title");
   });

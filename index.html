@@ -13,8 +13,8 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.9.5-quality-05">
-  <script type="module" src="js/pages/home.js?v=0.9.5-quality-05"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.5-quality-06">
+  <script type="module" src="js/pages/home.js?v=0.9.5-quality-06"></script>
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -48,7 +48,7 @@
     </div>
   </nav>
 </header>
-<main id="main-content">
+<main id="main-content" tabindex="-1">
   <section class="hero">
     <div class="container hero__grid">
       <div class="hero__content">
@@ -58,10 +58,10 @@
         <form class="hero-search" role="search" data-home-search-form>
           <label class="sr-only" for="home-search">Cari dokumen PEPK</label>
           <span class="hero-search__icon" data-icon="search"></span>
-          <input id="home-search" name="q" type="search" autocomplete="off" placeholder="Contoh: Renja Akhir 2026 atau Coretax" data-home-search>
+          <input id="home-search" name="q" type="search" autocomplete="off" placeholder="Contoh: Renja Akhir 2026 atau Coretax" data-home-search aria-controls="home-search-results" aria-describedby="home-search-examples">
           <button type="submit">Cari</button>
         </form>
-        <div class="search-hints" aria-label="Contoh pencarian">
+        <div class="search-hints" id="home-search-examples" aria-label="Contoh pencarian">
           <span>Coba:</span>
           <button type="button" data-search-suggestion="DPA 2026">DPA 2026</button>
           <button type="button" data-search-suggestion="Coretax">Coretax</button>
@@ -76,12 +76,12 @@
     </div>
   </section>
 
-  <section class="search-results-section" data-home-results-section hidden>
+  <section class="search-results-section" id="home-search-results" data-home-results-section hidden aria-labelledby="home-results-title">
     <div class="container">
       <div class="section-heading section-heading--compact">
         <div>
           <span class="eyebrow eyebrow--dark">Hasil pencarian</span>
-          <h2 data-home-results-title>Dokumen ditemukan</h2>
+          <h2 id="home-results-title" data-home-results-title>Dokumen ditemukan</h2>
         </div>
         <a class="text-link text-link--standalone" data-view-all-results href="resources.html">Lihat semua <span data-icon="arrow"></span></a>
       </div>
