@@ -11,7 +11,7 @@ import {
 } from "../app.js";
 import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.5-intent-search";
 import { searchResourcesDetailed } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-intent-search";
+import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.5-quality-03d";
 import { latestRealization, upcomingAgenda } from "../information-utils.js";
 import { icon } from "../icons.js";
 
@@ -114,11 +114,13 @@ function renderRealization() {
   if (!container) return;
   container.replaceChildren();
   const item = latestRealization(data.realization);
-  if (item) container.append(realizationCard(item, {
-    compact: true,
-    balancedThreshold: data.settings.deviationBalancedThreshold || 2,
-    attentionThreshold: data.settings.deviationAttentionThreshold || 5
-  }));
+  if (item) {
+    const overview = realizationOverviewCard(data.realization, {
+      balancedThreshold: data.settings.deviationBalancedThreshold || 2,
+      attentionThreshold: data.settings.deviationAttentionThreshold || 5
+    });
+    if (overview) container.append(overview);
+  }
   if (!item) {
     container.append(emptyState("Data capaian belum tersedia", "Capaian realisasi akan tampil setelah indikator diisi melalui sheet Realization.", "trend", { label: "Buka Pusat Informasi", href: "information.html#realisasi" }));
   }

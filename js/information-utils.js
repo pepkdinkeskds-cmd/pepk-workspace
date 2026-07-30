@@ -103,6 +103,36 @@ export function realizationDeviation(item, balancedThreshold = 2, attentionThres
   return { value, absolute, severity, direction, label };
 }
 
+export function realizationEvaluation(item) {
+  const deviation = realizationDeviation(item);
+  if (deviation.value === null) {
+    return {
+      state: "unknown",
+      status: "Belum tersedia",
+      description: "Realisasi keuangan dan fisik belum dapat dibandingkan."
+    };
+  }
+  if (deviation.direction === "financial") {
+    return {
+      state: "attention",
+      status: "Perlu perhatian",
+      description: deviation.label
+    };
+  }
+  if (deviation.direction === "balanced") {
+    return {
+      state: "balanced",
+      status: "Seimbang",
+      description: deviation.label
+    };
+  }
+  return {
+    state: "good",
+    status: "Sesuai",
+    description: deviation.label
+  };
+}
+
 export function realizationPeriod(item) {
   if (!item) return "Periode belum tersedia";
   return `${monthName(item.month)} ${item.year}`;

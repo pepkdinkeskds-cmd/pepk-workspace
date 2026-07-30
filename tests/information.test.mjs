@@ -6,6 +6,7 @@ import {
   formatPercentage,
   latestRealization,
   realizationDeviation,
+  realizationEvaluation,
   realizationForYear,
   realizationYears
 } from "../js/information-utils.js";
@@ -44,4 +45,10 @@ test("realization utilities select years, series, and latest month", () => {
   assert.deepEqual(realizationYears(items), [2026, 2025]);
   assert.deepEqual(realizationForYear(items, 2026).map((item) => item.id), ["b", "c"]);
   assert.equal(latestRealization(items).id, "c");
+});
+
+test("realization evaluation follows the financial-versus-physical policy", () => {
+  assert.equal(realizationEvaluation({ financialValue: 49.61, physicalValue: 54.52 }).status, "Sesuai");
+  assert.equal(realizationEvaluation({ financialValue: 50, physicalValue: 50 }).status, "Seimbang");
+  assert.equal(realizationEvaluation({ financialValue: 54, physicalValue: 50 }).status, "Perlu perhatian");
 });

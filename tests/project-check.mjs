@@ -14,7 +14,7 @@ for (const page of pages) {
   const html = fs.readFileSync(full, "utf8");
   assert.match(html, /<html lang="id">/);
   assert.match(html, /<main\b/);
-  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-03c/);
+  assert.match(html, /css\/main\.css\?v=0\.9\.5\-quality-03d/);
   assert.match(html, /href="contribute\.html(?:\?[^"]*)?">Layanan<\/a>/);
 }
 
@@ -28,6 +28,9 @@ assert.match(read("resources.html"), /class="monev-library-access" href="monev\.
 const mainCss = read("css/main.css");
 assert.match(mainCss, /QUALITY 03 — responsive comfort/);
 assert.match(mainCss, /QUALITY 03A — cross-page typography scale/);
+assert.match(mainCss, /QUALITY 03D — homepage realization trend and latest evaluation/);
+assert.match(homeHtml, /Tren realisasi dan evaluasi bulan terbaru/);
+assert.match(homeScript, /realizationOverviewCard/);
 assert.match(
   mainCss,
   /\.home-tools-layout\s*\{[\s\S]*?grid-template-columns:[\s\S]*?align-items:\s*stretch/,

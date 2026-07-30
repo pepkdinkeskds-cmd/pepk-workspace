@@ -3368,3 +3368,225 @@ body[data-page="contribute"] .contribution-action-card--clickable:hover .contrib
     }
   }
 }
+
+/* QUALITY 03D — homepage realization trend and latest evaluation. */
+@layer quality {
+  body[data-page="home"] .realization-latest {
+    display: block;
+  }
+
+  body[data-page="home"] .realization-overview {
+    display: grid;
+    grid-template-columns: minmax(0, 1.62fr) minmax(18rem, 1fr);
+    overflow: hidden;
+    border: 1px solid #d4eee8;
+    border-radius: var(--radius-xl);
+    background: var(--white);
+    box-shadow: 0 16px 38px rgba(10, 82, 107, .10);
+  }
+
+  .realization-overview__chart-pane {
+    min-width: 0;
+    padding: clamp(1.15rem, 2.4vw, 1.75rem);
+    background: linear-gradient(180deg, #fbfefd, #f4fbf9);
+  }
+
+  .realization-overview__chart-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-block-end: .45rem;
+  }
+
+  .realization-overview__kicker,
+  .realization-overview__period > span:first-child,
+  .realization-evaluation__label {
+    color: var(--ink-600);
+    font-size: var(--type-badge);
+    font-weight: 850;
+    letter-spacing: .055em;
+    text-transform: uppercase;
+  }
+
+  .realization-overview__chart-heading h3 {
+    margin-block-start: .3rem;
+    color: var(--ink-950);
+    font-size: var(--type-card-feature);
+    line-height: 1.2;
+  }
+
+  .realization-overview__range {
+    flex: 0 0 auto;
+    padding: .35rem .65rem;
+    border: 1px solid #cce8e2;
+    border-radius: 999px;
+    color: var(--teal-800);
+    background: #e9f8f4;
+    font-size: var(--type-meta);
+    font-weight: 800;
+  }
+
+  .realization-overview .realization-chart {
+    overflow-x: auto;
+    padding: .35rem 0 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    scrollbar-width: thin;
+  }
+
+  .realization-overview .realization-chart__legend {
+    justify-content: flex-start;
+    margin-block-end: .15rem;
+  }
+
+  .realization-overview .realization-chart__svg {
+    min-width: 100%;
+  }
+
+  .realization-overview__summary {
+    display: grid;
+    min-width: 0;
+    align-content: start;
+    gap: .8rem;
+    padding: clamp(1.15rem, 2.4vw, 1.6rem);
+    border-inline-start: 1px solid #dbeeea;
+    background: #f8fbff;
+  }
+
+  .realization-overview__period {
+    display: grid;
+    gap: .2rem;
+    padding-block-end: .8rem;
+    border-block-end: 1px solid var(--ink-100);
+  }
+
+  .realization-overview__period strong {
+    color: var(--blue-950);
+    font-size: var(--type-card-feature);
+    line-height: 1.2;
+  }
+
+  .realization-overview__updated {
+    color: var(--ink-500);
+    font-size: var(--type-meta);
+  }
+
+  .realization-overview__summary .realization-metric {
+    margin: 0;
+    padding: .9rem;
+    border-color: var(--ink-100);
+    background: var(--white);
+    box-shadow: 0 7px 20px rgba(13, 70, 157, .055);
+  }
+
+  .realization-overview__summary .realization-metric__heading {
+    align-items: center;
+    font-size: var(--type-meta);
+  }
+
+  .realization-overview__summary .realization-metric__heading strong {
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  }
+
+  .realization-evaluation {
+    display: grid;
+    gap: .3rem;
+    padding: .95rem;
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-md);
+    background: var(--white);
+  }
+
+  .realization-evaluation--good,
+  .realization-evaluation--balanced {
+    border-color: #a7e4d4;
+    background: #ecfbf6;
+  }
+
+  .realization-evaluation--attention {
+    border-color: #efb3ad;
+    background: #fff0ef;
+  }
+
+  .realization-evaluation__status {
+    color: var(--ink-950);
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .realization-evaluation--good .realization-evaluation__status,
+  .realization-evaluation--balanced .realization-evaluation__status {
+    color: var(--teal-800);
+  }
+
+  .realization-evaluation--attention .realization-evaluation__status {
+    color: var(--danger);
+  }
+
+  .realization-evaluation__description {
+    color: var(--ink-700);
+    font-size: var(--type-control);
+    line-height: 1.5;
+  }
+
+  .realization-evaluation__deviation {
+    color: var(--ink-600);
+    font-size: var(--type-meta);
+    font-weight: 750;
+  }
+
+  @media (max-width: 64rem) {
+    body[data-page="home"] .realization-overview {
+      grid-template-columns: 1fr;
+    }
+
+    .realization-overview__summary {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-block-start: 1px solid #dbeeea;
+      border-inline-start: 0;
+    }
+
+    .realization-overview__period,
+    .realization-evaluation {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .realization-overview__chart-pane,
+    .realization-overview__summary {
+      padding: 1rem;
+    }
+
+    .realization-overview__summary {
+      grid-template-columns: 1fr;
+    }
+
+    .realization-overview__period,
+    .realization-evaluation {
+      grid-column: auto;
+    }
+
+    .realization-overview__chart-heading {
+      align-items: center;
+    }
+
+    .realization-overview .realization-chart__axis-label {
+      font-size: 22px;
+    }
+
+    .realization-overview .realization-chart__month {
+      font-size: 26px;
+    }
+  }
+
+  @media (max-width: 24rem) {
+    .realization-overview__chart-heading {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+}

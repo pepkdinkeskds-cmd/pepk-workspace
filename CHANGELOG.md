@@ -316,3 +316,13 @@
 - Memperbaiki susunan kartu Materi Monev, panel layanan, dan tombol reset pada ponsel.
 - Menambahkan perlindungan tata letak untuk layar sangat sempit hingga 320 px.
 - Menyeragamkan versi aset ke `quality-03` untuk mencegah cache lama.
+
+# PEPK Workspace v0.9.5 QUALITY 03D
+
+## Tren realisasi dan evaluasi Beranda
+
+- Mengubah ringkasan Realisasi menjadi satu kartu dengan komposisi desktop 62:38.
+- Menampilkan grafik Keuangan dan Fisik dari Januari sampai bulan terbaru tanpa permintaan data tambahan.
+- Menyusun ringkasan Keuangan, Fisik, dan Hasil Evaluasi secara vertikal.
+- Menerapkan status Sesuai, Seimbang, dan Perlu perhatian sesuai hubungan capaian fisik terhadap keuangan.
+- Menumpuk grafik dan ringkasan secara responsif pada tablet serta ponsel.

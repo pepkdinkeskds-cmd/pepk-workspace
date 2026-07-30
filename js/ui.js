@@ -6,8 +6,10 @@ import {
   formatPercentage,
   formatShortAgendaDate,
   formatTimeRange,
+  latestRealization,
   monthName,
   realizationDeviation,
+  realizationEvaluation,
   realizationForYear,
   realizationPeriod
 } from "./information-utils.js";
@@ -197,18 +199,25 @@ function lineSegments(points) {
   return segments;
 }
 
-export function realizationChart(items, year) {
+export function realizationChart(items, year, { compact = false, throughMonth = 12 } = {}) {
   const series = realizationForYear(items, year);
   const byMonth = new Map(series.map((item) => [Number(item.month), item]));
-  const width = 860;
-  const height = 330;
-  const margin = { top: 28, right: 28, bottom: 54, left: 54 };
+  const visibleMonthCount = compact
+    ? Math.max(1, Math.min(12, Number(throughMonth) || 12))
+    : 12;
+  const width = compact ? 720 : 860;
+  const height = compact ? 300 : 330;
+  const margin = compact
+    ? { top: 22, right: 20, bottom: 48, left: 72 }
+    : { top: 28, right: 28, bottom: 54, left: 54 };
   const innerWidth = width - margin.left - margin.right;
   const innerHeight = height - margin.top - margin.bottom;
-  const x = (month) => margin.left + ((month - 1) / 11) * innerWidth;
+  const x = (month) => visibleMonthCount === 1
+    ? margin.left + innerWidth / 2
+    : margin.left + ((month - 1) / (visibleMonthCount - 1)) * innerWidth;
   const y = (value) => margin.top + innerHeight - (Math.max(0, Math.min(100, Number(value) || 0)) / 100) * innerHeight;
 
-  const wrapper = createElement("div", { className: "realization-chart" });
+  const wrapper = createElement("div", { className: `realization-chart${compact ? " realization-chart--compact" : ""}` });
   const legend = createElement("div", { className: "realization-chart__legend" }, [
     createElement("span", { className: "realization-chart__legend-item realization-chart__legend-item--financial", text: "Keuangan" }),
     createElement("span", { className: "realization-chart__legend-item realization-chart__legend-item--physical", text: "Fisik" })
@@ -220,7 +229,11 @@ export function realizationChart(items, year) {
     "aria-label": `Grafik perkembangan realisasi keuangan dan fisik tahun ${year}`
   });
   svg.append(svgNode("title", {}, `Perkembangan realisasi tahun ${year}`));
-  svg.append(svgNode("desc", {}, "Garis biru menunjukkan realisasi keuangan dan garis hijau menunjukkan capaian fisik pada skala nol sampai seratus persen."));
+  svg.append(svgNode(
+    "desc",
+    {},
+    `Garis biru menunjukkan realisasi keuangan dan garis hijau menunjukkan capaian fisik dari Januari sampai ${monthName(visibleMonthCount)} pada skala nol sampai seratus persen.`
+  ));
 
   [0, 25, 50, 75, 100].forEach((tick) => {
     const yy = y(tick);
@@ -228,15 +241,15 @@ export function realizationChart(items, year) {
     svg.append(svgNode("text", { x: margin.left - 10, y: yy + 4, class: "realization-chart__axis-label", "text-anchor": "end" }, `${tick}%`));
   });
 
-  for (let month = 1; month <= 12; month += 1) {
+  for (let month = 1; month <= visibleMonthCount; month += 1) {
     svg.append(svgNode("text", { x: x(month), y: height - 20, class: "realization-chart__month", "text-anchor": "middle" }, monthName(month, true)));
   }
 
-  const financialPoints = Array.from({ length: 12 }, (_, index) => {
+  const financialPoints = Array.from({ length: visibleMonthCount }, (_, index) => {
     const item = byMonth.get(index + 1);
     return item ? [x(index + 1), y(item.financialValue), item] : null;
   });
-  const physicalPoints = Array.from({ length: 12 }, (_, index) => {
+  const physicalPoints = Array.from({ length: visibleMonthCount }, (_, index) => {
     const item = byMonth.get(index + 1);
     return item ? [x(index + 1), y(item.physicalValue), item] : null;
   });
@@ -252,13 +265,76 @@ export function realizationChart(items, year) {
     points.filter(Boolean).forEach(([px, py, item]) => {
       const value = kind === "financial" ? item.financialValue : item.physicalValue;
       const point = svgNode("circle", { cx: px, cy: py, r: 5, class: `realization-chart__point realization-chart__point--${kind}` });
-      point.append(svgNode("title", {}, `${monthName(item.month)}: ${formatPercentage(value)}`));
+      const seriesLabel = kind === "financial" ? "Keuangan" : "Fisik";
+      point.append(svgNode("title", {}, `${monthName(item.month)} — ${seriesLabel}: ${formatPercentage(value)}`));
       svg.append(point);
     });
   });
 
   wrapper.append(legend, svg);
   return wrapper;
+}
+
+export function realizationOverviewCard(items, { balancedThreshold = 2, attentionThreshold = 5 } = {}) {
+  const latest = latestRealization(items);
+  if (!latest) return null;
+
+  const yearItems = realizationForYear(items, latest.year);
+  const evaluation = realizationEvaluation(latest);
+  const deviation = realizationDeviation(latest, balancedThreshold, attentionThreshold);
+  const throughMonth = Math.max(1, Math.min(12, Number(latest.month) || 12));
+  const article = createElement("article", { className: "realization-overview" });
+
+  const chartPane = createElement("section", {
+    className: "realization-overview__chart-pane",
+    "aria-labelledby": "home-realization-chart-title"
+  }, [
+    createElement("div", { className: "realization-overview__chart-heading" }, [
+      createElement("div", {}, [
+        createElement("span", { className: "realization-overview__kicker", text: "Perkembangan bulanan" }),
+        createElement("h3", { id: "home-realization-chart-title", text: `Tren realisasi ${latest.year}` })
+      ]),
+      createElement("span", {
+        className: "realization-overview__range",
+        text: `Jan–${monthName(throughMonth, true)}`
+      })
+    ]),
+    realizationChart(yearItems, latest.year, { compact: true, throughMonth })
+  ]);
+
+  const updated = latest.updatedAt
+    ? createElement("span", {
+      className: "realization-overview__updated",
+      text: `Diperbarui ${formatAgendaDate(latest.updatedAt)}`
+    })
+    : null;
+
+  const summary = createElement("aside", {
+    className: "realization-overview__summary",
+    "aria-label": `Ringkasan realisasi ${realizationPeriod(latest)}`
+  }, [
+    createElement("div", { className: "realization-overview__period" }, [
+      createElement("span", { text: "Bulan terbaru" }),
+      createElement("strong", { text: realizationPeriod(latest) }),
+      updated
+    ].filter(Boolean)),
+    metricProgress("Realisasi Keuangan", latest.financialValue, "financial"),
+    metricProgress("Realisasi Fisik", latest.physicalValue, "physical"),
+    createElement("div", { className: `realization-evaluation realization-evaluation--${evaluation.state}` }, [
+      createElement("span", { className: "realization-evaluation__label", text: "Hasil evaluasi" }),
+      createElement("strong", { className: "realization-evaluation__status", text: evaluation.status }),
+      createElement("p", { className: "realization-evaluation__description", text: evaluation.description }),
+      deviation.value === null
+        ? null
+        : createElement("span", {
+          className: "realization-evaluation__deviation",
+          text: `Deviasi ${new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2, signDisplay: "always" }).format(deviation.value)} poin`
+        })
+    ].filter(Boolean))
+  ]);
+
+  article.append(chartPane, summary);
+  return article;
 }
 
 export function realizationTable(items, year, balancedThreshold = 2, attentionThreshold = 5) {
