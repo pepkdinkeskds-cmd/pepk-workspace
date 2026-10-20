@@ -13,10 +13,11 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.9.6-rc1">
-  <script defer src="js/mobile-nav.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/pages/about.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/feedback.js?v=0.9.6-rc1"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.7-rc2">
+  <script defer src="js/mobile-nav.js?v=0.9.7-rc2"></script>
+  <script defer src="js/boot.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/pages/about.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/feedback.js?v=0.9.7-rc2"></script>
 </head>
 <body data-page="about">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -85,7 +86,7 @@
         <article class="about-card">
           <span class="about-card__icon" data-icon="shield"></span>
           <h2>Izin tetap terjaga</h2>
-          <p>PEPK Workspace tidak menggantikan pengaturan akses. Hak membuka dokumen tetap mengikuti izin Google Drive.</p>
+          <p>Katalog dan tautan pada halaman ini dapat dibaca publik. Hak membuka isi dokumen tetap mengikuti izin Google Drive; halaman ini tidak menyediakan login staf.</p>
         </article>
         <article class="about-card">
           <span class="about-card__icon" data-icon="refresh"></span>
@@ -97,25 +98,27 @@
         <div>
           <span class="eyebrow eyebrow--dark">Ringkasan Sistem</span>
           <h2>Isi PEPK Workspace</h2>
-          <p>Jumlah berikut dihitung langsung dari data aktif PEPK Workspace.</p>
+          <p>Jumlah berikut dihitung dari katalog yang sedang digunakan. Periksa sumber dan waktu sinkronisasinya di bawah.</p>
         </div>
         <div class="system-summary" role="group" aria-label="Ringkasan konten">
-          <span><strong data-summary-workspaces>4</strong><small>Ruang kerja</small></span>
-          <span><strong data-summary-groups>37</strong><small>Kelompok</small></span>
-          <span><strong data-summary-folders>140</strong><small>Folder periode</small></span>
-          <span><strong data-summary-applications>19</strong><small>Aplikasi</small></span>
+          <span><strong data-summary-workspaces>…</strong><small>Ruang kerja</small></span>
+          <span><strong data-summary-groups>…</strong><small>Kelompok</small></span>
+          <span><strong data-summary-folders>…</strong><small>Folder periode</small></span>
+          <span><strong data-summary-applications>…</strong><small>Aplikasi</small></span>
         </div>
       </article>
+      <p class="source-note" data-source="resources"></p>
       <article class="about-card about-card--technical">
         <h2>Informasi versi</h2>
         <dl class="definition-list">
-          <div><dt>Versi aplikasi</dt><dd><span data-about-version data-version>0.9.6 RC1</span></dd></div>
-          <div><dt>Pembaruan data</dt><dd><span data-about-updated data-updated>20 Juli 2026</span></dd></div>
+          <div><dt>Versi aplikasi</dt><dd><span data-about-version data-version>0.9.7 RC2</span></dd></div>
+          <div><dt>Pembacaan sumber</dt><dd><span data-about-updated data-updated>Belum tersinkron</span></dd></div>
           <div><dt>Unit pengelola</dt><dd>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan</dd></div>
         </dl>
       </article>
     </div>
   </section>
+  <noscript><p class="container source-note">Aktifkan JavaScript untuk memuat katalog dan pencarian. Tautan navigasi tetap tersedia.</p></noscript>
 </main>
 <footer class="site-footer">
   <div class="container site-footer__grid">
@@ -127,9 +130,9 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.9.6 RC1</span></p>
-      <p>Data diperbarui <span data-updated>20 Juli 2026</span></p>
-      <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
+      <p>Versi <span data-version>0.9.7 RC2</span></p>
+      <p>Sumber terakhir dibaca <span data-updated>Belum tersinkron</span></p>
+      <span class="data-status" data-data-status data-state="loading">Memuat katalog…</span>
     </div>
   </div>
   <div class="container site-footer__bottom">

@@ -13,10 +13,11 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.9.6-rc1">
-  <script defer src="js/mobile-nav.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/pages/resources.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/feedback.js?v=0.9.6-rc1"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.7-rc2">
+  <script defer src="js/mobile-nav.js?v=0.9.7-rc2"></script>
+  <script defer src="js/boot.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/pages/resources.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/feedback.js?v=0.9.7-rc2"></script>
 </head>
 <body data-page="resources">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -77,7 +78,7 @@
       </a>
       <form class="filter-panel" data-resource-filters role="search">
         <div class="filter-panel__search">
-          <label for="resource-search">Cari dokumen</label>
+          <label for="resource-search">Cari folder atau aplikasi</label>
           <div class="input-with-icon">
             <span data-icon="search"></span>
             <input id="resource-search" type="search" name="q" autocomplete="off" placeholder="Nama dokumen, aplikasi, tahun, atau kata kunci" data-resource-search aria-controls="resource-results" aria-describedby="resource-results-summary">
@@ -98,7 +99,7 @@
           </select>
         </div>
         <div>
-          <label for="year-filter">Tahun/periode</label>
+          <label for="year-filter">Tahun yang dicakup</label>
           <select id="year-filter" name="year" data-year-filter>
             <option value="">Semua tahun</option>
           </select>
@@ -107,21 +108,22 @@
           <label for="sort-filter">Urutkan</label>
           <select id="sort-filter" name="sort" data-sort-filter>
             <option value="relevance">Paling relevan</option>
-            <option value="newest">Periode terbaru</option>
+            <option value="newest">Periode aktif, lalu terbaru</option>
             <option value="title">Judul A–Z</option>
             <option value="workspace">Ruang kerja</option>
           </select>
         </div>
         <div class="filter-actions">
-          <button class="button button--primary filter-apply" type="submit">Terapkan</button>
           <button class="button button--secondary filter-reset" type="button" data-filter-reset>Reset</button>
         </div>
       </form>
+      <p class="source-note" data-source="resources"></p>
+      <p class="source-note" data-index-status role="status">Pencarian menggunakan nama, jalur, dan metadata; isi file tidak diperiksa. Filter langsung diterapkan.</p>
       <div class="results-toolbar">
         <div>
-          <p><strong data-resource-count aria-live="polite">0</strong> hasil ditemukan</p>
+          <p><strong data-resource-count aria-live="polite">…</strong> hasil ditemukan</p>
           <p class="results-toolbar__summary" id="resource-results-summary" data-filter-summary>Menampilkan seluruh sumber daya.</p>
-          <p class="results-toolbar__visible">Menampilkan <strong data-resource-visible-count>0</strong> item pada halaman ini.</p>
+          <p class="results-toolbar__visible">Menampilkan <strong data-resource-visible-count>…</strong> item pada halaman ini.</p>
         </div>
         <span class="results-toolbar__hint"><span data-icon="external"></span> Tautan terbuka di tab baru</span>
       </div>
@@ -132,6 +134,7 @@
       <div data-resource-empty></div>
     </div>
   </section>
+  <noscript><p class="container source-note">Aktifkan JavaScript untuk memuat katalog dan pencarian. Tautan navigasi tetap tersedia.</p></noscript>
 </main>
 <footer class="site-footer">
   <div class="container site-footer__grid">
@@ -143,9 +146,9 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.9.6 RC1</span></p>
-      <p>Data diperbarui <span data-updated>20 Juli 2026</span></p>
-      <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
+      <p>Versi <span data-version>0.9.7 RC2</span></p>
+      <p>Sumber terakhir dibaca <span data-updated>Belum tersinkron</span></p>
+      <span class="data-status" data-data-status data-state="loading">Memuat katalog…</span>
     </div>
   </div>
   <div class="container site-footer__bottom">

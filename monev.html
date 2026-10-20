@@ -12,10 +12,11 @@
   <link rel="icon" href="assets/favicon.png" type="image/png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="css/main.css?v=0.9.6-rc1">
-  <script defer src="js/mobile-nav.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/pages/monev.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/feedback.js?v=0.9.6-rc1"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.7-rc2">
+  <script defer src="js/mobile-nav.js?v=0.9.7-rc2"></script>
+  <script defer src="js/boot.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/pages/monev.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/feedback.js?v=0.9.7-rc2"></script>
 </head>
 <body data-page="monev">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -100,13 +101,13 @@
           </select>
         </div>
         <div class="filter-actions">
-          <button class="button button--primary filter-apply" type="submit">Terapkan</button>
           <button class="button button--secondary filter-reset" type="reset">Reset</button>
         </div>
       </form>
+      <p class="source-note" data-source="monevMaterials"></p>
 
       <div class="monev-results-heading">
-        <div id="monev-results-summary"><strong data-monev-result-count aria-live="polite">0 materi</strong><span data-monev-result-detail></span></div>
+        <div id="monev-results-summary"><strong data-monev-result-count aria-live="polite">Memuat materi…</strong><span data-monev-result-detail></span></div>
         <a class="button button--primary button--small" data-monev-upload-link
           href="https://script.google.com/macros/s/AKfycbyjW1UYM2-k0AcXMrYmV36qDIL6PtJrOmOxUs4P1bhMkbpiyIEqR5_VgmMX3cdT2sM/exec"
           referrerpolicy="no-referrer"
@@ -116,6 +117,7 @@
       <div data-monev-empty></div>
     </div>
   </section>
+  <noscript><p class="container source-note">Aktifkan JavaScript untuk memuat katalog dan pencarian. Tautan navigasi tetap tersedia.</p></noscript>
 </main>
 <footer class="site-footer">
   <div class="container site-footer__grid">
@@ -124,9 +126,9 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.9.6 RC1</span></p>
-      <p>Data diperbarui <span data-updated>20 Juli 2026</span></p>
-      <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
+      <p>Versi <span data-version>0.9.7 RC2</span></p>
+      <p>Sumber terakhir dibaca <span data-updated>Belum tersinkron</span></p>
+      <span class="data-status" data-data-status data-state="loading">Memuat katalog…</span>
     </div>
   </div>
   <div class="container site-footer__bottom"><p>© 2026 PEPK – Dinas Kesehatan Kabupaten Kudus</p></div>

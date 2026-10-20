@@ -13,10 +13,11 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.9.6-rc1">
-  <script defer src="js/mobile-nav.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/pages/home.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/feedback.js?v=0.9.6-rc1"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.7-rc2">
+  <script defer src="js/mobile-nav.js?v=0.9.7-rc2"></script>
+  <script defer src="js/boot.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/pages/home.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/feedback.js?v=0.9.7-rc2"></script>
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -51,16 +52,16 @@
   </nav>
 </header>
 <main id="main-content" tabindex="-1">
-  <section class="hero">
+  <section class="hero home-scene" id="mulai" data-home-scene data-scene-title="Mulai" tabindex="-1" aria-labelledby="hero-title">
     <div class="container hero__grid">
       <div class="hero__content">
-        <span class="eyebrow">Workspace internal PEPK</span>
-        <h1>Temukan dokumen kerja dengan lebih cepat.</h1>
+        <span class="eyebrow">PEPK · Dinas Kesehatan Kabupaten Kudus</span>
+        <h1 id="hero-title">Temukan kebutuhan kerja Anda.</h1>
         <p>Telusuri folder dan aplikasi Perencanaan, Evaluasi, Pelaporan, dan Keuangan berdasarkan nama, tahun, atau kebutuhan pekerjaan.</p>
         <form class="hero-search" role="search" data-home-search-form>
-          <label class="sr-only" for="home-search">Cari dokumen PEPK</label>
+          <label class="sr-only" for="home-search">Cari folder atau aplikasi PEPK</label>
           <span class="hero-search__icon" data-icon="search"></span>
-          <input id="home-search" name="q" type="search" autocomplete="off" placeholder="Contoh: Renja Akhir 2026 atau Coretax" data-home-search aria-controls="home-search-results" aria-describedby="home-search-examples">
+          <input id="home-search" name="q" type="search" autocomplete="off" placeholder="Renja Akhir 2026, DPA, Coretax…" data-home-search aria-describedby="home-search-examples search-scope" required>
           <button type="submit">Cari</button>
         </form>
         <div class="search-hints" id="home-search-examples" role="group" aria-label="Contoh pencarian">
@@ -69,6 +70,8 @@
           <button type="button" data-search-suggestion="Coretax">Coretax</button>
           <button type="button" data-search-suggestion="Renja Akhir">Renja Akhir</button>
         </div>
+        <p class="hero__scope" id="search-scope">Mencari nama folder, jalur, dan metadata. Isi file tidak ditelusuri.</p>
+        <a class="hero__next" href="#akses">Jelajahi akses utama <span aria-hidden="true">↓</span></a>
       </div>
       <div class="hero__visual" aria-hidden="true">
         <div class="hero__orb hero__orb--one"></div>
@@ -78,27 +81,13 @@
     </div>
   </section>
 
-  <section class="search-results-section" id="home-search-results" data-home-results-section hidden aria-labelledby="home-results-title">
-    <div class="container">
-      <div class="section-heading section-heading--compact">
-        <div>
-          <span class="eyebrow eyebrow--dark">Hasil pencarian</span>
-          <h2 id="home-results-title" data-home-results-title>Dokumen ditemukan</h2>
-        </div>
-        <a class="text-link text-link--standalone" data-view-all-results href="resources.html">Lihat semua <span data-icon="arrow"></span></a>
-      </div>
-      <div class="resource-grid resource-grid--search" data-home-results></div>
-      <div data-home-empty></div>
-    </div>
-  </section>
-
-  <section class="section section--home-tools">
+  <section class="section section--home-tools home-scene" id="akses" data-home-scene data-scene-title="Akses utama" tabindex="-1" aria-labelledby="home-quick-title">
     <div class="container home-tools-layout">
       <section class="home-tools-card home-tools-card--quick" aria-labelledby="home-quick-title">
         <div class="home-tools-heading">
           <div>
-            <span class="eyebrow eyebrow--dark">Akses Cepat</span>
-            <h2 id="home-quick-title">Folder dan aplikasi yang sering digunakan</h2>
+            <span class="eyebrow eyebrow--dark">Akses utama</span>
+            <h2 id="home-quick-title">Folder kerja dan aplikasi</h2>
             <p>Buka kebutuhan kerja utama tanpa menelusuri Drive atau mencari alamat aplikasi dari awal.</p>
           </div>
         </div>
@@ -122,6 +111,7 @@
             <div class="app-launchpad" data-quick-apps></div>
           </section>
         </div>
+        <p class="source-note" data-source="resources"></p>
       </section>
 
       <aside class="home-tools-card home-tools-card--contribution" id="kontribusi" aria-labelledby="home-contribution-title">
@@ -136,7 +126,7 @@
     </div>
   </section>
 
-  <section class="section section--workspaces deferred-section">
+  <section class="section section--workspaces home-scene" id="ruang-kerja" data-home-scene data-scene-title="Ruang kerja" tabindex="-1" aria-label="Ruang kerja">
     <div class="container">
       <div class="section-heading">
         <div>
@@ -149,7 +139,7 @@
     </div>
   </section>
 
-  <section class="section section--agenda deferred-section" id="agenda">
+  <section class="section section--agenda home-scene" id="agenda" data-home-scene data-scene-title="Agenda" tabindex="-1" aria-label="Agenda">
     <div class="container">
       <div class="section-heading">
         <div>
@@ -160,24 +150,40 @@
         <a class="text-link text-link--standalone" href="information.html#agenda">Lihat semua agenda <span data-icon="arrow"></span></a>
       </div>
       <div class="agenda-grid" data-agenda-preview></div>
+      <p class="source-note" data-source="agenda"></p>
     </div>
   </section>
 
-  <section class="section section--realization deferred-section" id="realisasi">
+  <section class="section section--realization home-scene" id="realisasi" data-home-scene data-scene-title="Realisasi" tabindex="-1" aria-label="Realisasi">
     <div class="container realization-shell">
       <div class="section-heading section-heading--realization">
         <div>
           <span class="eyebrow eyebrow--dark">Capaian realisasi</span>
-          <h2>Tren realisasi dan evaluasi bulan terbaru</h2>
-          <p>Pantau perkembangan keuangan dan fisik sepanjang tahun, lalu lihat hasil evaluasi periode terkini.</p>
+          <h2>Perkembangan realisasi</h2>
+          <p>Periksa periode data dan selisih fisik–keuangan. Ketercapaian dinilai jika target periode tersedia.</p>
         </div>
         <a class="text-link text-link--standalone" href="information.html#realisasi">Lihat rincian <span data-icon="arrow"></span></a>
       </div>
       <div class="realization-latest" data-realization-preview></div>
+      <p class="source-note" data-source="realization"></p>
     </div>
   </section>
 
+  <noscript><p class="container source-note">Aktifkan JavaScript untuk memuat katalog dan pencarian. Tautan navigasi tetap tersedia.</p></noscript>
 </main>
+<nav class="scene-nav" data-scene-nav aria-label="Navigasi bagian beranda">
+  <span class="scene-nav__label" data-scene-label>Mulai</span>
+  <div class="scene-nav__dots">
+    <button type="button" data-scene-jump="0" aria-label="Bagian 1: Mulai" aria-current="step"></button>
+    <button type="button" data-scene-jump="1" aria-label="Bagian 2: Akses utama"></button>
+    <button type="button" data-scene-jump="2" aria-label="Bagian 3: Ruang kerja"></button>
+    <button type="button" data-scene-jump="3" aria-label="Bagian 4: Agenda"></button>
+    <button type="button" data-scene-jump="4" aria-label="Bagian 5: Realisasi"></button>
+  </div>
+  <span class="scene-nav__count" data-scene-count>01 / 05</span>
+  <button type="button" data-scene-previous aria-label="Bagian sebelumnya">↑</button>
+  <button type="button" data-scene-next aria-label="Bagian berikutnya">↓</button>
+</nav>
 <footer class="site-footer">
   <div class="container site-footer__grid">
     <div class="site-footer__identity">
@@ -188,9 +194,9 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.9.6 RC1</span></p>
-      <p>Data diperbarui <span data-updated>20 Juli 2026</span></p>
-      <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
+      <p>Versi <span data-version>0.9.7 RC2</span></p>
+      <p>Sumber terakhir dibaca <span data-updated>Belum tersinkron</span></p>
+      <span class="data-status" data-data-status data-state="loading">Memuat katalog…</span>
     </div>
   </div>
   <div class="container site-footer__bottom">

@@ -13,10 +13,11 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.9.6-rc1">
-  <script defer src="js/mobile-nav.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/pages/workspace.js?v=0.9.6-rc1"></script>
-  <script type="module" src="js/feedback.js?v=0.9.6-rc1"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.7-rc2">
+  <script defer src="js/mobile-nav.js?v=0.9.7-rc2"></script>
+  <script defer src="js/boot.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/pages/workspace.js?v=0.9.7-rc2"></script>
+  <script type="module" src="js/feedback.js?v=0.9.7-rc2"></script>
 </head>
 <body data-page="workspace">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -51,6 +52,7 @@
   </nav>
 </header>
 <main id="main-content" tabindex="-1">
+  <p class="container source-note" data-source="resources"></p>
   <section class="page-hero page-hero--workspace">
     <div class="container page-hero__inner">
       <span class="page-hero__icon" data-workspace-icon data-icon="folder"></span>
@@ -80,10 +82,10 @@
           <span class="eyebrow eyebrow--dark">Isi Ruang Kerja</span>
           <h2 id="workspace-content-title" data-workspace-subtitle>Dokumen tersedia</h2>
         </div>
-        <label class="workspace-search">
+        <label class="workspace-search" for="workspace-search">
           <span class="sr-only">Cari dalam ruang kerja</span>
           <span data-icon="search"></span>
-          <input type="search" placeholder="Cari dalam ruang kerja" data-workspace-search aria-controls="workspace-app-results workspace-document-groups" aria-describedby="workspace-content-title">
+          <input id="workspace-search" type="search" placeholder="Cari kelompok folder atau aplikasi" data-workspace-search aria-controls="workspace-app-results workspace-document-groups" aria-describedby="workspace-content-title">
         </label>
       </div>
       <section class="monev-workspace-callout" data-monev-workspace-callout hidden aria-labelledby="monev-workspace-title">
@@ -117,6 +119,7 @@
       <div data-workspace-empty></div>
     </div>
   </section>
+  <noscript><p class="container source-note">Aktifkan JavaScript untuk memuat katalog dan pencarian. Tautan navigasi tetap tersedia.</p></noscript>
 </main>
 <footer class="site-footer">
   <div class="container site-footer__grid">
@@ -128,9 +131,9 @@
       <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
     </div>
     <div class="site-footer__meta">
-      <p>Versi <span data-version>0.9.6 RC1</span></p>
-      <p>Data diperbarui <span data-updated>20 Juli 2026</span></p>
-      <span class="data-status" data-data-status data-state="ready">Siap digunakan</span>
+      <p>Versi <span data-version>0.9.7 RC2</span></p>
+      <p>Sumber terakhir dibaca <span data-updated>Belum tersinkron</span></p>
+      <span class="data-status" data-data-status data-state="loading">Memuat katalog…</span>
     </div>
   </div>
   <div class="container site-footer__bottom">
