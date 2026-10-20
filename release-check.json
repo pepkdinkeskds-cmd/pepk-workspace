@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "metrics": {
+    "html": 7,
+    "js": 25,
+    "cssBytes": 36601,
+    "initialCatalogBytes": 121788,
+    "deferredIndexBytes": 561611,
+    "files": 80
+  },
+  "failures": []
+}

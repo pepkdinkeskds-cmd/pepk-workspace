@@ -1,10 +1,14 @@
 {
-  "name": "pepk-workspace",
+  "name": "pepk-workspace-release",
+  "version": "0.9.7-rc2",
   "private": true,
-  "version": "0.9.6-rc.1",
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs",
-    "check": "node tests/project-check.mjs"
+    "check": "node tools/check-release.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "26.1.0",
+    "postcss": "8.5.6"
   }
 }

@@ -1,0 +1,300 @@
+import {
+  initApp,
+  debounce,
+  announce,
+  applyMetadata,
+  scheduleBackgroundTask,
+  minimumSearchLength,
+  updateQueryString
+} from "../app.js?v=0.9.7-rc2";
+import {
+  setContentReady,
+  setContentRefreshing,
+  setContentRefreshResult,
+  setContentRefreshUnavailable
+} from "../status.js?v=0.9.7-rc2";
+import { getInitialData, refreshFromSheets, ensureSearchIndex } from "../data/data-service.js?v=0.9.7-rc2";
+import { comparePeriods } from "../catalog-utils.js?v=0.9.7-rc2";
+import { searchResourcesDetailed } from "../search.js?v=0.9.7-rc2";
+import { emptyState, resourceCard } from "../ui.js?v=0.9.7-rc2";
+
+initApp("resources");
+
+let data = getInitialData();
+applyMetadata(data.settings, data);
+const searchInput = document.querySelector("[data-resource-search]");
+const workspaceFilter = document.querySelector("[data-workspace-filter]");
+const typeFilter = document.querySelector("[data-type-filter]");
+const yearFilter = document.querySelector("[data-year-filter]");
+const sortFilter = document.querySelector("[data-sort-filter]");
+const list = document.querySelector("[data-resource-list]");
+const emptyContainer = document.querySelector("[data-resource-empty]");
+const countNode = document.querySelector("[data-resource-count]");
+const filterSummary = document.querySelector("[data-filter-summary]");
+const resetButton = document.querySelector("[data-filter-reset]");
+const filterForm = document.querySelector("[data-resource-filters]");
+const loadMoreButton = document.querySelector("[data-resource-load-more]");
+const visibleCountNode = document.querySelector("[data-resource-visible-count]");
+const pageSize = 24;
+let visibleLimit = pageSize;
+let currentResults = [];
+let indexLoaded = false;
+let indexLoading = false;
+async function loadIndexIfNeeded() {
+  if (!searchInput.value.trim() || indexLoaded || indexLoading) return;
+  indexLoading = true;
+  document.querySelector("[data-index-status]").textContent = "Memuat indeks subfolder…";
+  const result = await ensureSearchIndex();
+  data.searchIndex = result.items;
+  indexLoaded = true;
+  indexLoading = false;
+  document.querySelector("[data-index-status]").textContent = result.meta.failed
+    ? "Indeks daring belum tersinkron. Hasil subfolder memakai salinan tersimpan; tautan mungkin berubah."
+    : "Indeks subfolder tersedia. Pencarian menggunakan nama, jalur, dan metadata; isi file tidak diperiksa.";
+  render();
+}
+
+function getParams() {
+  const params = new URLSearchParams(window.location.search);
+  const validSort = ["relevance", "newest", "title", "workspace"];
+  return {
+    q: params.get("q") || "",
+    workspace: params.get("workspace") || "",
+    type: ["document", "application"].includes(params.get("type")) ? params.get("type") : "",
+    year: /^20\d{2}$/.test(params.get("year") || "") ? params.get("year") : "",
+    sort: validSort.includes(params.get("sort")) ? params.get("sort") : ""
+  };
+}
+
+function setParams({ q, workspace, type, year, sort }) {
+  updateQueryString({ q, workspace, type, year, sort: sort === defaultSort(q) ? "" : sort });
+}
+
+function defaultSort(query) {
+  return query ? "relevance" : "newest";
+}
+
+
+function resourceSortYear(resource) {
+  return Number(resource.sortYear || resource.yearEnd || resource.year || 0);
+}
+
+function workspaceOptions() {
+  const options = data.workspaces.map((workspace) => ({ id: workspace.id, title: workspace.title }));
+  if (data.resources.some((resource) => resource.scope === "reference" || resource.workspaceId === "document-center")) {
+    options.push({ id: "document-center", title: "Referensi" });
+  }
+  return options;
+}
+
+function resourceIncludesYear(resource, year) {
+  const selected = Number(year);
+  if (!selected || resource.type === "application") return false;
+  const start = Number(resource.yearStart || resource.year || 0);
+  const end = Number(resource.yearEnd || resource.year || start || 0);
+  return Boolean(start && end && selected >= start && selected <= end);
+}
+
+
+function populateFilters(preserve = true) {
+  const currentWorkspace = preserve ? workspaceFilter.value : "";
+  const currentYear = preserve ? yearFilter.value : "";
+
+  workspaceFilter.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
+  workspaceOptions().forEach((workspace) => {
+    const option = document.createElement("option");
+    option.value = workspace.id;
+    option.textContent = workspace.title;
+    workspaceFilter.append(option);
+  });
+
+  const years = new Set();
+  data.resources.filter((item) => item.type !== "application").forEach((resource) => {
+    const start = Number(resource.yearStart || resource.year || 0);
+    const end = Number(resource.yearEnd || resource.year || start || 0);
+    if (!start || !end || end < start || end - start > 100) return;
+    for (let year = start; year <= end; year += 1) years.add(year);
+  });
+
+  yearFilter.querySelectorAll("option:not(:first-child)").forEach((option) => option.remove());
+  [...years].sort((a, b) => b - a).forEach((year) => {
+    const option = document.createElement("option");
+    option.value = String(year);
+    const annual = data.resources.filter((r) => Number(r.yearStart || r.year) === year && Number(r.yearEnd || r.year) === year).length;
+    option.textContent = annual ? `${year} · ${annual} folder tahunan` : `${year} · cakupan dokumen jangka panjang`;
+    yearFilter.append(option);
+  });
+
+  if ([...workspaceFilter.options].some((option) => option.value === currentWorkspace)) workspaceFilter.value = currentWorkspace;
+  if ([...yearFilter.options].some((option) => option.value === currentYear)) yearFilter.value = currentYear;
+}
+
+function sortResults(items, sort, hasQuery) {
+  if (sort === "relevance" && hasQuery) return items;
+  return items.slice().sort((a, b) => {
+    const left = a.resource;
+    const right = b.resource;
+    if (sort === "title") return left.title.localeCompare(right.title, "id") || resourceSortYear(right) - resourceSortYear(left);
+    if (sort === "workspace") return left.workspaceTitle.localeCompare(right.workspaceTitle, "id") || left.title.localeCompare(right.title, "id");
+    if (left.type !== right.type) return left.type === "application" ? 1 : -1;
+    return comparePeriods(left, right);
+  });
+}
+
+function updateSummary({ q, workspace, type, year, sort }, count, intent = null) {
+  const parts = [];
+  if (q) parts.push(`pencarian “${q}”`);
+  if (workspace) parts.push(workspaceOptions().find((item) => item.id === workspace)?.title || workspace);
+  if (type) parts.push(type === "application" ? "aplikasi" : "folder dokumen");
+  if (year) parts.push(`tahun ${year}`);
+  const sortLabel = sortFilter.options[sortFilter.selectedIndex]?.textContent || sort;
+  const base = parts.length
+    ? `${count} hasil untuk ${parts.join(" • ")} — urutkan: ${sortLabel}`
+    : `${count} sumber daya tersedia — urutkan: ${sortLabel}`;
+  filterSummary.textContent = q && intent?.guidance
+    ? `${base}. ${intent.guidance}`
+    : base;
+}
+
+function resetFilters() {
+  searchInput.value = "";
+  workspaceFilter.value = "";
+  typeFilter.value = "";
+  yearFilter.value = "";
+  yearFilter.disabled = false;
+  sortFilter.value = "newest";
+  render();
+  searchInput.focus();
+}
+
+function render(options = {}) {
+  loadIndexIfNeeded();
+  const { preserveVisibleLimit = false } = options;
+  if (!preserveVisibleLimit) visibleLimit = pageSize;
+  const q = searchInput.value.trim();
+  const workspace = workspaceFilter.value;
+  const type = typeFilter.value;
+  const year = yearFilter.value;
+  const minimum = minimumSearchLength(data.settings);
+  let sort = sortFilter.value || defaultSort(q);
+
+  list.replaceChildren();
+  emptyContainer.replaceChildren();
+
+  if (q && q.length < minimum) {
+    currentResults = [];
+    countNode.textContent = "0";
+    visibleCountNode.textContent = "0";
+    loadMoreButton.hidden = true;
+    filterSummary.textContent = `Ketik minimal ${minimum} karakter untuk mencari.`;
+    emptyContainer.append(emptyState(
+      `Ketik minimal ${minimum} karakter`,
+      "Pencarian pendek tidak dijalankan agar hasil tetap relevan.",
+      "search",
+      { label: "Hapus pencarian", onClick: resetFilters }
+    ));
+    setParams({ q, workspace, type, year, sort });
+    return;
+  }
+
+  const searchableItems = q
+    ? [...data.resources, ...(data.searchIndex || [])]
+    : data.resources;
+  const searchResult = q
+    ? searchResourcesDetailed(searchableItems, q, data.synonyms)
+    : { items: searchableItems.map((resource) => ({ resource, score: 0 })), intent: null };
+  let scored = searchResult.items;
+  if (workspace) scored = scored.filter((item) => item.resource.workspaceId === workspace);
+  if (type) scored = scored.filter((item) => item.resource.type === type);
+  if (year) scored = scored.filter((item) => resourceIncludesYear(item.resource, year));
+
+  if (!q && sort === "relevance") {
+    sort = "newest";
+    sortFilter.value = sort;
+  }
+
+  currentResults = sortResults(scored, sort, Boolean(q)).map((item) => item.resource);
+  const visibleResults = currentResults.slice(0, visibleLimit);
+  visibleResults.forEach((resource) => list.append(resourceCard(resource)));
+  if (!currentResults.length) {
+    emptyContainer.append(emptyState(
+      "Dokumen atau aplikasi belum ditemukan",
+      "Ubah kata pencarian atau hapus salah satu penyaring.",
+      "search",
+      { label: "Reset pencarian dan filter", onClick: resetFilters }
+    ));
+  }
+
+  countNode.textContent = String(currentResults.length);
+  visibleCountNode.textContent = String(visibleResults.length);
+  updateSummary({ q, workspace, type, year, sort }, currentResults.length, searchResult.intent);
+  loadMoreButton.hidden = visibleResults.length >= currentResults.length;
+  loadMoreButton.setAttribute("aria-label", `Muat lebih banyak. Menampilkan ${visibleResults.length} dari ${currentResults.length} hasil.`);
+  setParams({ q, workspace, type, year, sort });
+  const directCount = currentResults.filter((item) => item.kind === "deep-folder").length;
+  announce(`${searchResult.intent?.guidance || `${currentResults.length} hasil ditemukan.`} Menampilkan ${visibleResults.length}. Termasuk ${directCount} folder langsung.`);
+}
+
+const initial = getParams();
+populateFilters(false);
+searchInput.value = initial.q;
+workspaceFilter.value = initial.workspace;
+typeFilter.value = initial.type;
+yearFilter.value = initial.year;
+yearFilter.disabled = initial.type === "application";
+sortFilter.value = initial.sort || defaultSort(initial.q);
+render();
+
+searchInput.addEventListener("input", debounce(() => {
+  if (!sortFilter.value || sortFilter.value === "newest") sortFilter.value = searchInput.value.trim() ? "relevance" : "newest";
+  render();
+}));
+workspaceFilter.addEventListener("change", render);
+typeFilter.addEventListener("change", () => {
+  if (typeFilter.value === "application") yearFilter.value = "";
+  yearFilter.disabled = typeFilter.value === "application";
+  render();
+});
+yearFilter.addEventListener("change", render);
+sortFilter.addEventListener("change", render);
+resetButton.addEventListener("click", resetFilters);
+filterForm.addEventListener("submit", (event) => { event.preventDefault(); render(); });
+loadMoreButton.addEventListener("click", () => {
+  const previousCount = Math.min(visibleLimit, currentResults.length);
+  visibleLimit += pageSize;
+  render({ preserveVisibleLimit: true });
+  const firstNewCard = list.children[previousCount];
+  if (firstNewCard) {
+    firstNewCard.setAttribute("tabindex", "-1");
+    firstNewCard.focus({ preventScroll: true });
+    firstNewCard.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+});
+
+window.addEventListener("popstate", () => {
+  const state = getParams();
+  searchInput.value = state.q;
+  workspaceFilter.value = state.workspace;
+  typeFilter.value = state.type;
+  yearFilter.value = state.year;
+  yearFilter.disabled = state.type === "application";
+  sortFilter.value = state.sort || defaultSort(state.q);
+  render();
+});
+
+setContentReady(data);
+scheduleBackgroundTask(async () => {
+  setContentRefreshing();
+  try {
+    const result = await refreshFromSheets();
+    if (result.changed) {
+      data = { ...result.data, searchIndex: data.searchIndex };
+      applyMetadata(data.settings, data);
+      populateFilters(true);
+      render();
+    }
+    setContentRefreshResult(result);
+  } catch {
+    setContentRefreshUnavailable();
+  }
+});
