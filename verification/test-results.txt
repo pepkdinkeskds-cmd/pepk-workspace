@@ -1,0 +1,26 @@
+✔ actual HTML loads a standalone controller before the data module (1.304219ms)
+✔ all six screens initialize without catalog or network access (58.556925ms)
+✔ one ArrowDown moves exactly one full viewport and cancels browser pixel scrolling (49.795993ms)
+✔ ArrowDown over an ordinary link or button still changes one screen (72.946794ms)
+✔ holding a key is consumed and never becomes native incremental scrolling (41.973062ms)
+✔ separate key presses traverse all screens and reach the footer (53.167121ms)
+✔ one wheel notch over a card/link moves a whole screen, even with tall content (31.152365ms)
+✔ one trackpad gesture cannot skip several screens through inertia (53.824063ms)
+✔ small trackpad deltas are consumed until they trigger one full move (32.765499ms)
+✔ PageDown, PageUp, Home and End navigate exact screen boundaries (41.621763ms)
+✔ text editing, zoom and horizontal gestures retain their native behavior (29.708281ms)
+✔ open Feedback dialogs and native scroll widgets are not hijacked (62.989519ms)
+✔ navigation buttons, dots and a section anchor select whole panels (23.809058ms)
+✔ deep links and hash changes align to their target screen (16.725448ms)
+✔ reduced motion still advances one full screen immediately (22.536016ms)
+✔ mobile and embed modes preserve readable native scrolling (31.334504ms)
+✔ resizing keeps the selected panel and restores it when returning to desktop (16.855469ms)
+✔ all page entry modules resolve the repaired deployed paths and render offline (585.150486ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1189.418614
