@@ -1,5 +1,5 @@
-import { CONFIG } from "./config.js";
-import { hydrateIcons, icon } from "./icons.js";
+import { CONFIG } from "./config.js?v=0.9.7-rc3";
+import { hydrateIcons, icon } from "./icons.js?v=0.9.7-rc3";
 
 function isSameOriginInternalLink(link) {
   if (!link?.href || link.hasAttribute("download") || link.target === "_blank") return false;
@@ -59,42 +59,6 @@ function initEmbedMode() {
   preserveEmbedNavigation();
 }
 
-function initMobileMenu() {
-  const menuButton = document.querySelector("[data-menu-button]");
-  const menu = document.querySelector("[data-mobile-nav]");
-  if (!menuButton || !menu) return;
-  if (menuButton.dataset.mobileMenuReady === "true") return;
-  menuButton.dataset.mobileMenuReady = "true";
-  const mobileViewport = typeof window.matchMedia === "function"
-    ? window.matchMedia("(max-width: 52rem)")
-    : null;
-
-  const setOpen = (open) => {
-    menuButton.setAttribute("aria-expanded", String(open));
-    menuButton.setAttribute("aria-label", open ? "Tutup menu navigasi" : "Buka menu navigasi");
-    menu.hidden = !open;
-    menuButton.innerHTML = icon(open ? "close" : "menu");
-  };
-
-  menuButton.addEventListener("click", () => setOpen(menuButton.getAttribute("aria-expanded") !== "true"));
-  menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setOpen(false)));
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
-      setOpen(false);
-      menuButton.focus();
-    }
-  });
-  document.addEventListener("click", (event) => {
-    if (menuButton.getAttribute("aria-expanded") !== "true") return;
-    if (!menu.contains(event.target) && !menuButton.contains(event.target)) setOpen(false);
-  });
-  const handleViewportChange = (event) => {
-    if (!event.matches) setOpen(false);
-  };
-  if (mobileViewport?.addEventListener) mobileViewport.addEventListener("change", handleViewportChange);
-  else if (mobileViewport?.addListener) mobileViewport.addListener(handleViewportChange);
-}
-
 function initSkipLink() {
   const skipLink = document.querySelector(".skip-link");
   if (!skipLink) return;
@@ -115,15 +79,15 @@ export function initApp(activePage) {
   });
 
   initSkipLink();
-  initMobileMenu();
   initEmbedMode();
 
   document.querySelectorAll("[data-version]").forEach((node) => { node.textContent = CONFIG.appVersion; });
   document.querySelectorAll("[data-updated]").forEach((node) => { node.textContent = CONFIG.contentUpdatedAt; });
 }
 
-export function applyMetadata(settings = {}) {
-  const updated = settings.contentUpdatedAt || CONFIG.contentUpdatedAt;
+export function applyMetadata(settings = {}, data) {
+  const checkedAt = Math.max(0, ...Object.values(data?._meta || {}).map((m) => m.checkedAt || 0));
+  const updated = checkedAt ? new Intl.DateTimeFormat("id-ID", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Jakarta" }).format(new Date(checkedAt)) + " WIB" : CONFIG.contentUpdatedAt;
   document.querySelectorAll("[data-version]").forEach((node) => { node.textContent = CONFIG.appVersion; });
   document.querySelectorAll("[data-updated]").forEach((node) => { node.textContent = updated; });
 }

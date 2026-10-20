@@ -397,7 +397,7 @@ function fuzzyDirectResults(resources, queryInfo, structuralIntent, synonyms) {
   return resources
     .filter((resource) => resource.kind === "deep-folder")
     .filter((resource) => resourceIncludesYears(resource, queryInfo.years))
-    .filter((resource) => !structuralIntent.contextPhrase || categoryMatches(resource, structuralIntent.contextPhrase, { family: true }))
+    .filter((resource) => !structuralIntent.contextPhrase || categoryMatches(resource, structuralIntent.contextPhrase, { family: false }))
     .map((resource) => ({ resource, coverage: fuzzyCoverage(resource, queryTokens) }))
     .filter((item) => item.coverage && item.coverage.fuzzy > 0)
     .map((item) => ({
@@ -478,7 +478,7 @@ export function searchResourcesDetailed(resources, query, synonyms = []) {
     }
   }
 
-  if (structuralIntent.contextPhrase && queryInfo.years.length) {
+  if (structuralIntent.contextPhrase && queryInfo.years.length && !structuralIntent.remainderTokens.length) {
     const parents = resources
       .filter((resource) => parentResourceMatches(resource, structuralIntent.contextPhrase, queryInfo.years, { family: false }))
       .map((resource) => ({ resource, score: scoreIntentItem(resource, queryInfo, synonyms, 300) }))
@@ -516,6 +516,17 @@ export function searchResourcesDetailed(resources, query, synonyms = []) {
 
   const fuzzy = fuzzyDirectResults(resources, queryInfo, structuralIntent, synonyms);
   if (fuzzy.length) return resultObject(fuzzy, "fuzzy-folder", queryInfo, structuralIntent);
+
+  const fuzzyApps = resources.filter((r) => r.type === "application" && !queryInfo.asksForDocument)
+    .filter((r) => resourceIncludesYears(r, queryInfo.years))
+    .filter((r) => [r.title, ...(r.aliases || [])].some((name) => {
+      const candidate = tokens(name);
+      return queryInfo.meaningfulTokens.every((token) => candidate.some((word) => fuzzyTokenMatch(token, word)));
+    }))
+    .map((resource) => ({ resource, score: 100 }));
+  if (fuzzyApps.length) return resultObject(fuzzyApps, "fuzzy-application", queryInfo, structuralIntent, {
+    guidance: `${fuzzyApps.length} aplikasi dengan ejaan yang mendekati. Periksa nama sebelum membuka.`
+  });
 
   return resultObject([], "none", queryInfo, structuralIntent, { guidance: "Tidak ada folder yang cocok." });
 }

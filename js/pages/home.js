@@ -1,245 +1,63 @@
-import {
-  initApp,
-  debounce,
-  announce,
-  applyMetadata,
-  scheduleBackgroundTask,
-  minimumSearchLength,
-  createElement,
-  externalLink
-} from "../app.js?v=0.9.6-rc1";
-import {
-  setContentReady,
-  setContentRefreshing,
-  setContentRefreshResult,
-  setContentRefreshUnavailable
-} from "../status.js?v=0.9.6-rc1";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.6-rc1";
-import { searchResourcesDetailed } from "../search.js";
-import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.6-rc1";
-import { latestRealization, upcomingAgenda } from "../information-utils.js";
-import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.6-rc1";
+import { initApp, applyMetadata, scheduleBackgroundTask, createElement, minimumSearchLength } from "../app.js?v=0.9.7-rc3";
+import { setContentReady, setContentRefreshing, setContentRefreshResult, setContentRefreshUnavailable } from "../status.js?v=0.9.7-rc3";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc3";
+import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.7-rc3";
+import { latestRealization, upcomingAgenda } from "../information-utils.js?v=0.9.7-rc3";
+import { configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc3";
 
 initApp("home");
-
 let data = getInitialData();
-applyMetadata(data.settings);
-let currentQuery = "";
-
-const searchInput = document.querySelector("[data-home-search]");
-const searchForm = document.querySelector("[data-home-search-form]");
-const resultsSection = document.querySelector("[data-home-results-section]");
-const resultsGrid = document.querySelector("[data-home-results]");
-const emptyContainer = document.querySelector("[data-home-empty]");
-const resultsTitle = document.querySelector("[data-home-results-title]");
-const viewAllLink = document.querySelector("[data-view-all-results]");
-
-function quickResources() {
-  const resourceMap = new Map(data.resources.map((item) => [item.id, item]));
-  return data.quickAccess.map((id) => resourceMap.get(id)).filter(Boolean);
-}
-
-function renderQuickAccess() {
-  const folderContainer = document.querySelector("[data-quick-folders]");
-  const appContainer = document.querySelector("[data-quick-apps]");
-  folderContainer.replaceChildren();
-  appContainer.replaceChildren();
-
-  const items = quickResources();
-  const folders = items.filter((item) => item.type !== "application").slice(0, data.settings.quickFolderLimit || 4);
-  const applications = items.filter((item) => item.type === "application").slice(0, data.settings.quickAppLimit || 4);
-
-  folders.forEach((resource) => folderContainer.append(resourceCard(resource, { compact: true })));
-  applications.forEach((resource) => appContainer.append(applicationCard(resource, { compact: true })));
-
-  if (!folders.length) folderContainer.append(emptyState("Belum ada folder cepat", "Pilih folder melalui halaman Pustaka.", "folder", { label: "Buka Pustaka", href: "resources.html?type=document" }));
-  if (!applications.length) appContainer.append(emptyState("Belum ada aplikasi cepat", "Semua aplikasi tetap tersedia di Pustaka.", "apps", { label: "Lihat aplikasi", href: "resources.html?type=application" }));
-}
-
-
-function contributionAction({ title, description, iconName, url }) {
-  const article = createElement("article", { className: "contribution-quick-card" });
-  article.append(
-    createElement("span", { className: "contribution-quick-card__icon", html: icon(iconName) }),
-    createElement("div", { className: "contribution-quick-card__content" }, [
-      createElement("h3", { text: title }),
-      createElement("p", { text: description })
-    ])
-  );
-  const link = externalLink(url, title, "button button--primary contribution-quick-card__action");
-  link.innerHTML = `${icon("arrow")} Mulai Pengajuan`;
-  configureSubmissionLink(link, "Mulai Pengajuan PEPK di Submission Portal");
-  article.append(link);
-  return article;
-}
-
-function renderContributionActions() {
-  const container = document.querySelector("[data-contribution-actions]");
-  if (!container) return;
-  container.replaceChildren(
-    contributionAction({
-      title: "Pengajuan PEPK",
-      description: "Unggah dokumen, ajukan agenda, kirim materi monev, atau tambahkan referensi melalui satu layanan.",
-      iconName: "upload",
-      url: SUBMISSION_PORTAL_URL
-    })
-  );
-}
-
-function renderWorkspaces() {
-  const container = document.querySelector("[data-workspaces]");
-  container.replaceChildren();
-  data.workspaces.forEach((workspace) => {
-    const workspaceResources = data.resources.filter((resource) => resource.workspaceId === workspace.id);
-    const counts = {
-      groups: data.groups.filter((group) => group.workspaceId === workspace.id).length,
-      documents: workspaceResources.filter((resource) => resource.type !== "application").length,
-      applications: workspaceResources.filter((resource) => resource.type === "application").length
-    };
-    container.append(workspaceCard(workspace, counts));
-  });
-}
-
-function renderAgenda() {
-  const container = document.querySelector("[data-agenda-preview]");
-  if (!container) return;
-  container.replaceChildren();
-  const items = upcomingAgenda(data.agenda).slice(0, data.settings.agendaHomeLimit || 3);
-  items.forEach((item) => container.append(agendaCard(item, { compact: true })));
-  if (!items.length) {
-    container.append(emptyState("Belum ada agenda aktif", "Agenda rapat dan kegiatan akan tampil setelah dipublikasikan oleh operator.", "calendar", { label: "Buka Pusat Informasi", href: "information.html#agenda" }));
-  }
-}
-
-function renderRealization() {
-  const container = document.querySelector("[data-realization-preview]");
-  if (!container) return;
-  container.replaceChildren();
-  const item = latestRealization(data.realization);
-  if (item) {
-    const overview = realizationOverviewCard(data.realization, {
-      balancedThreshold: data.settings.deviationBalancedThreshold || 2,
-      attentionThreshold: data.settings.deviationAttentionThreshold || 5
-    });
-    if (overview) container.append(overview);
-  }
-  if (!item) {
-    container.append(emptyState("Data capaian belum tersedia", "Capaian realisasi akan tampil setelah periode terbaru dipublikasikan.", "trend", { label: "Buka Pusat Informasi", href: "information.html#realisasi" }));
-  }
-}
-
-function clearHomeSearch() {
-  currentQuery = "";
-  searchInput.value = "";
-  resultsSection.hidden = true;
-  resultsGrid.replaceChildren();
-  emptyContainer.replaceChildren();
-  searchInput.focus();
-}
-
-function renderSearch(query) {
-  currentQuery = query.trim();
-  resultsGrid.replaceChildren();
-  emptyContainer.replaceChildren();
-
-  if (!currentQuery) {
-    resultsSection.hidden = true;
-    viewAllLink.hidden = true;
-    return;
-  }
-
-  const minimum = minimumSearchLength(data.settings);
-  resultsSection.hidden = false;
-  viewAllLink.href = `resources.html?q=${encodeURIComponent(currentQuery)}`;
-  viewAllLink.hidden = false;
-
-  if (currentQuery.length < minimum) {
-    viewAllLink.hidden = true;
-    resultsTitle.textContent = "Pencarian belum dijalankan";
-    emptyContainer.append(emptyState(
-      `Ketik minimal ${minimum} karakter`,
-      "Gunakan nama dokumen, aplikasi, tahun, atau kebutuhan pekerjaan.",
-      "search",
-      { label: "Hapus pencarian", onClick: clearHomeSearch }
-    ));
-    announce(`Ketik minimal ${minimum} karakter untuk mencari.`);
-    return;
-  }
-
-  const searchResult = searchResourcesDetailed(
-    [...data.resources, ...(data.searchIndex || [])],
-    currentQuery,
-    data.synonyms
-  );
-  const results = searchResult.items.map((item) => item.resource);
-  const directFolderCount = results.filter((item) => item.kind === "deep-folder").length;
-  const folderCount = results.filter((item) => item.type !== "application").length;
-  const appCount = results.length - folderCount;
-
-  if (["specific-folder", "path-specific", "fuzzy-folder"].includes(searchResult.intent.key)) {
-    resultsTitle.textContent = `${results.length} folder langsung untuk “${currentQuery}”`;
-  } else if (searchResult.intent.key === "application-exact") {
-    resultsTitle.textContent = `${results.length} aplikasi untuk “${currentQuery}”`;
-  } else {
-    resultsTitle.textContent = `${results.length} hasil untuk “${currentQuery}”`;
-  }
-
-  if (!results.length) {
-    viewAllLink.hidden = true;
-    emptyContainer.append(emptyState(
-      "Dokumen atau aplikasi belum ditemukan",
-      "Coba nama dokumen, aplikasi, tahun, atau istilah lain yang lebih umum.",
-      "search",
-      { label: "Hapus pencarian", onClick: clearHomeSearch }
-    ));
-  } else {
-    results.slice(0, data.settings.homeResultLimit || 6).forEach((resource) => resultsGrid.append(resourceCard(resource)));
-    announce(`${searchResult.intent.guidance} ${directFolderCount} folder langsung, ${folderCount - directFolderCount} folder induk, dan ${appCount} aplikasi.`);
-  }
-}
-
-const debouncedSearch = debounce(() => renderSearch(searchInput.value));
-searchInput.addEventListener("input", debouncedSearch);
-searchForm.addEventListener("submit", (event) => {
+const input = document.querySelector("[data-home-search]");
+document.querySelector("[data-home-search-form]").addEventListener("submit", (event) => {
   event.preventDefault();
-  const query = searchInput.value.trim();
-  if (query.length >= minimumSearchLength(data.settings)) window.location.href = `resources.html?q=${encodeURIComponent(query)}`;
-  else renderSearch(query);
+  if (input.value.trim().length < minimumSearchLength(data.settings)) {
+    input.setCustomValidity(`Ketik minimal ${minimumSearchLength(data.settings)} karakter.`);
+    input.reportValidity();
+    return;
+  }
+  window.location.href = `resources.html?q=${encodeURIComponent(input.value.trim())}`;
 });
+input.addEventListener("input", () => input.setCustomValidity(""));
+document.querySelectorAll("[data-search-suggestion]").forEach((button) => button.addEventListener("click", () => {
+  window.location.href = `resources.html?q=${encodeURIComponent(button.dataset.searchSuggestion)}`;
+}));
 
-document.querySelectorAll("[data-search-suggestion]").forEach((button) => {
-  button.addEventListener("click", () => {
-    searchInput.value = button.dataset.searchSuggestion;
-    renderSearch(searchInput.value);
-    searchInput.focus();
-    resultsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-});
-
-function renderAll() {
-  renderQuickAccess();
-  renderContributionActions();
-  renderWorkspaces();
-  renderAgenda();
-  renderRealization();
-  if (currentQuery) renderSearch(currentQuery);
+function render() {
+  applyMetadata(data.settings, data);
+  const byId = new Map(data.resources.map((r) => [r.id, r]));
+  const quick = data.quickAccess.map((id) => byId.get(id)).filter(Boolean);
+  for (const [selector, application] of [["[data-quick-folders]", false], ["[data-quick-apps]", true]]) {
+    const container = document.querySelector(selector);
+    const items = quick.filter((r) => (r.type === "application") === application).slice(0, 4);
+    container.replaceChildren(...items.map((r) => application ? applicationCard(r, { compact: true }) : resourceCard(r, { compact: true })));
+    if (!items.length) container.append(emptyState("Akses utama belum tersedia", "Telusuri katalog melalui Pustaka.", "folder", { label: "Buka Pustaka", href: "resources.html" }));
+  }
+  const actions = document.querySelector("[data-contribution-actions]");
+  const link = createElement("a", { className: "button button--primary", text: "Mulai pengajuan" });
+  configureSubmissionLink(link, "Mulai pengajuan PEPK");
+  actions.replaceChildren(link, createElement("a", { className: "text-link", href: "contribute.html", text: "Lihat alur layanan →" }));
+  document.querySelector("[data-workspaces]").replaceChildren(...data.workspaces.map((w) => workspaceCard(w, {
+    groups: data.groups.filter((r) => r.workspaceId === w.id).length,
+    documents: data.resources.filter((r) => r.workspaceId === w.id && r.type !== "application").length,
+    applications: data.resources.filter((r) => r.workspaceId === w.id && r.type === "application").length
+  })));
+  const agendas = upcomingAgenda(data.agenda).slice(0, 3);
+  document.querySelector("[data-agenda-preview]").replaceChildren(...(agendas.length ? agendas.map((r) => agendaCard(r, { compact: true })) : [emptyState("Belum ada agenda aktif", "Agenda tampil setelah dipublikasikan operator.", "calendar", { label: "Buka informasi", href: "information.html#agenda" })]));
+  const latest = latestRealization(data.realization);
+  document.querySelector("[data-realization-preview]").replaceChildren(latest ? realizationOverviewCard(data.realization, {
+    balancedThreshold: data.settings.deviationBalancedThreshold ?? 2,
+    attentionThreshold: data.settings.deviationAttentionThreshold ?? 5
+  }) : emptyState("Data capaian belum tersedia", "Data realisasi yang layak ditampilkan belum tersedia dari sumber. Angka contoh tidak ditampilkan.", "trend", { label: "Buka rincian", href: "information.html#realisasi" }));
 }
 
-renderAll();
-setContentReady();
-
+render();
+setContentReady(data);
 scheduleBackgroundTask(async () => {
   setContentRefreshing();
   try {
     const result = await refreshFromSheets();
-    if (result.changed) {
-      data = result.data;
-      applyMetadata(data.settings);
-      renderAll();
-    }
+    data = result.data;
+    render();
     setContentRefreshResult(result);
-  } catch {
-    setContentRefreshUnavailable();
-  }
+  } catch { setContentRefreshUnavailable(); }
 });

@@ -1,11 +1,13 @@
 export const CONFIG = Object.freeze({
   spreadsheetId: "1rSbyazj5MSdRYHgBYLBA7jeMjYKattvRPCG9SKHSxCM",
-  appVersion: "0.9.6 RC1",
-  contentUpdatedAt: "20 Juli 2026",
-  fetchTimeoutMs: 4000,
-  searchDebounceMs: 160,
-  homeSearchLimit: 6,
-  backgroundSyncDelayMs: 450,
+  appVersion: "0.9.7 RC3",
+  contentUpdatedAt: "Belum tersinkron",
+  catalogPackagedAt: "20 Oktober 2026",
+  fetchTimeoutMs: 12000,
+  searchDebounceMs: 180,
+  backgroundSyncDelayMs: 400,
+  cacheTtlMs: 300000,
+  cacheSchema: 3,
   embedParam: "embed",
   sheets: {
     resources: "Resources",
@@ -18,5 +20,13 @@ export const CONFIG = Object.freeze({
     synonyms: "Synonyms",
     settings: "Settings",
     searchIndex: "Search_Index"
+  },
+  pageSections: {
+    home: ["resources", "workspaces", "quickAccess", "settings", "agenda", "realization", "synonyms"],
+    resources: ["resources", "workspaces", "synonyms", "settings"],
+    workspace: ["resources", "workspaces", "synonyms", "settings"],
+    information: ["information", "agenda", "realization", "settings"],
+    about: ["resources", "workspaces", "settings"],
+    monev: ["monevMaterials", "settings"]
   }
 });

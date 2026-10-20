@@ -1,6 +1,7 @@
-import { CONFIG } from "../config.js";
-import { LOCAL_DATA } from "./local-data.js";
-import { loadSheet } from "./sheets.js?v=0.9.6-rc1";
+import { CONFIG } from "../config.js?v=0.9.7-rc3";
+import { LOCAL_DATA } from "./local-data.js?v=0.9.7-rc3";
+import { loadSheet } from "./sheets.js?v=0.9.7-rc3";
+import { readCache, saveCache } from "./cache.js?v=0.9.7-rc3";
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -26,7 +27,9 @@ function toNumber(value, fallback = 0) {
 
 function normalizeDate(value = "") {
   const text = String(value).trim();
-  return /^\d{4}-\d{2}-\d{2}$/.test(text) ? text : "";
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) return "";
+  const date = new Date(`${text}T00:00:00Z`);
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === text ? text : "";
 }
 
 function normalizeTime(value = "") {
@@ -91,6 +94,7 @@ function deriveResource(row) {
     openMode: row.open_mode === "same_tab" ? "same_tab" : "new_tab",
     sortOrder: Number(row.sort_order || 999),
     isActive: toBoolean(row.is_active),
+    updatedAt: normalizeDate(row.updated_at || row.published_at),
     subfolders: type === "application"
       ? []
       : keywords.filter((item) => {
@@ -249,6 +253,8 @@ function normalizeMonthlyRealization(rows) {
       month: toNumber(row.month),
       financialValue: toNumber(row.financial_value, NaN),
       physicalValue: toNumber(row.physical_value, NaN),
+      financialTarget: toNumber(row.financial_target ?? row.target_financial, NaN),
+      physicalTarget: toNumber(row.physical_target ?? row.target_physical, NaN),
       updatedAt: normalizeDate(row.updated_at),
       description: row.description || "",
       sortOrder: Number(row.sort_order || row.month || 999),
@@ -276,17 +282,33 @@ function normalizeLegacyRealization(rows) {
     });
     const item = grouped.get(key);
     const title = String(row.title).toLowerCase();
+    const field = /fisik/.test(title) ? "physicalValue" : /anggaran|keuangan/.test(title) ? "financialValue" : "";
+    if (!field || Number.isFinite(item[field])) throw new Error("Komponen realisasi lama tidak dikenal atau duplikat.");
     if (/fisik/.test(title)) item.physicalValue = toNumber(row.value, NaN);
     if (/anggaran|keuangan/.test(title)) item.financialValue = toNumber(row.value, NaN);
     if (!item.updatedAt) item.updatedAt = normalizeDate(row.updated_at);
   });
-  return [...grouped.values()].filter((item) => Number.isFinite(item.financialValue) && Number.isFinite(item.physicalValue));
+  const values = [...grouped.values()];
+  if (values.some((item) => !Number.isFinite(item.financialValue) || !Number.isFinite(item.physicalValue))) throw new Error("Pasangan realisasi lama belum lengkap.");
+  return values;
 }
 
 function normalizeRealization(rows) {
-  const hasMonthlySchema = rows.some((row) => row.year || row.month || row.financial_value || row.physical_value);
-  const normalized = hasMonthlySchema ? normalizeMonthlyRealization(rows) : normalizeLegacyRealization(rows);
+  const official = rows.filter((row) => !isDemoRow(row));
+  const hasMonthlySchema = official.some((row) => row.year || row.month || row.financial_value || row.physical_value);
+  const normalized = hasMonthlySchema ? normalizeMonthlyRealization(official) : normalizeLegacyRealization(official);
+  if (normalized.some((r) => r.financialValue < 0 || r.financialValue > 100 || r.physicalValue < 0 || r.physicalValue > 100)) throw new Error("Persentase realisasi harus berada dalam 0–100.");
+  const keys = new Set();
+  for (const row of normalized) {
+    const key = `${row.year}-${row.month}`;
+    if (keys.has(key)) throw new Error(`Periode realisasi duplikat: ${key}`);
+    keys.add(key);
+  }
   return normalized.sort((a, b) => a.year - b.year || a.month - b.month || a.sortOrder - b.sortOrder);
+}
+
+export function isDemoRow(row = {}) {
+  return /\b(contoh|dummy|demo|sample)\b/i.test(`${row.title || ""} ${row.description || ""}`);
 }
 
 
@@ -420,30 +442,6 @@ function normalizeSettings(rows) {
   return settings;
 }
 
-function mergeMigrationResources(sheetResources) {
-  const hasSheetApplications = sheetResources.some((item) => item.type === "application");
-  if (hasSheetApplications) return sheetResources;
-  return [...sheetResources, ...clone(LOCAL_DATA.resources.filter((item) => item.type === "application"))];
-}
-
-function mergeMigrationQuickAccess(sheetQuickAccess) {
-  const localApplicationIds = LOCAL_DATA.quickAccess.filter((id) => LOCAL_DATA.resources.some((item) => item.id === id && item.type === "application"));
-  const hasApplicationQuickAccess = sheetQuickAccess.some((id) => localApplicationIds.includes(id));
-  return hasApplicationQuickAccess ? sheetQuickAccess : [...sheetQuickAccess, ...localApplicationIds];
-}
-
-
-function mergeMigrationInformation(sheetInformation) {
-  const ids = new Set(sheetInformation.map((item) => item.id));
-  return [...sheetInformation, ...clone(LOCAL_DATA.information.filter((item) => !ids.has(item.id)))]
-    .sort((a, b) => a.sortOrder - b.sortOrder);
-}
-
-function mergeMigrationSynonyms(sheetSynonyms) {
-  const terms = new Set(sheetSynonyms.map((item) => item.term.toLowerCase()));
-  return [...sheetSynonyms, ...clone(LOCAL_DATA.synonyms.filter((item) => !terms.has(item.term.toLowerCase())))];
-}
-
 function deduplicateById(resources) {
   const seen = new Set();
   return resources.filter((item) => {
@@ -495,120 +493,143 @@ export function validateData(data) {
   return warnings;
 }
 
-export function getInitialData() {
-  const data = clone(LOCAL_DATA);
-  if (!Array.isArray(data.searchIndex)) data.searchIndex = [];
-  const workspaceTitles = new Map(data.workspaces.map((item) => [item.id, item.title]));
-  data.resources.forEach((item) => { item.workspaceTitle = workspaceTitleForResource(item, workspaceTitles); });
+const normalizers = {
+  workspaces: normalizeWorkspaces,
+  resources: (rows) => deduplicateById(rows.map(deriveResource).filter((r) => r.id && r.title && r.workspaceId && r.isActive && isAllowedExternalUrl(r.url))).sort((a,b) => a.sortOrder-b.sortOrder),
+  quickAccess: (rows) => [...new Set(normalizeQuickAccess(rows))],
+  information: normalizeInformation,
+  agenda: (rows) => normalizeAgenda(rows.filter((r) => !isDemoRow(r))),
+  realization: normalizeRealization,
+  monevMaterials: (rows) => normalizeMonevMaterials(rows.filter((r) => !isDemoRow(r))),
+  synonyms: normalizeSynonyms,
+  settings: normalizeSettings,
+  searchIndex: normalizeSearchIndex
+};
+
+function finalize(data) {
+  const titles = new Map(data.workspaces.map((r) => [r.id, r.title]));
+  data.resources.forEach((r) => { r.workspaceTitle = workspaceTitleForResource(r, titles); });
+  data.groups = buildGroups(data.resources, LOCAL_DATA.groups);
   data.validationWarnings = validateData(data);
   return data;
 }
 
-
-export async function refreshSettingsFromSheets() {
-  const rows = await loadSheet(CONFIG.sheets.settings);
-  if (!rows.length) throw new Error("Sheet Settings tidak dapat dibaca atau kosong.");
-  const liveSettings = normalizeSettings(rows);
-  return {
-    ...clone(LOCAL_DATA.settings),
-    ...liveSettings,
-    serviceLinksSource: "live-sheet"
-  };
+export function getInitialData() {
+  const data = clone(LOCAL_DATA);
+  data.searchIndex = [];
+  data._meta = {};
+  for (const section of Object.keys(CONFIG.sheets).filter((s) => s !== "searchIndex")) {
+    const cached = readCache(section);
+    if (cached) {
+      data[section] = clone(cached.value);
+      data._meta[section] = { source: "cache", checkedAt: cached.savedAt, fresh: cached.fresh, warnings: cached.warnings || [] };
+    } else data._meta[section] = { source: "bundled", checkedAt: null, fresh: false, warnings: [] };
+  }
+  return finalize(data);
 }
 
-export async function refreshFromSheets() {
-  const entries = Object.entries(CONFIG.sheets);
-  const results = await Promise.allSettled(entries.map(([, sheetName]) => loadSheet(sheetName)));
-  const loaded = Object.fromEntries(entries.map(([key], index) => [key, results[index].status === "fulfilled" ? results[index].value : null]));
+async function readSection(section, force = false) {
+  const cached = readCache(section);
+  if (!force && cached?.fresh) return { value: clone(cached.value), meta: { source: "cache", checkedAt: cached.savedAt, fresh: true, warnings: cached.warnings || [] } };
+  const rows = await loadSheet(CONFIG.sheets[section]);
+  validateRows(section, rows);
+  const warnings = [];
+  if (["realization", "agenda", "monevMaterials"].includes(section) && rows.some((r) => toBoolean(r.is_active) && isDemoRow(r))) warnings.push("Data contoh dikecualikan dari tampilan publik.");
+  const value = normalizers[section](rows);
+  const saved = saveCache(section, value, warnings);
+  return { value, meta: { source: "live", checkedAt: saved.savedAt, fresh: true, warnings } };
+}
 
+export async function refreshSettingsFromSheets() {
+  const result = await readSection("settings");
+  return { ...result.value, serviceLinksSource: result.meta.source };
+}
+
+export async function refreshFromSheets(options = {}) {
+  const page = typeof document !== "undefined" ? document.body?.dataset.page : "home";
+  const sections = [...new Set(options.sections || CONFIG.pageSections[page] || CONFIG.pageSections.home)].filter((s) => s in normalizers && s !== "searchIndex");
   const data = getInitialData();
-  let changed = false;
+  const before = JSON.stringify(data);
+  // Keep Google Sheets requests bounded instead of starting every tab at once.
+  const results = new Array(sections.length);
+  let cursor = 0;
+  await Promise.all(Array.from({ length: Math.min(3, sections.length) }, async () => {
+    while (cursor < sections.length) {
+      const index = cursor++;
+      try { results[index] = {status: "fulfilled", value: await readSection(sections[index], options.force)}; }
+      catch (reason) { results[index] = {status: "rejected", reason}; }
+    }
+  }));
+  const failedSheets = [];
+  results.forEach((result, i) => {
+    const section = sections[i];
+    if (result.status === "fulfilled") {
+      // An empty array is a successful authoritative empty state, never a fallback trigger.
+      data[section] = result.value.value;
+      data._meta[section] = result.value.meta;
+    } else {
+      failedSheets.push(CONFIG.sheets[section]);
+      data._meta[section] = { ...data._meta[section], fresh: false, failed: true, error: String(result.reason?.message || "Pembaruan gagal") };
+    }
+  });
+  finalize(data);
+  return { data, changed: before !== JSON.stringify(data), partialFailure: failedSheets.length > 0, failedSheets,
+    warnings: [...data.validationWarnings, ...sections.flatMap((s) => data._meta[s].warnings || [])],
+    checkedAt: Math.max(0, ...sections.map((s) => data._meta[s].checkedAt || 0)), sections };
+}
 
-  if (loaded.workspaces?.length) {
-    const normalized = normalizeWorkspaces(loaded.workspaces);
-    if (normalized.length) {
-      data.workspaces = normalized;
-      changed = true;
+let indexPromise = null;
+export async function ensureSearchIndex({ force = false } = {}) {
+  if (indexPromise && !force) return indexPromise;
+  indexPromise = (async () => {
+    try {
+      const result = await readSection("searchIndex", force);
+      return { items: result.value, meta: result.meta };
+    } catch {
+      const cached = readCache("searchIndex");
+      if (cached) return { items: clone(cached.value), meta: { source: "cache", checkedAt: cached.savedAt, fresh: false, failed: true } };
+      const { BUNDLED_SEARCH_INDEX } = await import("./search-index.js?v=0.9.7-rc3");
+      return { items: BUNDLED_SEARCH_INDEX, meta: { source: "bundled", checkedAt: null, fresh: false, failed: true } };
+    }
+  })();
+  const result = await indexPromise;
+  if (result.meta.failed) indexPromise = null;
+  return result;
+}
+
+export function sourceDescription(data, section) {
+  const meta = data._meta?.[section];
+  if (!meta || meta.source === "bundled") return ["agenda", "realization", "monevMaterials"].includes(section)
+    ? "Data daring belum terkonfirmasi; paket tidak menyertakan data contoh."
+    : "Katalog bawaan paket; pembaruan daring belum terkonfirmasi.";
+  const stamp = new Intl.DateTimeFormat("id-ID", { dateStyle: "medium", timeStyle: "short", timeZone: "Asia/Jakarta" }).format(new Date(meta.checkedAt));
+  return `${meta.source === "live" ? "Sumber publik dibaca" : "Salinan sumber terakhir dibaca"} ${stamp} WIB${meta.failed ? "; pembaruan terakhir gagal" : !meta.fresh ? "; salinan perlu diperbarui" : ""}.`;
+}
+
+function validateRows(section, rows) {
+  const active = rows.filter((r) => toBoolean(r.is_active) && (!["realization", "agenda", "monevMaterials"].includes(section) || !isDemoRow(r)));
+  const identifiers = new Set();
+  const idKey = section === "monevMaterials" ? "material_id" : section === "quickAccess" ? "resource_id" : section === "synonyms" ? "term" : section === "settings" ? "key" : "id";
+  for (const row of (section === "settings" ? rows : active)) {
+    const id = row[idKey];
+    if (!id || identifiers.has(id)) throw new Error(`Identitas kosong atau duplikat pada ${CONFIG.sheets[section]}.`);
+    identifiers.add(id);
+    if (section === "agenda" && (!row.title || !normalizeDate(row.date))) throw new Error("Judul/tanggal agenda tidak valid.");
+    if (section === "realization" && !Object.hasOwn(row, "financial_value")) {
+      const period = parsePeriod(row.period);
+      if (!row.title || !period.year || !period.month || !Number.isFinite(toNumber(row.value, NaN))) throw new Error("Periode/nilai realisasi lama tidak valid.");
+    }
+    if (["resources", "searchIndex", "monevMaterials"].includes(section)) {
+      const url = row.url || row.folder_url || row.file_url;
+      if (!row.title || !isAllowedExternalUrl(url)) throw new Error("Judul/tautan sumber tidak valid.");
+    }
+    if (section === "realization" && Object.hasOwn(row, "financial_value")) {
+      if (!Number.isInteger(toNumber(row.year, NaN)) || toNumber(row.year) < 2000 || toNumber(row.year) > 2100
+        || !Number.isInteger(toNumber(row.month, NaN)) || toNumber(row.month) < 1 || toNumber(row.month) > 12
+        || !Number.isFinite(toNumber(row.financial_value, NaN)) || !Number.isFinite(toNumber(row.physical_value, NaN))) throw new Error("Periode/nilai realisasi tidak valid.");
+      for (const key of ["financial_target", "physical_target", "target_financial", "target_physical"]) {
+        if (row[key] && (!Number.isFinite(toNumber(row[key], NaN)) || toNumber(row[key]) < 0 || toNumber(row[key]) > 100)) throw new Error("Target realisasi di luar 0–100.");
+      }
     }
   }
-
-  if (loaded.resources?.length) {
-    const normalized = loaded.resources
-      .map(deriveResource)
-      .filter((item) => item.id && item.title && item.workspaceId && item.url && item.isActive && isAllowedExternalUrl(item.url));
-    if (normalized.length) {
-      const merged = deduplicateById(mergeMigrationResources(normalized));
-      const workspaceTitles = new Map(data.workspaces.map((item) => [item.id, item.title]));
-      merged.forEach((item) => { item.workspaceTitle = workspaceTitleForResource(item, workspaceTitles); });
-      data.resources = merged.sort((a, b) => a.sortOrder - b.sortOrder);
-      data.groups = buildGroups(data.resources, LOCAL_DATA.groups);
-      changed = true;
-    }
-  }
-
-  if (loaded.searchIndex?.length) {
-    const normalized = normalizeSearchIndex(loaded.searchIndex);
-    if (normalized.length) {
-      data.searchIndex = normalized;
-      changed = true;
-    }
-  }
-
-  if (loaded.quickAccess?.length) {
-    const normalized = normalizeQuickAccess(loaded.quickAccess);
-    if (normalized.length) {
-      data.quickAccess = [...new Set(mergeMigrationQuickAccess(normalized))];
-      changed = true;
-    }
-  }
-
-  if (loaded.information?.length) {
-    const normalized = normalizeInformation(loaded.information);
-    if (normalized.length) {
-      data.information = mergeMigrationInformation(normalized);
-      changed = true;
-    }
-  }
-
-  if (loaded.agenda?.length) {
-    data.agenda = normalizeAgenda(loaded.agenda);
-    changed = true;
-  }
-
-  if (loaded.realization?.length) {
-    data.realization = normalizeRealization(loaded.realization);
-    changed = true;
-  }
-
-  if (loaded.monevMaterials?.length) {
-    data.monevMaterials = normalizeMonevMaterials(loaded.monevMaterials);
-    changed = true;
-  }
-
-  if (loaded.synonyms?.length) {
-    const normalized = normalizeSynonyms(loaded.synonyms);
-    if (normalized.length) {
-      data.synonyms = mergeMigrationSynonyms(normalized);
-      changed = true;
-    }
-  }
-
-  if (loaded.settings?.length) {
-    data.settings = { ...data.settings, ...normalizeSettings(loaded.settings), serviceLinksSource: "live-sheet" };
-    changed = true;
-  }
-
-  data.validationWarnings = validateData(data);
-  const optionalSheets = new Set([CONFIG.sheets.searchIndex]);
-  const failedSheets = results
-    .map((result, index) => result.status === "rejected" && !optionalSheets.has(entries[index][1]) ? entries[index][1] : null)
-    .filter(Boolean);
-
-  return {
-    data,
-    changed,
-    partialFailure: failedSheets.length > 0,
-    failedSheets,
-    warnings: data.validationWarnings
-  };
 }

@@ -7,21 +7,21 @@ import {
   debounce,
   updateQueryString,
   announce
-} from "../app.js?v=0.9.6-rc1";
+} from "../app.js?v=0.9.7-rc3";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.6-rc1";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.6-rc1";
-import { emptyState } from "../ui.js";
-import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.6-rc1";
+} from "../status.js?v=0.9.7-rc3";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc3";
+import { emptyState } from "../ui.js?v=0.9.7-rc3";
+import { icon } from "../icons.js?v=0.9.7-rc3";
+import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc3";
 
 initApp("resources");
 let data = getInitialData();
-applyMetadata(data.settings);
+applyMetadata(data.settings, data);
 
 const form = document.querySelector("[data-monev-filter-form]");
 const list = document.querySelector("[data-monev-material-list]");
@@ -43,7 +43,7 @@ const state = {
 };
 
 if (uploadLink) {
-  configureSubmissionLink(uploadLink, "Ajukan Materi Monev melalui Portal Pengajuan PEPK");
+  configureSubmissionLink(uploadLink, "Ajukan Materi Monev melalui Portal Pengajuan PEPK", "monev");
 }
 
 function normalized(value) {
@@ -154,7 +154,7 @@ function render() {
   detailNode.textContent = active.length ? `Filter: ${active.join(" • ")}` : "Seluruh materi yang telah disetujui operator";
   // Submission Portal adalah satu-satunya pintu pengajuan. Jangan mengambil
   // kembali URL Google Form lama dari pengaturan spreadsheet saat render.
-  uploadLink.href = SUBMISSION_PORTAL_URL;
+  configureSubmissionLink(uploadLink, "Ajukan Materi Monev melalui Portal Pengajuan PEPK", "monev");
   if (!items.length) empty.append(emptyState("Materi belum ditemukan", "Ubah filter atau ajukan Materi Monev melalui Layanan.", "presentation", { label: "Buka Layanan", href: "contribute.html" }));
   announce(`${items.length} materi Monev ditampilkan.`);
 }
@@ -181,7 +181,7 @@ form.addEventListener("reset", () => {
 });
 
 render();
-setContentReady();
+setContentReady(data);
 
 scheduleBackgroundTask(async () => {
   setContentRefreshing();
@@ -189,7 +189,7 @@ scheduleBackgroundTask(async () => {
     const result = await refreshFromSheets();
     if (result.changed) {
       data = result.data;
-      applyMetadata(data.settings);
+      applyMetadata(data.settings, data);
       render();
     }
     setContentRefreshResult(result);

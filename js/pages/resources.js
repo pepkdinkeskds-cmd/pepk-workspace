@@ -6,21 +6,22 @@ import {
   scheduleBackgroundTask,
   minimumSearchLength,
   updateQueryString
-} from "../app.js?v=0.9.6-rc1";
+} from "../app.js?v=0.9.7-rc3";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.6-rc1";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.6-rc1";
-import { searchResourcesDetailed } from "../search.js";
-import { emptyState, resourceCard } from "../ui.js";
+} from "../status.js?v=0.9.7-rc3";
+import { getInitialData, refreshFromSheets, ensureSearchIndex } from "../data/data-service.js?v=0.9.7-rc3";
+import { comparePeriods } from "../catalog-utils.js?v=0.9.7-rc3";
+import { searchResourcesDetailed } from "../search.js?v=0.9.7-rc3";
+import { emptyState, resourceCard } from "../ui.js?v=0.9.7-rc3";
 
 initApp("resources");
 
 let data = getInitialData();
-applyMetadata(data.settings);
+applyMetadata(data.settings, data);
 const searchInput = document.querySelector("[data-resource-search]");
 const workspaceFilter = document.querySelector("[data-workspace-filter]");
 const typeFilter = document.querySelector("[data-type-filter]");
@@ -37,6 +38,21 @@ const visibleCountNode = document.querySelector("[data-resource-visible-count]")
 const pageSize = 24;
 let visibleLimit = pageSize;
 let currentResults = [];
+let indexLoaded = false;
+let indexLoading = false;
+async function loadIndexIfNeeded() {
+  if (!searchInput.value.trim() || indexLoaded || indexLoading) return;
+  indexLoading = true;
+  document.querySelector("[data-index-status]").textContent = "Memuat indeks subfolder…";
+  const result = await ensureSearchIndex();
+  data.searchIndex = result.items;
+  indexLoaded = true;
+  indexLoading = false;
+  document.querySelector("[data-index-status]").textContent = result.meta.failed
+    ? "Indeks daring belum tersinkron. Hasil subfolder memakai salinan tersimpan; tautan mungkin berubah."
+    : "Indeks subfolder tersedia. Pencarian menggunakan nama, jalur, dan metadata; isi file tidak diperiksa.";
+  render();
+}
 
 function getParams() {
   const params = new URLSearchParams(window.location.search);
@@ -104,7 +120,8 @@ function populateFilters(preserve = true) {
   [...years].sort((a, b) => b - a).forEach((year) => {
     const option = document.createElement("option");
     option.value = String(year);
-    option.textContent = String(year);
+    const annual = data.resources.filter((r) => Number(r.yearStart || r.year) === year && Number(r.yearEnd || r.year) === year).length;
+    option.textContent = annual ? `${year} · ${annual} folder tahunan` : `${year} · cakupan dokumen jangka panjang`;
     yearFilter.append(option);
   });
 
@@ -120,9 +137,7 @@ function sortResults(items, sort, hasQuery) {
     if (sort === "title") return left.title.localeCompare(right.title, "id") || resourceSortYear(right) - resourceSortYear(left);
     if (sort === "workspace") return left.workspaceTitle.localeCompare(right.workspaceTitle, "id") || left.title.localeCompare(right.title, "id");
     if (left.type !== right.type) return left.type === "application" ? 1 : -1;
-    return resourceSortYear(right) - resourceSortYear(left)
-      || (left.sortOrder || 999) - (right.sortOrder || 999)
-      || left.title.localeCompare(right.title, "id");
+    return comparePeriods(left, right);
   });
 }
 
@@ -153,6 +168,7 @@ function resetFilters() {
 }
 
 function render(options = {}) {
+  loadIndexIfNeeded();
   const { preserveVisibleLimit = false } = options;
   if (!preserveVisibleLimit) visibleLimit = pageSize;
   const q = searchInput.value.trim();
@@ -266,14 +282,14 @@ window.addEventListener("popstate", () => {
   render();
 });
 
-setContentReady();
+setContentReady(data);
 scheduleBackgroundTask(async () => {
   setContentRefreshing();
   try {
     const result = await refreshFromSheets();
     if (result.changed) {
-      data = result.data;
-      applyMetadata(data.settings);
+      data = { ...result.data, searchIndex: data.searchIndex };
+      applyMetadata(data.settings, data);
       populateFilters(true);
       render();
     }

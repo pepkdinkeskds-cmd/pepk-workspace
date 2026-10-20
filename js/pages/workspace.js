@@ -7,22 +7,22 @@ import {
   minimumSearchLength,
   updateQueryString,
   safeUrl
-} from "../app.js?v=0.9.6-rc1";
+} from "../app.js?v=0.9.7-rc3";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.6-rc1";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.6-rc1";
-import { searchResources } from "../search.js";
-import { applicationCard, emptyState, groupCard } from "../ui.js";
-import { icon } from "../icons.js";
+} from "../status.js?v=0.9.7-rc3";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc3";
+import { searchResources } from "../search.js?v=0.9.7-rc3";
+import { applicationCard, emptyState, groupCard } from "../ui.js?v=0.9.7-rc3";
+import { icon } from "../icons.js?v=0.9.7-rc3";
 
 initApp("workspace");
 
 let data = getInitialData();
-applyMetadata(data.settings);
+applyMetadata(data.settings, data);
 const initialParams = new URLSearchParams(window.location.search);
 let workspaceId = initialParams.get("id") || "perencanaan";
 let query = initialParams.get("q") || "";
@@ -245,7 +245,7 @@ searchInput.addEventListener("input", debounce(() => {
 }));
 
 render();
-setContentReady();
+setContentReady(data);
 
 scheduleBackgroundTask(async () => {
   setContentRefreshing();
@@ -253,7 +253,7 @@ scheduleBackgroundTask(async () => {
     const result = await refreshFromSheets();
     if (result.changed) {
       data = result.data;
-      applyMetadata(data.settings);
+      applyMetadata(data.settings, data);
       render();
     }
     setContentRefreshResult(result);

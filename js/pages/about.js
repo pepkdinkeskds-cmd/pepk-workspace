@@ -1,18 +1,18 @@
-import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js?v=0.9.6-rc1";
+import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js?v=0.9.7-rc3";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.6-rc1";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.6-rc1";
-import { CONFIG } from "../config.js";
+} from "../status.js?v=0.9.7-rc3";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc3";
+import { CONFIG } from "../config.js?v=0.9.7-rc3";
 
 const page = document.body.dataset.page || "";
 initApp(page);
 
 let data = getInitialData();
-applyMetadata(data.settings);
+applyMetadata(data.settings, data);
 
 function renderSummary() {
   const metrics = {
@@ -25,11 +25,11 @@ function renderSummary() {
     document.querySelectorAll(`[data-summary-${key}]`).forEach((node) => { node.textContent = String(value); });
   });
   document.querySelectorAll("[data-about-version]").forEach((node) => { node.textContent = CONFIG.appVersion; });
-  document.querySelectorAll("[data-about-updated]").forEach((node) => { node.textContent = data.settings.contentUpdatedAt || "19 Juli 2026"; });
+  applyMetadata(data.settings, data);
 }
 
 renderSummary();
-setContentReady();
+setContentReady(data);
 
 if (page === "about") {
   scheduleBackgroundTask(async () => {
@@ -38,7 +38,7 @@ if (page === "about") {
       const result = await refreshFromSheets();
       if (result.changed) {
         data = result.data;
-        applyMetadata(data.settings);
+        applyMetadata(data.settings, data);
         renderSummary();
       }
       setContentRefreshResult(result);

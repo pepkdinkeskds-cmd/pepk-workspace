@@ -1,20 +1,20 @@
-import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js?v=0.9.6-rc1";
+import { initApp, applyMetadata, scheduleBackgroundTask } from "../app.js?v=0.9.7-rc3";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.6-rc1";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.6-rc1";
-import { agendaCard, informationCard, realizationCard, realizationChart, realizationTable, emptyState } from "../ui.js";
-import { latestRealization, realizationForYear, realizationYears, upcomingAgenda } from "../information-utils.js";
-import { icon } from "../icons.js";
-import { configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.6-rc1";
+} from "../status.js?v=0.9.7-rc3";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc3";
+import { agendaCard, informationCard, realizationCard, realizationChart, realizationTable, emptyState } from "../ui.js?v=0.9.7-rc3";
+import { latestRealization, realizationForYear, realizationYears, upcomingAgenda } from "../information-utils.js?v=0.9.7-rc3";
+import { icon } from "../icons.js?v=0.9.7-rc3";
+import { configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc3";
 
 initApp("information");
 
 let data = getInitialData();
-applyMetadata(data.settings);
+applyMetadata(data.settings, data);
 
 const dashboardNode = document.querySelector("[data-information-dashboard]");
 const agendaNode = document.querySelector("[data-agenda-list]");
@@ -30,7 +30,7 @@ let selectedRealizationYear = Number(params.get("year")) || null;
 function renderAgendaSubmitLink() {
   const link = document.querySelector("[data-agenda-submit-link]");
   if (!link) return;
-  configureSubmissionLink(link, "Ajukan Agenda melalui Portal Pengajuan PEPK");
+  configureSubmissionLink(link, "Ajukan Agenda melalui Portal Pengajuan PEPK", "agenda");
   link.hidden = false;
 }
 
@@ -62,15 +62,15 @@ function renderOverview() {
   if (latest) {
     realizationNode.append(
       realizationCard(latest, {
-        balancedThreshold: data.settings.deviationBalancedThreshold || 2,
-        attentionThreshold: data.settings.deviationAttentionThreshold || 5
+        balancedThreshold: data.settings.deviationBalancedThreshold ?? 2,
+        attentionThreshold: data.settings.deviationAttentionThreshold ?? 5
       }),
       realizationChart(yearItems, selectedRealizationYear),
       realizationTable(
         yearItems,
         selectedRealizationYear,
-        data.settings.deviationBalancedThreshold || 2,
-        data.settings.deviationAttentionThreshold || 5
+        data.settings.deviationBalancedThreshold ?? 2,
+        data.settings.deviationAttentionThreshold ?? 5
       )
     );
   } else {
@@ -126,7 +126,7 @@ realizationYearSelect?.addEventListener("change", () => {
 });
 
 render();
-setContentReady();
+setContentReady(data);
 
 scheduleBackgroundTask(async () => {
   setContentRefreshing();
@@ -134,7 +134,7 @@ scheduleBackgroundTask(async () => {
     const result = await refreshFromSheets();
     if (result.changed) {
       data = result.data;
-      applyMetadata(data.settings);
+      applyMetadata(data.settings, data);
       render();
     }
     setContentRefreshResult(result);

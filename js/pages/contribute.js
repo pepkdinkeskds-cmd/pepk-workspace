@@ -1,13 +1,13 @@
-import { initApp, createElement, externalLink } from "../app.js?v=0.9.6-rc1";
-import { setContentStatus } from "../status.js?v=0.9.6-rc1";
-import { icon } from "../icons.js";
-import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.6-rc1";
+import { initApp, createElement, externalLink } from "../app.js?v=0.9.7-rc3";
+import { setContentStatus } from "../status.js?v=0.9.7-rc3";
+import { icon } from "../icons.js?v=0.9.7-rc3";
+import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc3";
 
 initApp("contribute");
 
 const container = document.querySelector("[data-contribution-page-actions]");
 
-function actionCard({ iconName, eyebrow, title, description, url, buttonLabel, variant = "primary", details = [] }) {
+function actionCard({ iconName, eyebrow, title, description, url, buttonLabel, module, variant = "primary", details = [] }) {
   const card = url
     ? externalLink(url, title, `contribution-action-card contribution-action-card--${variant} contribution-action-card--clickable`)
     : createElement("article", { className: `contribution-action-card contribution-action-card--${variant}` });
@@ -35,26 +35,19 @@ function actionCard({ iconName, eyebrow, title, description, url, buttonLabel, v
     })
   );
   if (url) {
-    configureSubmissionLink(card, "Mulai Pengajuan PEPK di Submission Portal");
+    configureSubmissionLink(card, `Buka ${title} di Submission Portal`, module);
   }
   return card;
 }
 
 function render() {
   container.replaceChildren(
-    actionCard({
-      iconName: "upload",
-      eyebrow: "Satu pintu layanan",
-      title: "Mulai Pengajuan PEPK",
-      description: "Gunakan satu Submission Portal untuk mengajukan Dokumen, Agenda, Materi Monev, atau Referensi.",
-      url: SUBMISSION_PORTAL_URL,
-      buttonLabel: "Mulai Pengajuan",
-      details: [
-        "Pilih satu dari empat jenis pengajuan setelah portal terbuka.",
-        "Data masuk ke antrean pemeriksaan Operator.",
-        "Tidak memerlukan akses Editor ke folder utama."
-      ]
-    }),
+    ...[
+      ['document', 'upload', 'Ajukan Dokumen', 'Kirim dokumen kerja ke ruang kerja dan periode yang tepat.'],
+      ['agenda', 'calendar', 'Ajukan Agenda', 'Kirim jadwal kegiatan, lokasi, dan PIC untuk diperiksa operator.'],
+      ['monev', 'presentation', 'Ajukan Materi Monev', 'Kirim bahan paparan sesuai unit dan periode pelaksanaan.'],
+      ['reference', 'library', 'Ajukan Referensi', 'Kirim regulasi, pedoman, dan bahan pendukung pekerjaan.']
+    ].map(([module, iconName, title, description]) => actionCard({ module, iconName, title, description, eyebrow: 'Pengajuan PEPK', url: SUBMISSION_PORTAL_URL, buttonLabel: 'Buka pengajuan' })),
     actionCard({
       iconName: "inbox",
       eyebrow: "Status dan perbaikan",
@@ -71,4 +64,4 @@ function render() {
 }
 
 render();
-setContentStatus("Layanan siap digunakan", "connected", "Empat jenis pengajuan tersedia melalui PEPK Submission Portal.");
+setContentStatus("Pilihan layanan tersedia", "ready", "Status pengiriman ditentukan saat Submission Portal dibuka.");

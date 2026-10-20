@@ -1,9 +1,9 @@
-import { icon } from "./icons.js?v=0.9.6-rc1";
-import { SUBMISSION_PORTAL_URL } from "./pages/submission-portal-bridge.js?v=0.9.6-rc1";
+import { icon } from "./icons.js?v=0.9.7-rc3";
+import { SUBMISSION_PORTAL_URL } from "./pages/submission-portal-bridge.js?v=0.9.7-rc3";
 
 const FEEDBACK = Object.freeze({
   action: "submit_feedback",
-  appVersion: "0.9.6 RC1",
+  appVersion: "0.9.7 RC3",
   maxMessageLength: 1500,
   minMessageLength: 10,
   storageKey: "pepk_feedback_browser_id_v1",

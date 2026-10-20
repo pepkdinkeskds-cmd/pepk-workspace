@@ -63,6 +63,7 @@ export function monthName(month, short = false) {
 }
 
 export function formatPercentage(value) {
+  if (value === null || value === undefined || value === "") return "—";
   const number = Number(value);
   if (!Number.isFinite(number)) return "—";
   return `${new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2 }).format(number)}%`;
@@ -88,7 +89,7 @@ export function latestRealization(items = [], year = null) {
 export function realizationDeviation(item, balancedThreshold = 2, attentionThreshold = 5) {
   const financial = Number(item?.financialValue);
   const physical = Number(item?.physicalValue);
-  if (!Number.isFinite(financial) || !Number.isFinite(physical)) {
+  if (item?.financialValue === null || item?.physicalValue === null || !Number.isFinite(financial) || !Number.isFinite(physical)) {
     return { value: null, absolute: null, severity: "unknown", direction: "unknown", label: "Deviasi belum tersedia" };
   }
 
@@ -103,8 +104,8 @@ export function realizationDeviation(item, balancedThreshold = 2, attentionThres
   return { value, absolute, severity, direction, label };
 }
 
-export function realizationEvaluation(item) {
-  const deviation = realizationDeviation(item);
+export function realizationEvaluation(item, balancedThreshold = 2) {
+  const deviation = realizationDeviation(item, balancedThreshold);
   if (deviation.value === null) {
     return {
       state: "unknown",
@@ -112,24 +113,30 @@ export function realizationEvaluation(item) {
       description: "Realisasi keuangan dan fisik belum dapat dibandingkan."
     };
   }
-  if (deviation.direction === "financial") {
+  const financialTarget = item?.financialTarget;
+  const physicalTarget = item?.physicalTarget;
+  const hasTargets = Number.isFinite(financialTarget) && Number.isFinite(physicalTarget);
+  if (hasTargets) {
+    const financialGap = Number(item.financialValue) - financialTarget;
+    const physicalGap = Number(item.physicalValue) - physicalTarget;
+    const reached = financialGap >= 0 && physicalGap >= 0;
     return {
-      state: "attention",
-      status: "Perlu perhatian",
-      description: deviation.label
+      state: reached ? "good" : "attention",
+      status: reached ? "Target tercapai" : "Di bawah target",
+      description: `Target keuangan ${formatPercentage(financialTarget)}, fisik ${formatPercentage(physicalTarget)}. ${deviation.label}.`
     };
   }
-  if (deviation.direction === "balanced") {
+  if (deviation.absolute > balancedThreshold) {
     return {
-      state: "balanced",
-      status: "Seimbang",
-      description: deviation.label
+      state: "attention",
+      status: "Selisih perlu ditinjau",
+      description: `${deviation.label}. Target periode belum tersedia; capaian belum dapat dinilai.`
     };
   }
   return {
-    state: "good",
-    status: "Sesuai",
-    description: deviation.label
+    state: "balanced",
+    status: "Selisih dalam toleransi",
+    description: `${deviation.label}. Target periode belum tersedia; ini bukan penilaian ketercapaian.`
   };
 }
 

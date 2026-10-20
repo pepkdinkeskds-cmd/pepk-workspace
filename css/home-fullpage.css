@@ -1,0 +1,108 @@
+/* Loaded directly by index.html. The page stays normally readable if JavaScript fails. */
+.home-navigation-hint { margin-top: 10px; font-size: .76rem; color: #c6d9eb; }
+.home-viewport > .site-footer { min-height: auto; display: block; }
+html.home-fullpage-root { height: 100%; overflow: hidden; scroll-behavior: auto; scroll-snap-type: none; }
+body.home-fullpage-enabled {
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
+}
+.home-fullpage-enabled > .site-header { position: relative; }
+.home-fullpage-enabled > .home-viewport {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+  container-type: size;
+  scrollbar-width: none;
+}
+.home-fullpage-enabled > .home-viewport::-webkit-scrollbar { display: none; }
+.home-fullpage-enabled #main-content { min-height: 0; }
+.home-fullpage-enabled .home-scene {
+  height: calc(100dvh - var(--header-height));
+  height: 100cqh;
+  min-height: 0;
+  max-height: none;
+  margin: 0;
+  padding-block: 30px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: safe center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-snap-align: none;
+  scroll-snap-stop: normal;
+  scroll-margin: 0;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.home-fullpage-enabled .home-scene > .container { flex: 0 0 auto; }
+.home-fullpage-enabled .home-scene .section-heading { margin-bottom: 22px; }
+.home-fullpage-enabled .home-scene .section-heading h2 { font-size: clamp(1.4rem, 2.1vw, 1.9rem); }
+.home-fullpage-enabled .hero { padding-block: 20px 82px; }
+.home-fullpage-enabled .hero h1 { font-size: clamp(2.3rem, 4vw, 3.8rem); margin-bottom: 10px; }
+.home-fullpage-enabled .hero .eyebrow { margin-bottom: 8px; }
+.home-fullpage-enabled .hero__content > p { font-size: .95rem; line-height: 1.55; margin-bottom: 10px; }
+.home-fullpage-enabled .hero-search { margin-top: 14px; }
+.home-fullpage-enabled .search-hints { margin-top: 8px; }
+.home-fullpage-enabled .hero .hero__scope { margin-top: 8px; margin-bottom: 0; font-size: .76rem; }
+.home-fullpage-enabled .hero__next { margin-top: 8px; }
+.home-fullpage-enabled .hero .home-navigation-hint { margin-top: 0; margin-bottom: 0; font-size: .76rem; }
+.home-fullpage-enabled .hero__visual { min-height: 290px; }
+.home-fullpage-enabled .hero__visual img { width: 165px; }
+.home-fullpage-enabled .home-tools-heading h2 { font-size: 1.65rem; }
+.home-fullpage-enabled .home-tools-heading p { font-size: .85rem; margin-bottom: 14px; }
+.home-fullpage-enabled .home-quick-panels { gap: 14px; }
+.home-fullpage-enabled .quick-panel__heading { margin-bottom: 8px; }
+.home-fullpage-enabled .quick-grid, .home-fullpage-enabled .app-launchpad { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.home-fullpage-enabled .resource-card--compact, .home-fullpage-enabled .application-card--compact { padding: 11px 12px; gap: 10px; }
+.home-fullpage-enabled .resource-card__title, .home-fullpage-enabled .application-card__title { font-size: .85rem; }
+.home-fullpage-enabled .app-logo { width: 36px; height: 36px; }
+.home-fullpage-enabled .source-note { margin-top: 12px; margin-bottom: 0; font-size: .75rem; }
+.home-fullpage-enabled .home-tools-card--contribution { padding: 22px; }
+.home-fullpage-enabled .home-tools-card--contribution h2 { font-size: 1.5rem; }
+.home-fullpage-enabled .home-contribution-note { margin-top: 18px; padding-top: 16px; }
+.home-fullpage-enabled .workspace-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.home-fullpage-enabled .workspace-card { padding: 22px; }
+.home-fullpage-enabled .workspace-card__top { margin-bottom: 22px; }
+.home-fullpage-enabled .realization-overview__chart-pane, .home-fullpage-enabled .realization-overview__summary { padding: 20px; }
+.home-fullpage-enabled .realization-chart__svg { max-height: 260px; }
+.home-fullpage-enabled .scene-nav { bottom: 16px; }
+.home-fullpage-enabled .site-footer__grid { align-items: start; }
+.home-fullpage-enabled .site-footer__bottom { margin-top: 24px; }
+.home-fullpage-enabled [data-home-scene][aria-hidden="true"] { pointer-events: none; }
+@media (max-width: 68rem) and (min-width: 52.01rem) {
+  .home-fullpage-enabled .home-tools-layout { grid-template-columns: minmax(0, 2fr) minmax(210px, 1fr); gap: 18px; }
+  .home-fullpage-enabled .workspace-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .home-fullpage-enabled .workspace-card { padding: 16px; }
+  .home-fullpage-enabled .workspace-card__top { margin-bottom: 12px; }
+  .home-fullpage-enabled .workspace-card__description { margin-bottom: 10px; }
+}
+@media (max-height: 44rem) and (min-width: 52.01rem) {
+  .home-fullpage-enabled .home-scene { padding-block: 22px 88px; }
+  .home-fullpage-enabled .hero h1 { font-size: 2.8rem; }
+  .home-fullpage-enabled .hero__grid { grid-template-columns: 1fr; }
+  .home-fullpage-enabled .hero__visual { display: none; }
+  .home-fullpage-enabled .hero__visual img { width: 140px; }
+  .home-fullpage-enabled .hero__content > p { font-size: .92rem; }
+  .home-fullpage-enabled .home-scene .section-heading p { font-size: .85rem; }
+  .home-fullpage-enabled .realization-chart__svg { max-height: 200px; }
+}
+@media (max-width: 52rem) {
+  .home-navigation-hint { display: none; }
+  .home-viewport > .site-footer { padding-bottom: 62px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-fullpage-enabled .home-viewport { scroll-behavior: auto; }
+}
+@media print {
+  html.home-fullpage-root, body.home-fullpage-enabled { display: block; height: auto; overflow: visible; }
+  .home-fullpage-enabled > .home-viewport { height: auto; overflow: visible; container-type: normal; }
+  .home-fullpage-enabled .home-scene { height: auto; min-height: 0; overflow: visible; padding-block: 20px; }
+  .home-fullpage-enabled [data-home-scene][aria-hidden="true"] { pointer-events: auto; }
+}

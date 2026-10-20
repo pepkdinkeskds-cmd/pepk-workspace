@@ -1,5 +1,6 @@
-import { createElement, externalLink, safeUrl } from "./app.js";
-import { icon } from "./icons.js";
+import { createElement, externalLink, safeUrl } from "./app.js?v=0.9.7-rc3";
+import { icon } from "./icons.js?v=0.9.7-rc3";
+import { comparePeriods, resourceDisplayTitle } from "./catalog-utils.js?v=0.9.7-rc3";
 import {
   agendaStatus,
   formatAgendaDate,
@@ -12,7 +13,7 @@ import {
   realizationEvaluation,
   realizationForYear,
   realizationPeriod
-} from "./information-utils.js";
+} from "./information-utils.js?v=0.9.7-rc3";
 
 function resourceMeta(resource) {
   const items = [resource.workspaceTitle || resource.workspaceId];
@@ -61,11 +62,12 @@ export function resourceCard(resource, { compact = false } = {}) {
   if (resource.type === "application") return applicationCard(resource, { compact });
   const deepClass = resource.kind === "deep-folder" ? " resource-card--deep" : "";
   const parentClass = resource.searchRole === "parent" ? " resource-card--parent" : "";
-  const link = externalLink(resource.url, resource.title, `resource-card${compact ? " resource-card--compact" : ""}${deepClass}${parentClass}`);
+  const displayTitle = resourceDisplayTitle(resource);
+  const link = externalLink(resource.url, displayTitle, `resource-card${compact ? " resource-card--compact" : ""}${deepClass}${parentClass}`);
   const iconBox = createElement("span", { className: "resource-card__icon", html: icon(resource.icon || "folder") });
   const content = createElement("span", { className: "resource-card__content" });
   const meta = createElement("span", { className: "resource-card__meta" }, resourceMeta(resource).map((item) => createElement("span", { text: item })));
-  const title = createElement("strong", { className: "resource-card__title", text: resource.title });
+  const title = createElement("strong", { className: "resource-card__title", text: displayTitle });
   const description = createElement("span", { className: "resource-card__description", text: resource.description || "" });
   content.append(meta, title);
   if (!compact) content.append(description);
@@ -85,8 +87,8 @@ export function workspaceCard(workspace, counts = {}) {
   ]);
   const title = createElement("strong", { className: "workspace-card__title", text: workspace.title });
   const description = createElement("span", { className: "workspace-card__description", text: workspace.description });
-  const apps = counts.applications || workspace.applicationCount || 0;
-  const metaText = `${counts.groups || workspace.groupCount || 0} kelompok • ${counts.documents || workspace.resourceCount || 0} folder${apps ? ` • ${apps} aplikasi` : ""}`;
+  const apps = counts.applications ?? workspace.applicationCount ?? 0;
+  const metaText = `${counts.groups ?? workspace.groupCount ?? 0} kelompok • ${counts.documents ?? workspace.resourceCount ?? 0} folder${apps ? ` • ${apps} aplikasi` : ""}`;
   const meta = createElement("span", { className: "workspace-card__meta", text: metaText });
   link.append(top, title, description, meta);
   return link;
@@ -164,7 +166,7 @@ export function realizationCard(item, { compact = false, balancedThreshold = 2, 
       metricProgress("Fisik", item.physicalValue, "physical")
     ]),
     createElement("div", { className: `realization-deviation realization-deviation--${deviation.severity}` }, [
-      createElement("span", { className: "realization-deviation__label", text: "Deviasi" }),
+      createElement("span", { className: "realization-deviation__label", text: "Selisih fisik–keuangan" }),
       createElement("strong", { className: "realization-deviation__value", text: deviation.value === null ? "—" : `${new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2, signDisplay: "always" }).format(deviation.value)} poin` }),
       createElement("span", { className: "realization-deviation__description", text: deviation.label })
     ]),
@@ -280,7 +282,7 @@ export function realizationOverviewCard(items, { balancedThreshold = 2, attentio
   if (!latest) return null;
 
   const yearItems = realizationForYear(items, latest.year);
-  const evaluation = realizationEvaluation(latest);
+  const evaluation = realizationEvaluation(latest, balancedThreshold);
   const deviation = realizationDeviation(latest, balancedThreshold, attentionThreshold);
   const throughMonth = Math.max(1, Math.min(12, Number(latest.month) || 12));
   const article = createElement("article", { className: "realization-overview" });
@@ -321,18 +323,19 @@ export function realizationOverviewCard(items, { balancedThreshold = 2, attentio
     metricProgress("Realisasi Keuangan", latest.financialValue, "financial"),
     metricProgress("Realisasi Fisik", latest.physicalValue, "physical"),
     createElement("div", { className: `realization-evaluation realization-evaluation--${evaluation.state}` }, [
-      createElement("span", { className: "realization-evaluation__label", text: "Hasil evaluasi" }),
+      createElement("span", { className: "realization-evaluation__label", text: "Pembacaan indikator" }),
       createElement("strong", { className: "realization-evaluation__status", text: evaluation.status }),
       createElement("p", { className: "realization-evaluation__description", text: evaluation.description }),
       deviation.value === null
         ? null
         : createElement("span", {
           className: "realization-evaluation__deviation",
-          text: `Deviasi ${new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2, signDisplay: "always" }).format(deviation.value)} poin`
+          text: `Selisih ${new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2, signDisplay: "always" }).format(deviation.value)} poin · toleransi ${balancedThreshold} poin`
         })
     ].filter(Boolean))
   ]);
 
+  if (latest.description) summary.append(createElement("p", {className: "source-note", text: latest.description}));
   article.append(chartPane, summary);
   return article;
 }
@@ -340,11 +343,12 @@ export function realizationOverviewCard(items, { balancedThreshold = 2, attentio
 export function realizationTable(items, year, balancedThreshold = 2, attentionThreshold = 5) {
   const byMonth = new Map(realizationForYear(items, year).map((item) => [Number(item.month), item]));
   const table = createElement("table", { className: "realization-table" });
+  table.append(createElement("caption", {text: `Realisasi tahun ${year}. Selisih = fisik dikurangi keuangan, dalam poin persentase.`}));
   table.append(createElement("thead", {}, [createElement("tr", {}, [
     createElement("th", { scope: "col", text: "Bulan" }),
     createElement("th", { scope: "col", text: "Keuangan" }),
     createElement("th", { scope: "col", text: "Fisik" }),
-    createElement("th", { scope: "col", text: "Deviasi" }),
+    createElement("th", { scope: "col", text: "Selisih (poin)" }),
     createElement("th", { scope: "col", text: "Keterangan" })
   ])]));
   const body = createElement("tbody");
@@ -400,7 +404,7 @@ export function groupCard(group, resources) {
   const yearList = createElement("div", { className: "year-list" });
   resources
     .slice()
-    .sort((a, b) => (b.sortYear || b.yearEnd || b.year || 0) - (a.sortYear || a.yearEnd || a.year || 0) || a.title.localeCompare(b.title, "id"))
+    .sort(comparePeriods)
     .forEach((resource) => {
       const periodLabel = resource.period || (resource.year ? String(resource.year) : (isReference ? "Folder" : "Umum"));
       const link = externalLink(resource.url, resource.title, "year-link");
