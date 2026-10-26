@@ -13,13 +13,14 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="preload" href="assets/logo-pepk.png" as="image" type="image/png">
-  <link rel="stylesheet" href="css/main.css?v=0.9.7-rc3">
-  <link rel="stylesheet" href="css/home-fullpage.css?v=0.9.7-rc3">
-  <script defer src="js/mobile-nav.js?v=0.9.7-rc3"></script>
-  <script defer src="js/boot.js?v=0.9.7-rc3"></script>
-  <script defer src="js/home-fullpage.js?v=0.9.7-rc3"></script>
-  <script type="module" src="js/pages/home.js?v=0.9.7-rc3"></script>
-  <script type="module" src="js/feedback.js?v=0.9.7-rc3"></script>
+  <link rel="stylesheet" href="css/main.css?v=0.9.7-rc4">
+  <link rel="stylesheet" href="css/home-fullpage.css?v=0.9.7-rc4">
+  <script defer src="js/mobile-nav.js?v=0.9.7-rc4"></script>
+  <script defer src="js/boot.js?v=0.9.7-rc4"></script>
+  <script defer src="js/home-fullpage.js?v=0.9.7-rc4"></script>
+  <script defer src="js/home-footer.js?v=0.9.7-rc4"></script>
+  <script type="module" src="js/pages/home.js?v=0.9.7-rc4"></script>
+  <script type="module" src="js/feedback.js?v=0.9.7-rc4"></script>
 </head>
 <body data-page="home">
 <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -175,39 +176,37 @@
 
   <noscript><p class="container source-note">Aktifkan JavaScript untuk memuat katalog dan pencarian. Tautan navigasi tetap tersedia.</p></noscript>
 </main>
-<nav class="scene-nav" data-scene-nav aria-label="Navigasi bagian beranda" hidden>
-  <span class="scene-nav__label" data-scene-label>Mulai</span>
-  <div class="scene-nav__dots">
-    <button type="button" data-scene-jump="0" aria-label="Bagian 1: Mulai" aria-current="step"></button>
-    <button type="button" data-scene-jump="1" aria-label="Bagian 2: Akses utama"></button>
-    <button type="button" data-scene-jump="2" aria-label="Bagian 3: Ruang kerja"></button>
-    <button type="button" data-scene-jump="3" aria-label="Bagian 4: Agenda"></button>
-    <button type="button" data-scene-jump="4" aria-label="Bagian 5: Realisasi"></button>
-  </div>
-  <span class="scene-nav__count" data-scene-count>01 / 06</span>
-  <button type="button" data-scene-previous aria-label="Bagian sebelumnya">↑</button>
-  <button type="button" data-scene-next aria-label="Bagian berikutnya">↓</button>
-</nav>
-<footer class="site-footer home-scene" id="tentang-layanan" data-home-scene data-scene-title="Tentang layanan" tabindex="-1" aria-label="Tentang layanan PEPK">
-  <div class="container site-footer__grid">
-    <div class="site-footer__identity">
-      <div class="site-footer__brand">
-        <img src="assets/logo-pepk.png" alt="" width="34" height="50">
-        <strong>PEPK Workspace</strong>
-      </div>
-      <p>Sub Bagian Perencanaan, Evaluasi, Pelaporan dan Keuangan<br>Dinas Kesehatan Kabupaten Kudus</p>
-    </div>
-    <div class="site-footer__meta">
-      <p>Versi <span data-version>0.9.7 RC3</span></p>
-      <p>Sumber terakhir dibaca <span data-updated>Belum tersinkron</span></p>
-      <span class="data-status" data-data-status data-state="loading">Memuat katalog…</span>
-    </div>
-  </div>
-  <div class="container site-footer__bottom">
-    <p>© 2026 PEPK – Dinas Kesehatan Kabupaten Kudus</p>
+</div>
+<footer class="home-footer" data-home-footer aria-label="Footer PEPK Workspace">
+  <p class="home-footer__identity">© 2026 <strong>PEPK</strong><span class="home-footer__institution"> · Dinkes Kudus</span></p>
+  <nav class="home-footer__navigation" data-scene-nav aria-label="Navigasi lima bagian beranda" hidden>
+    <button type="button" class="home-footer__arrow" data-scene-previous aria-label="Bagian sebelumnya">↑</button>
+    <label class="sr-only" for="home-section">Pilih bagian beranda</label>
+    <select id="home-section" data-scene-select>
+      <option value="0">Mulai</option><option value="1">Akses utama</option><option value="2">Ruang kerja</option><option value="3">Agenda</option><option value="4">Realisasi</option>
+    </select>
+    <span class="home-footer__count" data-scene-count>01/05</span>
+    <button type="button" class="home-footer__arrow" data-scene-next aria-label="Bagian berikutnya">↓</button>
+  </nav>
+  <div class="home-footer__actions">
+    <span class="home-footer__version">v<span data-version>0.9.7 RC4</span></span>
+    <button class="home-footer__status" type="button" data-footer-status data-state="loading" aria-haspopup="dialog" aria-controls="source-status-dialog" aria-label="Lihat status sumber data">
+      <span class="home-footer__status-dot" aria-hidden="true"></span><span data-footer-status-label>Memeriksa…</span>
+    </button>
+    <button class="home-footer__feedback" type="button" data-feedback-launcher aria-expanded="false" aria-controls="pepk-feedback-panel" aria-label="Kirim Masukan">
+      <span data-icon="message"></span><span class="home-footer__feedback-label">Masukan</span>
+    </button>
   </div>
 </footer>
-</div>
+<dialog id="source-status-dialog" class="source-dialog" data-source-dialog aria-labelledby="source-status-title">
+  <div class="source-dialog__header"><h2 id="source-status-title">Status sumber data</h2><button type="button" data-source-close class="source-dialog__close" aria-label="Tutup status sumber data">×</button></div>
+  <div class="source-dialog__body">
+    <p data-source-overview>Katalog dapat digunakan. Pembacaan sumber daring belum dikonfirmasi.</p>
+    <p class="source-dialog__updated">Pembacaan sumber terakhir: <strong data-updated>Belum tersinkron</strong></p>
+    <div class="source-dialog__sources" data-source-rows><p>Detail sumber belum tersedia. Tunggu pemeriksaan sumber selesai.</p></div>
+    <p class="source-dialog__note">Waktu pembacaan sumber berbeda dari periode pelaporan dan pengesahan angka. Periksa periode pada bagian Realisasi.</p>
+  </div>
+</dialog>
 <div class="sr-only" role="status" aria-live="polite" aria-atomic="true" data-scene-announcement></div>
 <div class="sr-only" aria-live="polite" aria-atomic="true" data-live-region></div>
 </body>

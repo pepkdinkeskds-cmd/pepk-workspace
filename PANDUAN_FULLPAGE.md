@@ -1,56 +1,45 @@
-# PEPK Workspace 0.9.7 RC3 — Fullpage Beranda
+# PEPK Workspace 0.9.7 RC4 — Footer Ringkas
 
-Paket ini khusus website GitHub Pages. Tidak memerlukan pemasangan atau pembaruan Submission Portal/Apps Script.
+Rilis website GitHub Pages, 26 Oktober 2026. Tidak memerlukan pembaruan Submission Portal atau Apps Script.
 
-## Penyebab fitur sebelumnya tidak berjalan
+## Perubahan utama
 
-ZIP GitHub yang diberikan memuat dua set sumber. `index.html` memanggil `js/pages/home.js` dan `css/main.css`, tetapi berkas RC2 baru berada di root sebagai `home.js`, `home-scenes.js`, dan `main.css`. Berkas yang dipanggil pada subfolder masih versi lama. `js/boot.js` yang dipanggil HTML juga belum berada di lokasi tersebut.
+- Beranda memiliki **lima bagian**: Mulai, Akses utama, Ruang kerja, Agenda, dan Realisasi.
+- Footer berada di luar viewport konten. Pada desktop tingginya sekitar **57 px**, terlihat pada semua bagian, dan tidak menjadi layar keenam.
+- Footer memuat identitas ringkas, tombol atas/bawah, pemilih bagian, posisi `01/05–05/05`, versi, status data, dan Masukan.
+- Nama bagian dapat dipilih untuk berpindah langsung. Satu tekan panah atau satu gerakan roda mouse tetap berpindah satu bagian penuh.
+- Status data dapat diklik untuk melihat sumber yang berhasil dibaca, salinan yang digunakan, catatan kosong, dan penyebab peringatan. Menutup dialog mengembalikan fokus ke footer tanpa memindahkan bagian.
+- Masukan menggunakan satu tombol footer. Formulir terbuka di atas footer; tombol mengambang besar pada beranda dihapus.
+- Pratinjau diringkas pada layar pendek: akses utama menampilkan dua pilihan tiap kategori dan grafik realisasi diarahkan ke ringkasan angka. Tautan katalog/rincian tetap tersedia. Catatan sumber lengkap ada pada dialog status.
+- HP memakai gulir alami dengan footer ringkas yang tetap tersedia. Navigasi layar desktop disembunyikan pada HP.
 
-Di samping masalah letak file, controller RC2 masih mengizinkan gulir asli ketika bagian lebih panjang daripada layar atau pointer berada di atas tautan/tombol. Perilaku itu tidak memenuhi permintaan satu input untuk satu layar penuh.
+## Pemasangan
 
-Rilis ini mengembalikan sumber yang telah dilampirkan ke folder yang benar, menyeragamkan identifier cache RC3, dan mengganti controller beranda. Bridge Submission yang aktif pada ZIP sumber dipertahankan. Tidak ada sumber Apps Script pada paket ini.
+1. Simpan commit website aktif sebagai titik pemulihan.
+2. Ekstrak ZIP. `index.html` sudah berada langsung pada root, sejajar dengan folder `js`, `css`, dan `assets`.
+3. Unggah isinya ke lokasi website GitHub yang sekarang, **dengan struktur folder tetap utuh**. Jangan memindahkan file dari `js` atau `css` ke root.
+4. Tunggu GitHub Pages selesai diterbitkan, kemudian lakukan `Ctrl+F5`.
+5. Pastikan footer menunjukkan RC4 dan `01/05`. Uji panah, roda mouse, pemilih bagian, Status, serta Masukan. `End` berhenti di Realisasi `05/05`.
 
-## Perilaku yang dibuat
+Rilis ini belum dipasang ke repository GitHub produksi oleh penyusun. Tidak ada pengubahan isi spreadsheet, angka realisasi, atau izin Drive.
 
-Pada desktop dengan lebar lebih dari 832 px, halaman menjadi enam layar:
+## Arti status
 
-1. Mulai / pencarian.
-2. Folder dan aplikasi.
-3. Ruang kerja.
-4. Agenda.
-5. Realisasi.
-6. Informasi layanan / footer.
+“Sumber terbaca” berarti pembacaan berhasil, bukan pengesahan angka atau bukti bahwa periode sudah mutakhir. Peringatan yang sudah ada pada salinan sumber tetap terlihat saat pembaruan daring belum selesai.
 
-Satu `↓` atau `Page Down` berpindah satu layar penuh; `↑` atau `Page Up` kembali satu layar. `Home` menuju awal dan `End` menuju layar terakhir. Satu gerakan roda mouse/trackpad memindahkan satu bagian. Input selama animasi dan gerakan sisa trackpad ditahan agar tidak melompat beberapa layar atau kembali menjadi gulir kecil bawaan browser.
+Jika Realisasi bertanda data contoh, angka tetap dikecualikan. Dialog menjelaskan alasannya dan periode data ditampilkan apabila tersedia. Pemeriksaan serta publikasi angka resmi tetap mengikuti proses pengelola.
 
-Controller memakai viewport tetap, tinggi panel satu layar, dan pemindahan posisi viewport ke panel tujuan. Tidak menunggu bagian mencapai batas scroll. Controller dimuat langsung oleh HTML dan tidak bergantung pada koneksi Google Sheets.
+## Verifikasi
 
-Input teks, textarea, pilihan form, dialog Feedback, zoom, dan gerakan horizontal mempertahankan perilaku aslinya. HP dan mode embed tetap memakai gulir biasa. Jika layar sangat pendek atau teks diperbesar hingga suatu panel lebih panjang, isinya tetap tersedia melalui bilah gulir panel/keyboard Tab; roda mouse pada konten umum tetap menuju panel berikutnya.
+Hasil pengujian otomatis ada di `verification/test-results.txt`. Pemeriksaan jalur deploy, sintaks, dan CSS ada di `verification/release-check.json`.
 
-## Pemasangan GitHub
+Tampilan juga diperiksa langsung di Chrome melalui preview lokal, termasuk ukuran laptop 1366×768, desktop 1920×1080, HP 360×800/390×844, serta viewport efektif 960×540 untuk pembesaran halaman 200% dari 1920×1080. Lihat `verification/BROWSER_QA.md` untuk metode dan batas buktinya.
 
-1. Simpan commit website yang sekarang sebagai titik pemulihan.
-2. Ekstrak ZIP ini. **`index.html` sudah berada langsung pada root ZIP**, sejajar dengan folder **`js`**, **`css`**, dan **`assets`**.
-3. Unggah isi hasil ekstraksi ke lokasi website yang sekarang. **Pertahankan foldernya. Jangan meletakkan `home.js`, `home-fullpage.js`, atau `main.css` di root secara terpisah.**
-4. Pastikan pada repository terdapat `js/home-fullpage.js`, `js/pages/home.js`, `css/home-fullpage.css`, dan `css/main.css`.
-5. Tunggu deployment GitHub Pages selesai. Buka `index.html`, lalu lakukan `Ctrl+F5`.
-6. Di desktop, indikator awal harus **01 / 06**. Klik area kosong pada beranda, tekan `↓` satu kali: tampilan harus sampai layar **Folder kerja dan aplikasi**, indikator **02 / 06**.
+Tidak dilakukan pengiriman formulir, pengujian email, perubahan sumber daring, atau pengujian HP fisik. Submission bridge dan aset dipertahankan dari RC3.
 
-Berkas lama yang tidak dirujuk oleh HTML tidak menentukan fitur ini. Yang menentukan adalah isi berkas pada jalur di atas. Jangan mengunggah ZIP sebagai satu berkas unduhan saja; GitHub Pages menjalankan berkas hasil ekstraksinya.
+## Pemeriksaan pengembang
 
-## Validasi
-
-18 uji otomatis lulus: controller dari script yang benar-benar dirujuk `index.html`, posisi layar, panah/roda mouse, tautan/tombol, inertia, input/dialog, reduced motion, resize, hash, mobile/embed, dan pemuatan delapan halaman. Referensi semua aset/modul, sintaks 25 JavaScript, dan dua CSS lulus. ZIP juga diekstrak ulang dan diperiksa agar path deploy tidak kembali salah.
-
-Uji posisi memakai JSDOM dengan ukuran viewport simulasi; ini bukan pengujian visual browser atau perangkat fisik. Browser QA tidak tersedia dalam lingkungan pengerjaan. Detail bukti ada di `verification/`.
-
-Akses sumber SIPD saat pemeriksaan mengembalikan HTTP 403. Karena itu, tidak ada klaim bahwa rilis ini memakai library atau kode yang sama dengan SIPD. Perilaku dibuat berdasarkan contoh tampilan dan interaksi yang dijelaskan.
-
-## Pemulihan dan pemeriksaan pengembang
-
-Kembalikan commit website sebelumnya untuk memulihkan rilis. Rilis ini tidak mengubah isi sumber spreadsheet atau data Drive.
-
-Untuk memeriksa paket menggunakan Node.js 22 atau lebih baru:
+Dengan Node.js 22 atau lebih baru:
 
 ```bash
 npm ci
@@ -58,4 +47,6 @@ npm test
 npm run check
 ```
 
-`verification/prepare-release.mjs` hanya menyamakan identifier RC3; tidak perlu dijalankan untuk memasang website.
+`verification/sync-preview.mjs` dan `verification/prepare-browser-qa.mjs` adalah alat pemeriksaan lokal. File hasilnya pada `preview-dist/` tidak disertakan pada ZIP. Data sintetis hanya digunakan di harness QA untuk memeriksa grafik; tidak masuk ke beranda atau sumber data produksi.
+
+Untuk pemulihan, kembalikan commit website sebelumnya. Penyimpanan/pemulihan data spreadsheet tidak dikendalikan oleh paket website.

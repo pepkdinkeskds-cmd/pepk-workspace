@@ -1,7 +1,7 @@
 {
   "schema": 1,
-  "release": "0.9.7-rc3",
-  "packaged_on": "2026-10-20",
+  "release": "0.9.7-rc4",
+  "packaged_on": "2026-10-26",
   "bundled_catalog_origin": "Public catalog from deployed PEPK Workspace 0.9.6 RC1",
   "official_verification_at": null,
   "operational_examples_included": false,
@@ -10,5 +10,5 @@
   "cache_schema": 3,
   "cache_ttl_seconds": 300,
   "snapshot_scope": "Independent component snapshots; not a cross-sheet transaction",
-  "home_navigation": "fullpage-viewport"
+  "home_navigation": "five-screens-persistent-footer"
 }
