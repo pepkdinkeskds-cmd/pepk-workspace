@@ -1,8 +1,8 @@
 {
   "ok": true,
   "html": 8,
-  "js": 25,
+  "js": 27,
   "css": 2,
-  "static_files": 84,
+  "static_files": 86,
   "failures": []
 }

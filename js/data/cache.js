@@ -1,4 +1,4 @@
-import { CONFIG } from "../config.js?v=0.9.7-rc3";
+import { CONFIG } from "../config.js?v=0.9.7-rc4";
 const memory = new Map();
 const prefix = `pepk-public:${CONFIG.cacheSchema}:${CONFIG.spreadsheetId}:`;
 function storage() { try { return globalThis.localStorage; } catch { return null; } }

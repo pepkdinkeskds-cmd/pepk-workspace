@@ -1,9 +1,10 @@
-import { initApp, applyMetadata, scheduleBackgroundTask, createElement, minimumSearchLength } from "../app.js?v=0.9.7-rc3";
-import { setContentReady, setContentRefreshing, setContentRefreshResult, setContentRefreshUnavailable } from "../status.js?v=0.9.7-rc3";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc3";
-import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.7-rc3";
-import { latestRealization, upcomingAgenda } from "../information-utils.js?v=0.9.7-rc3";
-import { configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc3";
+import { initApp, applyMetadata, scheduleBackgroundTask, createElement, minimumSearchLength } from "../app.js?v=0.9.7-rc4";
+import { setContentReady, setContentRefreshing, setContentRefreshResult, setContentRefreshUnavailable } from "../status.js?v=0.9.7-rc4";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc4";
+import { agendaCard, applicationCard, emptyState, realizationOverviewCard, resourceCard, workspaceCard } from "../ui.js?v=0.9.7-rc4";
+import { latestRealization, upcomingAgenda } from "../information-utils.js?v=0.9.7-rc4";
+import { configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc4";
+import { emptySourceMessage } from "../source-health.js?v=0.9.7-rc4";
 
 initApp("home");
 let data = getInitialData();
@@ -28,7 +29,8 @@ function render() {
   const quick = data.quickAccess.map((id) => byId.get(id)).filter(Boolean);
   for (const [selector, application] of [["[data-quick-folders]", false], ["[data-quick-apps]", true]]) {
     const container = document.querySelector(selector);
-    const items = quick.filter((r) => (r.type === "application") === application).slice(0, 4);
+    const limit = window.matchMedia("(min-width: 52.01rem) and (max-height: 44rem)").matches ? 2 : 4;
+    const items = quick.filter((r) => (r.type === "application") === application).slice(0, limit);
     container.replaceChildren(...items.map((r) => application ? applicationCard(r, { compact: true }) : resourceCard(r, { compact: true })));
     if (!items.length) container.append(emptyState("Akses utama belum tersedia", "Telusuri katalog melalui Pustaka.", "folder", { label: "Buka Pustaka", href: "resources.html" }));
   }
@@ -42,15 +44,20 @@ function render() {
     applications: data.resources.filter((r) => r.workspaceId === w.id && r.type === "application").length
   })));
   const agendas = upcomingAgenda(data.agenda).slice(0, 3);
-  document.querySelector("[data-agenda-preview]").replaceChildren(...(agendas.length ? agendas.map((r) => agendaCard(r, { compact: true })) : [emptyState("Belum ada agenda aktif", "Agenda tampil setelah dipublikasikan operator.", "calendar", { label: "Buka informasi", href: "information.html#agenda" })]));
+  document.querySelector("[data-agenda-preview]").replaceChildren(...(agendas.length ? agendas.map((r) => agendaCard(r, { compact: true })) : [emptyState("Belum ada agenda aktif", emptySourceMessage(data, "agenda"), "calendar", { label: "Buka informasi", href: "information.html#agenda" })]));
   const latest = latestRealization(data.realization);
   document.querySelector("[data-realization-preview]").replaceChildren(latest ? realizationOverviewCard(data.realization, {
     balancedThreshold: data.settings.deviationBalancedThreshold ?? 2,
     attentionThreshold: data.settings.deviationAttentionThreshold ?? 5
-  }) : emptyState("Data capaian belum tersedia", "Data realisasi yang layak ditampilkan belum tersedia dari sumber. Angka contoh tidak ditampilkan.", "trend", { label: "Buka rincian", href: "information.html#realisasi" }));
+  }) : emptyState("Data capaian belum tersedia", emptySourceMessage(data, "realization"), "trend", { label: "Buka rincian", href: "information.html#realisasi" }));
 }
 
 render();
+let compactPreview = window.matchMedia("(min-width: 52.01rem) and (max-height: 44rem)").matches;
+window.addEventListener("resize", () => {
+  const next = window.matchMedia("(min-width: 52.01rem) and (max-height: 44rem)").matches;
+  if (next !== compactPreview) {compactPreview = next; render();}
+});
 setContentReady(data);
 scheduleBackgroundTask(async () => {
   setContentRefreshing();

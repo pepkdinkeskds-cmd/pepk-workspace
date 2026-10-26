@@ -1,4 +1,4 @@
-import { CONFIG } from "../config.js?v=0.9.7-rc3";
+import { CONFIG } from "../config.js?v=0.9.7-rc4";
 
 function csvUrl(sheetName) {
   const encoded = encodeURIComponent(sheetName);

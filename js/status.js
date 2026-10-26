@@ -1,8 +1,10 @@
-import { setDataStatus } from "./app.js?v=0.9.7-rc3";
-import { sourceDescription } from "./data/data-service.js?v=0.9.7-rc3";
+import { setDataStatus } from "./app.js?v=0.9.7-rc4";
+import { sourceDescription } from "./data/data-service.js?v=0.9.7-rc4";
+import { sourceHealthRows } from "./source-health.js?v=0.9.7-rc4";
 
 export function renderProvenance(data) {
   if (!data) return;
+  document.dispatchEvent(new window.CustomEvent("pepk:source-health", {detail: sourceHealthRows(data)}));
   document.querySelectorAll("[data-source]").forEach((node) => {
     const section = node.dataset.source;
     const meta = data._meta?.[section];
@@ -29,7 +31,8 @@ export function setContentStatus(message, state = "ready", detail = "") {
 
 export function setContentReady(data) {
   renderProvenance(data);
-  applyStatus("Katalog tersedia; sumber belum diperiksa", "warning");
+  const needsReview = Object.values(data?._meta || {}).some((meta) => meta.warnings?.length);
+  applyStatus(needsReview ? "Konten tersimpan; ada data perlu diperiksa" : "Katalog tersedia; sumber belum diperiksa", "warning");
 }
 
 export function setContentRefreshing() {

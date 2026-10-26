@@ -7,17 +7,17 @@ import {
   minimumSearchLength,
   updateQueryString,
   safeUrl
-} from "../app.js?v=0.9.7-rc3";
+} from "../app.js?v=0.9.7-rc4";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.7-rc3";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc3";
-import { searchResources } from "../search.js?v=0.9.7-rc3";
-import { applicationCard, emptyState, groupCard } from "../ui.js?v=0.9.7-rc3";
-import { icon } from "../icons.js?v=0.9.7-rc3";
+} from "../status.js?v=0.9.7-rc4";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc4";
+import { searchResources } from "../search.js?v=0.9.7-rc4";
+import { applicationCard, emptyState, groupCard } from "../ui.js?v=0.9.7-rc4";
+import { icon } from "../icons.js?v=0.9.7-rc4";
 
 initApp("workspace");
 

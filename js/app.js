@@ -1,5 +1,5 @@
-import { CONFIG } from "./config.js?v=0.9.7-rc3";
-import { hydrateIcons, icon } from "./icons.js?v=0.9.7-rc3";
+import { CONFIG } from "./config.js?v=0.9.7-rc4";
+import { hydrateIcons, icon } from "./icons.js?v=0.9.7-rc4";
 
 function isSameOriginInternalLink(link) {
   if (!link?.href || link.hasAttribute("download") || link.target === "_blank") return false;
@@ -100,6 +100,7 @@ export function setDataStatus(message, state = "ready", detail = "") {
     if (detail) node.title = detail;
     else node.removeAttribute("title");
   });
+  document.dispatchEvent(new window.CustomEvent("pepk:data-status", {detail: {message, state, description: detail}}));
 }
 
 export function debounce(fn, wait = CONFIG.searchDebounceMs) {

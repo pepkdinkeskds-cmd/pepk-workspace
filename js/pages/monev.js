@@ -7,17 +7,17 @@ import {
   debounce,
   updateQueryString,
   announce
-} from "../app.js?v=0.9.7-rc3";
+} from "../app.js?v=0.9.7-rc4";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.7-rc3";
-import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc3";
-import { emptyState } from "../ui.js?v=0.9.7-rc3";
-import { icon } from "../icons.js?v=0.9.7-rc3";
-import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc3";
+} from "../status.js?v=0.9.7-rc4";
+import { getInitialData, refreshFromSheets } from "../data/data-service.js?v=0.9.7-rc4";
+import { emptyState } from "../ui.js?v=0.9.7-rc4";
+import { icon } from "../icons.js?v=0.9.7-rc4";
+import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc4";
 
 initApp("resources");
 let data = getInitialData();

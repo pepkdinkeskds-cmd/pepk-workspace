@@ -1,15 +1,19 @@
 {
+  "baseline": "0.9.7 RC3",
+  "release": "0.9.7 RC4",
   "submission_bridge_preserved": true,
-  "submission_bridge_sha256": "adeb67de0f02071337627776b5314510eb11e5a10b4ee0d8d1896a1ce3a600bf",
   "assets_preserved": true,
-  "source_problem": {
-    "index_calls": "js/pages/home.js",
-    "uploaded_new_home_was_at": "home.js",
-    "active_old_home_bytes": 9714,
-    "unused_new_home_bytes": 4289,
-    "active_old_css_bytes": 116695,
-    "unused_new_css_bytes": 36601
-  },
-  "new_transport": "fixed viewport with complete screen offsets; no boundary gate",
-  "reference_sipd_http_status": 403
+  "data_and_search_unchanged_except_release_identifiers": [
+    "js/data/data-service.js",
+    "js/data/cache.js",
+    "js/data/sheets.js",
+    "js/data/local-data.js",
+    "js/data/search-index.js",
+    "js/search.js",
+    "js/information-utils.js",
+    "js/ui.js"
+  ],
+  "panels": 5,
+  "footer_is_panel": false,
+  "browser_qa": "BROWSER_QA.md"
 }

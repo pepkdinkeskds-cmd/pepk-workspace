@@ -1,9 +1,9 @@
-import { icon } from "./icons.js?v=0.9.7-rc3";
-import { SUBMISSION_PORTAL_URL } from "./pages/submission-portal-bridge.js?v=0.9.7-rc3";
+import { icon } from "./icons.js?v=0.9.7-rc4";
+import { SUBMISSION_PORTAL_URL } from "./pages/submission-portal-bridge.js?v=0.9.7-rc4";
 
 const FEEDBACK = Object.freeze({
   action: "submit_feedback",
-  appVersion: "0.9.7 RC3",
+  appVersion: "0.9.7 RC4",
   maxMessageLength: 1500,
   minMessageLength: 10,
   storageKey: "pepk_feedback_browser_id_v1",
@@ -106,7 +106,8 @@ function feedbackWidget() {
 
   const frameName = randomId("pepk-feedback-frame");
   const channelNonce = randomId("channel");
-  const launcher = element("button", {
+  const footerLauncher = document.querySelector("[data-feedback-launcher]");
+  const launcher = footerLauncher || element("button", {
     className: "feedback-launcher",
     type: "button",
     "aria-expanded": "false",
@@ -243,7 +244,7 @@ function feedbackWidget() {
   const widget = element("div", {
     className: "feedback-widget",
     dataset: { feedbackWidget: "" }
-  }, [panel, launcher, frame]);
+  }, [panel, ...(footerLauncher ? [] : [launcher]), frame]);
 
   let submitting = false;
   let submissionTimer = 0;
@@ -251,7 +252,7 @@ function feedbackWidget() {
   function setOpen(open) {
     panel.hidden = !open;
     launcher.setAttribute("aria-expanded", String(open));
-    launcher.classList.toggle("feedback-launcher--hidden", open);
+    launcher.classList.toggle("feedback-launcher--hidden", open && !footerLauncher);
     if (open) {
       if (!form.hidden && !submitting) {
         form.querySelector('[name="form_started_at"]').value = String(Date.now());

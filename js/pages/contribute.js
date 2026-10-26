@@ -1,7 +1,7 @@
-import { initApp, createElement, externalLink } from "../app.js?v=0.9.7-rc3";
-import { setContentStatus } from "../status.js?v=0.9.7-rc3";
-import { icon } from "../icons.js?v=0.9.7-rc3";
-import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc3";
+import { initApp, createElement, externalLink } from "../app.js?v=0.9.7-rc4";
+import { setContentStatus } from "../status.js?v=0.9.7-rc4";
+import { icon } from "../icons.js?v=0.9.7-rc4";
+import { SUBMISSION_PORTAL_URL, configureSubmissionLink } from "./submission-portal-bridge.js?v=0.9.7-rc4";
 
 initApp("contribute");
 

@@ -1,7 +1,7 @@
-import { CONFIG } from "../config.js?v=0.9.7-rc3";
-import { LOCAL_DATA } from "./local-data.js?v=0.9.7-rc3";
-import { loadSheet } from "./sheets.js?v=0.9.7-rc3";
-import { readCache, saveCache } from "./cache.js?v=0.9.7-rc3";
+import { CONFIG } from "../config.js?v=0.9.7-rc4";
+import { LOCAL_DATA } from "./local-data.js?v=0.9.7-rc4";
+import { loadSheet } from "./sheets.js?v=0.9.7-rc4";
+import { readCache, saveCache } from "./cache.js?v=0.9.7-rc4";
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
@@ -588,7 +588,7 @@ export async function ensureSearchIndex({ force = false } = {}) {
     } catch {
       const cached = readCache("searchIndex");
       if (cached) return { items: clone(cached.value), meta: { source: "cache", checkedAt: cached.savedAt, fresh: false, failed: true } };
-      const { BUNDLED_SEARCH_INDEX } = await import("./search-index.js?v=0.9.7-rc3");
+      const { BUNDLED_SEARCH_INDEX } = await import("./search-index.js?v=0.9.7-rc4");
       return { items: BUNDLED_SEARCH_INDEX, meta: { source: "bundled", checkedAt: null, fresh: false, failed: true } };
     }
   })();

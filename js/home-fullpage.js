@@ -5,18 +5,15 @@
     const viewport = document.querySelector("[data-home-viewport]");
     if (!viewport || viewport.dataset.fullpageInitialized === "true") return;
     const scenes = [...viewport.querySelectorAll("[data-home-scene]")];
-    const navigation = viewport.querySelector("[data-scene-nav]");
+    const navigation = document.querySelector("[data-scene-nav]");
     if (!scenes.length || !navigation) return;
     viewport.dataset.fullpageInitialized = "true";
-    // Fixed navigation belongs outside the scrolling viewport and inert panels.
-    document.body.append(navigation);
     const desktop = window.matchMedia("(min-width: 52.01rem)");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const previous = navigation.querySelector("[data-scene-previous]");
     const next = navigation.querySelector("[data-scene-next]");
     const counter = navigation.querySelector("[data-scene-count]");
-    const label = navigation.querySelector("[data-scene-label]");
-    const dots = navigation.querySelector(".scene-nav__dots");
+    const sectionSelect = navigation.querySelector("[data-scene-select]");
     const announcement = document.querySelector("[data-scene-announcement]");
     let current = 0;
     let enabled = false;
@@ -51,12 +48,8 @@
     function updateControls() {
       previous.disabled = current === 0;
       next.disabled = current === scenes.length - 1;
-      counter.textContent = `${String(current + 1).padStart(2,"0")} / ${String(scenes.length).padStart(2,"0")}`;
-      label.textContent = scenes[current].dataset.sceneTitle;
-      dots.querySelectorAll("button").forEach((button, index) => {
-        if (index === current) button.setAttribute("aria-current", "step");
-        else button.removeAttribute("aria-current");
-      });
+      counter.textContent = `${String(current + 1).padStart(2,"0")}/${String(scenes.length).padStart(2,"0")}`;
+      sectionSelect.value = String(current);
       scenes.forEach((scene, index) => {
         scene.toggleAttribute("data-current-scene", current === index);
         if (enabled) {
@@ -126,14 +119,15 @@
       viewport.dataset.transitioning = "false";
       document.body.dataset.fullpageReady = "true";
     }
-    dots.replaceChildren(...scenes.map((scene, index) => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.dataset.sceneJump = String(index);
-      button.setAttribute("aria-label", `Bagian ${index + 1}: ${scene.dataset.sceneTitle}`);
-      button.addEventListener("click", () => go(index));
-      return button;
+    sectionSelect.replaceChildren(...scenes.map((scene, index) => {
+      const option = document.createElement("option");
+      option.value = String(index);
+      option.textContent = scene.dataset.sceneTitle;
+      return option;
     }));
+    sectionSelect.addEventListener("change", () => {
+      if (!go(Number(sectionSelect.value))) sectionSelect.value = String(current);
+    });
     previous.addEventListener("click", () => go(current - 1));
     next.addEventListener("click", () => go(current + 1));
     document.addEventListener("keydown", (event) => {
@@ -179,6 +173,7 @@
       if (index >= 0) go(index, {instant: true, writeHash: false});
     });
     window.addEventListener("pageshow", () => {if (enabled) settle();});
+    viewport.addEventListener("scrollend", () => {if (busy) settle();});
     window.addEventListener("resize", () => {
       cancelAnimationFrame(resizeFrame);
       resizeFrame = requestAnimationFrame(refreshMode);

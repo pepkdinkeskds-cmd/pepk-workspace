@@ -1,0 +1,21 @@
+// Local-only responsive harness. Generated preview files are excluded from the release ZIP.
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const root=path.resolve(import.meta.dirname,'..'),out=path.join(root,'preview-dist');
+let app=await fs.readFile(path.join(root,'js/app.js'),'utf8');
+app=app.replace('function detectEmbedMode() {','function detectEmbedMode() { return false; // QA frame only\n');
+await fs.writeFile(path.join(out,'js/qa-app.js'),app);
+let controller=await fs.readFile(path.join(root,'js/home-fullpage.js'),'utf8');
+controller=controller.replace(/const isEmbedded = \(\) => \{[^]*?\n    \};/,'const isEmbedded = () => false; // QA frame only');
+await fs.writeFile(path.join(out,'js/qa-fullpage.js'),controller);
+let page=await fs.readFile(path.join(root,'js/pages/home.js'),'utf8');
+page=page.replace('../app.js?v=0.9.7-rc4','../qa-app.js?v=0.9.7-rc4');
+await fs.writeFile(path.join(out,'js/pages/qa-home.js'),page);
+let html=await fs.readFile(path.join(root,'index.html'),'utf8');
+html=html.replace('js/home-fullpage.js?v=0.9.7-rc4','js/qa-fullpage.js?v=0.9.7-rc4').replace('js/pages/home.js?v=0.9.7-rc4','js/pages/qa-home.js?v=0.9.7-rc4');
+await fs.writeFile(path.join(out,'qa-frame.html'),html);
+const fixture=page.replace('let data = getInitialData();','let data = getInitialData(); data.realization = [{id:"qa-only",year:2026,month:9,financialValue:52,physicalValue:58,financialTarget:60,physicalTarget:60,updatedAt:"2026-10-01",description:"Data sintetis khusus pemeriksaan layout",isActive:true}];');
+await fs.writeFile(path.join(out,'js/pages/qa-metric-home.js'),fixture);
+await fs.writeFile(path.join(out,'qa-metric-frame.html'),html.replace('js/pages/qa-home.js?v=0.9.7-rc4','js/pages/qa-metric-home.js?v=0.9.7-rc4'));
+await fs.writeFile(path.join(out,'qa-viewports.html'),`<!doctype html><html lang="id"><meta charset="utf-8"><title>QA viewport PEPK</title><style>body{margin:16px;font:14px system-ui;background:#e9eef5}header{display:flex;gap:16px;align-items:center;margin-bottom:16px}h1{font-size:16px}select{padding:10px}iframe{border:0;transform-origin:top left;box-shadow:0 0 0 1px #9aa}#host{overflow:hidden}</style><header><h1>QA viewport PEPK</h1><label>Ukuran <select id="size"><option value="1366,768">Laptop 1366×768</option><option value="1920,1080">Desktop 1920×1080</option><option value="360,800">HP 360×800</option><option value="390,844">HP 390×844</option><option value="960,540">Viewport efektif zoom 200%</option></select></label><label>Konten <select id="content"><option value="live">Sumber tersimpan</option><option value="metric">Realisasi sintetis untuk QA</option></select></label></header><div id="host"><iframe title="Pratinjau PEPK" id="preview" src="qa-frame.html?nosync=1"></iframe></div><script src="qa-viewports.js"></script></html>`);
+await fs.writeFile(path.join(out,'qa-viewports.js'),`const size=document.getElementById('size'),content=document.getElementById('content'),frame=document.getElementById('preview'),host=document.getElementById('host');function update(){const [w,h]=size.value.split(',').map(Number);const scale=Math.min(1,(innerWidth-40)/w,(innerHeight-110)/h);frame.style.width=w+'px';frame.style.height=h+'px';frame.style.transform='scale('+scale+')';host.style.width=(w*scale+2)+'px';host.style.height=(h*scale+2)+'px';}size.addEventListener('change',update);content.addEventListener('change',()=>{frame.src=(content.value==='metric'?'qa-metric-frame.html':'qa-frame.html')+'?nosync=1'});window.addEventListener('resize',update);update();`);

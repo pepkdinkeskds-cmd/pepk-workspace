@@ -44,13 +44,14 @@ test('actual HTML loads a standalone controller before the data module',()=>{
   assert(html.indexOf('src="js/home-fullpage.js')<html.indexOf('src="js/pages/home.js'));
   assert(!html.includes('src="home-scenes.js'));
 });
-test('all six screens initialize without catalog or network access',async()=>{
+test('five screens initialize independently and the footer stays outside the viewport',async()=>{
   const p=await setup();
   assert.equal(p.viewport.dataset.fullpageState,'active');
-  assert.equal(p.screens.length,6);
-  assert.equal(p.doc.querySelector('[data-scene-count]').textContent,'01 / 06');
+  assert.equal(p.screens.length,5);
+  assert.equal(p.doc.querySelector('[data-scene-count]').textContent,'01/05');
+  assert.equal(p.viewport.contains(p.doc.querySelector('[data-home-footer]')),false);
   assert.equal(p.doc.body.dataset.fullpageReady,'true');
-  assert.equal(p.screens.filter(s=>s.inert).length,5);
+  assert.equal(p.screens.filter(s=>s.inert).length,4);
   p.close();
 });
 test('one ArrowDown moves exactly one full viewport and cancels browser pixel scrolling',async()=>{
@@ -77,13 +78,13 @@ test('holding a key is consumed and never becomes native incremental scrolling',
   assert.equal(p.key('ArrowDown',p.doc.body,{repeat:true}).defaultPrevented,true);
   assert.equal(p.viewport.scrollTop,p.height);p.close();
 });
-test('separate key presses traverse all screens and reach the footer',async()=>{
+test('separate key presses end at Realisasi, with no sixth screen',async()=>{
   const p=await setup();
-  for(let i=1;i<6;i++){p.key('ArrowDown');p.tick(700);assert.equal(p.viewport.scrollTop,i*p.height);}
-  assert.equal(p.viewport.dataset.activeScene,'tentang-layanan');
-  assert.equal(p.doc.querySelector('[data-scene-count]').textContent,'06 / 06');
-  const last=p.key('ArrowDown');assert.equal(last.defaultPrevented,true);assert.equal(p.viewport.scrollTop,5*p.height);
-  p.key('ArrowUp');p.tick(700);assert.equal(p.viewport.scrollTop,4*p.height);p.close();
+  for(let i=1;i<5;i++){p.key('ArrowDown');p.tick(700);assert.equal(p.viewport.scrollTop,i*p.height);}
+  assert.equal(p.viewport.dataset.activeScene,'realisasi');
+  assert.equal(p.doc.querySelector('[data-scene-count]').textContent,'05/05');
+  const last=p.key('ArrowDown');assert.equal(last.defaultPrevented,true);assert.equal(p.viewport.scrollTop,4*p.height);
+  p.key('ArrowUp');p.tick(700);assert.equal(p.viewport.scrollTop,3*p.height);p.close();
 });
 test('one wheel notch over a card/link moves a whole screen, even with tall content',async()=>{
   const p=await setup();
@@ -106,8 +107,8 @@ test('small trackpad deltas are consumed until they trigger one full move',async
 });
 test('PageDown, PageUp, Home and End navigate exact screen boundaries',async()=>{
   const p=await setup();
-  p.key('End');p.tick(700);assert.equal(p.viewport.scrollTop,5*p.height);
-  p.key('PageUp');p.tick(700);assert.equal(p.viewport.scrollTop,4*p.height);
+  p.key('End');p.tick(700);assert.equal(p.viewport.scrollTop,4*p.height);
+  p.key('PageUp');p.tick(700);assert.equal(p.viewport.scrollTop,3*p.height);
   p.key('Home');p.tick(700);assert.equal(p.viewport.scrollTop,0);
   p.key('PageDown');p.tick(700);assert.equal(p.viewport.scrollTop,p.height);p.close();
 });
@@ -127,12 +128,16 @@ test('open Feedback dialogs and native scroll widgets are not hijacked',async()=
   assert.equal(p.wheel(100,area).defaultPrevented,false);
   assert.equal(p.wheel().defaultPrevented,true);assert.equal(p.viewport.scrollTop,p.height);p.close();
 });
-test('navigation buttons, dots and a section anchor select whole panels',async()=>{
-  const p=await setup();p.doc.querySelector('[data-scene-jump="3"]').click();p.tick(700);
+test('footer dropdown, buttons and a section anchor select whole panels',async()=>{
+  const p=await setup();const select=p.doc.querySelector('[data-scene-select]');select.value='3';select.dispatchEvent(new p.win.Event('change'));p.tick(700);
   assert.equal(p.viewport.scrollTop,3*p.height);
   p.doc.querySelector('[data-scene-previous]').click();p.tick(700);assert.equal(p.viewport.scrollTop,2*p.height);
   const link=p.doc.querySelector('.hero__next');link.click();p.tick(700);assert.equal(p.viewport.scrollTop,p.height);
   assert.equal(p.win.location.hash,'#akses');p.close();
+});
+test('scroll completion releases the navigation lock without waiting for the fallback timer',async()=>{
+  const p=await setup();p.key('ArrowDown');p.viewport.dispatchEvent(new p.win.Event('scrollend'));
+  p.key('ArrowDown');assert.equal(p.viewport.scrollTop,2*p.height);p.close();
 });
 test('deep links and hash changes align to their target screen',async()=>{
   const p=await setup({hash:'#realisasi'});assert.equal(p.viewport.scrollTop,4*p.height);

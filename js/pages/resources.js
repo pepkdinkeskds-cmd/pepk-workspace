@@ -6,17 +6,17 @@ import {
   scheduleBackgroundTask,
   minimumSearchLength,
   updateQueryString
-} from "../app.js?v=0.9.7-rc3";
+} from "../app.js?v=0.9.7-rc4";
 import {
   setContentReady,
   setContentRefreshing,
   setContentRefreshResult,
   setContentRefreshUnavailable
-} from "../status.js?v=0.9.7-rc3";
-import { getInitialData, refreshFromSheets, ensureSearchIndex } from "../data/data-service.js?v=0.9.7-rc3";
-import { comparePeriods } from "../catalog-utils.js?v=0.9.7-rc3";
-import { searchResourcesDetailed } from "../search.js?v=0.9.7-rc3";
-import { emptyState, resourceCard } from "../ui.js?v=0.9.7-rc3";
+} from "../status.js?v=0.9.7-rc4";
+import { getInitialData, refreshFromSheets, ensureSearchIndex } from "../data/data-service.js?v=0.9.7-rc4";
+import { comparePeriods } from "../catalog-utils.js?v=0.9.7-rc4";
+import { searchResourcesDetailed } from "../search.js?v=0.9.7-rc4";
+import { emptyState, resourceCard } from "../ui.js?v=0.9.7-rc4";
 
 initApp("resources");
 

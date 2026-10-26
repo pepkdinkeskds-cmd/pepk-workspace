@@ -1,6 +1,6 @@
-import { createElement, externalLink, safeUrl } from "./app.js?v=0.9.7-rc3";
-import { icon } from "./icons.js?v=0.9.7-rc3";
-import { comparePeriods, resourceDisplayTitle } from "./catalog-utils.js?v=0.9.7-rc3";
+import { createElement, externalLink, safeUrl } from "./app.js?v=0.9.7-rc4";
+import { icon } from "./icons.js?v=0.9.7-rc4";
+import { comparePeriods, resourceDisplayTitle } from "./catalog-utils.js?v=0.9.7-rc4";
 import {
   agendaStatus,
   formatAgendaDate,
@@ -13,7 +13,7 @@ import {
   realizationEvaluation,
   realizationForYear,
   realizationPeriod
-} from "./information-utils.js?v=0.9.7-rc3";
+} from "./information-utils.js?v=0.9.7-rc4";
 
 function resourceMeta(resource) {
   const items = [resource.workspaceTitle || resource.workspaceId];
